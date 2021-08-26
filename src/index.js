@@ -1,14 +1,20 @@
 import './style.css';
 import test from './test.jpg';
+import Data from './data.xml';
+import Notes from './data.csv';
+
 function component() {
     const element = document.createElement('div');
-    element.textContent = "Hello"
+    element.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     element.classList.add('hello');
 
     const myImage = new Image();
     myImage.src = test;
 
     element.appendChild(myImage)
+
+    console.log(Data);
+    console.log(Notes);
   
     return element;
   }

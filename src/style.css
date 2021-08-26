@@ -1,4 +1,12 @@
+@font-face {
+  font-family: 'MyFont';
+  src: url('./Gidolinya-Regular.otf') format('otf');
+  font-weight: 600;
+  font-style: normal;
+}
+
 .hello {
-    color: red;
+    color: blue;
+    font-family: 'MyFont';
     background: url('./test.jpg');
   }
