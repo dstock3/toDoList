@@ -18,7 +18,16 @@ const changeOil = toDo(
   "test note",
 )
 
-const toDoList = [toDoItem, changeOil]
+const goToDoc = toDo(
+  "Go to your Doctor's Appointment!",
+  "It's time for a check up",
+  "9/17/2021",
+  "2",
+  "Be sure to tell him about your back acne",
+)
+
+
+const toDoList = [toDoItem, changeOil, goToDoc]
 
 function elementBuilder(element, classLabel, parentName) {
   let item = document.createElement(element);
@@ -29,27 +38,37 @@ function elementBuilder(element, classLabel, parentName) {
 
 let body = document.getElementsByTagName("body")[0];
 
-const toDoBuilder = (toDoArray) => {
+function toDoBuilder(task) {
+  let elementArray = [];
+  let taskDiv = elementBuilder("div", "task", body);
+  let head = elementBuilder("h2", "task-head", taskDiv);
+  head.textContent = task.title;
+  let desc = elementBuilder("p", "task-desc", taskDiv);
+  desc.textContent = task.description;
+  let dueDate = elementBuilder("p", "due-date", taskDiv);
+  dueDate.textContent = task.dueDate;
+  let priority = elementBuilder("p", "priority", taskDiv);
+  priority.textContent = task.priority;
+  let notes = elementBuilder("p", "notes", taskDiv);
+  notes.textContent = task.notes;
+  elementArray.push(head, desc, dueDate, priority, notes);
+  return elementArray
+};
+
+const listBuilder = (toDoArray) => {
   let objArray = []
   for (let i = 0; i < toDoArray.length; i++) {
-    let elementArray = [];
     let task = toDoArray[i];
-    let taskDiv = elementBuilder("div", "task", body);
-    let head = elementBuilder("h2", "task-head", taskDiv);
-    head.textContent = task.title;
-    let desc = elementBuilder("p", "task-desc", taskDiv);
-    desc.textContent = task.description;
-    let dueDate = elementBuilder("p", "due-date", taskDiv);
-    dueDate.textContent = task.dueDate;
-    let priority = elementBuilder("p", "priority", taskDiv);
-    priority.textContent = task.priority;
-    let notes = elementBuilder("p", "notes", taskDiv);
-    notes.textContent = task.notes;
-    elementArray.push(head, desc, dueDate, priority, notes);
+    let elementArray = toDoBuilder(task);
     objArray.push(elementArray);
   };
   return { objArray }
 };
 
-let newProject = toDoBuilder(toDoList)
+let newProject = listBuilder(toDoList)
 console.log(newProject.objArray)
+
+/*const toDoSorter = (taskElementArray) => {
+
+
+}*/
