@@ -27,13 +27,22 @@ function elementBuilder(element, classLabel, parentName) {
   return item;
 }
 
+let body = document.getElementsByTagName("body")[0];
+
 const toDoBuilder = (toDoArray) => {
   for (let i = 0; i < toDoArray.length; i++) {
-    console.log(toDoArray[i].title);
-    console.log(toDoArray[i].description);
-    console.log(toDoArray[i].dueDate);
-    console.log(toDoArray[i].priority);
-    console.log(toDoArray[i].notes);
+    let task = toDoArray[i];
+    let taskDiv = elementBuilder("div", "task", body);
+    let head = elementBuilder("h2", "task-head", taskDiv);
+    head.textContent = task.title;
+    let desc = elementBuilder("p", "task-desc", taskDiv);
+    desc.textContent = task.description;
+    let dueDate = elementBuilder("p", "due-date", taskDiv);
+    dueDate.textContent = task.dueDate;
+    let priority = elementBuilder("p", "priority", taskDiv);
+    priority.textContent = task.priority;
+    let notes = elementBuilder("p", "notes", taskDiv);
+    notes.textContent = task.notes;
   };
 };
 
