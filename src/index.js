@@ -1,7 +1,15 @@
-function component() {
-    const element = document.createElement('div');
+const toDo = (title, description, dueDate, priority) => {
+  return { title, description, dueDate, priority }
+};
 
-    return element;
-  }
-  
-  document.body.appendChild(component());
+const toDoItem = toDo(
+  `Make "To Do List" Application!`,
+  "Create an application to manage daily tasks.",
+  "9/15/2021",
+  "1"
+)
+
+console.log(toDoItem.title)
+console.log(toDoItem.description)
+console.log(toDoItem.dueDate)
+console.log(toDoItem.priority)
