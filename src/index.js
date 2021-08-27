@@ -62,13 +62,23 @@ const listBuilder = (toDoArray) => {
     let elementArray = toDoBuilder(task);
     objArray.push(elementArray);
   };
+
+  const sortByPriority = () => {
+    for (let i = 0; i < toDoArray.length; i++) {
+    let task = toDoArray[i];
+    let priority = parseInt(task.priority)
+    };
+
+  }
   return { objArray }
 };
 
 let newProject = listBuilder(toDoList)
 console.log(newProject.objArray)
 
-/*const toDoSorter = (taskElementArray) => {
+const sortButton = (() => {
+  let sort = elementBuilder("button", "sort-button", body)
+  sort.textContent = "Sort by Priority"
+  sort.addEventListener("click", toDoSorter)
+})();
 
-
-}*/
