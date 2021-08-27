@@ -30,7 +30,9 @@ function elementBuilder(element, classLabel, parentName) {
 let body = document.getElementsByTagName("body")[0];
 
 const toDoBuilder = (toDoArray) => {
+  let objArray = []
   for (let i = 0; i < toDoArray.length; i++) {
+    let elementArray = [];
     let task = toDoArray[i];
     let taskDiv = elementBuilder("div", "task", body);
     let head = elementBuilder("h2", "task-head", taskDiv);
@@ -43,7 +45,11 @@ const toDoBuilder = (toDoArray) => {
     priority.textContent = task.priority;
     let notes = elementBuilder("p", "notes", taskDiv);
     notes.textContent = task.notes;
+    elementArray.push(head, desc, dueDate, priority, notes);
+    objArray.push(elementArray);
   };
+  return { objArray }
 };
 
-toDoBuilder(toDoList)
+let newProject = toDoBuilder(toDoList)
+console.log(newProject.objArray)
