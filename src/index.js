@@ -96,7 +96,7 @@ const listBuilder = (toDoArray, parent) => {
   };
 
   const sortByPriorityButton = (() => {
-    let sort = elementBuilder("button", "sort-button", body)
+    let sort = elementBuilder("button", "sort-button", parent)
     sort.textContent = "Sort by Priority"
     sort.addEventListener("click", sortByPriority)
   })();
