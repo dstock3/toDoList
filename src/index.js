@@ -43,6 +43,12 @@ function elementBuilder(element, classLabel, parentName) {
   return item;
 }
 
+function removeChildren(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
 let body = document.getElementsByTagName("body")[0];
 
 function toDoBuilder(task, parent) {
@@ -72,7 +78,8 @@ const listBuilder = (toDoArray, parent) => {
 
   const sortByPriority = () => {
     let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
-    let sortedList = listBuilder(sortedArray)
+    removeChildren(parent)
+    let sortedList = listBuilder(sortedArray, parent)
     return sortedList
   };
   
