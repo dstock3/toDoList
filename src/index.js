@@ -106,9 +106,16 @@ function removeChildren(parent) {
 
 let body = document.getElementsByTagName("body")[0];
 
+function removeTask(parent) {
+  let removeTask = elementBuilder("button", "remove-task", parent)
+  removeTask.textContent = "x"
+  parent.addEventListener("click", parent.remove)
+}
+
 function toDoBuilder(task, parent) {
   let elementArray = [];
   let taskDiv = elementBuilder("div", "task", parent);
+  removeTask(taskDiv)
   let head = elementBuilder("h3", "task-head", taskDiv);
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
@@ -120,6 +127,7 @@ function toDoBuilder(task, parent) {
   let notes = elementBuilder("p", "notes", taskDiv);
   notes.textContent = task.notes;
   elementArray.push(head, desc, dueDate, priority, notes);
+  
   return elementArray
 };
 
