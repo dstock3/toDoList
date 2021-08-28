@@ -2,16 +2,17 @@ import './style.css';
 
 const project = (title, description) => {
   return { title, description}
-}
+};
 
 const homeProjects = project(
   "Home Projects",
   "Projects to do around the house."
-)
+);
+
 const creative = project(
   "Creative Projects",
   "let's get creative..."
-)
+);
 
 const toDo = (title, description, dueDate, priority, notes) => {
   return { title, description, dueDate, priority, notes }
@@ -78,7 +79,7 @@ let body = document.getElementsByTagName("body")[0];
 function toDoBuilder(task, parent) {
   let elementArray = [];
   let taskDiv = elementBuilder("div", "task", parent);
-  let head = elementBuilder("h2", "task-head", taskDiv);
+  let head = elementBuilder("h3", "task-head", taskDiv);
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
   desc.textContent = task.description;
@@ -92,8 +93,8 @@ function toDoBuilder(task, parent) {
   return elementArray
 };
 
-const projectBuilder = (toDoArray, project) => {
-  let projectElement = elementBuilder("div", "project", body);
+const projectHeader = (project, parent) => {
+  let projectElement = elementBuilder("div", "project", parent);
 
   let projectHead = elementBuilder("h2", "project-head", projectElement)
   projectHead.textContent = project.title;
@@ -101,6 +102,13 @@ const projectBuilder = (toDoArray, project) => {
   let projectDesc = elementBuilder("p", "project-desc", projectElement);
   projectDesc.textContent = project.description;
 
+  return projectElement
+}
+
+const projectBuilder = (toDoArray, project) => {
+
+  let projectElement = projectHeader(project, body)
+  
   let objArray = []
   for (let i = 0; i < toDoArray.length; i++) {
     let task = toDoArray[i];
@@ -110,8 +118,8 @@ const projectBuilder = (toDoArray, project) => {
 
   const sortByPriority = () => {
     let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
-    removeChildren(parent)
-    let sortedList = projectBuilder(sortedArray, projectElement)
+    projectElement.remove()
+    let sortedList = projectBuilder(sortedArray, project)
     return sortedList
   };
 
