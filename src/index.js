@@ -82,6 +82,8 @@ function toDoBuilder(task, parent) {
   return elementArray
 };
 
+
+
 const listBuilder = (toDoArray, parent) => {
   let objArray = []
   for (let i = 0; i < toDoArray.length; i++) {
@@ -97,10 +99,22 @@ const listBuilder = (toDoArray, parent) => {
     return sortedList
   };
 
+  const buttonDiv = elementBuilder("div", "button-div", parent)
+
   const sortByPriorityButton = (() => {
-    let sort = elementBuilder("button", "sort-button", parent)
+    let sort = elementBuilder("button", "sort-button", buttonDiv)
     sort.textContent = "Sort by Priority"
     sort.addEventListener("click", sortByPriority)
+  })();
+
+  const deleteList = () => {
+    parent.remove()
+  }
+
+  const deleteButton = (() => {
+    let del = elementBuilder("button", "delete-button", buttonDiv);
+    del.textContent = "Remove Project"
+    del.addEventListener("click", deleteList)
   })();
   
   return { objArray, sortByPriority }
