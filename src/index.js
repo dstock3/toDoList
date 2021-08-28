@@ -26,8 +26,15 @@ const goToDoc = toDo(
   "Be sure to tell him about your back acne",
 )
 
+const getGift = toDo(
+  `Get a Birthday Gift for the Wife!`,
+  "No giftcards...",
+  "9/18/2021",
+  "1", 
+  "No idea what to get her...",
+)
 
-const toDoList = [toDoItem, changeOil, goToDoc]
+const toDoList = [toDoItem, changeOil, goToDoc, getGift]
 
 function elementBuilder(element, classLabel, parentName) {
   let item = document.createElement(element);
@@ -64,20 +71,13 @@ const listBuilder = (toDoArray) => {
   };
 
   const sortByPriority = () => {
-    let priorityArray = []
-    for (let i = 0; i < toDoArray.length; i++) {
-      let task = toDoArray[i];
-      priorityArray.push(task.priority);
-    };
-    priorityArray.sort((a, b) => a - b);
-    console.log(priorityArray)
-
-  }
+    let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
+    return sortedArray
+  };
   return { objArray, sortByPriority }
 };
 
 let newProject = listBuilder(toDoList)
-console.log(newProject.sortByPriority())
 
 const sortButton = (() => {
   let sort = elementBuilder("button", "sort-button", body)
