@@ -146,37 +146,59 @@ const projectBuilder = (toDoArray, project) => {
     objArray.push(elementArray);
   };
 
-  const sortByPriority = () => {
-    let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
-    projectElement.remove()
-    let sortedList = projectBuilder(sortedArray, project)
-    return sortedList
-  };
-
-  const buttonDiv = elementBuilder("div", "button-div", projectElement)
-
-  const sortByPriorityButton = (() => {
-    let sort = elementBuilder("button", "sort-button", buttonDiv)
-    sort.textContent = "Sort by Priority"
-    sort.addEventListener("click", sortByPriority)
-  })();
-
   const deleteList = () => {
     projectElement.remove()
   }
 
+  const sortByPriority = () => {
+    let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
+    return sortedArray
+  };
+
+  return { projectElement, objArray, sortByPriority, deleteList }
+};
+
+const buttons = (set) => {
+
+  const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
+
+  const sortByPriorityButton = (() => {
+    let sort = elementBuilder("button", "sort-button", buttonDiv)
+    sort.textContent = "Sort by Priority"
+    let sortedArray = set.sortByPriority();
+    let project = sortedArray[0].project;
+    
+
+    function newProjectSet() {
+      set.deleteList()
+      let sortedProject = projectBuilder(sortedArray, project)
+      buttons(sortedProject)
+    }
+
+    sort.addEventListener("click", newProjectSet)
+  })();
+
+  
   const deleteButton = (() => {
     let del = elementBuilder("button", "delete-button", buttonDiv);
     del.textContent = "Remove Project"
-    del.addEventListener("click", deleteList)
+    
+    del.addEventListener("click", set.deleteList)
   })();
-  
-  return { objArray, sortByPriority }
+
+  return { sortByPriorityButton, deleteButton }
 };
 
 let newProject = projectBuilder(firstList, homeProjects)
 let secondProject = projectBuilder(secondList, forYourHealth)
 let thirdProject = projectBuilder(thirdList, carProject)
+
+let projectArray = [newProject, secondProject, thirdProject];
+for (let i = 0; i < projectArray.length; i++) {
+  buttons(projectArray[i])
+}
+
+
 
 
 
