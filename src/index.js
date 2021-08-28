@@ -108,7 +108,7 @@ let body = document.getElementsByTagName("body")[0];
 
 function removeTask(parent) {
   let removeTask = elementBuilder("button", "remove-task", parent)
-  removeTask.textContent = "x"
+  removeTask.textContent = "x";
   parent.addEventListener("click", parent.remove)
 }
 

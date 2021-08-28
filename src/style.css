@@ -42,3 +42,10 @@ button {
     padding: .75%;
     font-weight: bold;
 }
+
+.remove-task {
+    position: relative;
+    left: 90%;
+    width: 9%;
+    border-radius: 5px;
+}
