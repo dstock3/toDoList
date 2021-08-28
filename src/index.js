@@ -1,3 +1,5 @@
+import './style.css';
+
 const toDo = (title, description, dueDate, priority, notes) => {
   return { title, description, dueDate, priority, notes }
 };
@@ -34,7 +36,15 @@ const getGift = toDo(
   "No idea what to get her...",
 )
 
-const toDoList = [toDoItem, changeOil, goToDoc, getGift]
+const writeScript = toDo(
+  "Write Script",
+  `Finally write that movie script you've been talking about.`,
+  "10/15/2021",
+  "5", 
+  "Be sure to include that twist ending where the guy was dead the whole time.",
+)
+
+const toDoList = [toDoItem, changeOil, goToDoc, getGift, writeScript]
 
 function elementBuilder(element, classLabel, parentName) {
   let item = document.createElement(element);
@@ -54,6 +64,7 @@ let body = document.getElementsByTagName("body")[0];
 function toDoBuilder(task, parent) {
   let elementArray = [];
   let taskDiv = elementBuilder("div", "task", parent);
+  taskDiv.classList.add("hello");
   let head = elementBuilder("h2", "task-head", taskDiv);
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
@@ -91,6 +102,8 @@ const listBuilder = (toDoArray, parent) => {
   
   return { objArray, sortByPriority }
 };
+
+
 
 let newProject = listBuilder(toDoList, body)
 
