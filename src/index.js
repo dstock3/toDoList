@@ -45,9 +45,9 @@ function elementBuilder(element, classLabel, parentName) {
 
 let body = document.getElementsByTagName("body")[0];
 
-function toDoBuilder(task) {
+function toDoBuilder(task, parent) {
   let elementArray = [];
-  let taskDiv = elementBuilder("div", "task", body);
+  let taskDiv = elementBuilder("div", "task", parent);
   let head = elementBuilder("h2", "task-head", taskDiv);
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
@@ -62,26 +62,29 @@ function toDoBuilder(task) {
   return elementArray
 };
 
-const listBuilder = (toDoArray) => {
+const listBuilder = (toDoArray, parent) => {
   let objArray = []
   for (let i = 0; i < toDoArray.length; i++) {
     let task = toDoArray[i];
-    let elementArray = toDoBuilder(task);
+    let elementArray = toDoBuilder(task, parent);
     objArray.push(elementArray);
   };
 
   const sortByPriority = () => {
     let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
-    return sortedArray
+    let sortedList = listBuilder(sortedArray)
+    return sortedList
   };
+  
   return { objArray, sortByPriority }
 };
 
-let newProject = listBuilder(toDoList)
+let newProject = listBuilder(toDoList, body)
+let sortedProject = newProject.sortByPriority()
 
-const sortButton = (() => {
+const sortByPriorityButton = (() => {
   let sort = elementBuilder("button", "sort-button", body)
   sort.textContent = "Sort by Priority"
-  sort.addEventListener("click", listBuilder.toDoSorter)
+  sort.addEventListener("click", sortByPriority)
 })();
 
