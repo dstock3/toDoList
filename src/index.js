@@ -75,13 +75,6 @@ function removeChildren(parent) {
 
 let body = document.getElementsByTagName("body")[0];
 
-let projectElement = elementBuilder("div", "project", body);
-let projectElement2 = elementBuilder("div", "project", body);
-
-let projectBuilder = () => {
-
-}
-
 function toDoBuilder(task, parent) {
   let elementArray = [];
   let taskDiv = elementBuilder("div", "task", parent);
@@ -99,22 +92,30 @@ function toDoBuilder(task, parent) {
   return elementArray
 };
 
-const listBuilder = (toDoArray, parent) => {
+const projectBuilder = (toDoArray, project) => {
+  let projectElement = elementBuilder("div", "project", body);
+
+  let projectHead = elementBuilder("h2", "project-head", projectElement)
+  projectHead.textContent = project.title;
+
+  let projectDesc = elementBuilder("p", "project-desc", projectElement);
+  projectDesc.textContent = project.description;
+
   let objArray = []
   for (let i = 0; i < toDoArray.length; i++) {
     let task = toDoArray[i];
-    let elementArray = toDoBuilder(task, parent);
+    let elementArray = toDoBuilder(task, projectElement);
     objArray.push(elementArray);
   };
 
   const sortByPriority = () => {
     let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
     removeChildren(parent)
-    let sortedList = listBuilder(sortedArray, parent)
+    let sortedList = projectBuilder(sortedArray, projectElement)
     return sortedList
   };
 
-  const buttonDiv = elementBuilder("div", "button-div", parent)
+  const buttonDiv = elementBuilder("div", "button-div", projectElement)
 
   const sortByPriorityButton = (() => {
     let sort = elementBuilder("button", "sort-button", buttonDiv)
@@ -123,7 +124,7 @@ const listBuilder = (toDoArray, parent) => {
   })();
 
   const deleteList = () => {
-    parent.remove()
+    projectElement.remove()
   }
 
   const deleteButton = (() => {
@@ -135,8 +136,8 @@ const listBuilder = (toDoArray, parent) => {
   return { objArray, sortByPriority }
 };
 
-let newProject = listBuilder(firstList, projectElement)
-let secondProject = listBuilder(secondList, projectElement2)
+let newProject = projectBuilder(firstList, homeProjects)
+let secondProject = projectBuilder(secondList, creative)
 
 
 
