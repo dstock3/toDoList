@@ -1,5 +1,18 @@
 import './style.css';
 
+const project = (title, description) => {
+  return { title, description}
+}
+
+const homeProjects = project(
+  "Home Projects",
+  "Projects to do around the house."
+)
+const creative = project(
+  "Creative Projects",
+  "let's get creative..."
+)
+
 const toDo = (title, description, dueDate, priority, notes) => {
   return { title, description, dueDate, priority, notes }
 };
@@ -62,8 +75,12 @@ function removeChildren(parent) {
 
 let body = document.getElementsByTagName("body")[0];
 
-let project = elementBuilder("div", "project", body);
-let project2 = elementBuilder("div", "project", body);
+let projectElement = elementBuilder("div", "project", body);
+let projectElement2 = elementBuilder("div", "project", body);
+
+let projectBuilder = () => {
+
+}
 
 function toDoBuilder(task, parent) {
   let elementArray = [];
@@ -81,8 +98,6 @@ function toDoBuilder(task, parent) {
   elementArray.push(head, desc, dueDate, priority, notes);
   return elementArray
 };
-
-
 
 const listBuilder = (toDoArray, parent) => {
   let objArray = []
@@ -120,8 +135,8 @@ const listBuilder = (toDoArray, parent) => {
   return { objArray, sortByPriority }
 };
 
-let newProject = listBuilder(firstList, project)
-let secondProject = listBuilder(secondList, project2)
+let newProject = listBuilder(firstList, projectElement)
+let secondProject = listBuilder(secondList, projectElement2)
 
 
 
