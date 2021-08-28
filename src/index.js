@@ -61,10 +61,11 @@ function removeChildren(parent) {
 
 let body = document.getElementsByTagName("body")[0];
 
+let project = elementBuilder("div", "project", body);
+
 function toDoBuilder(task, parent) {
   let elementArray = [];
   let taskDiv = elementBuilder("div", "task", parent);
-  taskDiv.classList.add("hello");
   let head = elementBuilder("h2", "task-head", taskDiv);
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
@@ -105,7 +106,7 @@ const listBuilder = (toDoArray, parent) => {
 
 
 
-let newProject = listBuilder(toDoList, body)
+let newProject = listBuilder(toDoList, project)
 
 
 
