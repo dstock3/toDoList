@@ -5,20 +5,25 @@ body {
 
 .project {
     display: flex;
-    flex-flow: column;    
+    flex-flow: column;
+    background-color: rgb(130, 193, 248);
+    width: 25%;
+    padding: .5%;    
 }
 
 .task {
-    border: solid 3px rgb(130, 193, 248);
-    width: 23%;
-    padding: .5%;
+    border: solid 5px rgb(130, 193, 248);
+    background-color: rgb(49, 58, 66);
+    width: 87%;
+    padding: 5%;
     border-radius: 10px;
 }
 
 .sort-button {
-    width: 5%;
+    width: 23%;
     border-radius: 10px;
     background-color: rgb(130, 193, 248);
     color: rgb(46, 54, 61);
-    padding: .5%;
+    padding: .75%;
+    font-weight: bold;
 }
