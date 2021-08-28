@@ -8,7 +8,7 @@ const toDoItem = toDo(
   `Make "To Do List" Application!`,
   "Create an application to manage daily tasks.",
   "9/15/2021",
-  "1", 
+  "2", 
   "This the first object created using the toDo factory function.",
 )
 
@@ -44,7 +44,8 @@ const writeScript = toDo(
   "Be sure to include that twist ending where the guy was dead the whole time.",
 )
 
-const toDoList = [toDoItem, changeOil, goToDoc, getGift, writeScript]
+const firstList = [toDoItem, getGift, writeScript]
+const secondList = [changeOil, goToDoc]
 
 function elementBuilder(element, classLabel, parentName) {
   let item = document.createElement(element);
@@ -105,11 +106,8 @@ const listBuilder = (toDoArray, parent) => {
   return { objArray, sortByPriority }
 };
 
-
-
-let newProject = listBuilder(toDoList, project)
-
-let secondProject = listBuilder(toDoList, project2)
+let newProject = listBuilder(firstList, project)
+let secondProject = listBuilder(secondList, project2)
 
 
 
