@@ -97,12 +97,6 @@ function elementBuilder(element, classLabel, parentName) {
   return item;
 }
 
-function removeChildren(parent) {
-  while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
-  }
-}
-
 let body = document.getElementsByTagName("body")[0];
 
 function toDoBuilder(task, parent) {
@@ -199,7 +193,6 @@ const buttons = (set) => {
           if (taskDiv.children[1].textContent === set.toDoArray[y].title) {
             function taskRemover() {
               let newArray = set.removeTask(set.toDoArray[y]);
-              console.log(newArray)
               set.deleteList()
               let sortedProject = projectBuilder(newArray, set.project);
               buttons(sortedProject) 

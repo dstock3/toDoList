@@ -43,9 +43,15 @@ button {
     font-weight: bold;
 }
 
+.task-head {
+    position: relative;
+    top: 200%;
+}
+
 .remove-task {
     position: relative;
     left: 90%;
     width: 9%;
-    border-radius: 5px;
+    border-radius: 10px;
+    padding: 1.5%;
 }
