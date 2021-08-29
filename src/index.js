@@ -86,7 +86,7 @@ const getTest = toDo(
   "remember to fast 12 hours before. No eating!"
 )
 
-const firstList = [toDoItem, getGift, writeScript]
+const firstList = [writeScript, getGift, toDoItem]
 const secondList = [goToDoc, getTest]
 const thirdList = [replaceWipers, changeOil]
 
@@ -167,7 +167,7 @@ const projectBuilder = (toDoArray, project) => {
     return sortedArray
   };
 
-  return { projectElement, objArray, toDoArray, removeTask, sortByPriority, deleteList }
+  return { projectElement, project, objArray, toDoArray, removeTask, sortByPriority, deleteList }
 };
 
 const buttons = (set) => {
@@ -190,24 +190,24 @@ const buttons = (set) => {
   })();
 
   const removeTaskButton = (() => {
-    let projectElements = set.projectElement.children;
-    for (let i = 0; i < set.elementArray; i++) {
+    let projectElements = Array.from(set.projectElement.children);
+    for (let i = 0; i < projectElements.length; i++) {
       if (projectElements[i].classList.contains("task")) {
-        console.log(projectElements[i])
-        /*
-        let taskDiv = set.elementArray[i];
-        let removeTaskElement = set.elementArray[i].firstChild;
-
-        function taskRemover() {
-          if (set.toDoArray[i].title === taskDiv.secondChild.textContent) {
-            taskDiv.remove();
-            let newArray = removeTask(set.toDoArray[i]);
-            projectBuilder(newArray, set.toDoArray[i].project);
-          };
-        };
-        removeTaskElement.addEventListener("click", taskRemover);
-        */
-      };
+        let taskDiv = projectElements[i];
+        let removeTaskElement = taskDiv.firstChild;
+        for (let y = 0; y < set.toDoArray.length; y++) {
+          if (taskDiv.children[1].textContent === set.toDoArray[y].title) {
+            function taskRemover() {
+              let newArray = set.removeTask(set.toDoArray[y]);
+              console.log(newArray)
+              set.deleteList()
+              let sortedProject = projectBuilder(newArray, set.project);
+              buttons(sortedProject) 
+            }; 
+            removeTaskElement.addEventListener("click", taskRemover);  
+          };   
+        };  
+      }; 
     };
   })();
 
