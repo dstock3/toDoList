@@ -34,6 +34,11 @@ body {
     border-radius: 10px;
 }
 
+.top-div {
+    display: flex;
+    justify-content: space-between;
+}
+
 button {
     width: 50%;
     border-radius: 10px;
@@ -43,15 +48,12 @@ button {
     font-weight: bold;
 }
 
-.task-head {
-    position: relative;
-    top: 200%;
-}
-
 .remove-task {
+    order: 1;
     position: relative;
-    left: 90%;
-    width: 9%;
-    border-radius: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
     padding: 1.5%;
 }

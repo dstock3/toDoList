@@ -102,9 +102,10 @@ let body = document.getElementsByTagName("body")[0];
 function toDoBuilder(task, parent) {
   let elementArray = [];
   let taskDiv = elementBuilder("div", "task", parent);
-  let removeTask = elementBuilder("button", "remove-task", taskDiv);
-  removeTask.textContent = "x";
-  let head = elementBuilder("h3", "task-head", taskDiv);
+  let topDiv = elementBuilder("div", "top-div", taskDiv)
+  let removeTask = elementBuilder("button", "remove-task", topDiv);
+  removeTask.textContent = "X";
+  let head = elementBuilder("h3", "task-head", topDiv);
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
   desc.textContent = task.description;
@@ -188,9 +189,10 @@ const buttons = (set) => {
     for (let i = 0; i < projectElements.length; i++) {
       if (projectElements[i].classList.contains("task")) {
         let taskDiv = projectElements[i];
+        let topDiv = taskDiv.children[0];
         let removeTaskElement = taskDiv.firstChild;
         for (let y = 0; y < set.toDoArray.length; y++) {
-          if (taskDiv.children[1].textContent === set.toDoArray[y].title) {
+          if (topDiv.children[1].textContent === set.toDoArray[y].title) {
             function taskRemover() {
               let newArray = set.removeTask(set.toDoArray[y]);
               set.deleteList()
