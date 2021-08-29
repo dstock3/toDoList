@@ -1,7 +1,7 @@
 import './style.css';
 
 const project = (title, description) => {
-  return { title, description}
+  return { title, description }
 };
 
 const homeProjects = project(
@@ -110,7 +110,7 @@ function removeTask(parent) {
   let removeTask = elementBuilder("button", "remove-task", parent)
   removeTask.textContent = "x";
   parent.addEventListener("click", parent.remove)
-}
+};
 
 function toDoBuilder(task, parent) {
   let elementArray = [];
@@ -141,7 +141,7 @@ const projectHeader = (project, parent) => {
   projectDesc.textContent = project.description;
 
   return projectElement
-}
+};
 
 const projectBuilder = (toDoArray, project) => {
 
@@ -156,14 +156,24 @@ const projectBuilder = (toDoArray, project) => {
 
   const deleteList = () => {
     projectElement.remove()
-  }
+  };
+
+  const removeTask = (task) => {
+    for (let i = 0; i < toDoArray.length; i++) {
+      if (task === toDoArray[i]) {
+        toDoArray.splice(i, 1);
+      };
+    };
+
+    return toDoArray
+  };
 
   const sortByPriority = () => {
     let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
     return sortedArray
   };
 
-  return { projectElement, objArray, sortByPriority, deleteList }
+  return { projectElement, objArray, removeTask, sortByPriority, deleteList }
 };
 
 const buttons = (set) => {
@@ -181,7 +191,7 @@ const buttons = (set) => {
       set.deleteList()
       let sortedProject = projectBuilder(sortedArray, project)
       buttons(sortedProject)
-    }
+    };
 
     sort.addEventListener("click", newProjectSet)
   })();
@@ -205,6 +215,8 @@ let projectArray = [newProject, secondProject, thirdProject];
 for (let i = 0; i < projectArray.length; i++) {
   buttons(projectArray[i])
 }
+
+console.log(newProject.removeTask(toDoItem))
 
 
 
