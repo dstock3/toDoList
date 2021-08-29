@@ -177,12 +177,14 @@ const buttons = (set) => {
   const sortByPriorityButton = (() => {
     let sort = elementBuilder("button", "sort-button", buttonDiv);
     sort.textContent = "Sort by Priority";
+    let projectIndex = getPosition(set.projectElement);
     let sortedArray = set.sortByPriority();
     let project = sortedArray[0].project;
 
     function newProjectSet() {
       set.deleteList()
       let sortedProject = projectBuilder(sortedArray, project)
+      body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
       buttons(sortedProject)
     };
 
@@ -199,9 +201,11 @@ const buttons = (set) => {
         for (let y = 0; y < set.toDoArray.length; y++) {
           if (topDiv.children[1].textContent === set.toDoArray[y].title) {
             function taskRemover() {
+              let projectIndex = getPosition(set.projectElement);
               let newArray = set.removeTask(set.toDoArray[y]);
               set.deleteList()
               let sortedProject = projectBuilder(newArray, set.project);
+              body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
               buttons(sortedProject) 
             }; 
             removeTaskElement.addEventListener("click", taskRemover);  
