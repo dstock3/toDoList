@@ -97,6 +97,11 @@ function elementBuilder(element, classLabel, parentName) {
   return item;
 }
 
+const getPosition = (projectElement) => {
+  let projectIndex = Array.from(projectElement.parentNode.children).indexOf(projectElement);
+  return projectIndex
+};
+
 let body = document.getElementsByTagName("body")[0];
 
 function toDoBuilder(task, parent) {
