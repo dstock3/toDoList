@@ -1,7 +1,7 @@
 import './style.css';
 
 const project = (title, description) => {
-  return { title, description}
+  return { title, description }
 };
 
 const homeProjects = project(
@@ -40,7 +40,6 @@ const replaceWipers = toDo(
   "5",
   "Saw a deal at that place on 75th",
 )
-
 
 const changeOil = toDo(
   "Time for an Oil Change!",
@@ -106,16 +105,11 @@ function removeChildren(parent) {
 
 let body = document.getElementsByTagName("body")[0];
 
-function removeTask(parent) {
-  let removeTask = elementBuilder("button", "remove-task", parent)
-  removeTask.textContent = "x";
-  parent.addEventListener("click", parent.remove)
-}
-
 function toDoBuilder(task, parent) {
   let elementArray = [];
   let taskDiv = elementBuilder("div", "task", parent);
-  removeTask(taskDiv)
+  let removeTask = elementBuilder("button", "remove-task", taskDiv);
+  removeTask.textContent = "x";
   let head = elementBuilder("h3", "task-head", taskDiv);
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
@@ -141,7 +135,7 @@ const projectHeader = (project, parent) => {
   projectDesc.textContent = project.description;
 
   return projectElement
-}
+};
 
 const projectBuilder = (toDoArray, project) => {
 
@@ -156,14 +150,24 @@ const projectBuilder = (toDoArray, project) => {
 
   const deleteList = () => {
     projectElement.remove()
-  }
+  };
+
+  const removeTask = (task) => {
+    for (let i = 0; i < toDoArray.length; i++) {
+      if (task === toDoArray[i]) {
+        toDoArray.splice(i, 1);
+      };
+    };
+
+    return toDoArray
+  };
 
   const sortByPriority = () => {
     let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
     return sortedArray
   };
 
-  return { projectElement, objArray, sortByPriority, deleteList }
+  return { projectElement, objArray, toDoArray, removeTask, sortByPriority, deleteList }
 };
 
 const buttons = (set) => {
@@ -171,22 +175,42 @@ const buttons = (set) => {
   const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
 
   const sortByPriorityButton = (() => {
-    let sort = elementBuilder("button", "sort-button", buttonDiv)
-    sort.textContent = "Sort by Priority"
+    let sort = elementBuilder("button", "sort-button", buttonDiv);
+    sort.textContent = "Sort by Priority";
     let sortedArray = set.sortByPriority();
     let project = sortedArray[0].project;
-    
 
     function newProjectSet() {
       set.deleteList()
       let sortedProject = projectBuilder(sortedArray, project)
       buttons(sortedProject)
-    }
+    };
 
     sort.addEventListener("click", newProjectSet)
   })();
 
-  
+  const removeTaskButton = (() => {
+    let projectElements = set.projectElement.children;
+    for (let i = 0; i < set.elementArray; i++) {
+      if (projectElements[i].classList.contains("task")) {
+        console.log(projectElements[i])
+        /*
+        let taskDiv = set.elementArray[i];
+        let removeTaskElement = set.elementArray[i].firstChild;
+
+        function taskRemover() {
+          if (set.toDoArray[i].title === taskDiv.secondChild.textContent) {
+            taskDiv.remove();
+            let newArray = removeTask(set.toDoArray[i]);
+            projectBuilder(newArray, set.toDoArray[i].project);
+          };
+        };
+        removeTaskElement.addEventListener("click", taskRemover);
+        */
+      };
+    };
+  })();
+
   const deleteButton = (() => {
     let del = elementBuilder("button", "delete-button", buttonDiv);
     del.textContent = "Remove Project"
@@ -194,12 +218,12 @@ const buttons = (set) => {
     del.addEventListener("click", set.deleteList)
   })();
 
-  return { sortByPriorityButton, deleteButton }
+  return { sortByPriorityButton, deleteButton, removeTaskButton }
 };
 
-let newProject = projectBuilder(firstList, homeProjects)
-let secondProject = projectBuilder(secondList, forYourHealth)
-let thirdProject = projectBuilder(thirdList, carProject)
+let newProject = projectBuilder(firstList, homeProjects);
+let secondProject = projectBuilder(secondList, forYourHealth);
+let thirdProject = projectBuilder(thirdList, carProject);
 
 let projectArray = [newProject, secondProject, thirdProject];
 for (let i = 0; i < projectArray.length; i++) {
