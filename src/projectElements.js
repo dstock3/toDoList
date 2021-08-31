@@ -237,8 +237,10 @@ const addTask = (set) => {
 
       let toDoArray = set.toDoArray;
       toDoArray.push(task);
+      let projectIndex = getPosition(projectElement);
       projectElement.remove();
       let updatedProject = projectBuilder(toDoArray, project);
+      body.insertBefore(updatedProject.projectElement, body.children[projectIndex]);
       buttons(updatedProject);
 
       exit()
