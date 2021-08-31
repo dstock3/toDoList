@@ -80,26 +80,50 @@ const projectBuilder = (toDoArray, project) => {
   return { projectElement, project, objArray, toDoArray, removeTask, sortByPriority, deleteList }
 };
 
-const addTask = () => {
+const addTask = (projectElement) => {
   const taskPrompt = (() => {
     let prompt = elementBuilder("div", "task-prompt", body);
-    let titleElement = elementBuilder("label", "name-label", prompt);
+    let titleDiv = elementBuilder("div", "title-div", prompt);
+    let titleElement = elementBuilder("label", "name-label", titleDiv);
     titleElement.textContent = "Task: "
-    let titleInput = elementBuilder("input", "title-input", prompt);
+    let titleInput = elementBuilder("input", "title-input", titleDiv);
     titleInput.id = "title"
     titleInput.setAttribute("name", "title");
+    
 
-    let createButton = elementBuilder("button", "create-task-button", prompt);
-    createButton.textContent = "Create Task"
-
+    let descDiv = elementBuilder("div", "description-div", prompt);
+    let descElement = elementBuilder("label", "desc-label", descDiv);
+    descElement.textContent = "Description: "
+    let descInput = elementBuilder("input", "desc-input", descDiv);
+    descInput.id = "description";
+    descInput.setAttribute("name", "desc");
+    
     let children = document.body.children;
     for (let i = 0; i < children.length - 1; i++) {
       children[i].classList.add("transparent")
     }
 
-    return { title, project, description, dueDate, priority, notes }
+
+    let createButton = elementBuilder("button", "create-task-button", prompt);
+    createButton.textContent = "Create Task"
+
+    function createTask() {
+      let title = document.getElementById("title").value;
+      let description = document.getElementById("description").value;
+      console.log(title, description)
+
+      //let task = toDo(title, project, description, dueDate, priority, notes);
+      for (let i = 0; i < children.length - 1; i++) {
+        children[i].classList.remove("transparent")
+      };
+
+      prompt.remove()
+      //return task
+    }
+
+    createButton.addEventListener("click", createTask)
   })();
-  let task = toDo(title, project, description, dueDate, priority, notes);
+  
 };
 
 const buttons = (set) => {
@@ -108,8 +132,13 @@ const buttons = (set) => {
     let addButton = elementBuilder("button", "add-task", set.projectElement);
     set.projectElement.prepend(addButton)
     addButton.textContent = "+"
+    let project = set.projectElement
+    
+    function addNewTask(project) {
+      addTask(project);
+    };
 
-    addButton.addEventListener("click", addTask)
+    addButton.addEventListener("click", addNewTask)
   })()
 
   const buttonDiv = elementBuilder("div", "button-div", set.projectElement)

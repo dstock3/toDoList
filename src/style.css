@@ -75,11 +75,12 @@ button {
     top: 25%;
     padding: 2%;
     height: 25%;
-    width: 33%;
+    width: 25%;
     background-color: rgb(130, 193, 248);
     color: rgb(24, 28, 32);
     border-radius: 10px;
     z-index: 1;
+    font-size: 1.25em;
 }
 
 .transparent {
