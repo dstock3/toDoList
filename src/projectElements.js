@@ -90,22 +90,42 @@ const addTask = (projectElement) => {
     titleInput.id = "title"
     titleInput.setAttribute("name", "title");
     
-
     let descDiv = elementBuilder("div", "description-div", prompt);
     let descElement = elementBuilder("label", "desc-label", descDiv);
     descElement.textContent = "Description: "
     let descInput = elementBuilder("input", "desc-input", descDiv);
     descInput.id = "description";
     descInput.setAttribute("name", "desc");
-    
-    let children = document.body.children;
-    for (let i = 0; i < children.length - 1; i++) {
-      children[i].classList.add("transparent")
+
+    function addTransparent(childElements) {
+      for (let i = 0; i < childElements.length - 1; i++) {
+        childElements[i].classList.add("transparent")
+      };
     }
 
+    function removeTransparent(childElements) {
+      for (let i = 0; i < childElements.length - 1; i++) {
+        childElements[i].classList.remove("transparent")
+      };
+    };
 
-    let createButton = elementBuilder("button", "create-task-button", prompt);
-    createButton.textContent = "Create Task"
+    let children = document.body.children;
+    addTransparent(children)
+
+    let buttonDiv = elementBuilder("div", "create-task-buttons", prompt)
+
+    let createButton = elementBuilder("button", "create-task-button", buttonDiv);
+    createButton.textContent = "Create Task";
+
+    let cancelButton = elementBuilder("button", "cancel-button", buttonDiv)
+    cancelButton.textContent = "Cancel";
+
+    function exit() {
+      removeTransparent(children);
+      prompt.remove()
+    }
+
+    cancelButton.addEventListener("click", exit);
 
     function createTask() {
       let title = document.getElementById("title").value;
@@ -113,13 +133,10 @@ const addTask = (projectElement) => {
       console.log(title, description)
 
       //let task = toDo(title, project, description, dueDate, priority, notes);
-      for (let i = 0; i < children.length - 1; i++) {
-        children[i].classList.remove("transparent")
-      };
 
-      prompt.remove()
+      exit()
       //return task
-    }
+    };
 
     createButton.addEventListener("click", createTask)
   })();
