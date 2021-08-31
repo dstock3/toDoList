@@ -158,8 +158,24 @@ const addTask = (set) => {
   let project = set.project
   let projectElement = set.projectElement
 
+  function addTransparent(childElements) {
+    for (let i = 0; i < childElements.length - 1; i++) {
+      childElements[i].classList.add("transparent")
+    };
+  }
+
+  function removeTransparent(childElements) {
+    for (let i = 0; i < childElements.length - 1; i++) {
+      childElements[i].classList.remove("transparent")
+    };
+  };
+
   const taskPrompt = (() => {
     let prompt = elementBuilder("div", "task-prompt", body);
+
+    let promptHead = elementBuilder("h3", "prompt-head", prompt)
+    promptHead.textContent = "Create a Task";
+
     let titleDiv = elementBuilder("div", "title-div", prompt);
     let titleElement = elementBuilder("label", "name-label", titleDiv);
     titleElement.textContent = "Task: "
@@ -181,31 +197,19 @@ const addTask = (set) => {
     dueInput.id = "due";
     dueInput.setAttribute("name", "due");
 
-    let priorityDiv = elementBuilder("div", "due-div", prompt);
+    let priorityDiv = elementBuilder("div", "priority-div", prompt);
     let priorityElement = elementBuilder("label", "priority-label", priorityDiv);
     priorityElement.textContent = "Priority: "
     let priorityInput = elementBuilder("input", "priority-input", priorityDiv);
     priorityInput.id = "priority";
     priorityInput.setAttribute("name", "priority");
 
-    let notesDiv = elementBuilder("div", "due-div", prompt);
+    let notesDiv = elementBuilder("div", "notes-div", prompt);
     let notesElement = elementBuilder("label", "notes-label", notesDiv);
     notesElement.textContent = "Notes: "
     let notesInput = elementBuilder("input", "notes-input", notesDiv);
     notesInput.id = "notes";
     notesInput.setAttribute("name", "notes");
-
-    function addTransparent(childElements) {
-      for (let i = 0; i < childElements.length - 1; i++) {
-        childElements[i].classList.add("transparent")
-      };
-    }
-
-    function removeTransparent(childElements) {
-      for (let i = 0; i < childElements.length - 1; i++) {
-        childElements[i].classList.remove("transparent")
-      };
-    };
 
     let children = document.body.children;
     addTransparent(children)

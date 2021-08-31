@@ -71,10 +71,10 @@ button {
 .task-prompt {
     display: flex;
     flex-flow: column;
+    justify-content: space-between;
     position: absolute;
     top: 25%;
     padding: 2%;
-    height: 25%;
     width: 25%;
     background-color: rgb(130, 193, 248);
     color: rgb(24, 28, 32);
@@ -83,6 +83,14 @@ button {
     font-size: 1.25em;
 }
 
+.prompt-head {
+    margin-block-start: 1%;
+}
+
 .transparent {
     opacity: 0.25;
+}
+
+.create-task-buttons {
+    width: 75%;
 }
