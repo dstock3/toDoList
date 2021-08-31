@@ -85,6 +85,7 @@ const projectBuilder = (toDoArray, project) => {
     for (let i = 0; i < projectChildren.length; i++) {
       if (projectChildren[i].classList.contains("task")) {
         let taskElement = projectChildren[i];
+        taskElement.classList.add("min");
         let taskChildren = Array.from(taskElement.children);
         for (let y = 0; y < taskChildren.length; y++) {
           if ((y === 1) || (y === 3) || (y === 4) || (y === 5)) {

@@ -35,6 +35,14 @@ body {
     border-radius: 10px;
 }
 
+.min {
+    padding-bottom: 0;
+}
+
+.min p {
+    margin-block-start: 0;
+}
+
 .top-div {
     display: flex;
     justify-content: space-between;
