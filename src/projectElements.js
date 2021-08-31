@@ -92,6 +92,11 @@ const addTask = () => {
     let createButton = elementBuilder("button", "create-task-button", prompt);
     createButton.textContent = "Create Task"
 
+    let children = document.body.children;
+    for (let i = 0; i < children.length - 1; i++) {
+      children[i].classList.add("transparent")
+    }
+
     return { title, project, description, dueDate, priority, notes }
   })();
   let task = toDo(title, project, description, dueDate, priority, notes);
