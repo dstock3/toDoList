@@ -176,35 +176,40 @@ const addTask = (set) => {
     let promptHead = elementBuilder("h3", "prompt-head", prompt)
     promptHead.textContent = "Create a Task";
 
-    let titleDiv = elementBuilder("div", "title-div", prompt);
+    let titleDiv = elementBuilder("div", "new-task", prompt);
+    titleDiv.classList.add("title-div");
     let titleElement = elementBuilder("label", "name-label", titleDiv);
     titleElement.textContent = "Task: "
     let titleInput = elementBuilder("input", "title-input", titleDiv);
     titleInput.id = "title"
     titleInput.setAttribute("name", "title");
     
-    let descDiv = elementBuilder("div", "description-div", prompt);
+    let descDiv = elementBuilder("div", "new-task", prompt);
+    descDiv.classList.add("description-div");
     let descElement = elementBuilder("label", "desc-label", descDiv);
     descElement.textContent = "Description: "
     let descInput = elementBuilder("input", "desc-input", descDiv);
     descInput.id = "description";
     descInput.setAttribute("name", "desc");
 
-    let dueDiv = elementBuilder("div", "due-div", prompt);
+    let dueDiv = elementBuilder("div", "new-task", prompt);
+    dueDiv.classList.add("due-div");
     let dueElement = elementBuilder("label", "due-label", dueDiv);
     dueElement.textContent = "Due Date: "
     let dueInput = elementBuilder("input", "due-input", dueDiv);
     dueInput.id = "due";
     dueInput.setAttribute("name", "due");
 
-    let priorityDiv = elementBuilder("div", "priority-div", prompt);
+    let priorityDiv = elementBuilder("div", "new-task", prompt);
+    priorityDiv.classList.add("priority-div");
     let priorityElement = elementBuilder("label", "priority-label", priorityDiv);
     priorityElement.textContent = "Priority: "
     let priorityInput = elementBuilder("input", "priority-input", priorityDiv);
     priorityInput.id = "priority";
     priorityInput.setAttribute("name", "priority");
 
-    let notesDiv = elementBuilder("div", "notes-div", prompt);
+    let notesDiv = elementBuilder("div", "new-task", prompt);
+    notesDiv.classList.add("notes-div");
     let notesElement = elementBuilder("label", "notes-label", notesDiv);
     notesElement.textContent = "Notes: "
     let notesInput = elementBuilder("input", "notes-input", notesDiv);
@@ -247,7 +252,7 @@ const addTask = (set) => {
       body.insertBefore(updatedProject.projectElement, body.children[projectIndex]);
       buttons(updatedProject);
 
-      exit()
+      exit();
     };
 
     createButton.addEventListener("click", createTask)

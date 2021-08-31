@@ -85,6 +85,11 @@ button {
 
 .prompt-head {
     margin-block-start: 1%;
+    margin-block-end: 1%;
+}
+
+.new-task {
+    padding-bottom: 2%;
 }
 
 .transparent {
@@ -92,5 +97,7 @@ button {
 }
 
 .create-task-buttons {
-    width: 75%;
+    display: flex;
+
+    width: 100%;
 }
