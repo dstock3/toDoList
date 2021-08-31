@@ -96,14 +96,12 @@ const projectBuilder = (toDoArray, project) => {
 };
 
 const buttons = (set) => {
-
   const topButtonDiv = elementBuilder("div", "top-button-div", set.projectElement)
   set.projectElement.prepend(topButtonDiv);
 
   const addTaskButton = (() => {
     let addButton = elementBuilder("button", "top-buttons", topButtonDiv);
     addButton.classList.add("add-task")
-    set.projectElement.prepend(addButton)
     addButton.textContent = "+"
 
     function addNewTask() {
@@ -116,11 +114,11 @@ const buttons = (set) => {
   const minimize = (() => {
     let minButton = elementBuilder("button", "top-buttons", topButtonDiv);
     minButton.classList.add("min-button")
-    set.projectElement.prepend(minButton);
     minButton.textContent = "-"
 
     function minProject() {
-      addTask(set);
+      minButton.textContent = "□"
+      minView(set.toDoArray, set.projectElement)
     };
 
     minButton.addEventListener("click", minProject);
