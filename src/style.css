@@ -76,7 +76,7 @@ button {
     position: absolute;
     top: 25%;
     padding: 2%;
-    width: 25%;
+    width: 20%;
     background-color: rgb(130, 193, 248);
     color: rgb(24, 28, 32);
     border-radius: 10px;
@@ -86,11 +86,15 @@ button {
 }
 
 .prompt-head {
-    margin-block-start: 0;
+    margin: auto;
 }
 
 .new-task {
     padding-bottom: 2%;
+}
+
+.notes-div {
+    padding-bottom: 5%;
 }
 
 .transparent {
@@ -99,26 +103,24 @@ button {
 
 .create-task-buttons {
     display: flex;
+    justify-content: space-between;
+
     width: 100%;
 }
 
 .create-task {
-    width: 33%;
+    width: 45%;
 }
 
 .cancel {
-    position: relative;
-    left: 25%;
-    width: 33%;
+    width: 45%;
 }
 
 input {
     border-radius: 5px;
     padding: 1%;
-    width: 66%;
+    width: 100%;
 }
-
-
 
 @media only screen and (max-width: 600px) {
     body {

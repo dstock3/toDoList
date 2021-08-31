@@ -37,7 +37,11 @@ function toDoBuilder(task, parent) {
 
 function minView(task, parent) {
   let taskArray = toDoBuilder(task, parent);
-  
+  let taskDiv = taskArray[0];
+  let topDiv = taskArray[1];
+  let removeTask = taskArray[2];
+  let head = taskArray[3];
+  let dueDate = taskArray[5];
 }
 
 const projectHeader = (project, parent) => {
