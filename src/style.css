@@ -12,7 +12,7 @@ body {
     flex-flow: column;
     background-color: rgb(130, 193, 248);
     color: rgb(24, 28, 32);
-    width: 18%;
+    width: 23%;
     height: 100%;
     padding: .5%;    
 }
@@ -84,8 +84,7 @@ button {
 }
 
 .prompt-head {
-    margin-block-start: 1%;
-    margin-block-end: 1%;
+    margin-block-start: 0;
 }
 
 .new-task {
@@ -98,6 +97,23 @@ button {
 
 .create-task-buttons {
     display: flex;
-
     width: 100%;
 }
+
+.create-task {
+    width: 33%;
+}
+
+.cancel {
+    width: 33%;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        flex-direction: column;
+    }
+
+    .project {
+        width: 98%;
+    }
+  }

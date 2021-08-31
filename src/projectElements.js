@@ -221,10 +221,10 @@ const addTask = (set) => {
 
     let buttonDiv = elementBuilder("div", "create-task-buttons", prompt)
 
-    let createButton = elementBuilder("button", "create-task-button", buttonDiv);
+    let createButton = elementBuilder("button", "create-task", buttonDiv);
     createButton.textContent = "Create Task";
 
-    let cancelButton = elementBuilder("button", "cancel-button", buttonDiv)
+    let cancelButton = elementBuilder("button", "cancel", buttonDiv)
     cancelButton.textContent = "Cancel";
 
     function exit() {
