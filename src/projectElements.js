@@ -55,11 +55,10 @@ const projectBuilder = (toDoArray, project) => {
 
   let projectElement = projectHeader(project, body)
   
-  let objArray = []
+
   for (let i = 0; i < toDoArray.length; i++) {
     let task = toDoArray[i];
-    let elementArray = toDoBuilder(task, projectElement);
-    objArray.push(elementArray);
+    toDoBuilder(task, projectElement);
   }
 
   const deleteList = () => {
@@ -96,7 +95,7 @@ const projectBuilder = (toDoArray, project) => {
     } 
   }
 
-  return { projectElement, project, objArray, toDoArray, removeTask, sortByPriority, deleteList, minTasks }
+  return { projectElement, project, toDoArray, removeTask, sortByPriority, deleteList, minTasks }
 };
 
 const buttons = (set) => {
@@ -115,6 +114,14 @@ const buttons = (set) => {
     addButton.addEventListener("click", addNewTask)
   })()
 
+  const maximize = () => {
+    let projectIndex = getPosition(set.projectElement);
+    set.deleteList()
+    let maxProject = projectBuilder(set.toDoArray, set.project);
+    body.insertBefore(maxProject.projectElement, body.children[projectIndex]);
+    buttons(maxProject);
+  }
+
   const minimize = (() => {
     let minButton = elementBuilder("button", "top-buttons", topButtonDiv);
     minButton.classList.add("min-button")
@@ -123,6 +130,7 @@ const buttons = (set) => {
     function minProject() {
       minButton.textContent = "□"
       set.minTasks()
+      minButton.addEventListener("click", maximize);
     }
 
     minButton.addEventListener("click", minProject);
