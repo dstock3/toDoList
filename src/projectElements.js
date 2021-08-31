@@ -46,7 +46,8 @@ function minView(task, parent) {
   let removeTask = taskArray[2];
   let head = taskArray[3];
   let dueDate = taskArray[5];
-  minArray.push(taskDiv, topDiv, removeTask, head, dueDate)
+  minArray.push(taskDiv, topDiv, removeTask, head, dueDate);
+  return minArray
 }
 
 const projectHeader = (project, parent) => {
@@ -96,8 +97,12 @@ const projectBuilder = (toDoArray, project) => {
 
 const buttons = (set) => {
 
+  const topButtonDiv = elementBuilder("div", "top-button-div", set.projectElement)
+  set.projectElement.prepend(topButtonDiv);
+
   const addTaskButton = (() => {
-    let addButton = elementBuilder("button", "add-task", set.projectElement);
+    let addButton = elementBuilder("button", "top-buttons", topButtonDiv);
+    addButton.classList.add("add-task")
     set.projectElement.prepend(addButton)
     addButton.textContent = "+"
 
@@ -107,6 +112,19 @@ const buttons = (set) => {
 
     addButton.addEventListener("click", addNewTask)
   })()
+
+  const minimize = (() => {
+    let minButton = elementBuilder("button", "top-buttons", topButtonDiv);
+    minButton.classList.add("min-button")
+    set.projectElement.prepend(minButton);
+    minButton.textContent = "-"
+
+    function minProject() {
+      addTask(set);
+    };
+
+    minButton.addEventListener("click", minProject);
+  })();
 
   const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
   
