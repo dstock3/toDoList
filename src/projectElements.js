@@ -30,7 +30,9 @@ function toDoBuilder(task, parent) {
     priority.textContent = task.priority;
     let notes = elementBuilder("p", "notes", taskDiv);
     notes.textContent = task.notes;
-    elementArray.push(taskDiv, topDiv, removeTask, head, desc, dueDate, priority, notes);
+    let status = elementBuilder("p", "status", taskDiv);
+    status.textContent = task.status;
+    elementArray.push(taskDiv, topDiv, removeTask, head, desc, dueDate, priority, notes, status);
     
     return elementArray
 };
@@ -249,8 +251,9 @@ const addTask = (set) => {
       let dueDate = document.getElementById("due").value;
       let priority = document.getElementById("priority").value;
       let notes = document.getElementById("notes").value;
+      let status = "In Progress"
 
-      let task = toDo(title, project, description, dueDate, priority, notes);
+      let task = toDo(title, project, description, dueDate, priority, notes, status);
       toDoBuilder(task, projectElement);
 
       let toDoArray = set.toDoArray;
