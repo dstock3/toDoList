@@ -1,3 +1,5 @@
+import { toDo } from './task.js'
+
 function elementBuilder(element, classLabel, parentName) {
     let item = document.createElement(element);
     item.classList.add(classLabel);
@@ -78,6 +80,23 @@ const projectBuilder = (toDoArray, project) => {
   return { projectElement, project, objArray, toDoArray, removeTask, sortByPriority, deleteList }
 };
 
+const addTask = () => {
+  const taskPrompt = (() => {
+    let prompt = elementBuilder("div", "task-prompt", body);
+    let titleElement = elementBuilder("label", "name-label", prompt);
+    titleElement.textContent = "Task: "
+    let titleInput = elementBuilder("input", "title-input", prompt);
+    titleInput.id = "title"
+    titleInput.setAttribute("name", "title");
+
+    let createButton = elementBuilder("button", "create-task-button", prompt);
+    createButton.textContent = "Create Task"
+
+    return { title, project, description, dueDate, priority, notes }
+  })();
+  let task = toDo(title, project, description, dueDate, priority, notes);
+};
+
 const buttons = (set) => {
 
   const addTaskButton = (() => {
@@ -85,6 +104,7 @@ const buttons = (set) => {
     set.projectElement.prepend(addButton)
     addButton.textContent = "+"
 
+    addButton.addEventListener("click", addTask)
   })()
 
   const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
