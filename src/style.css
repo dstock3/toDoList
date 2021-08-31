@@ -47,6 +47,7 @@ button {
     color: rgb(24, 28, 32);
     padding: .75%;
     font-weight: bold;
+    font-size: 1.1em;
 }
 
 .add-task {
