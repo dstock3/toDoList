@@ -80,7 +80,84 @@ const projectBuilder = (toDoArray, project) => {
   return { projectElement, project, objArray, toDoArray, removeTask, sortByPriority, deleteList }
 };
 
-const addTask = (project, parent) => {
+const buttons = (set) => {
+
+  const addTaskButton = (() => {
+    let addButton = elementBuilder("button", "add-task", set.projectElement);
+    set.projectElement.prepend(addButton)
+    addButton.textContent = "+"
+
+    function addNewTask() {
+      addTask(set);
+    };
+
+    addButton.addEventListener("click", addNewTask)
+  })()
+
+  const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
+  
+  const sortByPriorityButton = (() => {
+    let sort = elementBuilder("button", "sort-button", buttonDiv);
+    sort.textContent = "Sort by Priority";
+    let projectIndex = getPosition(set.projectElement);
+    let sortedArray = set.sortByPriority();
+    let project = sortedArray[0].project;
+  
+    function newProjectSet() {
+      set.deleteList()
+      let sortedProject = projectBuilder(sortedArray, project)
+      body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
+      buttons(sortedProject)
+    };
+  
+    sort.addEventListener("click", newProjectSet)
+  })();
+  
+  const removeTaskButton = (() => {
+    let projectElements = Array.from(set.projectElement.children);
+    for (let i = 0; i < projectElements.length; i++) {
+      if (projectElements[i].classList.contains("task")) {
+        let taskDiv = projectElements[i];
+        let topDiv = taskDiv.children[0];
+        let removeTaskElement = taskDiv.firstChild;
+        for (let y = 0; y < set.toDoArray.length; y++) {
+          if (topDiv.children[1].textContent === set.toDoArray[y].title) {
+            function taskRemover() {
+              let projectIndex = getPosition(set.projectElement);
+              let newArray = set.removeTask(set.toDoArray[y]);
+              set.deleteList()
+              let sortedProject = projectBuilder(newArray, set.project);
+              body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
+              buttons(sortedProject) 
+            }; 
+            removeTaskElement.addEventListener("click", taskRemover);  
+          };   
+        };  
+      }; 
+    };
+  })();
+  
+  const deleteButton = (() => {
+    let del = elementBuilder("button", "delete-button", buttonDiv);
+    del.textContent = "Remove Project"
+      
+    del.addEventListener("click", set.deleteList)
+  })();
+    
+  return { sortByPriorityButton, deleteButton, removeTaskButton }
+};
+
+function applyButtons(toDoArray) {
+    for (let i = 0; i < toDoArray.length; i++) {
+      buttons(toDoArray[i])
+    };
+}
+
+const addTask = (set) => {
+
+  let project = set.project
+  let projectElement = set.projectElement
+
   const taskPrompt = (() => {
     let prompt = elementBuilder("div", "task-prompt", body);
     let titleDiv = elementBuilder("div", "title-div", prompt);
@@ -156,91 +233,21 @@ const addTask = (project, parent) => {
       let notes = document.getElementById("notes").value;
 
       let task = toDo(title, project, description, dueDate, priority, notes);
-      toDoBuilder(task, parent)
+      toDoBuilder(task, projectElement);
+
+      let toDoArray = set.toDoArray;
+      toDoArray.push(task);
+      projectElement.remove();
+      let updatedProject = projectBuilder(toDoArray, project);
+      buttons(updatedProject);
 
       exit()
-      //return task
     };
 
     createButton.addEventListener("click", createTask)
   })();
   
 };
-
-const buttons = (set) => {
-
-  const addTaskButton = (() => {
-    let addButton = elementBuilder("button", "add-task", set.projectElement);
-    set.projectElement.prepend(addButton)
-    addButton.textContent = "+"
-
-    function addNewTask() {
-      let project = set.project
-      let element = set.projectElement
-      addTask(project, element);
-    };
-
-    addButton.addEventListener("click", addNewTask)
-  })()
-
-  const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
-  
-  const sortByPriorityButton = (() => {
-    let sort = elementBuilder("button", "sort-button", buttonDiv);
-    sort.textContent = "Sort by Priority";
-    let projectIndex = getPosition(set.projectElement);
-    let sortedArray = set.sortByPriority();
-    let project = sortedArray[0].project;
-  
-    function newProjectSet() {
-      set.deleteList()
-      let sortedProject = projectBuilder(sortedArray, project)
-      body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
-      buttons(sortedProject)
-    };
-  
-    sort.addEventListener("click", newProjectSet)
-  })();
-  
-  const removeTaskButton = (() => {
-    let projectElements = Array.from(set.projectElement.children);
-    for (let i = 0; i < projectElements.length; i++) {
-      if (projectElements[i].classList.contains("task")) {
-        let taskDiv = projectElements[i];
-        let topDiv = taskDiv.children[0];
-        let removeTaskElement = taskDiv.firstChild;
-        for (let y = 0; y < set.toDoArray.length; y++) {
-          if (topDiv.children[1].textContent === set.toDoArray[y].title) {
-            function taskRemover() {
-              let projectIndex = getPosition(set.projectElement);
-              let newArray = set.removeTask(set.toDoArray[y]);
-              set.deleteList()
-              let sortedProject = projectBuilder(newArray, set.project);
-              body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
-              buttons(sortedProject) 
-            }; 
-            removeTaskElement.addEventListener("click", taskRemover);  
-          };   
-        };  
-      }; 
-    };
-  })();
-  
-  const deleteButton = (() => {
-    let del = elementBuilder("button", "delete-button", buttonDiv);
-    del.textContent = "Remove Project"
-      
-    del.addEventListener("click", set.deleteList)
-  })();
-    
-  return { sortByPriorityButton, deleteButton, removeTaskButton }
-};
-
-const applyButtons = (projectArray) => {
-    for (let i = 0; i < projectArray.length; i++) {
-      buttons(projectArray[i])
-    };
-}
 
 export {
     elementBuilder,
