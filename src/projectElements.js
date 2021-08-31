@@ -80,7 +80,7 @@ const projectBuilder = (toDoArray, project) => {
   return { projectElement, project, objArray, toDoArray, removeTask, sortByPriority, deleteList }
 };
 
-const addTask = (projectElement) => {
+const addTask = (project, parent) => {
   const taskPrompt = (() => {
     let prompt = elementBuilder("div", "task-prompt", body);
     let titleDiv = elementBuilder("div", "title-div", prompt);
@@ -96,6 +96,27 @@ const addTask = (projectElement) => {
     let descInput = elementBuilder("input", "desc-input", descDiv);
     descInput.id = "description";
     descInput.setAttribute("name", "desc");
+
+    let dueDiv = elementBuilder("div", "due-div", prompt);
+    let dueElement = elementBuilder("label", "due-label", dueDiv);
+    dueElement.textContent = "Due Date: "
+    let dueInput = elementBuilder("input", "due-input", dueDiv);
+    dueInput.id = "due";
+    dueInput.setAttribute("name", "due");
+
+    let priorityDiv = elementBuilder("div", "due-div", prompt);
+    let priorityElement = elementBuilder("label", "priority-label", priorityDiv);
+    priorityElement.textContent = "Priority: "
+    let priorityInput = elementBuilder("input", "priority-input", priorityDiv);
+    priorityInput.id = "priority";
+    priorityInput.setAttribute("name", "priority");
+
+    let notesDiv = elementBuilder("div", "due-div", prompt);
+    let notesElement = elementBuilder("label", "notes-label", notesDiv);
+    notesElement.textContent = "Notes: "
+    let notesInput = elementBuilder("input", "notes-input", notesDiv);
+    notesInput.id = "notes";
+    notesInput.setAttribute("name", "notes");
 
     function addTransparent(childElements) {
       for (let i = 0; i < childElements.length - 1; i++) {
@@ -130,9 +151,12 @@ const addTask = (projectElement) => {
     function createTask() {
       let title = document.getElementById("title").value;
       let description = document.getElementById("description").value;
-      console.log(title, description)
+      let dueDate = document.getElementById("due").value;
+      let priority = document.getElementById("priority").value;
+      let notes = document.getElementById("notes").value;
 
-      //let task = toDo(title, project, description, dueDate, priority, notes);
+      let task = toDo(title, project, description, dueDate, priority, notes);
+      toDoBuilder(task, parent)
 
       exit()
       //return task
@@ -149,10 +173,11 @@ const buttons = (set) => {
     let addButton = elementBuilder("button", "add-task", set.projectElement);
     set.projectElement.prepend(addButton)
     addButton.textContent = "+"
-    let project = set.projectElement
-    
-    function addNewTask(project) {
-      addTask(project);
+
+    function addNewTask() {
+      let project = set.project
+      let element = set.projectElement
+      addTask(project, element);
     };
 
     addButton.addEventListener("click", addNewTask)
