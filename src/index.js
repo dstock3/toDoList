@@ -24,6 +24,7 @@ const toDoItem = toDo(
   "9/15/2021",
   "2", 
   "This the first object created using the toDo factory function.",
+  "In Progress",
 )
 
 const replaceWipers = toDo(
@@ -33,6 +34,7 @@ const replaceWipers = toDo(
   "10/6/21",
   "5",
   "Saw a deal at that place on 75th",
+  "In Progress",
 )
 
 const changeOil = toDo(
@@ -42,6 +44,7 @@ const changeOil = toDo(
   "9/28/2021",
   "3",
   "test note",
+  "In Progress",
 )
 
 const goToDoc = toDo(
@@ -51,6 +54,7 @@ const goToDoc = toDo(
   "9/17/2021",
   "2",
   "Be sure to tell him about your back acne",
+  "In Progress",
 )
 
 const getGift = toDo(
@@ -60,6 +64,7 @@ const getGift = toDo(
   "9/18/2021",
   "1", 
   "No idea what to get her...",
+  "In Progress",
 )
 
 const writeScript = toDo(
@@ -69,6 +74,7 @@ const writeScript = toDo(
   "10/15/2021",
   "5", 
   "Be sure to include that twist ending where the guy was dead the whole time.",
+  "In Progress",
 )
 
 const getTest = toDo(
@@ -77,7 +83,8 @@ const getTest = toDo(
   "Get that blood test your Doc ordered",
   "10/17/21",
   "1",
-  "remember to fast 12 hours before. No eating!"
+  "remember to fast 12 hours before. No eating!",
+  "In Progress",
 )
 
 const firstList = [writeScript, getGift, toDoItem]
