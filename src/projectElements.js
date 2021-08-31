@@ -30,10 +30,15 @@ function toDoBuilder(task, parent) {
     priority.textContent = task.priority;
     let notes = elementBuilder("p", "notes", taskDiv);
     notes.textContent = task.notes;
-    elementArray.push(head, desc, dueDate, priority, notes);
+    elementArray.push(taskDiv, topDiv, removeTask, head, desc, dueDate, priority, notes);
     
     return elementArray
 };
+
+function minView(task, parent) {
+  let taskArray = toDoBuilder(task, parent);
+  
+}
 
 const projectHeader = (project, parent) => {
     let projectElement = elementBuilder("div", "project", parent);
@@ -265,5 +270,5 @@ export {
     projectHeader,
     projectBuilder,
     buttons, 
-    applyButtons
+    applyButtons,
 }

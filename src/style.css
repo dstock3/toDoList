@@ -82,6 +82,7 @@ button {
     border-radius: 10px;
     z-index: 1;
     font-size: 1.25em;
+    font-weight: bold;
 }
 
 .prompt-head {
@@ -114,7 +115,10 @@ button {
 input {
     border-radius: 5px;
     padding: 1%;
+    width: 66%;
 }
+
+
 
 @media only screen and (max-width: 600px) {
     body {
