@@ -1,3 +1,5 @@
+/* eslint-disable no-inner-declarations */
+/* eslint-disable no-unused-vars */
 import { toDo } from './task.js'
 
 function elementBuilder(element, classLabel, parentName) {
@@ -5,7 +7,7 @@ function elementBuilder(element, classLabel, parentName) {
     item.classList.add(classLabel);
     parentName.appendChild(item);
     return item;
-};
+}
 
 const getPosition = (projectElement) => {
     let projectIndex = Array.from(projectElement.parentNode.children).indexOf(projectElement);
@@ -35,19 +37,6 @@ function toDoBuilder(task, parent) {
     elementArray.push(taskDiv, topDiv, removeTask, head, desc, dueDate, priority, notes, status);
     
     return elementArray
-};
-
-function minView(task, parent) {
-  let taskArray = toDoBuilder(task, parent);
-  let minArray = []
-  let taskDiv = taskArray[0];
-  taskDiv.classList.add("min-view")
-  let topDiv = taskArray[1];
-  let removeTask = taskArray[2];
-  let head = taskArray[3];
-  let dueDate = taskArray[5];
-  minArray.push(taskDiv, topDiv, removeTask, head, dueDate);
-  return minArray
 }
 
 const projectHeader = (project, parent) => {
@@ -71,7 +60,7 @@ const projectBuilder = (toDoArray, project) => {
     let task = toDoArray[i];
     let elementArray = toDoBuilder(task, projectElement);
     objArray.push(elementArray);
-  };
+  }
 
   const deleteList = () => {
     projectElement.remove()
@@ -81,8 +70,8 @@ const projectBuilder = (toDoArray, project) => {
     for (let i = 0; i < toDoArray.length; i++) {
       if (task === toDoArray[i]) {
         toDoArray.splice(i, 1);
-      };
-    };
+      }
+    }
 
     return toDoArray
   };
@@ -92,7 +81,22 @@ const projectBuilder = (toDoArray, project) => {
     return sortedArray
   };
 
-  return { projectElement, project, objArray, toDoArray, removeTask, sortByPriority, deleteList }
+  const minTasks = () => {
+    let projectChildren = Array.from(projectElement.children);
+    for (let i = 0; i < projectChildren.length; i++) {
+      if (projectChildren[i].classList.contains("task")) {
+        let taskElement = projectChildren[i];
+        let taskChildren = Array.from(taskElement.children);
+        for (let y = 0; y < taskChildren.length; y++) {
+          if ((y === 1) || (y === 3) || (y === 4) || (y === 5)) {
+            taskChildren[y].remove();
+          }
+        }
+      }
+    } 
+  }
+
+  return { projectElement, project, objArray, toDoArray, removeTask, sortByPriority, deleteList, minTasks }
 };
 
 const buttons = (set) => {
@@ -106,7 +110,7 @@ const buttons = (set) => {
 
     function addNewTask() {
       addTask(set);
-    };
+    }
 
     addButton.addEventListener("click", addNewTask)
   })()
@@ -118,8 +122,8 @@ const buttons = (set) => {
 
     function minProject() {
       minButton.textContent = "□"
-      minView(set.toDoArray, set.projectElement)
-    };
+      set.minTasks()
+    }
 
     minButton.addEventListener("click", minProject);
   })();
@@ -138,7 +142,7 @@ const buttons = (set) => {
       let sortedProject = projectBuilder(sortedArray, project)
       body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
       buttons(sortedProject)
-    };
+    }
   
     sort.addEventListener("click", newProjectSet)
   })();
@@ -159,12 +163,12 @@ const buttons = (set) => {
               let sortedProject = projectBuilder(newArray, set.project);
               body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
               buttons(sortedProject) 
-            }; 
+            } 
             removeTaskElement.addEventListener("click", taskRemover);  
-          };   
-        };  
-      }; 
-    };
+          }   
+        }  
+      } 
+    }
   })();
   
   const deleteButton = (() => {
@@ -180,7 +184,7 @@ const buttons = (set) => {
 function applyButtons(toDoArray) {
     for (let i = 0; i < toDoArray.length; i++) {
       buttons(toDoArray[i])
-    };
+    }
 }
 
 const addTask = (set) => {
@@ -191,14 +195,14 @@ const addTask = (set) => {
   function addTransparent(childElements) {
     for (let i = 0; i < childElements.length - 1; i++) {
       childElements[i].classList.add("transparent")
-    };
+    }
   }
 
   function removeTransparent(childElements) {
     for (let i = 0; i < childElements.length - 1; i++) {
       childElements[i].classList.remove("transparent")
-    };
-  };
+    }
+  }
 
   const taskPrompt = (() => {
     let prompt = elementBuilder("div", "task-prompt", body);
@@ -284,7 +288,7 @@ const addTask = (set) => {
       buttons(updatedProject);
 
       exit();
-    };
+    }
 
     createButton.addEventListener("click", createTask)
   })();

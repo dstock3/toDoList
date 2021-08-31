@@ -1,6 +1,6 @@
 import './style.css';
 import { project, toDo } from './task.js'
-import { elementBuilder, projectBuilder, applyButtons, minView } from'./projectElements.js'
+import { projectBuilder, applyButtons } from'./projectElements.js'
 
 const homeProjects = project(
   "Home Projects",
