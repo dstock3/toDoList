@@ -4,17 +4,20 @@ import { projectBuilder, applyButtons } from'./projectElements.js'
 
 const homeProjects = project(
   "Home Projects",
-  "Projects to do around the house."
+  "Projects to do around the house.",
+  []
 );
 
 const forYourHealth = project(
   "Stay Healthy",
-  "Prolong your biological life through various routines!"
+  "Prolong your biological life through various routines!",
+  []
 );
 
 const carProject = project(
   "Automotive tasks",
   "Basic car maintenance!",
+  []
 )
 
 const toDoItem = toDo(
@@ -87,11 +90,15 @@ const getTest = toDo(
   "In Progress",
 )
 
-const firstList = [writeScript, getGift, toDoItem]
+
+homeProjects.taskArray.push(writeScript);
+homeProjects.taskArray.push(getGift);
+homeProjects.taskArray.push(toDoItem);
+
 const secondList = [goToDoc, getTest]
 const thirdList = [replaceWipers, changeOil]
 
-let newProject = projectBuilder(firstList, homeProjects);
+let newProject = projectBuilder(homeProjects.taskArray, homeProjects);
 let secondProject = projectBuilder(secondList, forYourHealth);
 let thirdProject = projectBuilder(thirdList, carProject);
 

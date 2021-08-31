@@ -1,5 +1,5 @@
-const project = (title, description) => {
-    return { title, description }
+const project = (title, description, taskArray) => {
+    return { title, description, taskArray }
 };
 
 const toDo = (title, project, description, dueDate, priority, notes, status) => {
