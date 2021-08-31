@@ -44,9 +44,18 @@ button {
     width: 50%;
     border-radius: 10px;
     background-color: rgb(130, 193, 248);
-    color: rgb(46, 54, 61);
+    color: rgb(24, 28, 32);
     padding: .75%;
     font-weight: bold;
+}
+
+.add-task {
+    position: relative;
+    left: 90%;
+    width: 30px;
+    background-color: rgb(24, 28, 32);
+    color: rgb(130, 193, 248);
+    font-size: 1.2em;
 }
 
 .remove-task {
