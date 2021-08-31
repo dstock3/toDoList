@@ -116,4 +116,8 @@ button {
     .project {
         width: 98%;
     }
+
+    .task-prompt {
+        width: 85%;
+    }
   }
