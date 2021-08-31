@@ -116,6 +116,7 @@ button {
 
     .project {
         width: 98%;
+        border-bottom: rgb(24, 28, 32) solid 10px;
     }
 
     .task-prompt {
