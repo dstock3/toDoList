@@ -133,6 +133,12 @@ input {
     }
 
     .task-prompt {
-        width: 85%;
+        padding-top: 5%;
+        width: 90%;
+    }
+
+    input {
+        width: 95%;
+
     }
   }
