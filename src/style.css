@@ -67,3 +67,21 @@ button {
     border-radius: 15px;
     padding: 1.5%;
 }
+
+.task-prompt {
+    display: flex;
+    flex-flow: column;
+    position: absolute;
+    top: 25%;
+    padding: 2%;
+    height: 25%;
+    width: 33%;
+    background-color: rgb(130, 193, 248);
+    color: rgb(24, 28, 32);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.transparent {
+    opacity: 0.5;
+}
