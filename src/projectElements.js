@@ -16,9 +16,12 @@ const getPosition = (projectElement) => {
 
 let body = document.getElementsByTagName("body")[0];
 
-const sidebar = elementBuilder("div", "sidebar", body);
-const newProject = elementBuilder("a", "new-project", sidebar);
-newProject.textContent = "Create a New Project";
+const sidebar = (() => {
+  const sidebarElement = elementBuilder("div", "sidebar", body);
+  const newProject = elementBuilder("a", "new-project", sidebarElement);
+  newProject.textContent = "Create a New Project";
+  return { sidebarElement, newProject }
+})();
 
 let projectDiv = elementBuilder("div", "project-container", body)
 

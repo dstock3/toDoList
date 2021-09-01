@@ -24,7 +24,7 @@ body {
 
 .project-container {
     position: relative;
-    left: 0;
+    left: 7.5%;
     display: flex;
     justify-content: space-around;
     width: 85%;
