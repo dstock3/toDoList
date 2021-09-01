@@ -8,8 +8,19 @@ const toDo = (title, project, description, dueDate, priority, notes, status) => 
     return { task }
 };
 
+const projectTracker = () => {
+    let masterList = []
+
+    const clearList = () => {
+        masterList = [];
+        return masterList
+    }
+    return { masterList, clearList }
+}
+
 export {
     project,
     toDo,
+    projectTracker
 }
   

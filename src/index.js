@@ -1,102 +1,22 @@
 /* eslint-disable no-unused-vars */
 import './style.css';
-import { project, toDo } from './task.js'
-import { masterList, projectBuilder, applyButtons } from'./projectElements.js'
+import { project, projectTracker } from './task.js'
+import { projectBuilder, applyButtons } from'./projectElements.js'
 
-const homeProjects = project(
-  "Home Projects",
-  "Projects to do around the house.",
-  [],
-);
+const start = (() => {
+  let projects = projectTracker()
+  const defaultProject = project("New Project", "Add a task below amd start tracking your project!", []);
+  const defaultProjectSet = projectBuilder(defaultProject);
+  projects.masterList.push(defaultProjectSet);
+  applyButtons(projects.masterList);
 
-const forYourHealth = project(
-  "Stay Healthy",
-  "Prolong your biological life through various routines!",
-  [],
-);
+  return { projects }
+})();
 
-const carProject = project(
-  "Automotive tasks",
-  "Basic car maintenance!",
-  [],
-)
+let projects = start.projects
 
-const toDoItem = toDo(
-  `Make "To Do List" Application!`,
-  homeProjects,
-  "Create an application to manage daily tasks.",
-  "9/15/2021",
-  "2", 
-  "This the first object created using the toDo factory function.",
-  "In Progress",
-)
+export {
+  projects
+}
 
-const replaceWipers = toDo(
-  "Replace Windshield Wipers",
-  carProject,
-  "My wipers are deteriorating...Dear god. It's time to replace them.",
-  "10/6/21",
-  "5",
-  "Saw a deal at that place on 75th",
-  "In Progress",
-)
 
-const changeOil = toDo(
-  "Time for an Oil Change!",
-  carProject,
-  "Change the oil in your beautiful Mazda 2!",
-  "9/28/2021",
-  "3",
-  "test note",
-  "In Progress",
-)
-
-const goToDoc = toDo(
-  "Go to your Doctor's Appointment!",
-  forYourHealth,
-  "It's time for a check up",
-  "9/17/2021",
-  "2",
-  "Be sure to tell him about your back acne",
-  "In Progress",
-)
-
-const getGift = toDo(
-  `Get a Birthday Gift for the Wife!`,
-  homeProjects,
-  "No giftcards...",
-  "9/18/2021",
-  "1", 
-  "No idea what to get her...",
-  "In Progress",
-)
-
-const writeScript = toDo(
-  "Write Script",
-  homeProjects,
-  `Finally write that movie script you've been talking about.`,
-  "10/15/2021",
-  "5", 
-  "Be sure to include that twist ending where the guy was dead the whole time.",
-  "In Progress",
-)
-
-const getTest = toDo(
-  "Get Blood Test",
-  forYourHealth,
-  "Get that blood test your Doc ordered",
-  "10/17/21",
-  "1",
-  "remember to fast 12 hours before. No eating!",
-  "In Progress",
-)
-
-let firstProject = projectBuilder(homeProjects);
-masterList.push(firstProject);
-let secondProject = projectBuilder(forYourHealth);
-masterList.push(secondProject);
-let thirdProject = projectBuilder(carProject);
-masterList.push(thirdProject);
-
-let projectArray = [firstProject, secondProject, thirdProject];
-applyButtons(projectArray);
