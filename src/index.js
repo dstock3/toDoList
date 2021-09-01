@@ -1,5 +1,5 @@
 import './style.css';
-import { project, toDo } from './task.js'
+import { project, toDo, addTask } from './task.js'
 import { projectBuilder, applyButtons } from'./projectElements.js'
 
 const homeProjects = project(
@@ -90,17 +90,19 @@ const getTest = toDo(
   "In Progress",
 )
 
+addTask(writeScript, homeProjects)
+addTask(getGift, homeProjects)
+addTask(toDoItem, homeProjects)
 
-homeProjects.taskArray.push(writeScript);
-homeProjects.taskArray.push(getGift);
-homeProjects.taskArray.push(toDoItem);
+forYourHealth.taskArray.unshift(goToDoc);
+forYourHealth.taskArray.unshift(getTest);
 
-const secondList = [goToDoc, getTest]
-const thirdList = [replaceWipers, changeOil]
+carProject.taskArray.unshift(replaceWipers)
+carProject.taskArray.unshift(changeOil)
 
-let newProject = projectBuilder(homeProjects.taskArray, homeProjects);
-let secondProject = projectBuilder(secondList, forYourHealth);
-let thirdProject = projectBuilder(thirdList, carProject);
+let newProject = projectBuilder(homeProjects);
+let secondProject = projectBuilder(forYourHealth);
+let thirdProject = projectBuilder(carProject);
 
 let projectArray = [newProject, secondProject, thirdProject];
 applyButtons(projectArray);

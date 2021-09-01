@@ -51,11 +51,11 @@ const projectHeader = (project, parent) => {
     return projectElement
 };
 
-const projectBuilder = (toDoArray, project) => {
+const projectBuilder = (project) => {
+  let toDoArray = project.taskArray;
 
   let projectElement = projectHeader(project, body)
   
-
   for (let i = 0; i < toDoArray.length; i++) {
     let task = toDoArray[i];
     toDoBuilder(task, projectElement);
@@ -118,7 +118,7 @@ const buttons = (set) => {
   const maximize = () => {
     let projectIndex = getPosition(set.projectElement);
     set.deleteList()
-    let maxProject = projectBuilder(set.toDoArray, set.project);
+    let maxProject = projectBuilder(set.project);
     body.insertBefore(maxProject.projectElement, body.children[projectIndex]);
     buttons(maxProject);
   }
@@ -148,7 +148,7 @@ const buttons = (set) => {
   
     function newProjectSet() {
       set.deleteList()
-      let sortedProject = projectBuilder(sortedArray, project)
+      let sortedProject = projectBuilder(project)
       body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
       buttons(sortedProject)
     }
@@ -167,9 +167,9 @@ const buttons = (set) => {
           if (topDiv.children[1].textContent === set.toDoArray[y].title) {
             function taskRemover() {
               let projectIndex = getPosition(set.projectElement);
-              let newArray = set.removeTask(set.toDoArray[y]);
+              set.removeTask(set.toDoArray[y]);
               set.deleteList()
-              let sortedProject = projectBuilder(newArray, set.project);
+              let sortedProject = projectBuilder(set.project);
               body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
               buttons(sortedProject) 
             } 
