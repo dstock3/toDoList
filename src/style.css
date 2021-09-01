@@ -122,6 +122,22 @@ button {
     font-weight: bold;
 }
 
+.project-prompt {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 25%;
+    padding: 2%;
+    width: 20%;
+    background-color: rgb(130, 193, 248);
+    color: rgb(24, 28, 32);
+    border-radius: 10px;
+    z-index: 1;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
 .prompt-head {
     margin: auto;
 }

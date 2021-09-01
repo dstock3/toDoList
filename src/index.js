@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './style.css';
 import { project, toDo } from './task.js'
 import { projectBuilder, applyButtons } from'./projectElements.js'

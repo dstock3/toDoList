@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import { toDo } from './task.js'
+import { project, toDo } from './task.js'
 
 function elementBuilder(element, classLabel, parentName) {
     let item = document.createElement(element);
@@ -112,6 +112,15 @@ const buttons = (set) => {
   const topButtonDiv = elementBuilder("div", "top-button-div", set.projectElement)
   set.projectElement.prepend(topButtonDiv);
 
+  const projectButton = (() => {
+
+    function addProject() {
+      createProject();
+    }
+
+    sidebar.newProject.addEventListener("click", addProject)
+  })();
+
   const addTaskButton = (() => {
     let addButton = elementBuilder("button", "top-buttons", topButtonDiv);
     addButton.classList.add("add-task")
@@ -195,8 +204,6 @@ const buttons = (set) => {
       
     del.addEventListener("click", set.deleteList)
   })();
-    
-  return { sortByPriorityButton, deleteButton, removeTaskButton }
 };
 
 function applyButtons(toDoArray) {
@@ -205,22 +212,33 @@ function applyButtons(toDoArray) {
     }
 }
 
+function addTransparent(childElements) {
+  for (let i = 0; i < childElements.length - 1; i++) {
+    childElements[i].classList.add("transparent")
+  }
+}
+
+function removeTransparent(childElements) {
+  for (let i = 0; i < childElements.length - 1; i++) {
+    childElements[i].classList.remove("transparent")
+  }
+}
+
+function newInput(parent, promptType, divClass, labelClass, labelContent, inputClass, inputId, nameAt) {
+  let newDiv = elementBuilder("div", promptType, parent);
+  newDiv.classList.add(divClass);
+  let divLabel = elementBuilder("label", labelClass, newDiv);
+  divLabel.textContent = labelContent
+  let divInput = elementBuilder("input", inputClass, newDiv);
+  divInput.id = inputId
+  divInput.setAttribute("name", nameAt);
+   
+}
+
 const addTask = (set) => {
 
   let project = set.project
   let projectElement = set.projectElement
-
-  function addTransparent(childElements) {
-    for (let i = 0; i < childElements.length - 1; i++) {
-      childElements[i].classList.add("transparent")
-    }
-  }
-
-  function removeTransparent(childElements) {
-    for (let i = 0; i < childElements.length - 1; i++) {
-      childElements[i].classList.remove("transparent")
-    }
-  }
 
   const taskPrompt = (() => {
     let prompt = elementBuilder("div", "task-prompt", body);
@@ -228,45 +246,11 @@ const addTask = (set) => {
     let promptHead = elementBuilder("h3", "prompt-head", prompt)
     promptHead.textContent = "Create a Task";
 
-    let titleDiv = elementBuilder("div", "new-task", prompt);
-    titleDiv.classList.add("title-div");
-    let titleElement = elementBuilder("label", "name-label", titleDiv);
-    titleElement.textContent = "Task: "
-    let titleInput = elementBuilder("input", "title-input", titleDiv);
-    titleInput.id = "title"
-    titleInput.setAttribute("name", "title");
-    
-    let descDiv = elementBuilder("div", "new-task", prompt);
-    descDiv.classList.add("description-div");
-    let descElement = elementBuilder("label", "desc-label", descDiv);
-    descElement.textContent = "Description: "
-    let descInput = elementBuilder("input", "desc-input", descDiv);
-    descInput.id = "description";
-    descInput.setAttribute("name", "desc");
-
-    let dueDiv = elementBuilder("div", "new-task", prompt);
-    dueDiv.classList.add("due-div");
-    let dueElement = elementBuilder("label", "due-label", dueDiv);
-    dueElement.textContent = "Due Date: "
-    let dueInput = elementBuilder("input", "due-input", dueDiv);
-    dueInput.id = "due";
-    dueInput.setAttribute("name", "due");
-
-    let priorityDiv = elementBuilder("div", "new-task", prompt);
-    priorityDiv.classList.add("priority-div");
-    let priorityElement = elementBuilder("label", "priority-label", priorityDiv);
-    priorityElement.textContent = "Priority: "
-    let priorityInput = elementBuilder("input", "priority-input", priorityDiv);
-    priorityInput.id = "priority";
-    priorityInput.setAttribute("name", "priority");
-
-    let notesDiv = elementBuilder("div", "new-task", prompt);
-    notesDiv.classList.add("notes-div");
-    let notesElement = elementBuilder("label", "notes-label", notesDiv);
-    notesElement.textContent = "Notes: "
-    let notesInput = elementBuilder("input", "notes-input", notesDiv);
-    notesInput.id = "notes";
-    notesInput.setAttribute("name", "notes");
+    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "title", "title");
+    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "description", "desc");
+    newInput(prompt, "new-task", "due-div", "due-label", "Due Date: ", "due-input", "due", "due");
+    newInput(prompt, "new-task", "priority-div", "priority-label", "Priority: ", "priority-input", "priority", "priority")
+    newInput(prompt, "new-task", "notes-div", "notes-label", "Notes: ", "notes-input", "notes", "notes")
 
     let children = body.children;
     addTransparent(children)
@@ -308,8 +292,23 @@ const addTask = (set) => {
 
     createButton.addEventListener("click", createTask)
   })();
-  
 };
+
+const createProject = () => {
+
+  const projectPrompt = (() => {
+    let prompt = elementBuilder("div", "project-prompt", body);
+
+    let promptHead = elementBuilder("h3", "prompt-head", prompt)
+    promptHead.textContent = "Create a Project";
+
+    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "title", "title");
+    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "description", "desc");
+
+  })();
+
+
+}
 
 export {
     elementBuilder,
