@@ -61,12 +61,10 @@ const projectHeader = (project, parent) => {
 };
 
 const projectBuilder = (project) => {
-  let toDoArray = project.taskArray;
-
   let projectElement = projectHeader(project, projectDiv)
-  
-  for (let i = 0; i < toDoArray.length; i++) {
-    let task = toDoArray[i];
+
+  for (let i = 0; i < project.taskArray.length; i++) {
+    let task = project.taskArray[i];
     toDoBuilder(task, projectElement);
   }
 
@@ -75,17 +73,17 @@ const projectBuilder = (project) => {
   };
 
   const removeTask = (task) => {
-    for (let i = 0; i < toDoArray.length; i++) {
-      if (task === toDoArray[i]) {
-        toDoArray.splice(i, 1);
+    for (let i = 0; i < project.taskArray.length; i++) {
+      if (task === project.taskArray[i]) {
+        project.taskArray.splice(i, 1);
       }
     }
 
-    return toDoArray
+    return project.taskArray
   };
 
   const sortByPriority = () => {
-    let sortedArray = toDoArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
+    let sortedArray = project.taskArray.sort((firstItem, secondItem) => firstItem.priority - secondItem.priority);
     return sortedArray
   };
 
@@ -105,10 +103,11 @@ const projectBuilder = (project) => {
     } 
   }
 
-  return { projectElement, project, toDoArray, removeTask, sortByPriority, deleteList, minTasks }
+  return { projectElement, project, removeTask, sortByPriority, deleteList, minTasks }
 };
 
 const taskButtons = (set) => {
+  console.log()
   const topButtonDiv = elementBuilder("div", "top-button-div", set.projectElement)
   set.projectElement.prepend(topButtonDiv);
 
@@ -149,24 +148,19 @@ const taskButtons = (set) => {
   const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
   
   const sortByPriorityButton = (() => {
-    if (set.project.taskArray.length === 0) {
-      console.log("no tasks")
-    } else {
-      let sort = elementBuilder("button", "sort-button", buttonDiv);
-      sort.textContent = "Sort by Priority";
-      let projectIndex = getPosition(set.projectElement);
-      set.sortByPriority();
+    let sort = elementBuilder("button", "sort-button", buttonDiv);
+    sort.textContent = "Sort by Priority";
+    let projectIndex = getPosition(set.projectElement);
+    set.sortByPriority();
     
-      function newProjectSet() {
-        set.deleteList()
-        let sortedProject = projectBuilder(project)
-        projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
-        taskButtons(sortedProject)
-      }
-    
-      sort.addEventListener("click", newProjectSet)
+    function newProjectSet() {
+      set.deleteList()
+      let sortedProject = projectBuilder(set.project)
+      projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
+      taskButtons(sortedProject)
     }
-  })();
+    sort.addEventListener("click", newProjectSet)
+})();
   
   const removeTaskButton = (() => {
     let projectElements = Array.from(set.projectElement.children);
@@ -175,11 +169,11 @@ const taskButtons = (set) => {
         let taskDiv = projectElements[i];
         let topDiv = taskDiv.children[0];
         let removeTaskElement = taskDiv.firstChild;
-        for (let y = 0; y < set.toDoArray.length; y++) {
-          if (topDiv.children[1].textContent === set.toDoArray[y].title) {
+        for (let y = 0; y < set.project.taskArray.length; y++) {
+          if (topDiv.children[1].textContent === set.project.taskArray[y].title) {
             function taskRemover() {
               let projectIndex = getPosition(set.projectElement);
-              set.removeTask(set.toDoArray[y]);
+              set.removeTask(set.project.taskArray[y]);
               set.deleteList()
               let sortedProject = projectBuilder(set.project);
               projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
@@ -200,9 +194,9 @@ const taskButtons = (set) => {
   })();
 };
 
-function applyButtons(toDoArray) {
-    for (let i = 0; i < toDoArray.length; i++) {
-      taskButtons(toDoArray[i])
+function applyButtons(taskArray) {
+    for (let i = 0; i < taskArray.length; i++) {
+      taskButtons(taskArray[i])
     }
 }
 
