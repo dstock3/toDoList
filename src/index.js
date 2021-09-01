@@ -1,24 +1,24 @@
 /* eslint-disable no-unused-vars */
 import './style.css';
 import { project, toDo } from './task.js'
-import { projectBuilder, applyButtons } from'./projectElements.js'
+import { masterList, projectBuilder, applyButtons } from'./projectElements.js'
 
 const homeProjects = project(
   "Home Projects",
   "Projects to do around the house.",
-  []
+  [],
 );
 
 const forYourHealth = project(
   "Stay Healthy",
   "Prolong your biological life through various routines!",
-  []
+  [],
 );
 
 const carProject = project(
   "Automotive tasks",
   "Basic car maintenance!",
-  []
+  [],
 )
 
 const toDoItem = toDo(
@@ -92,8 +92,11 @@ const getTest = toDo(
 )
 
 let firstProject = projectBuilder(homeProjects);
+masterList.push(firstProject);
 let secondProject = projectBuilder(forYourHealth);
+masterList.push(secondProject);
 let thirdProject = projectBuilder(carProject);
+masterList.push(thirdProject);
 
 let projectArray = [firstProject, secondProject, thirdProject];
 applyButtons(projectArray);

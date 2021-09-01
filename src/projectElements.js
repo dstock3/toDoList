@@ -2,6 +2,8 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo } from './task.js'
 
+const masterList = []
+
 function elementBuilder(element, classLabel, parentName) {
     let item = document.createElement(element);
     item.classList.add(classLabel);
@@ -20,7 +22,11 @@ const sidebar = (() => {
   const sidebarElement = elementBuilder("div", "sidebar", body);
   const newProject = elementBuilder("a", "new-project", sidebarElement);
   newProject.textContent = "Create a New Project";
-  return { sidebarElement, newProject }
+
+  let viewElement = elementBuilder("button", "view-button", sidebarElement)
+  viewElement.textContent = "Change View"
+
+  return { sidebarElement, newProject, viewElement }
 })();
 
 let projectDiv = elementBuilder("div", "project-container", body)
@@ -102,12 +108,10 @@ const projectBuilder = (project) => {
       }
     } 
   }
-
   return { projectElement, project, removeTask, sortByPriority, deleteList, minTasks }
 };
 
 const taskButtons = (set) => {
-  console.log()
   const topButtonDiv = elementBuilder("div", "top-button-div", set.projectElement)
   set.projectElement.prepend(topButtonDiv);
 
@@ -127,6 +131,7 @@ const taskButtons = (set) => {
     let projectIndex = getPosition(set.projectElement);
     set.deleteList()
     let maxProject = projectBuilder(set.project);
+    masterList.push(maxProject)
     projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
     taskButtons(maxProject);
   }
@@ -159,6 +164,7 @@ const taskButtons = (set) => {
       function newProjectSet() {
         set.deleteList()
         let sortedProject = projectBuilder(set.project)
+        masterList.push(sortedProject)
         projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
         taskButtons(sortedProject)
       }
@@ -180,6 +186,7 @@ const taskButtons = (set) => {
               set.removeTask(set.project.taskArray[y]);
               set.deleteList()
               let sortedProject = projectBuilder(set.project);
+              masterList.push(sortedProject)
               projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
               taskButtons(sortedProject) 
             } 
@@ -276,6 +283,7 @@ const addTask = (set) => {
       let projectIndex = getPosition(projectElement);
       projectElement.remove();
       let updatedProject = projectBuilder(project);
+      masterList.push(updatedProject)
       projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
       taskButtons(updatedProject);
 
@@ -330,6 +338,7 @@ const addProject = () => {
 
       let newProject = project(title, description, [])
       let projectSet = projectBuilder(newProject);
+      masterList.push(projectSet)
       taskButtons(projectSet);
 
       exit();
@@ -339,9 +348,25 @@ const addProject = () => {
   })();
 }
 
+const viewButton = (() => {
+
+  function newView() {
+    changeView();
+  }
+
+  sidebar.viewElement.addEventListener("click", newView)
+})();
+
+const changeView = () => {
+  for (let i = 0; i < masterList.length; i++) {
+    masterList[i].minTasks()
+  } 
+}
+
 export {
-    elementBuilder,
-    projectHeader,
-    projectBuilder, 
-    applyButtons,
+  masterList,
+  elementBuilder,
+  projectHeader,
+  projectBuilder, 
+  applyButtons,
 }
