@@ -132,34 +132,38 @@ const taskButtons = (set) => {
   }
 
   const minimize = (() => {
-    let minButton = elementBuilder("button", "top-buttons", topButtonDiv);
-    minButton.classList.add("min-button")
-    minButton.textContent = "-"
+    if (set.project.taskArray.length > 0) {
+      let minButton = elementBuilder("button", "top-buttons", topButtonDiv);
+      minButton.classList.add("min-button")
+      minButton.textContent = "-"
 
-    function minProject() {
-      minButton.textContent = "□"
-      set.minTasks()
-      minButton.addEventListener("click", maximize);
+      function minProject() {
+        minButton.textContent = "□"
+        set.minTasks()
+        minButton.addEventListener("click", maximize);
+      }
+
+      minButton.addEventListener("click", minProject);
     }
-
-    minButton.addEventListener("click", minProject);
   })();
 
   const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
   
   const sortByPriorityButton = (() => {
-    let sort = elementBuilder("button", "sort-button", buttonDiv);
-    sort.textContent = "Sort by Priority";
-    let projectIndex = getPosition(set.projectElement);
-    set.sortByPriority();
-    
-    function newProjectSet() {
-      set.deleteList()
-      let sortedProject = projectBuilder(set.project)
-      projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
-      taskButtons(sortedProject)
-    }
-    sort.addEventListener("click", newProjectSet)
+    if (set.project.taskArray.length > 0) {
+      let sort = elementBuilder("button", "sort-button", buttonDiv);
+      sort.textContent = "Sort by Priority";
+      let projectIndex = getPosition(set.projectElement);
+      set.sortByPriority();
+      
+      function newProjectSet() {
+        set.deleteList()
+        let sortedProject = projectBuilder(set.project)
+        projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
+        taskButtons(sortedProject)
+      }
+      sort.addEventListener("click", newProjectSet)
+  }
 })();
   
   const removeTaskButton = (() => {
