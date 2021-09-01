@@ -297,11 +297,9 @@ const addTask = (set) => {
       let task = toDo(title, project, description, dueDate, priority, notes, status);
       toDoBuilder(task, projectElement);
 
-      let toDoArray = set.toDoArray;
-      toDoArray.push(task);
       let projectIndex = getPosition(projectElement);
       projectElement.remove();
-      let updatedProject = projectBuilder(toDoArray, project);
+      let updatedProject = projectBuilder(project);
       projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
       buttons(updatedProject);
 
