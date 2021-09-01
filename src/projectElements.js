@@ -149,20 +149,23 @@ const taskButtons = (set) => {
   const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
   
   const sortByPriorityButton = (() => {
-    let sort = elementBuilder("button", "sort-button", buttonDiv);
-    sort.textContent = "Sort by Priority";
-    let projectIndex = getPosition(set.projectElement);
-    let sortedArray = set.sortByPriority();
-    let project = sortedArray[0].project;
-  
-    function newProjectSet() {
-      set.deleteList()
-      let sortedProject = projectBuilder(project)
-      projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
-      taskButtons(sortedProject)
+    if (set.project.taskArray.length === 0) {
+      console.log("no tasks")
+    } else {
+      let sort = elementBuilder("button", "sort-button", buttonDiv);
+      sort.textContent = "Sort by Priority";
+      let projectIndex = getPosition(set.projectElement);
+      set.sortByPriority();
+    
+      function newProjectSet() {
+        set.deleteList()
+        let sortedProject = projectBuilder(project)
+        projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
+        taskButtons(sortedProject)
+      }
+    
+      sort.addEventListener("click", newProjectSet)
     }
-  
-    sort.addEventListener("click", newProjectSet)
   })();
   
   const removeTaskButton = (() => {
@@ -328,8 +331,8 @@ const addProject = () => {
       let description = document.getElementById("project-description").value;
 
       let newProject = project(title, description, [])
-      projectBuilder(newProject);
-      //taskButtons(newProject);
+      let projectSet = projectBuilder(newProject);
+      taskButtons(projectSet);
 
       exit();
     }
