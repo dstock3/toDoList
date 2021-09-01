@@ -108,18 +108,9 @@ const projectBuilder = (project) => {
   return { projectElement, project, toDoArray, removeTask, sortByPriority, deleteList, minTasks }
 };
 
-const buttons = (set) => {
+const taskButtons = (set) => {
   const topButtonDiv = elementBuilder("div", "top-button-div", set.projectElement)
   set.projectElement.prepend(topButtonDiv);
-
-  const projectButton = (() => {
-
-    function addProject() {
-      createProject();
-    }
-
-    sidebar.newProject.addEventListener("click", addProject)
-  })();
 
   const addTaskButton = (() => {
     let addButton = elementBuilder("button", "top-buttons", topButtonDiv);
@@ -208,7 +199,7 @@ const buttons = (set) => {
 
 function applyButtons(toDoArray) {
     for (let i = 0; i < toDoArray.length; i++) {
-      buttons(toDoArray[i])
+      taskButtons(toDoArray[i])
     }
 }
 
@@ -294,6 +285,17 @@ const addTask = (set) => {
   })();
 };
 
+const projectButton = (() => {
+
+  function addProject() {
+    createProject();
+  }
+
+  if (sidebar)
+
+  sidebar.newProject.addEventListener("click", addProject)
+})();
+
 const createProject = () => {
 
   const projectPrompt = (() => {
@@ -316,12 +318,12 @@ const createProject = () => {
     let cancelButton = elementBuilder("button", "cancel", buttonDiv)
     cancelButton.textContent = "Cancel";
 
-    function leave() {
+    function exit() {
       removeTransparent(children);
       prompt.remove()
     }
 
-    cancelButton.addEventListener("click", leave);
+    cancelButton.addEventListener("click", exit);
 
   })();
 }
@@ -329,7 +331,6 @@ const createProject = () => {
 export {
     elementBuilder,
     projectHeader,
-    projectBuilder,
-    buttons, 
+    projectBuilder, 
     applyButtons,
 }
