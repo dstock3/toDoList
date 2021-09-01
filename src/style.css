@@ -58,6 +58,11 @@ button {
     font-size: 1.1rem;
 }
 
+.sort-button {
+    position: relative;
+    bottom: 5000%;
+}
+
 .top-button-div {
     display: flex;
     justify-content: space-around;
