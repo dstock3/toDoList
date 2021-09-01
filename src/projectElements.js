@@ -16,6 +16,12 @@ const getPosition = (projectElement) => {
 
 let body = document.getElementsByTagName("body")[0];
 
+const sidebar = elementBuilder("div", "sidebar", body);
+const newProject = elementBuilder("a", "new-project", sidebar);
+newProject.textContent = "Create a New Project";
+
+let projectDiv = elementBuilder("div", "project-container", body)
+
 function toDoBuilder(task, parent) {
     let elementArray = [];
     let taskDiv = elementBuilder("div", "task", parent);
@@ -54,7 +60,7 @@ const projectHeader = (project, parent) => {
 const projectBuilder = (project) => {
   let toDoArray = project.taskArray;
 
-  let projectElement = projectHeader(project, body)
+  let projectElement = projectHeader(project, projectDiv)
   
   for (let i = 0; i < toDoArray.length; i++) {
     let task = toDoArray[i];
@@ -119,7 +125,7 @@ const buttons = (set) => {
     let projectIndex = getPosition(set.projectElement);
     set.deleteList()
     let maxProject = projectBuilder(set.project);
-    body.insertBefore(maxProject.projectElement, body.children[projectIndex]);
+    projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
     buttons(maxProject);
   }
 
@@ -149,7 +155,7 @@ const buttons = (set) => {
     function newProjectSet() {
       set.deleteList()
       let sortedProject = projectBuilder(project)
-      body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
+      projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
       buttons(sortedProject)
     }
   
@@ -170,7 +176,7 @@ const buttons = (set) => {
               set.removeTask(set.toDoArray[y]);
               set.deleteList()
               let sortedProject = projectBuilder(set.project);
-              body.insertBefore(sortedProject.projectElement, body.children[projectIndex]);
+              projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
               buttons(sortedProject) 
             } 
             removeTaskElement.addEventListener("click", taskRemover);  
@@ -259,7 +265,7 @@ const addTask = (set) => {
     notesInput.id = "notes";
     notesInput.setAttribute("name", "notes");
 
-    let children = document.body.children;
+    let children = document.projectDiv.children;
     addTransparent(children)
 
     let buttonDiv = elementBuilder("div", "create-task-buttons", prompt)
@@ -293,7 +299,7 @@ const addTask = (set) => {
       let projectIndex = getPosition(projectElement);
       projectElement.remove();
       let updatedProject = projectBuilder(toDoArray, project);
-      body.insertBefore(updatedProject.projectElement, body.children[projectIndex]);
+      projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
       buttons(updatedProject);
 
       exit();

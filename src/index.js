@@ -1,6 +1,6 @@
 import './style.css';
 import { project, toDo } from './task.js'
-import { projectBuilder, applyButtons } from'./projectElements.js'
+import { elementBuilder, projectBuilder, applyButtons } from'./projectElements.js'
 
 const homeProjects = project(
   "Home Projects",
@@ -90,9 +90,9 @@ const getTest = toDo(
   "In Progress",
 )
 
-let newProject = projectBuilder(homeProjects);
+let firstProject = projectBuilder(homeProjects);
 let secondProject = projectBuilder(forYourHealth);
 let thirdProject = projectBuilder(carProject);
 
-let projectArray = [newProject, secondProject, thirdProject];
+let projectArray = [firstProject, secondProject, thirdProject];
 applyButtons(projectArray);
