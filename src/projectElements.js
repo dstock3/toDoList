@@ -268,7 +268,7 @@ const addTask = (set) => {
     notesInput.id = "notes";
     notesInput.setAttribute("name", "notes");
 
-    let children = document.projectDiv.children;
+    let children = body.children;
     addTransparent(children)
 
     let buttonDiv = elementBuilder("div", "create-task-buttons", prompt)
