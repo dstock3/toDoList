@@ -129,7 +129,7 @@ const taskButtons = (set) => {
     set.deleteList()
     let maxProject = projectBuilder(set.project);
     projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
-    buttons(maxProject);
+    taskButtons(maxProject);
   }
 
   const minimize = (() => {
@@ -159,7 +159,7 @@ const taskButtons = (set) => {
       set.deleteList()
       let sortedProject = projectBuilder(project)
       projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
-      buttons(sortedProject)
+      taskButtons(sortedProject)
     }
   
     sort.addEventListener("click", newProjectSet)
@@ -180,7 +180,7 @@ const taskButtons = (set) => {
               set.deleteList()
               let sortedProject = projectBuilder(set.project);
               projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
-              buttons(sortedProject) 
+              taskButtons(sortedProject) 
             } 
             removeTaskElement.addEventListener("click", taskRemover);  
           }   
@@ -276,7 +276,7 @@ const addTask = (set) => {
       projectElement.remove();
       let updatedProject = projectBuilder(project);
       projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
-      buttons(updatedProject);
+      taskButtons(updatedProject);
 
       exit();
     }
@@ -287,16 +287,14 @@ const addTask = (set) => {
 
 const projectButton = (() => {
 
-  function addProject() {
-    createProject();
+  function addNewProject() {
+    addProject();
   }
 
-  if (sidebar)
-
-  sidebar.newProject.addEventListener("click", addProject)
+  sidebar.newProject.addEventListener("click", addNewProject)
 })();
 
-const createProject = () => {
+const addProject = () => {
 
   const projectPrompt = (() => {
     let prompt = elementBuilder("div", "project-prompt", body);
@@ -304,8 +302,8 @@ const createProject = () => {
     let promptHead = elementBuilder("h3", "prompt-head", prompt)
     promptHead.textContent = "Create a Project";
 
-    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "title", "title");
-    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "description", "desc");
+    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "project-title", "title");
+    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "project-description", "desc");
 
     let children = body.children;
     addTransparent(children)
@@ -325,6 +323,18 @@ const createProject = () => {
 
     cancelButton.addEventListener("click", exit);
 
+    function createProject() {
+      let title = document.getElementById("project-title").value;
+      let description = document.getElementById("project-description").value;
+
+      let newProject = project(title, description, [])
+      projectBuilder(newProject);
+      //taskButtons(newProject);
+
+      exit();
+    }
+
+    createButton.addEventListener("click", createProject)
   })();
 }
 
