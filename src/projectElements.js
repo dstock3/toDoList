@@ -350,18 +350,39 @@ const addProject = () => {
 
 const viewButton = (() => {
 
-  function newView() {
-    changeView();
+  function maxView() {
+    changeView.maxAll();
+    sidebar.viewElement.addEventListener("click", minView)
   }
 
-  sidebar.viewElement.addEventListener("click", newView)
+  function minView() {
+    changeView.minAll();
+    sidebar.viewElement.addEventListener("click", maxView)
+  }
+
+  sidebar.viewElement.addEventListener("click", minView)
 })();
 
-const changeView = () => {
-  for (let i = 0; i < masterList.length; i++) {
-    masterList[i].minTasks()
-  } 
-}
+const changeView = (() => {
+  const minAll = () => {
+    for (let i = 0; i < masterList.length; i++) {
+      masterList[i].minTasks()
+    }
+  }
+
+  const maxAll = () => {
+    for (let i = 0; i < masterList.length; i++) {
+      let set = masterList[i]
+      let projectIndex = getPosition(set.projectElement);
+      set.deleteList()
+      let maxProject = projectBuilder(set.project);
+      projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
+      taskButtons(maxProject);
+    }
+  }
+
+  return { minAll, maxAll }
+})();
 
 export {
   masterList,
