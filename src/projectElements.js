@@ -305,9 +305,25 @@ const createProject = () => {
     newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "title", "title");
     newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "description", "desc");
 
+    let children = body.children;
+    addTransparent(children)
+
+    let buttonDiv = elementBuilder("div", "create-task-buttons", prompt);
+
+    let createButton = elementBuilder("button", "create-task", buttonDiv);
+    createButton.textContent = "Create Project";
+
+    let cancelButton = elementBuilder("button", "cancel", buttonDiv)
+    cancelButton.textContent = "Cancel";
+
+    function leave() {
+      removeTransparent(children);
+      prompt.remove()
+    }
+
+    cancelButton.addEventListener("click", leave);
+
   })();
-
-
 }
 
 export {
