@@ -384,6 +384,8 @@ const changeView = (() => {
   const maxAll = () => {
     for (let i = 0; i < projects.masterList.length; i++) {
       let set = projects.masterList[i]
+      let projectElement = set.projectElement
+      console.log(projectElement.parentNode)
       let projectIndex = getPosition(set.projectElement);
       set.deleteList()
       let maxProject = projectBuilder(set.project);
