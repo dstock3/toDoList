@@ -2,6 +2,14 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo } from './task.js'
 import { projects } from './index'
+import { format, addDays, startOfDay } from 'date-fns'
+
+const date = new Date()
+const tomorrow = addDays(date, 1)
+const start = startOfDay(date)
+const dateFormatted = format(date, "MM/dd/yyyy");
+
+console.log(dateFormatted)
 
 function elementBuilder(element, classLabel, parentName) {
     let item = document.createElement(element);
@@ -129,6 +137,10 @@ const taskButtons = (set) => {
   const maximize = () => {
     let projectIndex = getPosition(set.projectElement);
     set.deleteList()
+    
+    //let originalIndex = projects.masterList.indexOf(set)
+    //console.log(originalIndex)
+
     let maxProject = projectBuilder(set.project);
     projects.masterList.push(maxProject)
     projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
@@ -163,7 +175,7 @@ const taskButtons = (set) => {
       function newProjectSet() {
         set.deleteList()
         let sortedProject = projectBuilder(set.project)
-        projects.masterList.push(sortedProject)
+        //projects.masterList.push(sortedProject)
         projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
         taskButtons(sortedProject)
       }
@@ -185,7 +197,7 @@ const taskButtons = (set) => {
               set.removeTask(set.project.taskArray[y]);
               set.deleteList()
               let sortedProject = projectBuilder(set.project);
-              projects.masterList.push(sortedProject)
+              //projects.masterList.push(sortedProject)
               projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
               taskButtons(sortedProject) 
             } 
@@ -282,7 +294,7 @@ const addTask = (set) => {
       let projectIndex = getPosition(projectElement);
       projectElement.remove();
       let updatedProject = projectBuilder(project);
-      projects.masterList.push(updatedProject)
+      //projects.masterList.push(updatedProject)
       projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
       taskButtons(updatedProject);
 
@@ -365,22 +377,18 @@ const viewButton = (() => {
 const changeView = (() => {
   const minAll = () => {
     for (let i = 0; i < projects.masterList.length; i++) {
-      console.log(projects.masterList)
       projects.masterList[i].minTasks()
     }
   }
 
   const maxAll = () => {
-    projects.clearList()
     for (let i = 0; i < projects.masterList.length; i++) {
       let set = projects.masterList[i]
       let projectIndex = getPosition(set.projectElement);
       set.deleteList()
       let maxProject = projectBuilder(set.project);
       projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
-      projects.masterList.push(maxProject)
       taskButtons(maxProject);
-      
     }
   }
 

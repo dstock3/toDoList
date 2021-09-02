@@ -5,7 +5,7 @@ import { projectBuilder, applyButtons } from'./projectElements.js'
 
 const start = (() => {
   let projects = projectTracker()
-  const defaultProject = project("New Project", "Add a task below amd start tracking your project!", []);
+  const defaultProject = project("New Project", "Add a task below and start tracking your project!", []);
   const defaultProjectSet = projectBuilder(defaultProject);
   projects.masterList.push(defaultProjectSet);
   applyButtons(projects.masterList);
