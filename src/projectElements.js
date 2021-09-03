@@ -330,8 +330,8 @@ const addProject = () => {
     let promptHead = elementBuilder("h3", "prompt-head", prompt)
     promptHead.textContent = "Create a Project";
 
-    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "project-title", "title");
-    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "project-description", "desc");
+    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "Enter a title for your new project.", "project-title", "title");
+    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "Include a brief description.", "project-description", "desc");
 
     let children = body.children;
     addTransparent(children)
