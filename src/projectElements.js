@@ -234,15 +234,22 @@ function removeTransparent(childElements) {
   }
 }
 
-function newInput(parent, promptType, divClass, labelClass, labelContent, inputClass, inputId, nameAt) {
+function newInput(parent, promptType, divClass, labelClass, labelContent, inputClass, placeholder, inputId, nameAt) {
   let newDiv = elementBuilder("div", promptType, parent);
   newDiv.classList.add(divClass);
   let divLabel = elementBuilder("label", labelClass, newDiv);
   divLabel.textContent = labelContent
   let divInput = elementBuilder("input", inputClass, newDiv);
+  divInput.setAttribute("placeholder", placeholder)
   divInput.id = inputId
   divInput.setAttribute("name", nameAt);
    
+}
+
+function formatDate(due) {
+  let newDate = new Date(due);
+  let formattedDate = format(newDate, 'EEEE, MMMM do, yyyy')
+  return formattedDate
 }
 
 const addTask = (set) => {
@@ -256,11 +263,11 @@ const addTask = (set) => {
     let promptHead = elementBuilder("h3", "prompt-head", prompt)
     promptHead.textContent = "Create a Task";
 
-    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "title", "title");
-    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "description", "desc");
-    newInput(prompt, "new-task", "due-div", "due-label", "Due Date: ", "due-input", "due", "due");
-    newInput(prompt, "new-task", "priority-div", "priority-label", "Priority: ", "priority-input", "priority", "priority")
-    newInput(prompt, "new-task", "notes-div", "notes-label", "Notes: ", "notes-input", "notes", "notes")
+    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "Enter a Task!", "title", "title");
+    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ",  "desc-input", "Write a brief description.", "description", "desc");
+    newInput(prompt, "new-task", "due-div", "due-label", "Due Date: ", "due-input", "MM/DD/YYYY", "due", "due");
+    newInput(prompt, "new-task", "priority-div", "priority-label", "Priority: ", "priority-input", "Enter a number 1-5", "priority", "priority")
+    newInput(prompt, "new-task", "notes-div", "notes-label", "Notes: ", "notes-input", "Write your notes here.", "notes", "notes")
 
     let children = body.children;
     addTransparent(children)
@@ -283,7 +290,8 @@ const addTask = (set) => {
     function createTask() {
       let title = document.getElementById("title").value;
       let description = document.getElementById("description").value;
-      let dueDate = document.getElementById("due").value;
+      let enteredDate = document.getElementById("due").value;
+      let dueDate = formatDate(enteredDate);
       let priority = document.getElementById("priority").value;
       let notes = document.getElementById("notes").value;
       let status = "In Progress"
