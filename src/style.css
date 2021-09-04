@@ -59,7 +59,7 @@ body {
     display: flex;
     justify-content: space-around;
     width: 85%;
-    height: 100%;
+
 }
 
 .project {
@@ -70,7 +70,7 @@ body {
     width: 20%;
     height: 100%;
     padding: .5%;
-    border-radius: 5px;    
+    border-radius: 5px;  
 }
 
 .one-project-page {

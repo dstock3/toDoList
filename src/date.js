@@ -22,16 +22,39 @@ function deadline(dueDate) {
 }
 
 function sortByDueDate(tasks) {
+    let objArray = [];
     let deadlineArray = []
+
+    const newObj = (task, dueDate) => {
+        return { task, dueDate }
+    };
+
     for (let i = 0; i < tasks.length; i++) {
         let task = tasks[i];
         let dueDate = new Date(task.enteredDate);
-
+        let taskAndDate = newObj(task, dueDate);
+        objArray.push(taskAndDate);
         deadlineArray.push(dueDate);
     }
+
     let sortedArray = deadlineArray.sort(compareAsc);
-    console.log(sortedArray)
+    let sortedTasks = [];
+    for (let i = 0; i < sortedArray.length; i++) {
+        let sortedDate = sortedArray[i];
+
+        for (let y = 0; y < objArray.length; y++) {
+            let date = objArray[y].dueDate
+            let task = objArray[y].task
+
+            if (sortedDate === date) {
+                sortedTasks.push(task);
+            }
+
+        }
+    }
+    return sortedTasks
 }
+
 
 export {
     formatDate,

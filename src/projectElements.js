@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo } from './task'
 import { projects } from './index'
-import { formatDate, today, deadline, reminders } from './date'
+import { formatDate, today, deadline, sortByDueDate } from './date'
 
 function elementBuilder(element, classLabel, parentName) {
     let item = document.createElement(element);
@@ -322,7 +322,7 @@ const addTask = (set) => {
       let projectIndex = getPosition(projectElement);
       projectElement.remove();
       let updatedProject = projectBuilder(project);
-      reminders(project.taskArray)
+      sortByDueDate(project.taskArray)
       //projects.masterList.push(updatedProject)
       projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
       taskButtons(updatedProject);
