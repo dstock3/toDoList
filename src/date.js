@@ -1,4 +1,4 @@
-import { format, formatDistance, subDays, parseISO } from 'date-fns'
+import { format, formatDistance } from 'date-fns'
 
 function formatDate(dueDate) {
     let newDate = new Date(dueDate);
@@ -12,7 +12,7 @@ function deadline(dueDate) {
 
     let daysTill = formatDistance(dropDead, today)
     let deadMessage = `${daysTill} until your deadline.`
-    console.log(deadMessage)    
+    return deadMessage  
 }
 
 export {
