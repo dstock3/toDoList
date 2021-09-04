@@ -225,13 +225,21 @@ input {
         top: 0;
         width: 100%;
         height: 10%;
+        border-bottom: rgb(24, 28, 32) solid 10px;
     }
 
     .project-container {
+        display: flex;
+        flex-direction: column;
         position: relative;
         left: 0;
         
         width: 98%;
+    }
+    
+    .project-prompt {
+        padding-top: 5%;
+        width: 90%;
     }
 
     .project {
