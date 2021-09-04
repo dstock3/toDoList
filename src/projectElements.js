@@ -190,10 +190,30 @@ const taskButtons = (set) => {
   })();
 
   const buttonDiv = elementBuilder("div", "button-div", set.projectElement)
-  
-  const sortByPriorityButton = (() => {
-    if (set.project.taskArray.length > 0) {
+
+  const sortByDueDateButton = (() => {
+    if (set.project.taskArray.length > 1) {
       let sort = elementBuilder("button", "sort-button", buttonDiv);
+      sort.textContent = "Sort by Due Date";
+
+      let projectIndex = getPosition(set.projectElement);
+
+      function newSortedList() {
+        let sortedTasks = sortByDueDate(set.project.taskArray)
+        set.project.taskArray = sortedTasks
+        set.deleteList()
+        let sortedProject = projectBuilder(set.project)
+        projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
+        taskButtons(sortedProject)        
+      }
+
+      sort.addEventListener("click", newSortedList)
+    }
+  })();
+
+  const sortByPriorityButton = (() => {
+    if (set.project.taskArray.length > 1) {
+      let sort = elementBuilder("button", "sort-by-priority", buttonDiv);
       sort.textContent = "Sort by Priority";
       let projectIndex = getPosition(set.projectElement);
       set.sortByPriority();
@@ -322,7 +342,7 @@ const addTask = (set) => {
       let projectIndex = getPosition(projectElement);
       projectElement.remove();
       let updatedProject = projectBuilder(project);
-      sortByDueDate(project.taskArray)
+
       //projects.masterList.push(updatedProject)
       projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
       taskButtons(updatedProject);
