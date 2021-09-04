@@ -59,7 +59,6 @@ function toDoBuilder(task, parent) {
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
   desc.textContent = task.description;
-  console.log(task.enteredDate)
   let deadlineNotif = deadline(task.enteredDate);
   let dueDate = elementBuilder("p", "due-date", taskDiv);
   dueDate.textContent = task.dueDate;
@@ -306,7 +305,6 @@ const addTask = (set) => {
       let status = "In Progress"
 
       let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
-      console.log(newTask.task)
       toDoBuilder(newTask, projectElement);
 
       let projectIndex = getPosition(projectElement);
