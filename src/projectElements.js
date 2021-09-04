@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo } from './task'
 import { projects } from './index'
-import { formatDate, deadline } from './date'
+import { formatDate, today, deadline } from './date'
 
 function elementBuilder(element, classLabel, parentName) {
     let item = document.createElement(element);
@@ -25,6 +25,9 @@ const sidebar = (() => {
 
   let viewElement = elementBuilder("button", "view-button", sidebarElement)
   viewElement.textContent = "Change View"
+
+  const todayElement = elementBuilder("div", "today-notif", sidebarElement);
+  todayElement.textContent = today()
 
   return { sidebarElement, newProject, viewElement }
 })();
