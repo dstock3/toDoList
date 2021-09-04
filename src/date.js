@@ -1,4 +1,4 @@
-import { format, formatDistance } from 'date-fns'
+import { format, formatDistance, compareAsc } from 'date-fns'
 
 function formatDate(dueDate) {
     let newDate = new Date(dueDate);
@@ -21,9 +21,22 @@ function deadline(dueDate) {
     return deadMessage  
 }
 
+function sortByDueDate(tasks) {
+    let deadlineArray = []
+    for (let i = 0; i < tasks.length; i++) {
+        let task = tasks[i];
+        let dueDate = new Date(task.enteredDate);
+
+        deadlineArray.push(dueDate);
+    }
+    let sortedArray = deadlineArray.sort(compareAsc);
+    console.log(sortedArray)
+}
+
 export {
     formatDate,
     today,
-    deadline
+    deadline,
+    sortByDueDate
 }
 
