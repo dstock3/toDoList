@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo } from './task'
 import { projects } from './index'
-import { formatDate } from './date'
+import { formatDate, deadline } from './date'
 
 function elementBuilder(element, classLabel, parentName) {
     let item = document.createElement(element);
@@ -297,6 +297,7 @@ const addTask = (set) => {
       let description = document.getElementById("description").value;
       let enteredDate = document.getElementById("due").value;
       let dueDate = formatDate(enteredDate);
+      let deadlineNotif = deadline(enteredDate);
       let priority = document.getElementById("priority").value;
       let notes = document.getElementById("notes").value;
       let status = "In Progress"
