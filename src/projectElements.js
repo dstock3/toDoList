@@ -1,15 +1,8 @@
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import { project, toDo } from './task.js'
+import { project, toDo } from './task'
 import { projects } from './index'
-import { format, addDays, startOfDay } from 'date-fns'
-
-const date = new Date()
-const tomorrow = addDays(date, 1)
-const start = startOfDay(date)
-const dateFormatted = format(date, "MM/dd/yyyy");
-
-console.log(dateFormatted)
+import { formatDate } from './date'
 
 function elementBuilder(element, classLabel, parentName) {
     let item = document.createElement(element);
@@ -37,7 +30,6 @@ const sidebar = (() => {
 })();
 
 let projectDiv = elementBuilder("div", "project-container", body);
-
 
 const projectSize = (parent) => {
   let projectElements = Array.from(parent.children);
@@ -263,12 +255,6 @@ function newInput(parent, promptType, divClass, labelClass, labelContent, inputC
   divInput.id = inputId
   divInput.setAttribute("name", nameAt);
    
-}
-
-function formatDate(due) {
-  let newDate = new Date(due);
-  let formattedDate = format(newDate, 'EEEE, MMMM do, yyyy')
-  return formattedDate
 }
 
 const addTask = (set) => {
