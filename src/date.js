@@ -9,9 +9,8 @@ function formatDate(dueDate) {
 function deadline(dueDate) {
     const today = new Date();
     let dropDead = new Date(dueDate)
-
     let daysTill = formatDistance(dropDead, today)
-    let deadMessage = `${daysTill} until your deadline.`
+    let deadMessage = `(${daysTill} until your deadline.)`
     return deadMessage  
 }
 

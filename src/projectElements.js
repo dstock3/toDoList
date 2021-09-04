@@ -50,26 +50,30 @@ const projectSize = (parent) => {
 };
 
 function toDoBuilder(task, parent) {
-    let elementArray = [];
-    let taskDiv = elementBuilder("div", "task", parent);
-    let topDiv = elementBuilder("div", "top-div", taskDiv)
-    let removeTask = elementBuilder("button", "remove-task", topDiv);
-    removeTask.textContent = "X";
-    let head = elementBuilder("h3", "task-head", topDiv);
-    head.textContent = task.title;
-    let desc = elementBuilder("p", "task-desc", taskDiv);
-    desc.textContent = task.description;
-    let dueDate = elementBuilder("p", "due-date", taskDiv);
-    dueDate.textContent = task.dueDate;
-    let priority = elementBuilder("p", "priority", taskDiv);
-    priority.textContent = task.priority;
-    let notes = elementBuilder("p", "notes", taskDiv);
-    notes.textContent = task.notes;
-    let status = elementBuilder("p", "status", taskDiv);
-    status.textContent = task.status;
-    elementArray.push(taskDiv, topDiv, removeTask, head, desc, dueDate, priority, notes, status);
+  let elementArray = [];
+  let taskDiv = elementBuilder("div", "task", parent);
+  let topDiv = elementBuilder("div", "top-div", taskDiv)
+  let removeTask = elementBuilder("button", "remove-task", topDiv);
+  removeTask.textContent = "X";
+  let head = elementBuilder("h3", "task-head", topDiv);
+  head.textContent = task.title;
+  let desc = elementBuilder("p", "task-desc", taskDiv);
+  desc.textContent = task.description;
+  console.log(task.enteredDate)
+  let deadlineNotif = deadline(task.enteredDate);
+  let dueDate = elementBuilder("p", "due-date", taskDiv);
+  dueDate.textContent = task.dueDate;
+  let dueMessage = elementBuilder("p", "due-message", taskDiv);
+  dueMessage.textContent = deadlineNotif;
+  let priority = elementBuilder("p", "priority", taskDiv);
+  priority.textContent = task.priority;
+  let notes = elementBuilder("p", "notes", taskDiv);
+  notes.textContent = task.notes;
+  let status = elementBuilder("p", "status", taskDiv);
+  status.textContent = task.status;
+  elementArray.push(taskDiv, topDiv, removeTask, head, desc, dueDate, dueMessage, priority, notes, status);
     
-    return elementArray
+  return elementArray
 }
 
 const projectHeader = (project, parent) => {
@@ -297,13 +301,13 @@ const addTask = (set) => {
       let description = document.getElementById("description").value;
       let enteredDate = document.getElementById("due").value;
       let dueDate = formatDate(enteredDate);
-      let deadlineNotif = deadline(enteredDate);
       let priority = document.getElementById("priority").value;
       let notes = document.getElementById("notes").value;
       let status = "In Progress"
 
-      let task = toDo(title, project, description, dueDate, priority, notes, status);
-      toDoBuilder(task, projectElement);
+      let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
+      console.log(newTask.task)
+      toDoBuilder(newTask, projectElement);
 
       let projectIndex = getPosition(projectElement);
       projectElement.remove();
