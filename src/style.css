@@ -16,6 +16,20 @@ body {
     color: rgb(24, 28, 32);
 }
 
+.side-buttons {
+    
+}
+
+.new-project {
+    position: relative;
+    left: 2%;
+    top: 2%;
+}
+
+.view-button {
+    
+}
+
 .notif-bar {
     position: relative;
     width: 85%;
@@ -25,13 +39,6 @@ body {
     border-radius: 5px;
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
-}
-
-.new-project {
-    position: relative;
-    left: 5%;
-    top: 25%;
-    font-size: 1.5em;
 }
 
 .project-container {

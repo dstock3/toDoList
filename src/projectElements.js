@@ -20,10 +20,11 @@ let body = document.getElementsByTagName("body")[0];
 
 const sidebar = (() => {
   const sidebarElement = elementBuilder("div", "sidebar", body);
-  const newProject = elementBuilder("a", "new-project", sidebarElement);
-  newProject.textContent = "Create a New Project";
+  const sideButtonDiv = elementBuilder("div", "side-buttons", sidebarElement)
+  const newProject = elementBuilder("button", "new-project", sideButtonDiv);
+  newProject.textContent = "Start New Project";
 
-  let viewElement = elementBuilder("button", "view-button", sidebarElement)
+  let viewElement = elementBuilder("button", "view-button", sideButtonDiv)
   viewElement.textContent = "Change View"
 
   const notifElement = elementBuilder("div", "notif-bar", sidebarElement);
