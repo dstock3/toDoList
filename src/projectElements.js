@@ -26,7 +26,9 @@ const sidebar = (() => {
   let viewElement = elementBuilder("button", "view-button", sidebarElement)
   viewElement.textContent = "Change View"
 
-  const todayElement = elementBuilder("div", "today-notif", sidebarElement);
+  const notifElement = elementBuilder("div", "notif-bar", sidebarElement);
+  
+  const todayElement = elementBuilder("p", "today-notif", notifElement);
   todayElement.textContent = today()
 
   return { sidebarElement, newProject, viewElement }
