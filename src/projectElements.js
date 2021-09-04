@@ -20,6 +20,8 @@ let body = document.getElementsByTagName("body")[0];
 
 const sidebar = (() => {
   const sidebarElement = elementBuilder("div", "sidebar", body);
+  const onTask = elementBuilder("h1", "sidebar-head", sidebarElement);
+  onTask.textContent = "OnTask";
   const sideButtonDiv = elementBuilder("div", "side-buttons", sidebarElement)
   const newProject = elementBuilder("button", "new-project", sideButtonDiv);
   newProject.textContent = "Start New Project";

@@ -16,12 +16,24 @@ body {
     color: rgb(24, 28, 32);
 }
 
+.sidebar-head {
+    margin: auto;
+    position: relative;
+    top: 2.5%;
+    left: 25%;
+    font-style: italic;
+}
+
 .side-buttons {
     position: relative;
     top: 5%;
     margin: auto;
     display: flex;
     width: 85%;
+    background-color: rgb(24, 28, 32);
+    color: rgb(130, 193, 248);
+    padding: 5%;
+    border-radius: 5px;
 }
 
 .notif-bar {
