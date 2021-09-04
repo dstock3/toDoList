@@ -24,13 +24,16 @@ const sidebar = (() => {
   onTask.textContent = "OnTask";
   const sideButtonDiv = elementBuilder("div", "side-button-container", sidebarElement)
 
+  const newProject = elementBuilder("button", "side-buttons", sideButtonDiv);
+  newProject.textContent = "Start New Project";
+  newProject.id = "new-project"
+
   let viewElement = elementBuilder("button", "side-buttons", sideButtonDiv)
   viewElement.id = "view-button"
   viewElement.textContent = "Change View"
 
-  const newProject = elementBuilder("button", "side-buttons", sideButtonDiv);
-  newProject.textContent = "Start New Project";
-  newProject.id = "new-project"
+  const notifHead = elementBuilder("h2", "notif-head", sidebarElement);
+  notifHead.textContent = "Notifications";
 
   const notifElement = elementBuilder("div", "notif-bar", sidebarElement);
   
