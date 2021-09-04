@@ -372,7 +372,7 @@ const addProject = () => {
     let prompt = elementBuilder("div", "project-prompt", body);
 
     let promptHead = elementBuilder("h3", "prompt-head", prompt)
-    promptHead.textContent = "Create a Project";
+    promptHead.textContent = "Start a New Project";
 
     newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "Enter a title for your new project.", "project-title", "title");
     newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "Include a brief description.", "project-description", "desc");
