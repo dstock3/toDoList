@@ -6,6 +6,13 @@ function formatDate(dueDate) {
     return formattedDate
 }
 
+function today() {
+    let today = new Date();
+    today = format(today, 'EEEE, MMMM do, yyyy')
+    let message = `Today is ${today}.`
+    return message
+}
+
 function deadline(dueDate) {
     const today = new Date();
     let dropDead = new Date(dueDate)
@@ -16,6 +23,7 @@ function deadline(dueDate) {
 
 export {
     formatDate,
+    today,
     deadline
 }
 
