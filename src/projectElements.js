@@ -22,17 +22,20 @@ const sidebar = (() => {
   const sidebarElement = elementBuilder("div", "sidebar", body);
   const onTask = elementBuilder("h1", "sidebar-head", sidebarElement);
   onTask.textContent = "OnTask";
-  const sideButtonDiv = elementBuilder("div", "side-buttons", sidebarElement)
-  const newProject = elementBuilder("button", "new-project", sideButtonDiv);
-  newProject.textContent = "Start New Project";
+  const sideButtonDiv = elementBuilder("div", "side-button-container", sidebarElement)
 
-  let viewElement = elementBuilder("button", "view-button", sideButtonDiv)
+  let viewElement = elementBuilder("button", "side-buttons", sideButtonDiv)
+  viewElement.id = "view-button"
   viewElement.textContent = "Change View"
+
+  const newProject = elementBuilder("button", "side-buttons", sideButtonDiv);
+  newProject.textContent = "Start New Project";
+  newProject.id = "new-project"
 
   const notifElement = elementBuilder("div", "notif-bar", sidebarElement);
   
   const todayElement = elementBuilder("p", "today-notif", notifElement);
-  todayElement.textContent = today()
+  todayElement.textContent = today();
 
   return { sidebarElement, newProject, viewElement }
 })();

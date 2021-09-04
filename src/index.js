@@ -2,7 +2,7 @@
 import './style.css';
 import { project, projectTracker } from './task.js'
 import { projectBuilder, applyButtons } from'./projectElements.js'
-import { reminders } from './date'
+
 
 const start = (() => {
   let projects = projectTracker()
@@ -11,7 +11,7 @@ const start = (() => {
   projects.masterList.push(defaultProjectSet);
   applyButtons(projects.masterList);
 
-  reminders(defaultProject.taskArray)
+  
 
   return { projects }
 })();

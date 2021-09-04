@@ -25,16 +25,21 @@ body {
     font-style: italic;
 }
 
-.side-buttons {
+.side-button-container {
     position: relative;
     top: 5%;
     margin: auto;
     display: flex;
+    justify-content: space-around;
     width: 85%;
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
     padding: 5%;
     border-radius: 5px;
+}
+
+.side-buttons {
+    width: 45%;
 }
 
 .notif-bar {
