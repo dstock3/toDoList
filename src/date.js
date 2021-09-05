@@ -1,4 +1,4 @@
-import { format, formatDistance, compareAsc } from 'date-fns'
+import { format, formatDistance, compareAsc, isPast } from 'date-fns'
 
 function formatDate(dueDate) {
     let newDate = new Date(dueDate);
@@ -55,15 +55,20 @@ function sortByDueDate(tasks) {
     return sortedTasks
 }
 
-function dateChecker(dueDate) {
-    const today = new Date();
-
+function dateChecker(date) {
+    let dueDate = new Date(date);
+    if (isPast(dueDate)) {
+        return false
+    } else {
+        return true
+    }
 }
 
 export {
     formatDate,
     today,
     deadline,
-    sortByDueDate
+    sortByDueDate,
+    dateChecker
 }
 
