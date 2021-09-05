@@ -3,7 +3,7 @@
 import { project, toDo } from './task'
 import { projects } from './index'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
-import { formatDate, today, deadline, sortByDueDate, dateChecker } from './date'
+import { formatDate, deadline, sortByDueDate, dateChecker } from './date'
 import { sidebar } from './sidebar'
 
 const projectSize = (parent) => {
