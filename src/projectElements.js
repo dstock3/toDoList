@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo } from './task'
 import { projects } from './index'
-import { formatDate, today, deadline, sortByDueDate } from './date'
+import { formatDate, today, deadline, sortByDueDate, dateChecker } from './date'
 
 function elementBuilder(element, classLabel, parentName) {
     let item = document.createElement(element);
@@ -330,30 +330,31 @@ const addTask = (set) => {
 
     cancelButton.addEventListener("click", exit);
 
-    function createTask() {
-      let title = document.getElementById("title").value;
-      let description = document.getElementById("description").value;
-      let enteredDate = document.getElementById("due").value;
-      let dueDate = formatDate(enteredDate);
-      let priority = document.getElementById("priority").value;
-      let notes = document.getElementById("notes").value;
-      let status = "In Progress"
+  function createTask() {
+    let title = document.getElementById("title").value;
+    let description = document.getElementById("description").value;
+    let enteredDate = document.getElementById("due").value;
+    let dueDate = formatDate(enteredDate);
+    //checkedDate = dateChecker(dueDate);
+    let priority = document.getElementById("priority").value;
+    let notes = document.getElementById("notes").value;
+    let status = "In Progress"
 
-      let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
-      toDoBuilder(newTask, projectElement);
+    let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
+    toDoBuilder(newTask, projectElement);
 
-      let projectIndex = getPosition(projectElement);
-      projectElement.remove();
-      let updatedProject = projectBuilder(project);
+    let projectIndex = getPosition(projectElement);
+    projectElement.remove();
+    let updatedProject = projectBuilder(project);
 
-      //projects.masterList.push(updatedProject)
-      projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
-      taskButtons(updatedProject);
+    //projects.masterList.push(updatedProject)
+    projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
+    taskButtons(updatedProject);
 
-      exit();
-    }
+    exit();
+  }
 
-    createButton.addEventListener("click", createTask)
+  createButton.addEventListener("click", createTask)
   })();
 };
 
