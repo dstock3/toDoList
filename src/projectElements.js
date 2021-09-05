@@ -2,48 +2,9 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo } from './task'
 import { projects } from './index'
+import { elementBuilder, getPosition, body, projectDiv } from './elements'
 import { formatDate, today, deadline, sortByDueDate, dateChecker } from './date'
-
-function elementBuilder(element, classLabel, parentName) {
-    let item = document.createElement(element);
-    item.classList.add(classLabel);
-    parentName.appendChild(item);
-    return item;
-}
-
-const getPosition = (projectElement) => {
-    let projectIndex = Array.from(projectElement.parentNode.children).indexOf(projectElement);
-    return projectIndex
-};
-
-let body = document.getElementsByTagName("body")[0];
-
-const sidebar = (() => {
-  const sidebarElement = elementBuilder("div", "sidebar", body);
-  const onTask = elementBuilder("h1", "sidebar-head", sidebarElement);
-  onTask.textContent = "OnTask";
-  const sideButtonDiv = elementBuilder("div", "side-button-container", sidebarElement)
-
-  const newProject = elementBuilder("button", "side-buttons", sideButtonDiv);
-  newProject.textContent = "Start New Project";
-  newProject.id = "new-project"
-
-  let viewElement = elementBuilder("button", "side-buttons", sideButtonDiv)
-  viewElement.id = "view-button"
-  viewElement.textContent = "Change View"
-
-  const notifHead = elementBuilder("h2", "notif-head", sidebarElement);
-  notifHead.textContent = "Notifications";
-
-  const notifElement = elementBuilder("div", "notif-bar", sidebarElement);
-  
-  const todayElement = elementBuilder("p", "today-notif", notifElement);
-  todayElement.textContent = today();
-
-  return { sidebarElement, newProject, viewElement }
-})();
-
-let projectDiv = elementBuilder("div", "project-container", body);
+import { sidebar } from './sidebar'
 
 const projectSize = (parent) => {
   let projectElements = Array.from(parent.children);
@@ -368,7 +329,6 @@ const projectButton = (() => {
 })();
 
 const addProject = () => {
-
   const projectPrompt = (() => {
     let prompt = elementBuilder("div", "project-prompt", body);
 
@@ -407,24 +367,22 @@ const addProject = () => {
 
       exit();
     }
-
     createButton.addEventListener("click", createProject)
   })();
 }
 
 const viewButton = (() => {
-
   function maxView() {
     changeView.maxAll();
-    sidebar.viewElement.addEventListener("click", minView)
+    sidebar.changeView.addEventListener("click", minView)
   }
 
   function minView() {
     changeView.minAll();
-    sidebar.viewElement.addEventListener("click", maxView)
+    sidebar.changeView.addEventListener("click", maxView)
   }
 
-  sidebar.viewElement.addEventListener("click", minView)
+  sidebar.changeView.addEventListener("click", minView)
 })();
 
 const changeView = (() => {
@@ -446,12 +404,10 @@ const changeView = (() => {
       taskButtons(maxProject);
     }
   }
-
   return { minAll, maxAll }
 })();
 
 export {
-  elementBuilder,
   projectHeader,
   projectBuilder, 
   applyButtons,

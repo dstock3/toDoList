@@ -11,8 +11,6 @@ const start = (() => {
   projects.masterList.push(defaultProjectSet);
   applyButtons(projects.masterList);
 
-  
-
   return { projects }
 })();
 

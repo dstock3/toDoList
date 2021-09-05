@@ -58,15 +58,11 @@ function sortByDueDate(tasks) {
 function dateChecker(date) {
     let dueDate = new Date(date);
     if (isPast(dueDate)) {
-        console.log("Please enter a valid due date.")
+        return false
     } else {
-        console.log("valid date")
-        //return dueDate }
+        return true
     }
 }
-
-dateChecker('07/09/2021')
-dateChecker('09/09/2021')
 
 export {
     formatDate,
