@@ -54,12 +54,6 @@ function sortByDueDate(tasks) {
     }
     return sortedTasks
 }
-<<<<<<< HEAD
-/*
-function dateChecker(dueDate) {
-    const today = new Date();
-
-=======
 
 function dateChecker(date) {
     let dueDate = new Date(date);
@@ -68,9 +62,8 @@ function dateChecker(date) {
     } else {
         return true
     }
->>>>>>> ba465155a74d48ba0eb43cc7b42384138b51bef1
 }
-*/
+
 export {
     formatDate,
     today,

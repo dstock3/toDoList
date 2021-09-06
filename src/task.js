@@ -11,11 +11,7 @@ const toDo = (title, project, description, enteredDate, dueDate, priority, notes
 const projectTracker = () => {
     let masterList = []
 
-    const clearList = () => {
-        masterList = [];
-        return masterList
-    }
-    return { masterList, clearList }
+    return { masterList }
 }
 
 export {

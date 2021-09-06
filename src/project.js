@@ -1,10 +1,11 @@
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import { project, toDo } from './task'
-import { projects } from './index'
+import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
 import { formatDate, deadline, sortByDueDate, dateChecker } from './date'
 import { sidebar } from './sidebar'
+
+let allProjects = projectTracker()
 
 const projectSize = (parent) => {
   let projectElements = Array.from(parent.children);
@@ -63,6 +64,7 @@ const projectHeader = (project, parent) => {
 };
 
 const projectBuilder = (project) => {
+  
   let projectElement = projectHeader(project, projectDiv)
 
   for (let i = 0; i < project.taskArray.length; i++) {
@@ -103,7 +105,7 @@ const projectBuilder = (project) => {
           }
         }
       }
-    } 
+    }
   }
   return { projectElement, project, removeTask, sortByPriority, deleteList, minTasks }
 };
@@ -396,7 +398,6 @@ const changeView = (() => {
     for (let i = 0; i < projects.masterList.length; i++) {
       let set = projects.masterList[i]
       let projectElement = set.projectElement
-      console.log(projectElement.parentNode)
       let projectIndex = getPosition(set.projectElement);
       set.deleteList()
       let maxProject = projectBuilder(set.project);
@@ -411,4 +412,5 @@ export {
   projectHeader,
   projectBuilder, 
   applyButtons,
+  allProjects
 }
