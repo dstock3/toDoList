@@ -54,12 +54,12 @@ function sortByDueDate(tasks) {
     }
     return sortedTasks
 }
-
+/*
 function dateChecker(dueDate) {
     const today = new Date();
 
 }
-
+*/
 export {
     formatDate,
     today,
