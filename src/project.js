@@ -4,6 +4,7 @@ import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
 import { formatDate, deadline, sortByDueDate, dateChecker } from './date'
 import { sidebar } from './sidebar'
+import { validate } from 'schema-utils'
 
 let allProjects = projectTracker()
 
@@ -263,6 +264,7 @@ function newInput(parent, promptType, divClass, labelClass, labelContent, inputC
   divInput.setAttribute("placeholder", placeholder)
   divInput.id = inputId
   divInput.setAttribute("name", nameAt);
+  return newDiv
 }
 
 const addTask = (set) => {
@@ -276,11 +278,11 @@ const addTask = (set) => {
     let promptHead = elementBuilder("h3", "prompt-head", prompt)
     promptHead.textContent = "Create a Task";
 
-    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "Enter a Task!", "title", "title");
-    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ",  "desc-input", "Write a brief description.", "description", "desc");
-    newInput(prompt, "new-task", "due-div", "due-label", "Due Date: ", "due-input", "MM/DD/YYYY", "due", "due");
-    newInput(prompt, "new-task", "priority-div", "priority-label", "Priority: ", "priority-input", "Enter a number 1-5", "priority", "priority")
-    newInput(prompt, "new-task", "notes-div", "notes-label", "Notes: ", "notes-input", "Write your notes here.", "notes", "notes")
+    let titleDiv = newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "Enter a Task!", "title", "title");
+    let descDiv = newInput(prompt, "new-task", "description-div", "desc-label", "Description: ",  "desc-input", "Write a brief description.", "description", "desc");
+    let dueDiv = newInput(prompt, "new-task", "due-div", "due-label", "Due Date: ", "due-input", "MM/DD/YYYY", "due", "due");
+    let priorityDiv = newInput(prompt, "new-task", "priority-div", "priority-label", "Priority: ", "priority-input", "Enter a number 1-5", "priority", "priority")
+    let notesDiv = newInput(prompt, "new-task", "notes-div", "notes-label", "Notes: ", "notes-input", "Write your notes here.", "notes", "notes")
 
     let children = body.children;
     addTransparent(children)
@@ -300,6 +302,14 @@ const addTask = (set) => {
 
     cancelButton.addEventListener("click", exit);
 
+  function validation(title, description, enteredDate, priority, notes) {
+    if (title == "") {
+      let errorMessage = elementBuilder("p", "error-message", titleDiv)
+      errorMessage.textContent = "Please provide the name of your task."
+      return false
+    } else {return true }
+  }
+
   function createTask() {
     let title = document.getElementById("title").value;
     let description = document.getElementById("description").value;
@@ -310,19 +320,23 @@ const addTask = (set) => {
     let notes = document.getElementById("notes").value;
     let status = "In Progress"
 
-    let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
-    deadlineNotif(newTask)
-    toDoBuilder(newTask, projectElement);
+    let isValid = validation(title, description, enteredDate, priority, notes)
 
-    let projectIndex = getPosition(projectElement);
-    projectElement.remove();
-    let updatedProject = projectBuilder(project);
-
-    allProjects.masterList.push(updatedProject)
-    projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
-    taskButtons(updatedProject);
-
-    exit();
+    if (isValid) {
+      let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
+      deadlineNotif(newTask)
+      toDoBuilder(newTask, projectElement);
+  
+      let projectIndex = getPosition(projectElement);
+      projectElement.remove();
+      let updatedProject = projectBuilder(project);
+  
+      allProjects.masterList.push(updatedProject)
+      projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
+      taskButtons(updatedProject);
+  
+      exit();
+    }
   }
 
   createButton.addEventListener("click", createTask)
