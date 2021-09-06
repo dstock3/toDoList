@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import './style.css';
 import { project, projectTracker } from './task.js'
-import { projectBuilder, applyButtons } from'./projectElements.js'
+import { projectBuilder, applyButtons } from'./project.js'
 
 
 const start = (() => {
@@ -10,8 +10,6 @@ const start = (() => {
   const defaultProjectSet = projectBuilder(defaultProject);
   projects.masterList.push(defaultProjectSet);
   applyButtons(projects.masterList);
-
-  
 
   return { projects }
 })();
