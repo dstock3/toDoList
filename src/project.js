@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
-import { formatDate, deadline, sortByDueDate, dateChecker, deadlineCheck } from './date'
+import { formatDate, deadline, sortByDueDate, dateChecker } from './date'
 import { sidebar } from './sidebar'
 
 let allProjects = projectTracker()
@@ -25,18 +25,13 @@ const projectSize = (parent) => {
   }
 };
 
-function deadlineNotif(task, string) {
-  if (string !== undefined) {
-    let newNotif = elementBuilder("p", "notif", sidebar.notifications); 
-    newNotif.textContent = `${task.title}: ${string}`; 
-  }
-}
-
-function notifCheck(task) {
+function deadlineNotif(task) {
   let deadlineMessage = deadline(task.enteredDate);
-  let notif = deadlineCheck(deadlineMessage);
-  deadlineNotif(task, notif);
-  return deadlineMessage
+  if ((deadlineMessage.indexOf("days") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
+    let newNotif = elementBuilder("p", "notif", sidebar.notifications); 
+    newNotif.textContent = `${task.title}: ${deadlineMessage}`;
+    return deadlineMessage 
+  }
 }
 
 function toDoBuilder(task, parent) {
@@ -49,18 +44,15 @@ function toDoBuilder(task, parent) {
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
   desc.textContent = task.description;
-  let deadlineMessage = notifCheck(task)
   let dueDate = elementBuilder("p", "due-date", taskDiv);
   dueDate.textContent = task.dueDate;
-  let dueMessage = elementBuilder("p", "due-message", taskDiv);
-  dueMessage.textContent = deadlineMessage;
   let priority = elementBuilder("p", "priority", taskDiv);
   priority.textContent = task.priority;
   let notes = elementBuilder("p", "notes", taskDiv);
   notes.textContent = task.notes;
   let status = elementBuilder("p", "status", taskDiv);
   status.textContent = task.status;
-  elementArray.push(taskDiv, topDiv, removeTask, head, desc, dueDate, dueMessage, priority, notes, status);
+  elementArray.push(taskDiv, topDiv, removeTask, head, desc, dueDate, priority, notes, status);
     
   return elementArray
 }
@@ -311,12 +303,13 @@ const addTask = (set) => {
     let description = document.getElementById("description").value;
     let enteredDate = document.getElementById("due").value;
     let dueDate = formatDate(enteredDate);
-    //checkedDate = dateChecker(dueDate);
+    
     let priority = document.getElementById("priority").value;
     let notes = document.getElementById("notes").value;
     let status = "In Progress"
 
     let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
+    deadlineNotif(newTask)
     toDoBuilder(newTask, projectElement);
 
     let projectIndex = getPosition(projectElement);

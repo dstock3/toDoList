@@ -1,6 +1,4 @@
 import { format, formatDistance, compareAsc, isPast } from 'date-fns'
-import { elementBuilder } from './elements';
-import { sidebar } from './sidebar'
 
 function formatDate(enteredDate) {
     let dueDate = new Date(enteredDate);
@@ -66,20 +64,11 @@ function dateChecker(date) {
     }
 }
 
-
-function deadlineCheck(string) {
-    if ((string.indexOf("days") > 0) || (string.indexOf("hours") > 0)) {
-        return string
-
-    }
-}
-
 export {
     formatDate,
     today,
     deadline,
     sortByDueDate,
     dateChecker,
-    deadlineCheck
 }
 
