@@ -302,25 +302,39 @@ const addTask = (set) => {
 
     cancelButton.addEventListener("click", exit);
 
-  function validation(title, description, enteredDate, priority, notes) {
-    if (title == "") {
-      let errorMessage = elementBuilder("p", "error-message", titleDiv)
-      errorMessage.textContent = "Please provide the name of your task."
-      return false
-    } else {return true }
+  function validation(objArray) {
+    for (let i = 0; i < objArray.length; i++) {
+      console.log(objArray[i])
+      //console.log(objArray[i][Object.keys(objArray[i])])
+      /*
+      if (objArray[i][Object.keys(objArray[i].[0]) == "") {
+        let errorMessage = elementBuilder("p", "error-message", titleDiv)
+        errorMessage.textContent = "Please enter a value for this field."
+        return false
+      } else {return true } */
+
+    }
+
   }
 
   function createTask() {
     let title = document.getElementById("title").value;
+    let titleObj = { title: titleDiv }
     let description = document.getElementById("description").value;
+    let descObj = { description: descDiv }
     let enteredDate = document.getElementById("due").value;
     let dueDate = formatDate(enteredDate);
-    
+    let dateObj = { dueDate: dueDiv }
     let priority = document.getElementById("priority").value;
+    let priorObj = { priority: priorityDiv }
     let notes = document.getElementById("notes").value;
+    let noteObj = { notes: notesDiv }
     let status = "In Progress"
+    let objArray = []
 
-    let isValid = validation(title, description, enteredDate, priority, notes)
+    objArray.push(titleObj, descObj, dateObj, priorObj, noteObj);
+
+    let isValid = validation(objArray)
 
     if (isValid) {
       let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
