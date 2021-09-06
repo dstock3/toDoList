@@ -12,6 +12,8 @@ body {
     position: fixed;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     left: 0;
     width: 15%;
     height: 100%;
@@ -19,18 +21,21 @@ body {
     color: rgb(24, 28, 32);
 }
 
+.head-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .sidebar-head {
-    margin: auto;
     font-style: italic;
 }
 
 .side-button-container {
-    margin: auto;
     display: flex;
     justify-content: space-around;
     width: 85%;
     background-color: rgb(24, 28, 32);
-    color: rgb(130, 193, 248);
     padding: 5%;
     border-radius: 5px;
 }
@@ -39,19 +44,28 @@ body {
     width: 45%;
 }
 
-.notif-head {
-    margin: auto;
-
+.bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 45%;
 }
 
 .notif-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 85%;
-    height: 33%;
-    margin: auto;
-    padding: 5%;
+    height: 80%;
     border-radius: 5px;
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
+}
+
+.notif {
+    width: 95%;
 }
 
 .project-container {
@@ -61,7 +75,6 @@ body {
     justify-content: space-around;
     width: 85%;
     height: 100%;
-
 }
 
 .project {
