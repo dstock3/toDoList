@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
-import { formatDate, deadline, sortByDueDate, dateChecker } from './date'
+import { formatDate, deadline, sortByDueDate, dateChecker, deadlineCheck } from './date'
 import { sidebar } from './sidebar'
 
 let allProjects = projectTracker()
@@ -25,6 +25,20 @@ const projectSize = (parent) => {
   }
 };
 
+function deadlineNotif(task, string) {
+  if (string !== undefined) {
+    let newNotif = elementBuilder("p", "notif", sidebar.notifications); 
+    newNotif.textContent = `${task.title}: ${string}`; 
+  }
+}
+
+function notifCheck(task) {
+  let deadlineMessage = deadline(task.enteredDate);
+  let notif = deadlineCheck(deadlineMessage);
+  deadlineNotif(task, notif);
+  return deadlineMessage
+}
+
 function toDoBuilder(task, parent) {
   let elementArray = [];
   let taskDiv = elementBuilder("div", "task", parent);
@@ -35,11 +49,11 @@ function toDoBuilder(task, parent) {
   head.textContent = task.title;
   let desc = elementBuilder("p", "task-desc", taskDiv);
   desc.textContent = task.description;
-  let deadlineNotif = deadline(task.enteredDate);
+  let deadlineMessage = notifCheck(task)
   let dueDate = elementBuilder("p", "due-date", taskDiv);
   dueDate.textContent = task.dueDate;
   let dueMessage = elementBuilder("p", "due-message", taskDiv);
-  dueMessage.textContent = deadlineNotif;
+  dueMessage.textContent = deadlineMessage;
   let priority = elementBuilder("p", "priority", taskDiv);
   priority.textContent = task.priority;
   let notes = elementBuilder("p", "notes", taskDiv);
@@ -130,11 +144,11 @@ const taskButtons = (set) => {
     let projectIndex = getPosition(set.projectElement);
     set.deleteList()
     
-    //let originalIndex = projects.masterList.indexOf(set)
-    //console.log(originalIndex)
+    let originalIndex = allProjects.masterList.indexOf(set)
+    console.log(originalIndex)
 
     let maxProject = projectBuilder(set.project);
-    projects.masterList.push(maxProject)
+    allProjects.masterList.push(maxProject)
     projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
     taskButtons(maxProject);
   }
@@ -187,7 +201,7 @@ const taskButtons = (set) => {
       function newProjectSet() {
         set.deleteList()
         let sortedProject = projectBuilder(set.project)
-        //projects.masterList.push(sortedProject)
+        allProjects.masterList.push(sortedProject)
         projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
         taskButtons(sortedProject)
       }
@@ -209,7 +223,7 @@ const taskButtons = (set) => {
               set.removeTask(set.project.taskArray[y]);
               set.deleteList()
               let sortedProject = projectBuilder(set.project);
-              //projects.masterList.push(sortedProject)
+              allProjects.masterList.push(sortedProject)
               projectDiv.insertBefore(sortedProject.projectElement, projectDiv.children[projectIndex]);
               taskButtons(sortedProject) 
             } 
@@ -255,7 +269,6 @@ function newInput(parent, promptType, divClass, labelClass, labelContent, inputC
   divInput.setAttribute("placeholder", placeholder)
   divInput.id = inputId
   divInput.setAttribute("name", nameAt);
-   
 }
 
 const addTask = (set) => {
@@ -310,7 +323,7 @@ const addTask = (set) => {
     projectElement.remove();
     let updatedProject = projectBuilder(project);
 
-    //projects.masterList.push(updatedProject)
+    allProjects.masterList.push(updatedProject)
     projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
     taskButtons(updatedProject);
 
@@ -364,8 +377,8 @@ const addProject = () => {
 
       let newProject = project(title, description, [])
       let projectSet = projectBuilder(newProject);
-      projects.masterList.push(projectSet)
       taskButtons(projectSet);
+      allProjects.masterList.push(projectSet)
 
       exit();
     }
@@ -375,11 +388,13 @@ const addProject = () => {
 
 const viewButton = (() => {
   function maxView() {
+    console.log("Max")
     changeView.maxAll();
     sidebar.changeView.addEventListener("click", minView)
   }
 
   function minView() {
+    console.log("Min")
     changeView.minAll();
     sidebar.changeView.addEventListener("click", maxView)
   }
@@ -389,14 +404,14 @@ const viewButton = (() => {
 
 const changeView = (() => {
   const minAll = () => {
-    for (let i = 0; i < projects.masterList.length; i++) {
-      projects.masterList[i].minTasks()
+    for (let i = 0; i < allProjects.masterList.length; i++) {
+      allProjects.masterList[i].minTasks()
     }
   }
 
   const maxAll = () => {
-    for (let i = 0; i < projects.masterList.length; i++) {
-      let set = projects.masterList[i]
+    for (let i = 0; i < allProjects.masterList.length; i++) {
+      let set = allProjects.masterList[i]
       let projectElement = set.projectElement
       let projectIndex = getPosition(set.projectElement);
       set.deleteList()

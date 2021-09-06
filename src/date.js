@@ -1,8 +1,10 @@
 import { format, formatDistance, compareAsc, isPast } from 'date-fns'
+import { elementBuilder } from './elements';
+import { sidebar } from './sidebar'
 
-function formatDate(dueDate) {
-    let newDate = new Date(dueDate);
-    let formattedDate = format(newDate, 'EEEE, MMMM do, yyyy');
+function formatDate(enteredDate) {
+    let dueDate = new Date(enteredDate);
+    let formattedDate = format(dueDate, 'EEEE, MMMM do, yyyy');
     return formattedDate
 }
 
@@ -17,7 +19,7 @@ function deadline(dueDate) {
     const today = new Date();
     let dropDead = new Date(dueDate)
     let daysTill = formatDistance(dropDead, today)
-    let deadMessage = `(${daysTill} until your deadline.)`
+    let deadMessage = `${daysTill} until your deadline.`
     return deadMessage  
 }
 
@@ -64,11 +66,20 @@ function dateChecker(date) {
     }
 }
 
+
+function deadlineCheck(string) {
+    if ((string.indexOf("days") > 0) || (string.indexOf("hours") > 0)) {
+        return string
+
+    }
+}
+
 export {
     formatDate,
     today,
     deadline,
     sortByDueDate,
-    dateChecker
+    dateChecker,
+    deadlineCheck
 }
 
