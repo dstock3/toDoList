@@ -65,7 +65,14 @@ body {
 }
 
 .notif {
-    width: 95%;
+    margin-block-start: .25em;
+    margin-block-end: .25em;
+    font-size: .90em;
+    width: 90%;
+}
+
+#today {
+    margin-block-start: 1em;
 }
 
 .project-container {

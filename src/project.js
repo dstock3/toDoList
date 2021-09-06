@@ -28,9 +28,11 @@ const projectSize = (parent) => {
 function deadlineNotif(task) {
   let deadlineMessage = deadline(task.enteredDate);
   if ((deadlineMessage.indexOf("days") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
-    let newNotif = elementBuilder("p", "notif", sidebar.notifications); 
-    newNotif.textContent = `${task.title}: ${deadlineMessage}`;
-    return deadlineMessage 
+    if (sidebar.notifications.children.length < 7) {
+      let newNotif = elementBuilder("p", "notif", sidebar.notifications); 
+      newNotif.textContent = `${task.title}: ${deadlineMessage}`;
+      return deadlineMessage 
+    } 
   }
 }
 
