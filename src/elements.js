@@ -6,7 +6,8 @@ function elementBuilder(element, classLabel, parentName) {
 }
 
 const getPosition = (projectElement) => {
-    let projectIndex = Array.from(projectElement.parentNode.children).indexOf(projectElement);
+    let projectElementArray = Array.from(projectElement.parentNode.children)
+    let projectIndex = projectElementArray.indexOf(projectElement);
     return projectIndex
 };
 

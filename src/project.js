@@ -139,10 +139,7 @@ const taskButtons = (set) => {
   const maximize = () => {
     let projectIndex = getPosition(set.projectElement);
     set.deleteList()
-    
     let originalIndex = allProjects.masterList.indexOf(set)
-    console.log(originalIndex)
-
     let maxProject = projectBuilder(set.project);
     allProjects.masterList.push(maxProject)
     projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
@@ -406,13 +403,12 @@ const addProject = () => {
 
 const viewButton = (() => {
   function maxView() {
-    console.log("Max")
+    console.log(projectDiv.children)
     changeView.maxAll();
     sidebar.changeView.addEventListener("click", minView)
   }
 
   function minView() {
-    console.log("Min")
     changeView.minAll();
     sidebar.changeView.addEventListener("click", maxView)
   }
@@ -429,12 +425,14 @@ const changeView = (() => {
 
   const maxAll = () => {
     for (let i = 0; i < allProjects.masterList.length; i++) {
-      let set = allProjects.masterList[i]
-      let projectElement = set.projectElement
-      let projectIndex = getPosition(set.projectElement);
+      let set = allProjects.masterList[i];
+      
+      //let projectIndex
+      set.projectElement.remove()
       set.deleteList()
       let maxProject = projectBuilder(set.project);
-      projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
+
+      //projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
       taskButtons(maxProject);
     }
   }
