@@ -2,9 +2,9 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
-import { formatDate, deadline, sortByDueDate, dateChecker } from './date'
+import { formatDate, deadline, sortByDueDate } from './date'
 import { sidebar } from './sidebar'
-import { validate } from 'schema-utils'
+import { validation } from './validation'
 
 let allProjects = projectTracker()
 
@@ -301,58 +301,8 @@ const addTask = (set) => {
     }
 
     cancelButton.addEventListener("click", exit);
-
-  function priorityCheck(value) {
-    if (value <= 5) {
-      return true
-    } else { return false }
-  }
-
-  function priorErrorCheck(parent) {
-    let messageElement = (Array.from(parent.children))[2];
-
-    if (messageElement !== undefined) {
-      messageElement.remove()
-    } 
-  }
-
-  function validation(obj) {
-    const check = []
-    for (let prop in obj) {
-      let value = obj[prop][0];
-      let element = obj[prop][1];
-      priorErrorCheck(element)
-      if (value == "") {
-        let errorMessage = elementBuilder("p", "invalid", element);
-        errorMessage.classList.add("blank")
-        errorMessage.textContent = "Please enter a value for this field."
-        check.push(false)
-      }
-    }
-    let dateElement = obj.datePair[1]
-    if (!(dateChecker(obj.datePair[0]))) {
-      priorErrorCheck(dateElement)
-      let errorMessage = elementBuilder("p", "invalid", dateElement);
-      errorMessage.classList.add("date")
-      errorMessage.textContent = "Please enter a valid date."
-      check.push(false)
-    }
-
-    let priorityElement = obj.priorityPair[1]
-    if (!(priorityCheck(obj.priorityPair[0]))) {
-      priorErrorCheck(priorityElement)
-      let errorMessage = elementBuilder("p", "invalid", priorityElement);
-      errorMessage.classList.add("priority-num");
-      errorMessage.textContent = "Please enter a number 1-5."
-      check.push(false)
-    }
-
-    if (check.length > 0) {
-      return false
-      } else { return true }
-  }
-  
-  function createTask() {
+    
+    function createTask() {
     let title = document.getElementById("title").value;
     let titlePair = [title, titleDiv]
     let description = document.getElementById("description").value;
