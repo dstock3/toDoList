@@ -310,7 +310,6 @@ const addTask = (set) => {
 
   function priorErrorCheck(id) {
     let priorElement = document.getElementById(id);
-    console.log(priorElement)
 
     if (priorElement !== null) {
       priorElement.remove()
@@ -326,7 +325,7 @@ const addTask = (set) => {
       if (value == "") {
         priorErrorCheck("blank")
         let errorMessage = elementBuilder("p", "invalid", element);
-        errorMessage.id = "blank"
+        errorMessage.id = "blank" //need to fix this since blank can come up more than once
         errorMessage.textContent = "Please enter a value for this field."
         check.push(false)
       }
