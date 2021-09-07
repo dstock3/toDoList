@@ -92,8 +92,9 @@ body {
     color: rgb(24, 28, 32);
     width: 20%;
     height: 100%;
-    padding: .5%;
-    border-radius: 5px;  
+    padding: .75%;
+    border-radius: 5px;
+    margin: 20px 0;
 }
 
 .one-project-page {

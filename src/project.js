@@ -78,7 +78,6 @@ const projectBuilder = (project) => {
   let projectElement = projectHeader(project, projectDiv)
 
   for (let i = 0; i < project.taskArray.length; i++) {
-    
     let task = project.taskArray[i];
     toDoBuilder(task, projectElement);
   }
