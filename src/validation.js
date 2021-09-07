@@ -1,21 +1,21 @@
 import { dateChecker } from './date'
 import { elementBuilder } from './elements'
 
+const priorErrorCheck = (parent) => {
+    let messageElement = (Array.from(parent.children))[2];
+
+    if (messageElement !== undefined) {
+      messageElement.remove()
+    } 
+}
+
+const priorityCheck = (value) => {
+    if (value <= 5) {
+      return true
+    } else { return false }
+}
+
 const validation = (obj) => {
-    const priorErrorCheck = (parent) => {
-        let messageElement = (Array.from(parent.children))[2];
-    
-        if (messageElement !== undefined) {
-          messageElement.remove()
-        } 
-    }
-
-    const priorityCheck = (value) => {
-        if (value <= 5) {
-          return true
-        } else { return false }
-    }
-
     const check = []
     for (let prop in obj) {
       let value = obj[prop][0];
@@ -51,6 +51,26 @@ const validation = (obj) => {
       } else { return true }
 }
 
+const validateProj = (obj) => {
+    const check = []
+    for (let prop in obj) {
+        let value = obj[prop][0];
+        let element = obj[prop][1];
+        priorErrorCheck(element)
+        if (value == "") {
+          let errorMessage = elementBuilder("p", "invalid", element);
+          errorMessage.classList.add("blank")
+          errorMessage.textContent = "Please enter a value for this field."
+          check.push(false)
+        }
+    }
+
+    if (check.length > 0) {
+        return false
+    } else { return true }
+}
+
 export {
-    validation
+    validation,
+    validateProj
 }

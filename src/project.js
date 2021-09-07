@@ -4,7 +4,7 @@ import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
 import { formatDate, deadline, sortByDueDate } from './date'
 import { sidebar } from './sidebar'
-import { validation } from './validation'
+import { validation, validateProj } from './validation'
 
 let allProjects = projectTracker()
 
@@ -303,19 +303,19 @@ const addTask = (set) => {
     cancelButton.addEventListener("click", exit);
     
     function createTask() {
-    let title = document.getElementById("title").value;
-    let titlePair = [title, titleDiv]
-    let description = document.getElementById("description").value;
-    let descPair = [description, descDiv]
-    let enteredDate = document.getElementById("due").value;
-    let datePair = [enteredDate, dueDiv]
-    let dueDate = formatDate(enteredDate);
-    let priority = document.getElementById("priority").value;
-    let priorityPair = [priority, priorityDiv]
-    let notes = document.getElementById("notes").value;
-    let notePair = [notes, notesDiv]
-    let status = "In Progress"
-    let obj = {titlePair, descPair, datePair, priorityPair, notePair}
+      let title = document.getElementById("title").value;
+      let titlePair = [title, titleDiv]
+      let description = document.getElementById("description").value;
+      let descPair = [description, descDiv]
+      let enteredDate = document.getElementById("due").value;
+      let datePair = [enteredDate, dueDiv]
+      let dueDate = formatDate(enteredDate);
+      let priority = document.getElementById("priority").value;
+      let priorityPair = [priority, priorityDiv]
+      let notes = document.getElementById("notes").value;
+      let notePair = [notes, notesDiv]
+      let status = "In Progress"
+      let obj = {titlePair, descPair, datePair, priorityPair, notePair}
 
     let isValid = validation(obj)
 
@@ -356,8 +356,8 @@ const addProject = () => {
     let promptHead = elementBuilder("h3", "prompt-head", prompt)
     promptHead.textContent = "Start a New Project";
 
-    newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "Enter a title for your new project.", "project-title", "title");
-    newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "Include a brief description.", "project-description", "desc");
+    let titleDiv = newInput(prompt, "new-task", "title-div", "name-label", "Task: ", "title-input", "Enter a title for your new project.", "project-title", "title");
+    let descDiv = newInput(prompt, "new-task", "description-div", "desc-label", "Description: ", "desc-input", "Include a brief description.", "project-description", "desc");
 
     let children = body.children;
     addTransparent(children)
@@ -379,14 +379,21 @@ const addProject = () => {
 
     function createProject() {
       let title = document.getElementById("project-title").value;
+      let titlePair = [title, titleDiv]
       let description = document.getElementById("project-description").value;
+      let descPair = [description, descDiv]
+      let obj = { titlePair, descPair }
 
-      let newProject = project(title, description, [])
-      let projectSet = projectBuilder(newProject);
-      taskButtons(projectSet);
-      allProjects.masterList.push(projectSet)
+      let isValid = validateProj(obj)
 
-      exit();
+      if (isValid) {
+        let newProject = project(title, description, [])
+        let projectSet = projectBuilder(newProject);
+        taskButtons(projectSet);
+        allProjects.masterList.push(projectSet)
+  
+        exit();
+      } else { createButton.addEventListener("click", createProject) }
     }
     createButton.addEventListener("click", createProject)
   })();
