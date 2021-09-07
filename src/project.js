@@ -308,6 +308,15 @@ const addTask = (set) => {
     } else { return false }
   }
 
+  function priorErrorCheck(id) {
+    let priorElement = document.getElementById(id);
+    console.log(priorElement)
+
+    if (priorElement !== null) {
+      priorElement.remove()
+    }
+  }
+
   function validation(obj) {
     const check = []
     for (let prop in obj) {
@@ -315,21 +324,27 @@ const addTask = (set) => {
       let element = obj[prop][1];
 
       if (value == "") {
+        priorErrorCheck("blank")
         let errorMessage = elementBuilder("p", "invalid", element);
+        errorMessage.id = "blank"
         errorMessage.textContent = "Please enter a value for this field."
         check.push(false)
       }
     }
     if (!(dateChecker(obj.datePair[0]))) {
+      priorErrorCheck("date")
       let element = obj.datePair[1]
       let errorMessage = elementBuilder("p", "invalid", element);
+      errorMessage.id = "date"
       errorMessage.textContent = "Please enter a valid date."
       check.push(false)
     }
 
     if (!(priorityCheck(obj.priorityPair[0]))) {
+      priorErrorCheck("priority-num")
       let element = obj.priorityPair[1]
       let errorMessage = elementBuilder("p", "invalid", element);
+      errorMessage.id = "priority-num"
       errorMessage.textContent = "Please enter a number 1-5."
       check.push(false)
     }

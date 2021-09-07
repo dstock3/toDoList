@@ -190,6 +190,9 @@ button {
 .invalid {
     font-size: .85em;
     font-weight: lighter;
+    margin-block-start: .25em;
+    margin-block-end: .25em;
+    color: rgb(251, 0, 0);
 }
 
 .project-prompt {
