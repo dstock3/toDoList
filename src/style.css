@@ -187,6 +187,11 @@ button {
     font-weight: bold;
 }
 
+.invalid {
+    font-size: .85em;
+    font-weight: lighter;
+}
+
 .project-prompt {
     display: flex;
     flex-flow: column;

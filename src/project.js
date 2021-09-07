@@ -308,21 +308,26 @@ const addTask = (set) => {
       let element = obj[prop][1];
       
       if (value == "") {
-        let errorMessage = elementBuilder("p", "error-message", element)
+        let errorMessage = elementBuilder("p", "invalid", element);
         errorMessage.textContent = "Please enter a value for this field."
+        return false
+      } else if (!(dateChecker(obj.datePair[0]))) {
+        let element = obj.datePair[1]
+        let errorMessage = elementBuilder("p", "invalid", element);
+        errorMessage.textContent = "Please enter a valid date."
         return false
       }
     }
   }
-  
+    
   function createTask() {
     let title = document.getElementById("title").value;
     let titlePair = [title, titleDiv]
     let description = document.getElementById("description").value;
     let descPair = [description, descDiv]
     let enteredDate = document.getElementById("due").value;
+    let datePair = [enteredDate, dueDiv]
     let dueDate = formatDate(enteredDate);
-    let datePair = [dueDate, dueDiv]
     let priority = document.getElementById("priority").value;
     let priorityPair = [priority, priorityDiv]
     let notes = document.getElementById("notes").value;
@@ -346,7 +351,7 @@ const addTask = (set) => {
       taskButtons(updatedProject);
   
       exit();
-    }
+    } else { createButton.addEventListener("click", createTask) }
   }
 
   createButton.addEventListener("click", createTask)
