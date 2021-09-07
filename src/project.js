@@ -308,12 +308,12 @@ const addTask = (set) => {
     } else { return false }
   }
 
-  function priorErrorCheck(id) {
-    let priorElement = document.getElementById(id);
+  function priorErrorCheck(parent) {
+    let messageElement = (Array.from(parent.children))[2];
 
-    if (priorElement !== null) {
-      priorElement.remove()
-    }
+    if (messageElement !== undefined) {
+      messageElement.remove()
+    } 
   }
 
   function validation(obj) {
@@ -321,29 +321,28 @@ const addTask = (set) => {
     for (let prop in obj) {
       let value = obj[prop][0];
       let element = obj[prop][1];
-
+      priorErrorCheck(element)
       if (value == "") {
-        priorErrorCheck("blank")
         let errorMessage = elementBuilder("p", "invalid", element);
-        errorMessage.id = "blank" //need to fix this since blank can come up more than once
+        errorMessage.classList.add("blank")
         errorMessage.textContent = "Please enter a value for this field."
         check.push(false)
       }
     }
+    let dateElement = obj.datePair[1]
     if (!(dateChecker(obj.datePair[0]))) {
-      priorErrorCheck("date")
-      let element = obj.datePair[1]
-      let errorMessage = elementBuilder("p", "invalid", element);
-      errorMessage.id = "date"
+      priorErrorCheck(dateElement)
+      let errorMessage = elementBuilder("p", "invalid", dateElement);
+      errorMessage.classList.add("date")
       errorMessage.textContent = "Please enter a valid date."
       check.push(false)
     }
 
+    let priorityElement = obj.priorityPair[1]
     if (!(priorityCheck(obj.priorityPair[0]))) {
-      priorErrorCheck("priority-num")
-      let element = obj.priorityPair[1]
-      let errorMessage = elementBuilder("p", "invalid", element);
-      errorMessage.id = "priority-num"
+      priorErrorCheck(priorityElement)
+      let errorMessage = elementBuilder("p", "invalid", priorityElement);
+      errorMessage.classList.add("priority-num");
       errorMessage.textContent = "Please enter a number 1-5."
       check.push(false)
     }
