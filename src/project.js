@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
-import { formatDate, deadline, sortByDueDate } from './date'
+import { deadline, sortByDueDate } from './date'
 import { sidebar } from './sidebar'
 import { validation, validateProj } from './validation'
 
@@ -28,7 +28,8 @@ const projectSize = (parent) => {
 
 function deadlineNotif(task) {
   let deadlineMessage = deadline(task.enteredDate);
-  if ((deadlineMessage.indexOf("days") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
+  console.log(deadlineMessage)
+  if ((deadlineMessage.indexOf("day") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
     if (sidebar.notifications.children.length < 7) {
       let newNotif = elementBuilder("p", "notif", sidebar.notifications); 
       newNotif.textContent = `${task.title}: ${deadlineMessage}`;
@@ -201,8 +202,8 @@ const taskButtons = (set) => {
         taskButtons(sortedProject)
       }
       sort.addEventListener("click", newProjectSet)
-  }
-})();
+    }
+  })();
   
   const removeTaskButton = (() => {
     let projectElements = Array.from(set.projectElement.children);
@@ -228,11 +229,11 @@ const taskButtons = (set) => {
       } 
     }
   })();
-  
+
   const deleteButton = (() => {
     let del = elementBuilder("button", "delete-button", buttonDiv);
     del.textContent = "Remove Project"
-      
+        
     del.addEventListener("click", set.deleteList)
   })();
 };
@@ -316,33 +317,32 @@ const addTask = (set) => {
       let status = "In Progress"
       let obj = {titlePair, descPair, datePair, priorityPair, notePair}
 
-    let validArray = validation(obj)
-    let isValid = validArray[0]
+      let validArray = validation(obj)
+      let isValid = validArray[0]
     
-    if (isValid) {
-      let dueDate = validArray[1];
-      let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
-      deadlineNotif(newTask)
-      toDoBuilder(newTask, projectElement);
-  
-      let projectIndex = getPosition(projectElement);
-      projectElement.remove();
-      let updatedProject = projectBuilder(project);
-  
-      allProjects.masterList.push(updatedProject)
-      projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
-      taskButtons(updatedProject);
-  
-      exit();
-    } else { createButton.addEventListener("click", createTask) }
-  }
+      if (isValid) {
+        let dueDate = validArray[1];
+        let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
+        deadlineNotif(newTask)
+        toDoBuilder(newTask, projectElement);
+    
+        let projectIndex = getPosition(projectElement);
+        projectElement.remove();
+        let updatedProject = projectBuilder(project);
+    
+        allProjects.masterList.push(updatedProject)
+        projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
+        taskButtons(updatedProject);
+    
+        exit();
+      } else { createButton.addEventListener("click", createTask) }
+    }
 
   createButton.addEventListener("click", createTask)
   })();
 };
 
 const projectButton = (() => {
-
   function addNewProject() {
     addProject();
   }

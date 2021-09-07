@@ -30,6 +30,7 @@ const validation = (obj) => {
     }
     let dateElement = obj.datePair[1]
     let dueDate = formatDate(obj.datePair[0])
+    console.log(dueDate)
     if (!(dueDate)) {
       priorErrorCheck(dateElement)
       let errorMessage = elementBuilder("p", "invalid", dateElement);
