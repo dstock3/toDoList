@@ -302,24 +302,43 @@ const addTask = (set) => {
 
     cancelButton.addEventListener("click", exit);
 
+  function priorityCheck(value) {
+    if (value <= 5) {
+      return true
+    } else { return false }
+  }
+
   function validation(obj) {
+    const check = []
     for (let prop in obj) {
       let value = obj[prop][0];
       let element = obj[prop][1];
-      
+
       if (value == "") {
         let errorMessage = elementBuilder("p", "invalid", element);
         errorMessage.textContent = "Please enter a value for this field."
-        return false
-      } else if (!(dateChecker(obj.datePair[0]))) {
-        let element = obj.datePair[1]
-        let errorMessage = elementBuilder("p", "invalid", element);
-        errorMessage.textContent = "Please enter a valid date."
-        return false
+        check.push(false)
       }
     }
+    if (!(dateChecker(obj.datePair[0]))) {
+      let element = obj.datePair[1]
+      let errorMessage = elementBuilder("p", "invalid", element);
+      errorMessage.textContent = "Please enter a valid date."
+      check.push(false)
+    }
+
+    if (!(priorityCheck(obj.priorityPair[0]))) {
+      let element = obj.priorityPair[1]
+      let errorMessage = elementBuilder("p", "invalid", element);
+      errorMessage.textContent = "Please enter a number 1-5."
+      check.push(false)
+    }
+
+    if (check.length > 0) {
+      return false
+      } else { return true }
   }
-    
+  
   function createTask() {
     let title = document.getElementById("title").value;
     let titlePair = [title, titleDiv]
