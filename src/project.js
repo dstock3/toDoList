@@ -9,24 +9,6 @@ import { store } from './storage'
 
 let allProjects = projectTracker()
 
-const projectSize = (parent) => {
-  let projectElements = Array.from(parent.children);
-  if (projectElements.length === 1) {
-    let projectElement = parent.children[0];
-    projectElement.classList.add("one-project-page");
-  } else if (projectElements.length === 2) {
-    for (let i = 0; i < parent.children.length; i++) {
-      let projectElement = parent.children[i];
-      projectElement.classList.add("two-project-page");
-    }
-  } else if (projectElements.length === 3) {
-    for (let i = 0; i < parent.children.length; i++) {
-      let projectElement = parent.children[i];
-      projectElement.classList.add("three-project-page");
-    }
-  }
-};
-
 function deadlineNotif(task) {
   let deadlineMessage = deadline(task.enteredDate);
   if ((deadlineMessage.indexOf("day") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
