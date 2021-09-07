@@ -25,6 +25,7 @@ const sidebar = (() => {
     const currentDate = elementBuilder("p", "notif", notifications);
     currentDate.id = "today"
     currentDate.textContent = today();
+    
     return { element, newProject, changeView, notifHead, notifications, today }
 })();
 

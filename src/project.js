@@ -28,7 +28,6 @@ const projectSize = (parent) => {
 
 function deadlineNotif(task) {
   let deadlineMessage = deadline(task.enteredDate);
-  console.log(deadlineMessage)
   if ((deadlineMessage.indexOf("day") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
     if (sidebar.notifications.children.length < 7) {
       let newNotif = elementBuilder("p", "notif", sidebar.notifications); 
@@ -323,6 +322,8 @@ const addTask = (set) => {
       if (isValid) {
         let dueDate = validArray[1];
         let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
+        let taskObj = JSON.stringify({ title, project, description, enteredDate, dueDate, priority, notes, status })
+        project.taskArray.unshift(newTask);
         deadlineNotif(newTask)
         toDoBuilder(newTask, projectElement);
     

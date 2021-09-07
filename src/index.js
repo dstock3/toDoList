@@ -12,4 +12,8 @@ const start = (() => {
   return { allProjects }
 })();
 
+export {
+  allProjects
+}
+
 
