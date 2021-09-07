@@ -1,9 +1,21 @@
 import { format, formatDistance, compareAsc, isPast } from 'date-fns'
 
+function dateChecker(date) {
+    let dueDate = new Date(date);
+    if (isPast(dueDate)) {
+        return false
+    } else {
+        return true
+    }
+}
+
 function formatDate(enteredDate) {
     let dueDate = new Date(enteredDate);
-    let formattedDate = format(dueDate, 'EEEE, MMMM do, yyyy');
-    return formattedDate
+    let isValid = dateChecker(dueDate);
+    if (isValid) {
+        let formattedDate = format(dueDate, 'EEEE, MMMM do, yyyy');
+        return formattedDate
+    } else { return false }
 }
 
 function today() {
@@ -55,20 +67,11 @@ function sortByDueDate(tasks) {
     return sortedTasks
 }
 
-function dateChecker(date) {
-    let dueDate = new Date(date);
-    if (isPast(dueDate)) {
-        return false
-    } else {
-        return true
-    }
-}
-
 export {
+    dateChecker,
     formatDate,
     today,
     deadline,
     sortByDueDate,
-    dateChecker,
 }
 

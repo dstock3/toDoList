@@ -309,7 +309,6 @@ const addTask = (set) => {
       let descPair = [description, descDiv]
       let enteredDate = document.getElementById("due").value;
       let datePair = [enteredDate, dueDiv]
-      let dueDate = formatDate(enteredDate);
       let priority = document.getElementById("priority").value;
       let priorityPair = [priority, priorityDiv]
       let notes = document.getElementById("notes").value;
@@ -317,9 +316,11 @@ const addTask = (set) => {
       let status = "In Progress"
       let obj = {titlePair, descPair, datePair, priorityPair, notePair}
 
-    let isValid = validation(obj)
-
+    let validArray = validation(obj)
+    let isValid = validArray[0]
+    
     if (isValid) {
+      let dueDate = validArray[1];
       let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
       deadlineNotif(newTask)
       toDoBuilder(newTask, projectElement);

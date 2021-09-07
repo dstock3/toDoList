@@ -1,4 +1,4 @@
-import { dateChecker } from './date'
+import { formatDate } from './date'
 import { elementBuilder } from './elements'
 
 const priorErrorCheck = (parent) => {
@@ -29,7 +29,8 @@ const validation = (obj) => {
       }
     }
     let dateElement = obj.datePair[1]
-    if (!(dateChecker(obj.datePair[0]))) {
+    let dueDate = formatDate(obj.datePair[0])
+    if (!(dueDate)) {
       priorErrorCheck(dateElement)
       let errorMessage = elementBuilder("p", "invalid", dateElement);
       errorMessage.classList.add("date")
@@ -48,7 +49,7 @@ const validation = (obj) => {
 
     if (check.length > 0) {
       return false
-      } else { return true }
+      } else { return [true, dueDate] }
 }
 
 const validateProj = (obj) => {
