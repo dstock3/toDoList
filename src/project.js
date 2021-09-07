@@ -5,6 +5,7 @@ import { elementBuilder, getPosition, body, projectDiv } from './elements'
 import { deadline, sortByDueDate } from './date'
 import { sidebar } from './sidebar'
 import { validation, validateProj } from './validation'
+import { store } from './storage'
 
 let allProjects = projectTracker()
 
@@ -322,8 +323,10 @@ const addTask = (set) => {
       if (isValid) {
         let dueDate = validArray[1];
         let newTask = toDo(title, project, description, enteredDate, dueDate, priority, notes, status);
-        let taskObj = JSON.stringify({ title, project, description, enteredDate, dueDate, priority, notes, status })
+        
         project.taskArray.unshift(newTask);
+        store(newTask)
+        console.log(localStorage)
         deadlineNotif(newTask)
         toDoBuilder(newTask, projectElement);
     

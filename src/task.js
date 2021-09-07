@@ -3,8 +3,7 @@ const project = (title, description, taskArray) => {
 };
 
 const toDo = (title, project, description, enteredDate, dueDate, priority, notes, status) => {
-    //let task = { title, project, description, enteredDate, dueDate,  priority, notes, status }
-    //project.taskArray.unshift(task);
+
     return { title, project, description, enteredDate, dueDate,  priority, notes, status }
 };
 
