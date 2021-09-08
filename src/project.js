@@ -87,7 +87,17 @@ const projectBuilder = (project) => {
       }
     }
   }
-  return { projectElement, project, removeTask, sortByPriority, deleteList, minTasks }
+
+  const maxTasks = () => {
+    let projectChildren = Array.from(projectElement.children);
+    for (let i = 0; i < projectChildren.length; i++) {
+      let taskElement = projectChildren[i];
+      taskElement.classList.remove("min");
+      taskElement.remove();
+      toDoBuilder(project.taskArray[i], projectElement)
+    }
+  }
+  return { projectElement, project, removeTask, sortByPriority, deleteList, minTasks, maxTasks }
 };
 
 const taskButtons = (set) => {
@@ -106,16 +116,6 @@ const taskButtons = (set) => {
     addButton.addEventListener("click", addNewTask)
   })()
 
-  const maximize = () => {
-    let projectIndex = getPosition(set.projectElement);
-    set.deleteList()
-    let originalIndex = allProjects.masterList.indexOf(set)
-    let maxProject = projectBuilder(set.project);
-    allProjects.masterList.push(maxProject)
-    projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
-    taskButtons(maxProject);
-  }
-
   const minimize = (() => {
     if (set.project.taskArray.length > 0) {
       let minButton = elementBuilder("button", "top-buttons", topButtonDiv);
@@ -125,7 +125,16 @@ const taskButtons = (set) => {
       function minProject() {
         minButton.textContent = "□"
         set.minTasks()
-        minButton.addEventListener("click", maximize);
+
+        minButton.addEventListener("click", function() {
+          let projectIndex = getPosition(set.projectElement);
+          set.deleteList()
+          let originalIndex = allProjects.masterList.indexOf(set)
+          let maxProject = projectBuilder(set.project);
+          allProjects.masterList.push(maxProject)
+          projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
+          taskButtons(maxProject); 
+        });
       }
 
       minButton.addEventListener("click", minProject);
@@ -397,7 +406,8 @@ const changeView = (() => {
 
   const maxAll = () => {
     for (let i = 0; i < allProjects.masterList.length; i++) {
-      let set = allProjects.masterList[i];
+      let set = allProjects.masterList[i].maxTasks()
+      /*
       
       //let projectIndex
       set.projectElement.remove()
@@ -405,7 +415,7 @@ const changeView = (() => {
       let maxProject = projectBuilder(set.project);
 
       //projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
-      taskButtons(maxProject);
+      taskButtons(maxProject); */
     }
   }
   return { minAll, maxAll }

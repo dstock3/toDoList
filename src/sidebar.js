@@ -61,7 +61,7 @@ function deadlineNotif(task) {
         return deadlineMessage 
       } 
     }
-  }
+}
 
 export {
     sidebar, 
