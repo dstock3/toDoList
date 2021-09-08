@@ -24,8 +24,8 @@ const sidebar = (() => {
     const showNotifs = elementBuilder("div", "notif-button", notifHeadContainer);
     showNotifs.textContent = "N"
     
-    const notifHead = elementBuilder("h2", "notif-head", notifHeadContainer);
-    notifHead.textContent = "Notifications";
+    //const notifHead = elementBuilder("h2", "notif-head", notifHeadContainer);
+    //notifHead.textContent = "Notifications";
     const notifBar = elementBuilder("div", "notif-bar", barContainer);
     
     function hideNotif() {
@@ -40,7 +40,7 @@ const sidebar = (() => {
     currentDate.textContent = today();
     notifButton()
     
-    return { element, newProject, changeView, notifHead, notifBar, notifContainer, today }
+    return { element, newProject, changeView, notifBar, notifContainer, today }
 })();
 
 
