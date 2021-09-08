@@ -20,6 +20,20 @@ function deadlineNotif(task) {
   }
 }
 
+function notifButton() {
+  let notifs = document.getElementsByClassName("notif");
+  for (let i = 0; i < notifs.length; i++) {
+    let notif = notifs[i];
+    let button = elementBuilder("button", "remove-notif", notif.parentNode)
+    button.textContent = "x"
+    function removeNotif() {
+      notif.remove()
+      button.remove()
+    }
+    button.addEventListener("click", removeNotif);
+  }
+}
+
 function toDoBuilder(task, parent) {
   let elementArray = [];
   let taskDiv = elementBuilder("div", "task", parent);
@@ -306,6 +320,7 @@ const addTask = (set) => {
         store(newTask)
         console.log(localStorage)
         deadlineNotif(newTask)
+        notifButton()
         toDoBuilder(newTask, projectElement);
     
         let projectIndex = getPosition(projectElement);
