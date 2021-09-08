@@ -173,6 +173,10 @@ button {
     font-size: 1.2em; 
 }
 
+.min-button {
+    min-width: 25px;
+}
+
 .remove-task {
     order: 1;
     position: relative;
