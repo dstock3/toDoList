@@ -303,7 +303,6 @@ const addTask = (set) => {
         
         project.taskArray.unshift(newTask);
         store(newTask)
-        console.log(localStorage)
         deadlineNotif(newTask)
         notifButton()
         toDoBuilder(newTask, projectElement);
@@ -315,7 +314,7 @@ const addTask = (set) => {
         allProjects.masterList.push(updatedProject)
         projectDiv.insertBefore(updatedProject.projectElement, projectDiv.children[projectIndex]);
         taskButtons(updatedProject);
-    
+
         exit();
       } else { createButton.addEventListener("click", createTask) }
     }
@@ -382,43 +381,29 @@ const addProject = () => {
   })();
 }
 
-const viewButton = (() => {
-  function maxView() {
-    console.log(projectDiv.children)
-    changeView.maxAll();
-    sidebar.changeView.addEventListener("click", minView)
-  }
-
-  function minView() {
-    changeView.minAll();
-    sidebar.changeView.addEventListener("click", maxView)
-  }
-
-  sidebar.changeView.addEventListener("click", minView)
-})();
-
 const changeView = (() => {
-  const minAll = () => {
+  let viewElement = sidebar.changeView
+
+  function minAll() {
     for (let i = 0; i < allProjects.masterList.length; i++) {
-      allProjects.masterList[i].minTasks()
+      console.log(allProjects.masterList)
+      let set = allProjects.masterList[i];
+      if (set.project.taskArray.length > 0) {
+        set.minTasks()
+
+        viewElement.addEventListener("click", function() {
+          let projectIndex = getPosition(set.projectElement);
+          set.deleteList()
+          let originalIndex = allProjects.masterList.indexOf(set)
+          let maxProject = projectBuilder(set.project);
+          allProjects.masterList.push(maxProject)
+          projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
+          taskButtons(maxProject); 
+        });
+      }
     }
   }
-
-  const maxAll = () => {
-    for (let i = 0; i < allProjects.masterList.length; i++) {
-      let set = allProjects.masterList[i].maxTasks()
-      /*
-      
-      //let projectIndex
-      set.projectElement.remove()
-      set.deleteList()
-      let maxProject = projectBuilder(set.project);
-
-      //projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
-      taskButtons(maxProject); */
-    }
-  }
-  return { minAll, maxAll }
+  viewElement.addEventListener("click", minAll);
 })();
 
 export {
