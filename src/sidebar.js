@@ -38,8 +38,8 @@ function notifButton() {
         let notif = notifs[i];
         if (notif.parentNode.children.length === 1) {
             
-            let button = elementBuilder("button", "remove-notif", notif.parentNode)
-            button.textContent = "x"
+            let button = elementBuilder("div", "remove-notif", notif.parentNode)
+            button.textContent = "X"
             function removeNotif() {
                 notif.remove()
                 button.remove()
