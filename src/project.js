@@ -3,7 +3,7 @@
 import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
 import { deadline, sortByDueDate } from './date'
-import { sidebar } from './sidebar'
+import { sidebar, notifButton } from './sidebar'
 import { validation, validateProj } from './validation'
 import { store } from './storage'
 
@@ -12,25 +12,13 @@ let allProjects = projectTracker()
 function deadlineNotif(task) {
   let deadlineMessage = deadline(task.enteredDate);
   if ((deadlineMessage.indexOf("day") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
-    if (sidebar.notifications.children.length < 7) {
-      let newNotif = elementBuilder("p", "notif", sidebar.notifications); 
+    if (sidebar.notifBar.children.length < 7) {
+      let newContainer = elementBuilder("div", "notif-container", sidebar.notifBar)
+      let newNotif = elementBuilder("p", "notif", newContainer);
+      newNotif.id = "deadline" 
       newNotif.textContent = `${task.title}: ${deadlineMessage}`;
       return deadlineMessage 
     } 
-  }
-}
-
-function notifButton() {
-  let notifs = document.getElementsByClassName("notif");
-  for (let i = 0; i < notifs.length; i++) {
-    let notif = notifs[i];
-    let button = elementBuilder("button", "remove-notif", notif.parentNode)
-    button.textContent = "x"
-    function removeNotif() {
-      notif.remove()
-      button.remove()
-    }
-    button.addEventListener("click", removeNotif);
   }
 }
 
