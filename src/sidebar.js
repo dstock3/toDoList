@@ -77,5 +77,6 @@ function notifButton() {
 
 export {
     sidebar, 
-    deadlineNotif
+    deadlineNotif,
+    notifButton
 }
