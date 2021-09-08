@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
 import { elementBuilder, body } from './elements'
-import { today } from './date'
+import { today, deadline } from './date'
 
 const sidebar = (() => {
     const element = elementBuilder("div", "sidebar", body);
@@ -50,7 +50,21 @@ function notifButton() {
     }
 }
 
+function deadlineNotif(task) {
+    let deadlineMessage = deadline(task.enteredDate);
+    if ((deadlineMessage.indexOf("day") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
+      if (sidebar.notifBar.children.length < 7) {
+        let newContainer = elementBuilder("div", "notif-container", sidebar.notifBar)
+        let newNotif = elementBuilder("p", "notif", newContainer);
+        newNotif.id = "deadline" 
+        newNotif.textContent = `${task.title}: ${deadlineMessage}`;
+        return deadlineMessage 
+      } 
+    }
+  }
+
 export {
     sidebar, 
-    notifButton
+    notifButton,
+    deadlineNotif
 }

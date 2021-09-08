@@ -2,25 +2,12 @@
 /* eslint-disable no-unused-vars */
 import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
-import { deadline, sortByDueDate } from './date'
-import { sidebar, notifButton } from './sidebar'
+import { sortByDueDate } from './date'
+import { sidebar, notifButton, deadlineNotif } from './sidebar'
 import { validation, validateProj } from './validation'
 import { store } from './storage'
 
 let allProjects = projectTracker()
-
-function deadlineNotif(task) {
-  let deadlineMessage = deadline(task.enteredDate);
-  if ((deadlineMessage.indexOf("day") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
-    if (sidebar.notifBar.children.length < 7) {
-      let newContainer = elementBuilder("div", "notif-container", sidebar.notifBar)
-      let newNotif = elementBuilder("p", "notif", newContainer);
-      newNotif.id = "deadline" 
-      newNotif.textContent = `${task.title}: ${deadlineMessage}`;
-      return deadlineMessage 
-    } 
-  }
-}
 
 function toDoBuilder(task, parent) {
   let elementArray = [];
