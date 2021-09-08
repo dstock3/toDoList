@@ -53,6 +53,21 @@ body {
     height: 45%;
 }
 
+.notif-head-container {
+    display: flex;
+
+}
+
+.notif-button {
+    background-color: rgb(24, 28, 32);
+    color: rgb(130, 193, 248);
+    cursor: pointer;
+    margin: auto;
+    padding: 8px;
+    border-radius: 5px;
+
+}
+
 .hidden {
     visibility: collapse;
 }

@@ -21,8 +21,8 @@ const sidebar = (() => {
 
     const barContainer = elementBuilder("div", "bar-container", element);
     const notifHeadContainer = elementBuilder("div", "notif-head-container", barContainer);
-    const notifButton = elementBuilder("div", "notif-button", notifHeadContainer);
-    notifButton.textContent = "N"
+    const showNotifs = elementBuilder("div", "notif-button", notifHeadContainer);
+    showNotifs.textContent = "N"
     
     const notifHead = elementBuilder("h2", "notif-head", notifHeadContainer);
     notifHead.textContent = "Notifications";
@@ -32,7 +32,7 @@ const sidebar = (() => {
         hide(notifBar)
     }
     
-    notifButton.addEventListener("click", hideNotif);
+    showNotifs.addEventListener("click", hideNotif);
 
     const notifContainer = elementBuilder("div", "notif-container", notifBar)
     const currentDate = elementBuilder("p", "notif", notifContainer);
@@ -42,6 +42,20 @@ const sidebar = (() => {
     
     return { element, newProject, changeView, notifHead, notifBar, notifContainer, today }
 })();
+
+
+function deadlineNotif(task) {
+    let deadlineMessage = deadline(task.enteredDate);
+    if ((deadlineMessage.indexOf("day") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
+      if (sidebar.notifBar.children.length < 7) {
+        let newContainer = elementBuilder("div", "notif-container", sidebar.notifBar)
+        let newNotif = elementBuilder("p", "notif", newContainer);
+        newNotif.id = "deadline" 
+        newNotif.textContent = `${task.title}: ${deadlineMessage}`;
+        return deadlineMessage 
+      } 
+    }
+}
 
 function notifButton() {
     let notifs = document.getElementsByClassName("notif");
@@ -61,21 +75,7 @@ function notifButton() {
     }
 }
 
-function deadlineNotif(task) {
-    let deadlineMessage = deadline(task.enteredDate);
-    if ((deadlineMessage.indexOf("day") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
-      if (sidebar.notifBar.children.length < 7) {
-        let newContainer = elementBuilder("div", "notif-container", sidebar.notifBar)
-        let newNotif = elementBuilder("p", "notif", newContainer);
-        newNotif.id = "deadline" 
-        newNotif.textContent = `${task.title}: ${deadlineMessage}`;
-        return deadlineMessage 
-      } 
-    }
-}
-
 export {
     sidebar, 
-    notifButton,
     deadlineNotif
 }
