@@ -1,5 +1,5 @@
 /* eslint-disable no-inner-declarations */
-import { elementBuilder, body } from './elements'
+import { elementBuilder, body, hide } from './elements'
 import { today, deadline } from './date'
 
 const sidebar = (() => {
@@ -71,14 +71,6 @@ function deadlineNotif(task) {
         newNotif.textContent = `${task.title}: ${deadlineMessage}`;
         return deadlineMessage 
       } 
-    }
-}
-
-function hide(element) {
-    if (element.classList.contains("hidden")) {
-        element.classList.remove("hidden")
-    } else { 
-        element.classList.add("hidden");
     }
 }
 
