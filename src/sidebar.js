@@ -75,7 +75,11 @@ function deadlineNotif(task) {
 }
 
 function hide(element) {
-    element.classList.add("hidden");
+    if (element.classList.contains("hidden")) {
+        element.classList.remove("hidden")
+    } else { 
+        element.classList.add("hidden");
+    }
 }
 
 export {
