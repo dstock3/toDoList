@@ -211,8 +211,9 @@ const taskButtons = (set) => {
   })();
 
   const deleteButton = (() => {
-    let del = elementBuilder("button", "delete-button", buttonDiv);
-    del.textContent = "Remove Project"
+    let del = elementBuilder("button", "top-buttons", topButtonDiv);
+    del.classList.add("delete-button")
+    del.textContent = "x"
         
     del.addEventListener("click", set.deleteList)
   })();

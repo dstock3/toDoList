@@ -160,9 +160,9 @@ button {
 
 .top-button-div {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     position: relative;
-    left: 82%;
+    left: 80%;
     width: 20%;
 }
 
