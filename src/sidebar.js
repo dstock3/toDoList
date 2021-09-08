@@ -20,9 +20,20 @@ const sidebar = (() => {
     changeView.textContent = "Change View";
 
     const barContainer = elementBuilder("div", "bar-container", element);
-    const notifHead = elementBuilder("h2", "notif-head", barContainer);
+    const notifHeadContainer = elementBuilder("div", "notif-head-container", barContainer);
+    const notifButton = elementBuilder("div", "notif-button", notifHeadContainer);
+    notifButton.textContent = "N"
+    
+    const notifHead = elementBuilder("h2", "notif-head", notifHeadContainer);
     notifHead.textContent = "Notifications";
     const notifBar = elementBuilder("div", "notif-bar", barContainer);
+    
+    function hideNotif() {
+        hide(notifBar)
+    }
+    
+    notifButton.addEventListener("click", hideNotif);
+
     const notifContainer = elementBuilder("div", "notif-container", notifBar)
     const currentDate = elementBuilder("p", "notif", notifContainer);
     currentDate.id = "today"
@@ -61,6 +72,10 @@ function deadlineNotif(task) {
         return deadlineMessage 
       } 
     }
+}
+
+function hide(element) {
+    element.classList.add("hidden");
 }
 
 export {
