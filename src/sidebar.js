@@ -77,8 +77,13 @@ function notifButton() {
 }
 
 function checkNotifs() {
+    console.log("hello")
     if (sidebar.notifBar.children.length > 0) {
-        hide(sidebar.notifBar)
+        console.log(sidebar.notifBar.children.length)
+        if (sidebar.notifBar.classList.contains("hidden")) {
+            console.log(true)
+            hide(sidebar.notifBar)
+        }
     }
 }
 

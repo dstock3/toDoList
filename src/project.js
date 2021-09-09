@@ -3,7 +3,7 @@
 import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
 import { sortByDueDate } from './date'
-import { sidebar, notifButton, deadlineNotif, checkNotifs} from './sidebar'
+import { sidebar, notifButton, deadlineNotif, checkNotifs } from './sidebar'
 import { validation, validateProj } from './validation'
 import { store } from './storage'
 

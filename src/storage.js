@@ -5,9 +5,9 @@ function store(taskObj) {
         let task = `${project.taskArray[i]}, `
         projectList += task 
     }
-    console.log(projectList)
+
     let projObj = {title: `${project.title}`, description: `${project.description}`, taskArray: projectList}
-    console.log(projObj)
+
 
     localStorage.setItem("title", taskObj.title);
     localStorage.setItem("project", projObj);
