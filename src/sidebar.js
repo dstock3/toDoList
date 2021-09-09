@@ -1,5 +1,5 @@
 /* eslint-disable no-inner-declarations */
-import { elementBuilder, body } from './elements'
+import { elementBuilder, body, hide } from './elements'
 import { today, deadline } from './date'
 
 const sidebar = (() => {
@@ -20,35 +20,29 @@ const sidebar = (() => {
     changeView.textContent = "Change View";
 
     const barContainer = elementBuilder("div", "bar-container", element);
-    const notifHead = elementBuilder("h2", "notif-head", barContainer);
-    notifHead.textContent = "Notifications";
+    const notifHeadContainer = elementBuilder("div", "notif-head-container", barContainer);
+    const showNotifs = elementBuilder("div", "notif-button", notifHeadContainer);
+    showNotifs.textContent = "N"
+    
+    //const notifHead = elementBuilder("h2", "notif-head", notifHeadContainer);
+    //notifHead.textContent = "Notifications";
     const notifBar = elementBuilder("div", "notif-bar", barContainer);
-    const notifContainer = elementBuilder("div", "notif-container", notifBar)
+    const notifContainer = elementBuilder("div", "notif-container", notifBar);
+
+    function hideNotif() {
+        if (notifBar.children.length === 0) {
+            notifBar.classList.add("hidden");
+        } else { hide(notifBar) }
+    }
+    
+    showNotifs.addEventListener("click", hideNotif);
     const currentDate = elementBuilder("p", "notif", notifContainer);
     currentDate.id = "today"
     currentDate.textContent = today();
     notifButton()
     
-    return { element, newProject, changeView, notifHead, notifBar, notifContainer, today }
+    return { element, newProject, changeView, notifBar, notifContainer, today }
 })();
-
-function notifButton() {
-    let notifs = document.getElementsByClassName("notif");
-    for (let i = 0; i < notifs.length; i++) {
-        let notif = notifs[i];
-        if (notif.parentNode.children.length === 1) {
-            
-            let button = elementBuilder("div", "remove-notif", notif.parentNode)
-            button.textContent = "X"
-            function removeNotif() {
-                notif.remove()
-                button.remove()
-            }
-            button.addEventListener("click", removeNotif);
-        }
-
-    }
-}
 
 function deadlineNotif(task) {
     let deadlineMessage = deadline(task.enteredDate);
@@ -60,11 +54,37 @@ function deadlineNotif(task) {
         newNotif.textContent = `${task.title}: ${deadlineMessage}`;
         return deadlineMessage 
       } 
+    } else { return "No New Notifications"}
+}
+
+function notifButton() {
+    let notifs = document.getElementsByClassName("notif");
+    for (let i = 0; i < notifs.length; i++) {
+        let notif = notifs[i];
+        let parent = notif.parentNode
+        if (notif.parentNode.children.length === 1) {
+            let button = elementBuilder("div", "remove-notif", parent)
+            button.textContent = "X"
+            function removeNotif() {
+                parent.remove();
+                if (notifs.length === 0) {
+                    hide(sidebar.notifBar)
+                }
+            }
+            button.addEventListener("click", removeNotif);
+        }
+    }
+}
+
+function checkNotifs() {
+    if (sidebar.notifBar.children.length > 0) {
+        hide(sidebar.notifBar)
     }
 }
 
 export {
     sidebar, 
+    deadlineNotif,
     notifButton,
-    deadlineNotif
+    checkNotifs
 }

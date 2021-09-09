@@ -3,7 +3,7 @@
 import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
 import { sortByDueDate } from './date'
-import { sidebar, notifButton, deadlineNotif } from './sidebar'
+import { sidebar, notifButton, deadlineNotif, checkNotifs} from './sidebar'
 import { validation, validateProj } from './validation'
 import { store } from './storage'
 
@@ -34,7 +34,6 @@ function toDoBuilder(task, parent) {
 
 const projectHeader = (project, parent) => {
     let projectElement = elementBuilder("div", "project", parent);
-    parent.prepend(projectElement)
   
     let projectHead = elementBuilder("h2", "project-head", projectElement)
     projectHead.textContent = project.title;
@@ -306,6 +305,7 @@ const addTask = (set) => {
         store(newTask)
         deadlineNotif(newTask)
         notifButton()
+        checkNotifs()
         toDoBuilder(newTask, projectElement);
     
         let projectIndex = getPosition(projectElement);
@@ -373,7 +373,7 @@ const addProject = () => {
         let newProject = project(title, description, [])
         let projectSet = projectBuilder(newProject);
         taskButtons(projectSet);
-        allProjects.masterList.unshift(projectSet)
+        allProjects.masterList.push(projectSet)
   
         exit();
       } else { createButton.addEventListener("click", createProject) }

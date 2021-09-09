@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     left: 0;
     width: 15%;
     height: 100%;
@@ -53,12 +53,28 @@ body {
     height: 45%;
 }
 
+.notif-head-container {
+    align-self: flex-start;
+    margin: 2% 4.5%;
+}
+
+.notif-button {
+    background-color: rgb(24, 28, 32);
+    color: rgb(130, 193, 248);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.hidden {
+    visibility: collapse;
+}
+
 .notif-bar {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 90%;
-    height: 80%;
     border-radius: 5px;
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
@@ -67,8 +83,7 @@ body {
 
 .notif-container {
     display: flex;
-    margin: 0 7px;
-    padding: 2px;
+    margin: 7px 7px;
 }
 
 .notif-container:hover {
@@ -90,10 +105,12 @@ body {
     margin-block-end: .25em;
     font-size: .90em;
     width: 90%;
+    margin: a
 }
 
-#today {
-    margin-block-start: 1em;
+#none {
+    position: relative;
+    bottom: 25%
 }
 
 .project-container {
