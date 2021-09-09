@@ -372,7 +372,7 @@ const addProject = () => {
         let newProject = project(title, description, [])
         let projectSet = projectBuilder(newProject);
         taskButtons(projectSet);
-        allProjects.masterList.push(projectSet)
+        allProjects.masterList.unshift(projectSet)
   
         exit();
       } else { createButton.addEventListener("click", createProject) }
