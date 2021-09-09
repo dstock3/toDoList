@@ -15,7 +15,7 @@ let body = document.getElementsByTagName("body")[0];
 
 let projectDiv = elementBuilder("div", "project-container", body);
 
-function hide(element) {
+function toggleHide(element) {
     if (element.classList.contains("hidden")) {
         element.classList.remove("hidden")
     } else { 
@@ -28,6 +28,6 @@ export {
     getPosition,
     body, 
     projectDiv,
-    hide
+    toggleHide
 }
 

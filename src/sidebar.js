@@ -1,5 +1,5 @@
 /* eslint-disable no-inner-declarations */
-import { elementBuilder, body, hide } from './elements'
+import { elementBuilder, body, toggleHide } from './elements'
 import { today, deadline } from './date'
 
 const sidebar = (() => {
@@ -32,7 +32,17 @@ const sidebar = (() => {
     function hideNotif() {
         if (notifBar.children.length === 0) {
             notifBar.classList.add("hidden");
-        } else { hide(notifBar) }
+        } else {
+
+            toggleHide(notifBar)
+            if (notifBar.classList.contains("hidden")) {
+                showNotifs.setAttribute("style", `border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;`) 
+            } else {
+                showNotifs.setAttribute("style", `border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;`) 
+            }
+        }
     }
     
     showNotifs.addEventListener("click", hideNotif);
