@@ -33,7 +33,6 @@ const sidebar = (() => {
         if (notifBar.children.length === 0) {
             notifBar.classList.add("hidden");
         } else {
-
             toggleHide(notifBar)
             if (notifBar.classList.contains("hidden")) {
                 showNotifs.setAttribute("style", `border-bottom-left-radius: 5px;
@@ -90,12 +89,18 @@ function notifButton() {
 }
 
 function checkNotifs() {
-    console.log("hello")
+    for (let i = 0; i < sidebar.notifBar.children.length; i++) {
+        let notifContainer = sidebar.notifBar.children[i]
+        for (let y = 0; y < notifContainer.children.length; y++) {
+            let notif = notifContainer.children[i];
+            if (notif.id === "no-notif") {
+                notifContainer.remove()
+            }
+        }
+    }
     if (sidebar.notifBar.children.length > 0) {
-        console.log(sidebar.notifBar.children.length)
         if (sidebar.notifBar.classList.contains("hidden")) {
-            console.log(true)
-            hide(sidebar.notifBar)
+            toggleHide(sidebar.notifBar)
         }
     }
 }
