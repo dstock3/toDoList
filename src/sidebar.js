@@ -54,29 +54,44 @@ function deadlineNotif(task) {
         newNotif.textContent = `${task.title}: ${deadlineMessage}`;
         return deadlineMessage 
       } 
-    }
+    } else { return "No New Notifications"}
 }
 
 function notifButton() {
     let notifs = document.getElementsByClassName("notif");
     for (let i = 0; i < notifs.length; i++) {
         let notif = notifs[i];
+        let parent = notif.parentNode
         if (notif.parentNode.children.length === 1) {
-            
-            let button = elementBuilder("div", "remove-notif", notif.parentNode)
+            let button = elementBuilder("div", "remove-notif", parent)
             button.textContent = "X"
             function removeNotif() {
-                notif.remove()
-                button.remove()
+                notif.remove();
+                button.remove();
+                if (notifs.length === 0) {
+                    let noNotif = elementBuilder("p", "notif", parent.parentNode);
+                    noNotif.textContent = "No New Notifications"
+                    noNotif.id = "none"
+                }
             }
             button.addEventListener("click", removeNotif);
         }
+    }
+}
 
+function notifCheck() {
+    let notifs = document.getElementsByClassName("notif");
+    let noNotif = document.getElementById("none");
+
+    if ((noNotif !== null) && (notifs.length >= 1)) {
+        console.log(noNotif)
+        noNotif.remove()
     }
 }
 
 export {
     sidebar, 
     deadlineNotif,
-    notifButton
+    notifButton, 
+    notifCheck
 }
