@@ -83,8 +83,7 @@ body {
 
 .notif-container {
     display: flex;
-    margin: 0 7px;
-    padding: 2px;
+    margin: 7px 7px;
 }
 
 .notif-container:hover {
@@ -106,6 +105,7 @@ body {
     margin-block-end: .25em;
     font-size: .90em;
     width: 90%;
+    margin: auto;
 }
 
 #today {

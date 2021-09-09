@@ -69,7 +69,7 @@ function notifButton() {
                 notif.remove();
                 button.remove();
                 if (notifs.length === 0) {
-                    let noNotif = elementBuilder("p", "notif", parent.parentNode);
+                    let noNotif = elementBuilder("p", "notif", parent);
                     noNotif.textContent = "No New Notifications"
                     noNotif.id = "none"
                 }
