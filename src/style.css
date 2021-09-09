@@ -51,21 +51,31 @@ body {
     align-items: center;
     justify-content: flex-start;
     width: 95%;
-    background-color: rgb(63, 75, 85);
     border-radius: 5px;
 }
 
 .notif-head-container {
     align-self: flex-start;
-    margin: 2% 4.5%;
+    margin: 0 5%;
+}
+
+#no-notif {
+    width: 100%;
+    position: relative;
+    right: 45px;
+}
+
+#no-notif:hover {
+    background-color: rgb(24, 28, 32);
 }
 
 .notif-button {
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
     cursor: pointer;
-    padding: 8px;
-    border-radius: 5px;
+    padding: 7px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
     font-size: 1.25em;
 }
 
@@ -79,7 +89,8 @@ body {
     align-items: center;
     width: 90%;
     border-top-right-radius: 5px;
-    border-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
     padding-top: 5px;

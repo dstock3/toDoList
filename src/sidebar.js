@@ -66,9 +66,12 @@ function notifButton() {
             let button = elementBuilder("div", "remove-notif", parent)
             button.textContent = "X"
             function removeNotif() {
-                parent.remove();
+                notif.remove();
+                button.remove();
                 if (notifs.length === 0) {
-                    hide(sidebar.notifBar)
+                    const noNotif = elementBuilder("p", "notif", sidebar.notifContainer);
+                    noNotif.id = "no-notif"
+                    noNotif.textContent = "No New Notifications";
                 }
             }
             button.addEventListener("click", removeNotif);
