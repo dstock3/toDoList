@@ -29,6 +29,13 @@ const sidebar = (() => {
     showProjects.id = "show-projects";
     showProjects.textContent = "P";
 
+    function hideProjects() {
+        toggleHide(notifBar)
+        notifLogic(showProjects)
+    }
+
+    showProjects.addEventListener("click", hideProjects)
+
     const notifBar = elementBuilder("div", "notif-bar", barContainer);
     const notifContainer = elementBuilder("div", "notif-container", notifBar);
 
@@ -38,13 +45,7 @@ const sidebar = (() => {
             notifNum.remove()
         }
         toggleHide(notifBar)
-        if (notifBar.classList.contains("hidden")) {
-            showNotifs.setAttribute("style", `border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;`) 
-        } else {
-            showNotifs.setAttribute("style", `border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;`) 
-        }
+        notifLogic(showNotifs)
     }
     
     showNotifs.addEventListener("click", hideNotif);
@@ -55,6 +56,16 @@ const sidebar = (() => {
     
     return { element, newProject, changeView, notifBar, showNotifs, notifHeadContainer, notifContainer, today }
 })();
+
+function notifLogic(barButton) {
+    if (sidebar.notifBar.classList.contains("hidden")) {
+        barButton.setAttribute("style", `border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;`) 
+    } else {
+        barButton.setAttribute("style", `border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;`) 
+    }
+}
 
 function notifNum() {
     let notifs = document.getElementsByClassName("notif");
