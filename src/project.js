@@ -3,7 +3,7 @@
 import { project, toDo, projectTracker } from './task'
 import { elementBuilder, getPosition, body, projectDiv } from './elements'
 import { sortByDueDate } from './date'
-import { sidebar, notifButton, deadlineNotif, checkNotifs } from './sidebar'
+import { sidebar, notifButton, deadlineNotif, checkNotifs, notifNum } from './sidebar'
 import { validation, validateProj } from './validation'
 import { store } from './storage'
 
@@ -307,6 +307,7 @@ const addTask = (set) => {
         deadlineNotif(newTask)
         notifButton()
         checkNotifs()
+        notifNum()
         toDoBuilder(newTask, projectElement);
     
         let projectIndex = getPosition(projectElement);

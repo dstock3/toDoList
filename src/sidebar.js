@@ -46,8 +46,23 @@ const sidebar = (() => {
     currentDate.textContent = today();
     notifButton()
     
-    return { element, newProject, changeView, notifBar, notifContainer, today }
+    return { element, newProject, changeView, notifBar, showNotifs, notifContainer, today }
 })();
+
+function notifNum() {
+    let notifs = document.getElementsByClassName("notif");
+    let num = 0;
+    for (let i = 1; i < notifs.length; i++) {
+        num += i
+    }
+    let previousNotifs = document.getElementsByClassName("notif-num")[0];
+    console.log(previousNotifs)
+    if (previousNotifs !== undefined) {
+        previousNotifs.remove()
+    }
+    let newNotifs = elementBuilder("div", "notif-num", sidebar.showNotifs);
+    newNotifs.textContent = num;
+}
 
 function noNotifChecker() {
     let notif = document.getElementById("no-notif");
@@ -66,7 +81,6 @@ function deadlineNotif(task) {
         newNotif.id = "deadline" 
         newNotif.textContent = `${task.title}: ${deadlineMessage}`;
         noNotifChecker()
-        
         return deadlineMessage 
       } 
     } else { return "No New Notifications" }
@@ -107,5 +121,6 @@ export {
     sidebar, 
     deadlineNotif,
     notifButton,
-    checkNotifs
+    checkNotifs,
+    notifNum
 }
