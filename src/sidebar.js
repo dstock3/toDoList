@@ -53,12 +53,14 @@ function notifNum() {
     let notifs = document.getElementsByClassName("notif");
     let num = notifs.length
     let previousNotifs = document.getElementsByClassName("notif-num")[0];
-    console.log(previousNotifs)
     if (previousNotifs !== undefined) {
         previousNotifs.remove()
     }
-    let newNotifs = elementBuilder("div", "notif-num", sidebar.notifHeadContainer);
-    newNotifs.textContent = num;
+    if (num > 0) {
+        let newNotifs = elementBuilder("div", "notif-num", sidebar.notifHeadContainer);
+        newNotifs.textContent = num;
+    }
+
 }
 
 function noNotifChecker() {
@@ -92,7 +94,8 @@ function notifButton() {
             let button = elementBuilder("div", "remove-notif", parent)
             button.textContent = "X"
             function removeNotif() {
-                parent.remove(); 
+                parent.remove();
+                notifNum() 
                 if (notifs.length === 0) {
                     const newNotifContainer = elementBuilder("div", "notif-container", sidebar.notifBar)
                     newNotifContainer.id = "none"
