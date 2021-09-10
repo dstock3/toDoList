@@ -24,8 +24,6 @@ const sidebar = (() => {
     const showNotifs = elementBuilder("div", "notif-button", notifHeadContainer);
     showNotifs.textContent = "N"
     
-    //const notifHead = elementBuilder("h2", "notif-head", notifHeadContainer);
-    //notifHead.textContent = "Notifications";
     const notifBar = elementBuilder("div", "notif-bar", barContainer);
     const notifContainer = elementBuilder("div", "notif-container", notifBar);
 
