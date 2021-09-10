@@ -30,17 +30,13 @@ const sidebar = (() => {
     const notifContainer = elementBuilder("div", "notif-container", notifBar);
 
     function hideNotif() {
-        if (notifBar.children.length === 0) {
-            notifBar.classList.add("hidden");
+        toggleHide(notifBar)
+        if (notifBar.classList.contains("hidden")) {
+            showNotifs.setAttribute("style", `border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;`) 
         } else {
-            toggleHide(notifBar)
-            if (notifBar.classList.contains("hidden")) {
-                showNotifs.setAttribute("style", `border-bottom-left-radius: 5px;
-                border-bottom-right-radius: 5px;`) 
-            } else {
-                showNotifs.setAttribute("style", `border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;`) 
-            }
+            showNotifs.setAttribute("style", `border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;`) 
         }
     }
     
@@ -63,7 +59,7 @@ function deadlineNotif(task) {
         newNotif.textContent = `${task.title}: ${deadlineMessage}`;
         return deadlineMessage 
       } 
-    } else { return "No New Notifications"}
+    } else { return "No New Notifications" }
 }
 
 function notifButton() {
@@ -75,10 +71,11 @@ function notifButton() {
             let button = elementBuilder("div", "remove-notif", parent)
             button.textContent = "X"
             function removeNotif() {
-                notif.remove();
-                button.remove();
+                parent.remove(); 
                 if (notifs.length === 0) {
-                    const noNotif = elementBuilder("p", "notif", sidebar.notifContainer);
+                    const newNotifContainer = elementBuilder("div", "notif-container", sidebar.notifBar)
+                    console.log(newNotifContainer)
+                    const noNotif = elementBuilder("p", "notif", newNotifContainer);
                     noNotif.id = "no-notif"
                     noNotif.textContent = "No New Notifications";
                 }
@@ -89,18 +86,15 @@ function notifButton() {
 }
 
 function checkNotifs() {
-    for (let i = 0; i < sidebar.notifBar.children.length; i++) {
-        let notifContainer = sidebar.notifBar.children[i]
-        for (let y = 0; y < notifContainer.children.length; y++) {
-            let notif = notifContainer.children[i];
-            if (notif.id === "no-notif") {
-                notifContainer.remove()
-            }
-        }
+    let notif = document.getElementById("no-notif");
+    if (notif !== null) {
+        let notifContainer = notif.parentNode;
+        notifContainer.remove();
     }
+
     if (sidebar.notifBar.children.length > 0) {
         if (sidebar.notifBar.classList.contains("hidden")) {
-            toggleHide(sidebar.notifBar)
+            toggleHide(sidebar.notifBar);
         }
     }
 }

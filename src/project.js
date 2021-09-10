@@ -397,6 +397,7 @@ const changeView = (() => {
           set.deleteList()
           let originalIndex = allProjects.masterList.indexOf(set)
           let maxProject = projectBuilder(set.project);
+          allProjects.masterList.pop();
           allProjects.masterList.push(maxProject)
           projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
           taskButtons(maxProject); 
