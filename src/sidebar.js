@@ -23,7 +23,7 @@ const sidebar = (() => {
     const notifHeadContainer = elementBuilder("div", "notif-head-container", barContainer);
     const showNotifs = elementBuilder("div", "notif-button", notifHeadContainer);
     showNotifs.textContent = "N"
-    
+
     const notifBar = elementBuilder("div", "notif-bar", barContainer);
     const notifContainer = elementBuilder("div", "notif-container", notifBar);
 
@@ -121,10 +121,14 @@ function checkNotifs() {
     }
 }
 
+function notif(newTask) {
+    deadlineNotif(newTask)
+    notifButton()
+    checkNotifs()
+    notifNum()
+}
+
 export {
     sidebar, 
-    deadlineNotif,
-    notifButton,
-    checkNotifs,
-    notifNum
+    notif
 }
