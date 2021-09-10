@@ -30,6 +30,10 @@ const sidebar = (() => {
     const notifContainer = elementBuilder("div", "notif-container", notifBar);
 
     function hideNotif() {
+        let notifNum = document.getElementsByClassName("notif-num")[0];
+        if (notifNum !== undefined) {
+            notifNum.remove()
+        }
         toggleHide(notifBar)
         if (notifBar.classList.contains("hidden")) {
             showNotifs.setAttribute("style", `border-bottom-left-radius: 5px;
@@ -60,7 +64,6 @@ function notifNum() {
         let newNotifs = elementBuilder("div", "notif-num", sidebar.notifHeadContainer);
         newNotifs.textContent = num;
     }
-
 }
 
 function noNotifChecker() {
