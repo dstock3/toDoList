@@ -50,20 +50,14 @@ const sidebar = (() => {
 })();
 
 function notifNum() {
-    
     let notifs = document.getElementsByClassName("notif");
-    let num = 0;
-    for (let i = 1; i < notifs.length; i++) {
-        num += i
-    }
+    let num = notifs.length
     let previousNotifs = document.getElementsByClassName("notif-num")[0];
     console.log(previousNotifs)
     if (previousNotifs !== undefined) {
         previousNotifs.remove()
     }
-    
     let newNotifs = elementBuilder("div", "notif-num", sidebar.notifHeadContainer);
-    newNotifs.textContent = 4;
     newNotifs.textContent = num;
 }
 
