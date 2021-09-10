@@ -98,7 +98,10 @@ function notifButton() {
             button.textContent = "X"
             function removeNotif() {
                 parent.remove();
-                notifNum() 
+                let previousNotifs = document.getElementsByClassName("notif-num")[0];
+                if (previousNotifs !== undefined) {
+                    notifNum() 
+                }
                 if (notifs.length === 0) {
                     const newNotifContainer = elementBuilder("div", "notif-container", sidebar.notifBar)
                     newNotifContainer.id = "none"
