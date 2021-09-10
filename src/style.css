@@ -69,6 +69,12 @@ body {
     font-size: 1.25em;
 }
 
+#no-notif {
+    width: 100%;
+    position: relative;
+    right: 25%;
+}
+
 .hidden {
     visibility: collapse;
 }
@@ -93,6 +99,11 @@ body {
 
 .notif-container:hover {
     background-color: rgb(38, 44, 51);
+}
+
+#none {
+    background-color: rgb(24, 28, 32);
+
 }
 
 .remove-notif {

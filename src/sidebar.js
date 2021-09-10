@@ -74,7 +74,7 @@ function notifButton() {
                 parent.remove(); 
                 if (notifs.length === 0) {
                     const newNotifContainer = elementBuilder("div", "notif-container", sidebar.notifBar)
-                    console.log(newNotifContainer)
+                    newNotifContainer.id = "none"
                     const noNotif = elementBuilder("p", "notif", newNotifContainer);
                     noNotif.id = "no-notif"
                     noNotif.textContent = "No New Notifications";
