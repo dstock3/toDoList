@@ -76,6 +76,7 @@ body {
     position: relative;
     right: 33%;
 }
+
 .notif-num {
     display: inline-block;
     position: relative;
@@ -230,6 +231,11 @@ button {
     width: 35px;
     height: 30px;
     border-radius: 15px;
+}
+
+.button-div {
+    display: flex;
+    justify-content: space-around;
 }
 
 .task-prompt {
