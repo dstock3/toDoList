@@ -22,7 +22,12 @@ const sidebar = (() => {
     const barContainer = elementBuilder("div", "bar-container", element);
     const notifHeadContainer = elementBuilder("div", "notif-head-container", barContainer);
     const showNotifs = elementBuilder("div", "notif-button", notifHeadContainer);
-    showNotifs.textContent = "N"
+    showNotifs.id = "show-notifs";
+    showNotifs.textContent = "N";
+
+    const showProjects = elementBuilder("div", "notif-button", notifHeadContainer);
+    showProjects.id = "show-projects";
+    showProjects.textContent = "P";
 
     const notifBar = elementBuilder("div", "notif-bar", barContainer);
     const notifContainer = elementBuilder("div", "notif-container", notifBar);
