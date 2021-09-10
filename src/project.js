@@ -34,6 +34,7 @@ function toDoBuilder(task, parent) {
 
 const projectHeader = (project, parent) => {
     let projectElement = elementBuilder("div", "project", parent);
+    parent.prepend(projectElement)
   
     let projectHead = elementBuilder("h2", "project-head", projectElement)
     projectHead.textContent = project.title;

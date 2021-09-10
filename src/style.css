@@ -72,7 +72,7 @@ body {
 #no-notif {
     width: 100%;
     position: relative;
-    right: 25%;
+    right: 33%;
 }
 
 .hidden {
@@ -103,7 +103,6 @@ body {
 
 #none {
     background-color: rgb(24, 28, 32);
-
 }
 
 .remove-notif {

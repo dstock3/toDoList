@@ -49,6 +49,14 @@ const sidebar = (() => {
     return { element, newProject, changeView, notifBar, notifContainer, today }
 })();
 
+function noNotifChecker() {
+    let notif = document.getElementById("no-notif");
+    if (notif !== null) {
+        let notifContainer = notif.parentNode;
+        notifContainer.remove();
+    }
+}
+
 function deadlineNotif(task) {
     let deadlineMessage = deadline(task.enteredDate);
     if ((deadlineMessage.indexOf("day") > 0) || (deadlineMessage.indexOf("hours") > 0)) {
@@ -57,6 +65,8 @@ function deadlineNotif(task) {
         let newNotif = elementBuilder("p", "notif", newContainer);
         newNotif.id = "deadline" 
         newNotif.textContent = `${task.title}: ${deadlineMessage}`;
+        noNotifChecker()
+        
         return deadlineMessage 
       } 
     } else { return "No New Notifications" }
@@ -86,12 +96,6 @@ function notifButton() {
 }
 
 function checkNotifs() {
-    let notif = document.getElementById("no-notif");
-    if (notif !== null) {
-        let notifContainer = notif.parentNode;
-        notifContainer.remove();
-    }
-
     if (sidebar.notifBar.children.length > 0) {
         if (sidebar.notifBar.classList.contains("hidden")) {
             toggleHide(sidebar.notifBar);
