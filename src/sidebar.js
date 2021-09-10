@@ -46,10 +46,11 @@ const sidebar = (() => {
     currentDate.textContent = today();
     notifButton()
     
-    return { element, newProject, changeView, notifBar, showNotifs, notifContainer, today }
+    return { element, newProject, changeView, notifBar, showNotifs, notifHeadContainer, notifContainer, today }
 })();
 
 function notifNum() {
+    
     let notifs = document.getElementsByClassName("notif");
     let num = 0;
     for (let i = 1; i < notifs.length; i++) {
@@ -60,7 +61,9 @@ function notifNum() {
     if (previousNotifs !== undefined) {
         previousNotifs.remove()
     }
-    let newNotifs = elementBuilder("div", "notif-num", sidebar.showNotifs);
+    
+    let newNotifs = elementBuilder("div", "notif-num", sidebar.notifHeadContainer);
+    newNotifs.textContent = 4;
     newNotifs.textContent = num;
 }
 
