@@ -89,6 +89,7 @@ body {
     width: 15px;
     font-size: .85em;
     padding: 3px;
+    text-align: center;
 }
 
 .hidden {
