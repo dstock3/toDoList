@@ -30,7 +30,7 @@ const sidebar = (() => {
     showProjects.textContent = "P";
 
     function hideProjects() {
-        toggleHide(notifBar)
+        //toggleHide(notifBar)
         notifLogic(showProjects)
     }
 
@@ -107,7 +107,7 @@ function notifButton() {
     for (let i = 0; i < notifs.length; i++) {
         let notif = notifs[i];
         let parent = notif.parentNode
-        if (notif.parentNode.children.length === 1) {
+        if ((notif.parentNode.children.length === 1) && (notif.id !== "no-notif")) {
             let button = elementBuilder("div", "remove-notif", parent)
             button.textContent = "X"
             function removeNotif() {
