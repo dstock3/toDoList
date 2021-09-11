@@ -392,9 +392,10 @@ const changeView = (() => {
 
         viewElement.addEventListener("click", function() {
           let projectIndex = getPosition(set.projectElement);
-          set.deleteList()
           let originalIndex = allProjects.masterList.indexOf(set)
           let maxProject = projectBuilder(set.project);
+          set.deleteList()
+          set.deleteList()
           allProjects.masterList.splice(originalIndex, 1)
           allProjects.masterList.push(maxProject)
           projectDiv.insertBefore(maxProject.projectElement, projectDiv.children[projectIndex]);
