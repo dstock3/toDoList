@@ -1,14 +1,17 @@
 function store(taskObj) {
     let project = taskObj.project;
-    let projectList = '';
+    let projectList = "";
     for (let i = 0; i < project.taskArray.length; i++) {
-        let task = `${project.taskArray[i]}, `
-        projectList += task 
+      let task = `${project.taskArray[i]}, `;
+      projectList += task;
     }
-
-    let projObj = {title: `${project.title}`, description: `${project.description}`, taskArray: projectList}
-
-
+  
+    let projObj = {
+      title: `${project.title}`,
+      description: `${project.description}`,
+      taskArray: projectList,
+    };
+  
     localStorage.setItem("title", taskObj.title);
     localStorage.setItem("project", projObj);
     localStorage.setItem("description", taskObj.description);
@@ -17,9 +20,8 @@ function store(taskObj) {
     localStorage.setItem("priority", taskObj.priority);
     localStorage.setItem("notes", taskObj.notes);
     localStorage.setItem("status", taskObj.status);
-}
-
-export {
-    store
-}
+  }
+  
+  export { store };
+  
 
