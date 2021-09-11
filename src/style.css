@@ -19,6 +19,7 @@ body {
   height: 100%;
   background-color: rgb(130, 193, 248);
   color: rgb(24, 28, 32);
+  border-right: solid rgb(130, 193, 248) 3px;
 }
 
 .head-container {
@@ -155,7 +156,10 @@ body {
   margin-top: auto;
   height: 20%;
   width: 100%;
-  border-top: solid rgb(24, 28, 32) 2px;
+  border: solid rgb(130, 193, 248) 3px;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+
 }
 
 .project-container {
