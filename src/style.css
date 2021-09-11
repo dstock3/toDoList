@@ -151,6 +151,10 @@ body {
   margin: a;
 }
 
+.tips-container {
+  margin-top: auto;
+}
+
 .project-container {
   position: relative;
   left: 7.5%;
