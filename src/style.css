@@ -153,6 +153,9 @@ body {
 
 .tips-container {
   margin-top: auto;
+  height: 20%;
+  width: 100%;
+  border-top: solid rgb(24, 28, 32) 2px;
 }
 
 .project-container {
