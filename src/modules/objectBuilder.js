@@ -1,8 +1,18 @@
 const project = (title, description, taskArray) => {
-    return { title, description, taskArray };
-  };
-  
-  const toDo = (
+  return { title, description, taskArray };
+};
+
+const toDo = (
+  title,
+  project,
+  description,
+  enteredDate,
+  dueDate,
+  priority,
+  notes,
+  status
+) => {
+  return {
     title,
     project,
     description,
@@ -10,24 +20,13 @@ const project = (title, description, taskArray) => {
     dueDate,
     priority,
     notes,
-    status
-  ) => {
-    return {
-      title,
-      project,
-      description,
-      enteredDate,
-      dueDate,
-      priority,
-      notes,
-      status,
-    };
+    status,
   };
-  
-  const projectTracker = () => {
-    let masterList = [];
-    return { masterList };
-  };
-  
-  export { project, toDo, projectTracker };
-  
+};
+
+const projectTracker = () => {
+  let masterList = [];
+  return { masterList };
+};
+
+export { project, toDo, projectTracker };

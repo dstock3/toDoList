@@ -1,4 +1,3 @@
-/* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
 import { project, toDo, projectTracker } from "./objectBuilder";
 import { elementBuilder, getPosition, body, projectDiv } from "./elements";

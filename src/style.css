@@ -1,365 +1,369 @@
 body {
-    background-color: rgb(24, 28, 32);
-    color: rgb(187, 220, 248);
-    font-family: 'Ubuntu', sans-serif;
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.15;
-    margin: auto;
+  background-color: rgb(24, 28, 32);
+  color: rgb(187, 220, 248);
+  font-family: "Ubuntu", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.15;
+  margin: auto;
 }
 
 .sidebar {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    left: 0;
-    width: 15%;
-    height: 100%;
-    background-color: rgb(130, 193, 248);
-    color: rgb(24, 28, 32);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
 }
 
 .head-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar-head {
-    font-style: italic;
+  font-style: italic;
 }
 
 .side-button-container {
-    display: flex;
-    justify-content: space-around;
-    width: 85%;
-    background-color: rgb(24, 28, 32);
-    padding: 5%;
-    border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  width: 85%;
+  background-color: rgb(24, 28, 32);
+  padding: 5%;
+  border-radius: 5px;
 }
 
 .side-buttons {
-    width: 45%;
+  width: 45%;
 }
 
 .bar-container {
-    margin: 2%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 95%;
-    border-radius: 5px;
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 95%;
+  border-radius: 5px;
 }
 
 .notif-head-container {
-    display: flex;
-    align-self: flex-start;
-    margin: 0 5%;
+  display: flex;
+  align-self: flex-start;
+  margin: 0 5%;
 }
 
 .notif-button {
-    background-color: rgb(24, 28, 32);
-    color: rgb(130, 193, 248);
-    cursor: pointer;
-    padding: 7px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    font-size: 1.5em;
-    z-index: 3;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  cursor: pointer;
+  padding: 7px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  font-size: 1.5em;
+  z-index: 3;
 }
 
 #show-projects {
-    position: relative;
-    left: 4%;
+  position: relative;
+  left: 4%;
 }
 
 #no-notif {
-    width: 100%;
-    position: relative;
-    right: 33%;
+  width: 100%;
+  position: relative;
+  right: 33%;
 }
 
 .notif-num {
-    display: inline-block;
-    position: relative;
-    right: 50%;
-    top: 20px;
-    z-index: 4;
-    background: rgb(247,149,0);
-    background: linear-gradient(180deg, rgb(245, 202, 59) 0%, rgba(247,149,0,1) 100%);
-    border-radius: 50%;
-    height: 15px;
-    width: 15px;
-    font-size: .85em;
-    padding: 1px 2px 2px 0px;
-    text-align: center;
-    box-shadow: 1px 1px 1px black;
+  display: inline-block;
+  position: relative;
+  right: 50%;
+  top: 20px;
+  z-index: 4;
+  background: rgb(247, 149, 0);
+  background: linear-gradient(
+    180deg,
+    rgb(245, 202, 59) 0%,
+    rgba(247, 149, 0, 1) 100%
+  );
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  font-size: 0.85em;
+  padding: 1px 2px 2px 0px;
+  text-align: center;
+  box-shadow: 1px 1px 1px black;
 }
 
 .hidden {
-    visibility: collapse;
+  visibility: collapse;
 }
 
 .notif-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background-color: rgb(24, 28, 32);
-    color: rgb(130, 193, 248);
-    padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  padding-top: 5px;
 }
 
 .notif-container {
-    display: flex;
-    margin: 7px 7px;
+  display: flex;
+  margin: 7px 7px;
 }
 
 .notif-container:hover {
-    background-color: rgb(38, 44, 51);
+  background-color: rgb(38, 44, 51);
 }
 
 #none {
-    background-color: rgb(24, 28, 32);
+  background-color: rgb(24, 28, 32);
 }
 
 .remove-notif {
-    margin: auto;
-    background-color: rgb(24, 28, 32);
-    color: rgb(130, 193, 248);
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 5px;
+  margin: auto;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .notif {
-    margin-block-start: .25em;
-    margin-block-end: .25em;
-    font-size: .90em;
-    width: 90%;
-    margin: a
+  margin-block-start: 0.25em;
+  margin-block-end: 0.25em;
+  font-size: 0.9em;
+  width: 90%;
+  margin: a;
 }
 
 .project-container {
-    position: relative;
-    left: 7.5%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    width: 85%;
-    height: 100%;
+  position: relative;
+  left: 7.5%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 85%;
+  height: 100%;
 }
 
 .project {
-    display: flex;
-    flex-flow: column wrap;
-    background-color: rgb(130, 193, 248);
-    color: rgb(24, 28, 32);
-    width: 20%;
-    height: 100%;
-    padding: .75%;
-    border-radius: 5px;
-    margin: 20px 0;
+  display: flex;
+  flex-flow: column wrap;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  width: 20%;
+  height: 100%;
+  padding: 0.75%;
+  border-radius: 5px;
+  margin: 20px 0;
 }
 
 .project-head {
-    margin: auto;
+  margin: auto;
 }
 
 .project-desc {
-    padding-left: 2.5%;
+  padding-left: 2.5%;
 }
 
 .task {
-    border: solid 5px rgb(130, 193, 248);
-    background-color: rgb(24, 28, 32);
-    color: rgb(130, 193, 248);
-    width: 87%;
-    padding: 5%;
-    padding-bottom: 7%;
-    border-radius: 10px;
+  border: solid 5px rgb(130, 193, 248);
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  width: 87%;
+  padding: 5%;
+  padding-bottom: 7%;
+  border-radius: 10px;
 }
 
 .min {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 .min p {
-    margin-block-start: 0;
+  margin-block-start: 0;
 }
 
 .top-div {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
-    border-radius: 10px;
-    background-color: rgb(130, 193, 248);
-    color: rgb(24, 28, 32);
-    padding: 5px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
+  border-radius: 10px;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
 .top-button-div {
-    display: flex;
-    justify-content: space-around;
-    position: relative;
-    left: 78%;
-    width: 22%;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  left: 78%;
+  width: 22%;
 }
 
 .top-buttons {
-    width: 30px;
-    background-color: rgb(24, 28, 32);
-    color: rgb(130, 193, 248);
-    font-size: 1.2em;
+  width: 30px;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  font-size: 1.2em;
 }
 
 .min-button {
-    min-width: 25px;
+  min-width: 25px;
 }
 
 .remove-task {
-    order: 1;
-    position: relative;
-    top: 14px;
-    width: 35px;
-    height: 30px;
-    border-radius: 15px;
+  order: 1;
+  position: relative;
+  top: 14px;
+  width: 35px;
+  height: 30px;
+  border-radius: 15px;
 }
 
 .button-div {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .task-prompt {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    position: absolute;
-    top: 25%;
-    padding: 2%;
-    width: 20%;
-    background-color: rgb(130, 193, 248);
-    color: rgb(24, 28, 32);
-    border-radius: 10px;
-    z-index: 1;
-    font-size: 1.25em;
-    font-weight: bold;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 25%;
+  padding: 2%;
+  width: 20%;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  border-radius: 10px;
+  z-index: 1;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 
 .invalid {
-    font-size: .85em;
-    font-weight: lighter;
-    margin-block-start: .25em;
-    margin-block-end: .25em;
-    color: rgb(251, 0, 0);
-    font-style: italic;
+  font-size: 0.85em;
+  font-weight: lighter;
+  margin-block-start: 0.25em;
+  margin-block-end: 0.25em;
+  color: rgb(251, 0, 0);
+  font-style: italic;
 }
 
 .project-prompt {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    position: absolute;
-    top: 25%;
-    padding: 2%;
-    width: 20%;
-    background-color: rgb(130, 193, 248);
-    color: rgb(24, 28, 32);
-    border-radius: 10px;
-    z-index: 1;
-    font-size: 1.25em;
-    font-weight: bold;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 25%;
+  padding: 2%;
+  width: 20%;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  border-radius: 10px;
+  z-index: 1;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 
 .prompt-head {
-    margin: auto;
+  margin: auto;
 }
 
 .new-task {
-    padding-bottom: 2%;
+  padding-bottom: 2%;
 }
 
 .notes-div {
-    padding-bottom: 5%;
+  padding-bottom: 5%;
 }
 
 .transparent {
-    opacity: 0.25;
+  opacity: 0.25;
 }
 
 .create-task-buttons {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    width: 100%;
+  width: 100%;
 }
 
 .create-task {
-    width: 45%;
+  width: 45%;
 }
 
 .cancel {
-    width: 45%;
+  width: 45%;
 }
 
 input {
-    border-radius: 5px;
-    padding: 1%;
-    width: 100%;
+  border-radius: 5px;
+  padding: 1%;
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
-    body {
-        flex-direction: column;
-        align-items: center;
-    }
+  body {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .sidebar {
-        position: relative;
-        top: 0;
-        width: 100%;
-        height: 10%;
-        border-bottom: rgb(24, 28, 32) solid 10px;
-    }
+  .sidebar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    border-bottom: rgb(24, 28, 32) solid 10px;
+  }
 
-    .project-container {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        left: 0;
-        
-        width: 98%;
-    }
-    
-    .project-prompt {
-        padding-top: 5%;
-        width: 90%;
-    }
+  .project-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 0;
 
-    .project {
-        width: 100%;
-        border-bottom: rgb(24, 28, 32) solid 10px;
-    }
+    width: 98%;
+  }
 
-    .task-prompt {
-        padding-top: 5%;
-        width: 90%;
-    }
+  .project-prompt {
+    padding-top: 5%;
+    width: 90%;
+  }
 
-    input {
-        width: 95%;
-    }
+  .project {
+    width: 100%;
+    border-bottom: rgb(24, 28, 32) solid 10px;
+  }
+
+  .task-prompt {
+    padding-top: 5%;
+    width: 90%;
+  }
+
+  input {
+    width: 95%;
+  }
 }
