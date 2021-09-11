@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import './style.css';
-import { project } from './task.js'
-import { projectBuilder, applyButtons, allProjects } from'./project.js'
+import { project } from './modules/objectBuilder'
+import { projectBuilder, allProjects } from'./modules/projectCreator'
+import { applyButtons } from './modules/buttons'
 
 const start = (() => {
   const defaultProject = project("New Project", "Add a task below and start tracking your project!", []);

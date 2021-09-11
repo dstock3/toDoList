@@ -11,7 +11,6 @@ const getPosition = (projectElement) => {
     let projectElementArray = Array.from(projectElements);
     let projectIndex = projectElementArray.indexOf(projectElement);
     return projectIndex
-
 };
 
 let body = document.getElementsByTagName("body")[0];
