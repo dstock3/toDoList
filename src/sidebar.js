@@ -71,7 +71,6 @@ function notifNum() {
     let notifs = document.getElementsByClassName("notif");
     for (let i = 0; i < notifs.length; i++) {
         if (notifs[i].id !== "no-notif") {
-            console.log(notifs[i])
             let num = notifs.length
             let previousNotifs = document.getElementsByClassName("notif-num")[0];
             if (previousNotifs !== undefined) {

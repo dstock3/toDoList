@@ -6,9 +6,13 @@ function elementBuilder(element, classLabel, parentName) {
 }
 
 const getPosition = (projectElement) => {
-    let projectElementArray = Array.from(projectElement.parentNode.children)
-    let projectIndex = projectElementArray.indexOf(projectElement);
-    return projectIndex
+    let projectDiv = projectElement.parentNode;
+    if (projectDiv !== null) {
+        let projectElements = projectDiv.children;
+        let projectElementArray = Array.from(projectElements);
+        let projectIndex = projectElementArray.indexOf(projectElement);
+        return projectIndex
+    }
 };
 
 let body = document.getElementsByTagName("body")[0];
