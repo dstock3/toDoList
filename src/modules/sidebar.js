@@ -164,7 +164,6 @@ function notifButton() {
           notifNum();
         }
         if (notifs.length === 0) {
-          previousNotif.remove();
           const newNotifContainer = elementBuilder(
             "div",
             "notif-container",
@@ -174,6 +173,7 @@ function notifButton() {
           const noNotif = elementBuilder("p", "notif", newNotifContainer);
           noNotif.id = "no-notif";
           noNotif.textContent = "No New Notifications";
+          previousNotif.remove();
         }
       }
       button.addEventListener("click", removeNotif);
