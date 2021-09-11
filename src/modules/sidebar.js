@@ -156,11 +156,12 @@ function notifButton() {
       button.textContent = "X";
       function removeNotif() {
         parent.remove();
-        let previousNotifs = document.getElementsByClassName("notif-num")[0];
-        if (previousNotifs !== undefined) {
+        let previousNotif = document.getElementsByClassName("notif-num")[0];
+        if (previousNotif !== undefined) {
           notifNum();
         }
         if (notifs.length === 0) {
+          previousNotif.remove();
           const newNotifContainer = elementBuilder(
             "div",
             "notif-container",
