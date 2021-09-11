@@ -66,6 +66,9 @@ const sidebar = (() => {
   currentDate.textContent = today();
   notifButton();
 
+  const tipsContainer = elementBuilder("div", "tips-container", element);
+  tipsContainer.textContent = "tips"
+
   return {
     element,
     newProject,
