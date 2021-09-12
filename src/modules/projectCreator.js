@@ -3,7 +3,7 @@ import { project, toDo, projectTracker } from "./objectBuilder";
 import { elementBuilder, getPosition, body, projectDiv } from "./elements";
 import { taskBuilder, projectHeader, projectBuilder } from "./taskElements";
 import { addTransparent, taskButtons, removeTransparent } from "./buttons";
-import { sidebar, notif } from "./sidebar";
+import { notif } from "./sidebar";
 import { validation, validateProj } from "./validation";
 import { store } from "./storage";
 
