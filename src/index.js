@@ -4,6 +4,8 @@ import { project } from "./modules/objectBuilder";
 import { projectBuilder, allProjects } from "./modules/projectCreator";
 import { applyButtons } from "./modules/buttons";
 
+const newTask = localStorage.getItem('newTask');
+console.log(newTask)
 const start = (() => {
   const defaultProject = project(
     "New Project",

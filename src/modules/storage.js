@@ -1,9 +1,7 @@
 function store(taskObj) {
+  let newTaskObj = JSON.stringify(taskObj)
+  localStorage.setItem("newTask", newTaskObj) 
   
-  let projObj = JSON.stringify(taskObj)
-  console.log(projObj) 
-  //let project = taskObj.project;
-
 }
 
 export { store };
