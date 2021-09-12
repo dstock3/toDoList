@@ -32,7 +32,7 @@ function newInput(
 }
 
 const addTask = (set) => {
-  let project = set.project;
+  let project = JSON.stringify(set.project);
   let projectElement = set.projectElement;
 
   const taskPrompt = (() => {
@@ -145,14 +145,14 @@ const addTask = (set) => {
           status
         );
 
-        project.taskArray.unshift(newTask);
+        set.project.taskArray.unshift(newTask);
         store(newTask);
         notif(newTask);
         taskBuilder(newTask, projectElement);
 
         let projectIndex = getPosition(projectElement);
         projectElement.remove();
-        let updatedProject = projectBuilder(project);
+        let updatedProject = projectBuilder(set.project);
 
         allProjects.masterList.push(updatedProject);
         projectDiv.insertBefore(
