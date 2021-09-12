@@ -6,8 +6,15 @@ import { applyButtons } from "./modules/buttons";
 
 const start = (() => {
   const newTask = JSON.parse(localStorage.getItem('newTask'));
-  let project = JSON.parse(newTask.project);
-  console.log(project)
+  let projObj = JSON.parse(newTask.project);
+  const newProject = project(
+    projObj.title,
+    projObj.description,
+    projObj.taskArray
+  )
+  const newProjSet = projectBuilder(newProject);
+  allProjects.masterList.push(newProjSet);
+  applyButtons(allProjects.masterList);
 
   if (newTask === null) {
     const defaultProject = project(
