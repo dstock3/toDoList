@@ -164,4 +164,32 @@ const projectButton = (() => {
   sidebar.newProject.addEventListener("click", addNewProject);
 })();
 
+const changeView = (() => {
+  let viewElement = sidebar.changeView;
+
+  function minAll() {
+    for (let i = 0; i < allProjects.masterList.length; i++) {
+      let set = allProjects.masterList[i];
+      if (set.project.taskArray.length > 0) {
+        set.minTasks();
+
+        viewElement.addEventListener("click", function () {
+          let projectIndex = getPosition(set.projectElement);
+          let originalIndex = allProjects.masterList.indexOf(set);
+          let maxProject = projectBuilder(set.project);
+          set.deleteList();
+          allProjects.masterList.splice(originalIndex, 1);
+          allProjects.masterList.push(maxProject);
+          projectDiv.insertBefore(
+            maxProject.projectElement,
+            projectDiv.children[projectIndex]
+          );
+          taskButtons(maxProject);
+        });
+      }
+    }
+  }
+  viewElement.addEventListener("click", minAll);
+})();
+
 export { taskButtons, applyButtons, addTransparent, removeTransparent };

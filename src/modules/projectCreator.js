@@ -3,7 +3,7 @@ import { project, toDo, projectTracker } from "./objectBuilder";
 import { elementBuilder, getPosition, body, projectDiv } from "./elements";
 import { taskBuilder, projectHeader, projectBuilder } from "./taskElements";
 import { addTransparent, taskButtons, removeTransparent } from "./buttons";
-import { sidebar, notif } from "./sidebar";
+import { notif } from "./sidebar";
 import { validation, validateProj } from "./validation";
 import { store } from "./storage";
 
@@ -32,7 +32,7 @@ function newInput(
 }
 
 const addTask = (set) => {
-  let project = set.project;
+  let project = JSON.stringify(set.project);
   let projectElement = set.projectElement;
 
   const taskPrompt = (() => {
@@ -145,14 +145,14 @@ const addTask = (set) => {
           status
         );
 
-        project.taskArray.unshift(newTask);
+        set.project.taskArray.unshift(newTask);
         store(newTask);
         notif(newTask);
         taskBuilder(newTask, projectElement);
 
         let projectIndex = getPosition(projectElement);
         projectElement.remove();
-        let updatedProject = projectBuilder(project);
+        let updatedProject = projectBuilder(set.project);
 
         allProjects.masterList.push(updatedProject);
         projectDiv.insertBefore(
@@ -242,33 +242,5 @@ const addProject = () => {
     createButton.addEventListener("click", createProject);
   })();
 };
-
-const changeView = (() => {
-  let viewElement = sidebar.changeView;
-
-  function minAll() {
-    for (let i = 0; i < allProjects.masterList.length; i++) {
-      let set = allProjects.masterList[i];
-      if (set.project.taskArray.length > 0) {
-        set.minTasks();
-
-        viewElement.addEventListener("click", function () {
-          let projectIndex = getPosition(set.projectElement);
-          let originalIndex = allProjects.masterList.indexOf(set);
-          let maxProject = projectBuilder(set.project);
-          set.deleteList();
-          allProjects.masterList.splice(originalIndex, 1);
-          allProjects.masterList.push(maxProject);
-          projectDiv.insertBefore(
-            maxProject.projectElement,
-            projectDiv.children[projectIndex]
-          );
-          taskButtons(maxProject);
-        });
-      }
-    }
-  }
-  viewElement.addEventListener("click", minAll);
-})();
 
 export { projectHeader, projectBuilder, allProjects, addTask, addProject };
