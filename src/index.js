@@ -8,6 +8,7 @@ const start = (() => {
   const newTask = JSON.parse(localStorage.getItem('newTask'));
   if (newTask !== null) {
     let projObj = JSON.parse(newTask.project);
+    projObj.taskArray.push(newTask)
     const newProject = project(
       projObj.title,
       projObj.description,
