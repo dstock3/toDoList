@@ -68,6 +68,8 @@ const sidebar = (() => {
   notifButton();
 
   const tipsContainer = elementBuilder("div", "tips-container", element);
+  const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
+  tipHead.textContent = "Productivity Tips"
   const tipContent = document.createElement("div");
   tipContent.classList.add("tip");
   const tip = randomGenerator(tips);
