@@ -319,11 +319,18 @@ button {
   width: 20%;
 }
 
-.warning-buttons {
+.warning-buttons-container {
   display: flex;
   justify-content: space-between;
   width: 95%;
 }
+
+.warning-buttons {
+  width: 45%;
+
+}
+
+
 
 .prompt-head {
   margin: auto;
