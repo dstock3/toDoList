@@ -3,6 +3,7 @@ import "./style.css";
 import { project } from "./modules/objectBuilder";
 import { projectBuilder, allProjects } from "./modules/projectCreator";
 import { applyButtons } from "./modules/buttons";
+import { store } from "./modules/storage";
 
 const start = (() => {
   const newTask = JSON.parse(localStorage.getItem('newTask'));
@@ -18,6 +19,8 @@ const start = (() => {
     allProjects.masterList.push(newProjSet);
     applyButtons(allProjects.masterList);
     localStorage.removeItem('newTask');
+    let newTaskObj = JSON.stringify(newTask)
+    localStorage.setItem("newTask", newTaskObj);
   }
 
   if (newTask === null) {
