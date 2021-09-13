@@ -131,14 +131,15 @@ const taskButtons = (set) => {
   })();
 
   const warningMessage = () => {
-    let warning = elementBuilder("div", "warning", body)
-    warning.textContent = "Are you sure you want to remove this entire project?"
-    let container = elementBuilder("div", "warning-buttons", warning)
+    let warningElement = elementBuilder("div", "warning", body);
+    let warningMessage = elementBuilder("p", "warning-message", warningElement);
+    warningMessage.textContent = "Are you sure you want to remove this entire project?"
+    let container = elementBuilder("div", "warning-buttons", warningElement)
     let confirm = elementBuilder("button", "confirm", container);
     confirm.textContent = "Remove Project";
     let cancel = elementBuilder("button", "cancel", container);
     cancel.textContent = "Cancel"
-    cancel.addEventListener("click", warning.remove);
+    cancel.addEventListener("click", warningElement.remove);
     confirm.addEventListener("click", set.deleteList);
   }
 
