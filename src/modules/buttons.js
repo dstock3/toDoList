@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import { elementBuilder, getPosition, projectDiv } from "./elements";
+import { elementBuilder, getPosition, projectDiv, body } from "./elements";
 import { sortByDueDate } from "./date";
 import { projectBuilder } from "./taskElements";
 import { addTask, addProject, allProjects } from "./projectCreator";
@@ -130,12 +130,23 @@ const taskButtons = (set) => {
     }
   })();
 
+  const warningMessage = () => {
+    let warning = elementBuilder("div", "warning", body)
+    warning.textContent = "Are you sure you want to remove this entire project?"
+    let confirm = elementBuilder("button", "confirm", warning);
+    confirm.textContent = "Remove Project";
+    let cancel = elementBuilder("button", "cancel", warning);
+    cancel.textContent = "Cancel"
+    cancel.addEventListener("click", warning.remove);
+    confirm.addEventListener("click", set.deleteList);
+  }
+
   const deleteButton = (() => {
     let del = elementBuilder("button", "top-buttons", topButtonDiv);
     del.classList.add("delete-button");
     del.textContent = "x";
 
-    del.addEventListener("click", set.deleteList);
+    del.addEventListener("click", warningMessage);
   })();
 };
 
