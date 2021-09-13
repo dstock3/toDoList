@@ -1,6 +1,7 @@
 /* eslint-disable no-inner-declarations */
 import { elementBuilder, body, toggleHide } from "./elements";
 import { today, deadline } from "./date";
+import { tips, randomGenerator } from "./tips"
 
 const sidebar = (() => {
   const element = elementBuilder("div", "sidebar", body);
@@ -67,7 +68,11 @@ const sidebar = (() => {
   notifButton();
 
   const tipsContainer = elementBuilder("div", "tips-container", element);
-  tipsContainer.textContent = "tips"
+  const tipContent = document.createElement("div");
+  tipContent.classList.add("tip");
+  const tip = randomGenerator(tips);
+  tipContent.textContent = tip;
+  tipsContainer.appendChild(tipContent);
 
   return {
     element,
