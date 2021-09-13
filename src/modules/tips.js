@@ -11,7 +11,7 @@ let tips = [
     "Emails can be a distraction when you're occupied with a task that requires concentrarion. Set aside time specifically to check your emails.",
     "Chewing gum has been shown to speed up reaction time and improve cognitive abilities.",
     "The Pareto Principle is the idea that roughly 20 percent of your tasks generate an astounding 80 percent of significant outcomes.",
-    "People tend to procrastinate when faced with large, complicated projects. You can alleviate this problem by breaking up large projects into smaller tasks.",
+    "People tend to procrastinate when faced with large, complicated projects. You can alleviate this problem by breaking up large projects into smaller, more manageable tasks.",
     "If you find yourself in a productivity rut, a change of setting might help. Try working in a coffee shop for a few hours.",
     "The practice known as mindfulness meditation has been show to reduce stress by conditioning you to focus on the present moment.",
     "Cultivate good sleep habits to ensure you are ready to face the day head-on. Make sure you are scheduling enough time to get a full eight hours of restful sleep.",

@@ -4,6 +4,7 @@ import { project } from "./modules/objectBuilder";
 import { projectBuilder, allProjects } from "./modules/projectCreator";
 import { applyButtons } from "./modules/buttons";
 import { notif } from "./modules/sidebar";
+
 const start = (() => {
   const newTask = JSON.parse(localStorage.getItem('newTask'));
   if (newTask !== null) {
@@ -33,6 +34,12 @@ const start = (() => {
     allProjects.masterList.push(defaultProjectSet);
     applyButtons(allProjects.masterList);
   }
+  /*
+  const newArray = JSON.stringify(allProjects.masterList)
+  localStorage.setItem("newArray", newArray)
+  const fetchedArray = localStorage.getItem("newArray")
+  console.log(JSON.parse(fetchedArray))
+  */
   return { allProjects };
 })();
 
