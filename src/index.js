@@ -3,12 +3,12 @@ import "./style.css";
 import { project } from "./modules/objectBuilder";
 import { projectBuilder, allProjects } from "./modules/projectCreator";
 import { applyButtons } from "./modules/buttons";
-import { store } from "./modules/storage";
-
+import { notif } from "./modules/sidebar";
 const start = (() => {
   const newTask = JSON.parse(localStorage.getItem('newTask'));
   if (newTask !== null) {
     let projObj = JSON.parse(newTask.project);
+    notif(newTask);
     projObj.taskArray.push(newTask)
     const newProject = project(
       projObj.title,
