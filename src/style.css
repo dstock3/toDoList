@@ -305,6 +305,19 @@ button {
   font-weight: bold;
 }
 
+.warning {
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  top: 25%;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  z-index: 1;
+  border-radius: 10px;
+  padding: 2%;
+  width: 20%;
+}
+
 .prompt-head {
   margin: auto;
 }
