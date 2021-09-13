@@ -139,9 +139,18 @@ const taskButtons = (set) => {
     confirm.textContent = "Remove Project";
     let cancel = elementBuilder("button", "warning-buttons", container);
     cancel.textContent = "Cancel"
-    cancel.addEventListener("click", warningElement.remove);
-    confirm.addEventListener("click", set.deleteList);
-  }
+    
+    function cancelProj() {
+      warningElement.remove();
+    }
+    cancel.addEventListener("click", cancelProj);
+
+    function removeProj() {
+      set.deleteList()
+      warningElement.remove();
+    }
+    confirm.addEventListener("click", removeProj);
+  };
 
   const deleteButton = (() => {
     let del = elementBuilder("button", "top-buttons", topButtonDiv);
