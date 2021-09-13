@@ -6,6 +6,18 @@ import { projectBuilder } from "./taskElements";
 import { addTask, addProject, allProjects } from "./projectCreator";
 import { sidebar } from "./sidebar";
 
+function addTransparent(childElements) {
+  for (let i = 0; i < childElements.length - 1; i++) {
+    childElements[i].classList.add("transparent");
+  }
+}
+
+function removeTransparent(childElements) {
+  for (let i = 0; i < childElements.length - 1; i++) {
+    childElements[i].classList.remove("transparent");
+  }
+}
+
 const taskButtons = (set) => {
   const topButtonDiv = elementBuilder(
     "div",
@@ -131,6 +143,11 @@ const taskButtons = (set) => {
   })();
 
   const warningMessage = () => {
+    for (let i = 0; i < body.children.length; i++) {
+      if (i < body.children.length) {
+        body.children[i].classList.add("transparent")
+      }
+    }
     let warningElement = elementBuilder("div", "warning", body);
     let warningMessage = elementBuilder("p", "warning-message", warningElement);
     warningMessage.textContent = "Are you sure you want to remove this entire project?"
@@ -139,13 +156,15 @@ const taskButtons = (set) => {
     confirm.textContent = "Remove Project";
     let cancel = elementBuilder("button", "warning-buttons", container);
     cancel.textContent = "Cancel"
-    
+
     function cancelProj() {
+      removeTransparent(body.children)
       warningElement.remove();
     }
     cancel.addEventListener("click", cancelProj);
 
     function removeProj() {
+      removeTransparent(body.children)
       set.deleteList()
       warningElement.remove();
     }
@@ -156,7 +175,6 @@ const taskButtons = (set) => {
     let del = elementBuilder("button", "top-buttons", topButtonDiv);
     del.classList.add("delete-button");
     del.textContent = "x";
-
     del.addEventListener("click", warningMessage);
   })();
 };
@@ -164,18 +182,6 @@ const taskButtons = (set) => {
 function applyButtons(taskArray) {
   for (let i = 0; i < taskArray.length; i++) {
     taskButtons(taskArray[i]);
-  }
-}
-
-function addTransparent(childElements) {
-  for (let i = 0; i < childElements.length - 1; i++) {
-    childElements[i].classList.add("transparent");
-  }
-}
-
-function removeTransparent(childElements) {
-  for (let i = 0; i < childElements.length - 1; i++) {
-    childElements[i].classList.remove("transparent");
   }
 }
 
