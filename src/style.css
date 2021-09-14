@@ -366,6 +366,41 @@ input {
   width: 100%;
 }
 
+/* Themes */
+li {
+  list-style-type: none;
+  padding-bottom: 2%;;
+}
+
+.themes {
+  width: 50%;
+}
+
+.themes-bar {
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.themes-list {
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 5%;
+}
+
+.theme-option {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.color {
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+}
+
 .emerald {
   background-color: #50C878;
   color: black;
