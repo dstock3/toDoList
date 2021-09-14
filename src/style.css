@@ -373,20 +373,22 @@ li {
 }
 
 .themes {
-  width: 50%;
+  width: 60%;
 }
 
 .themes-bar {
   background-color: rgb(24, 28, 32);
   color: rgb(130, 193, 248);
-  padding: 2%;
+  padding: 1%;
   border-radius: 10px;
 }
 
 .themes-list {
   display: flex;
   flex-direction: column;
-  padding-inline-start: 5%;
+  padding-inline-start: 3%;
+  margin-block-start: 5%;
+  margin-block-end: 5%;
 }
 
 .theme-option {
@@ -395,7 +397,17 @@ li {
   justify-content: space-between;
 }
 
+.theme-option:hover {
+  background-color: rgb(38, 44, 51);
+}
+
+.theme-text {
+
+}
+
 .color {
+  position: relative;
+  right: 15%;
   height: 40px;
   width: 40px;
   border-radius: 5px;

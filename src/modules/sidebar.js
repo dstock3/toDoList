@@ -90,6 +90,13 @@ const sidebar = (() => {
     color.setAttribute("style", `background-color: ${themes[key]};`)
   }
 
+  function setTheme(color) {
+    let elementArray = document.getElementsByClassName('class1 class2')
+    for (let i = 0; i < elementArray.length; i++) {
+      elementArray[i].classList.add(color)
+    }
+  }
+
   function showThemes() {
     toggleHide(themesBar)
   }
