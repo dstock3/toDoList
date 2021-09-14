@@ -6,6 +6,7 @@ import { taskBuilder, projectHeader, projectBuilder } from "./taskElements";
 import { addTransparent, taskButtons, removeTransparent } from "./buttons";
 import { notif } from "./sidebar";
 import { validation, validateProj } from "./validation";
+import { store } from "./store";
 
 function newInput(
   parent,
@@ -168,8 +169,6 @@ const addTask = (set) => {
   })();
 };
 
-
-
 const addProject = () => {
   const projectPrompt = (() => {
     let prompt = elementBuilder("div", "project-prompt", body);
@@ -230,6 +229,8 @@ const addProject = () => {
       if (isValid) {
         let newProject = project(title, description, []);
         allProjects.projectList.unshift(newProject);
+        store(allProjects.projectList)
+
         let projectSet = projectBuilder(newProject);
         taskButtons(projectSet);
         allProjects.masterList.push(projectSet);
@@ -243,4 +244,4 @@ const addProject = () => {
   })();
 };
 
-export { projectHeader, projectBuilder, allProjects, addTask, addProject };
+export { projectHeader, projectBuilder, addTask, addProject };

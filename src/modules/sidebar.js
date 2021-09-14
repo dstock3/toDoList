@@ -67,6 +67,20 @@ const sidebar = (() => {
   currentDate.textContent = today();
   notifButton();
 
+  const themesDiv = elementBuilder("div", "themes", barContainer);
+  const themesButton = elementBuilder("button", "themes-button", themesDiv);
+  themesButton.textContent = "Themes";
+  const themesBar = elementBuilder("div", "themes-bar", themesDiv);
+  let themes = ["Dark", "Light", "Emerald", "Artic"]
+
+
+  function showThemes() {
+    themesBar.classList.remove("hidden");
+
+  }
+
+  //themesButton.addEventListener("click", showThemes)
+
   const tipsContainer = elementBuilder("div", "tips-container", element);
   const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
   tipHead.textContent = "Productivity Tips"
