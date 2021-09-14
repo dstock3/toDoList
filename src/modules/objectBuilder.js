@@ -26,7 +26,8 @@ const toDo = (
 
 const projectTracker = () => {
   let masterList = [];
-  return { masterList };
+  let projectList = []
+  return { masterList, projectList };
 };
 
 export { project, toDo, projectTracker };

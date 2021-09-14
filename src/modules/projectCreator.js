@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { project, toDo, projectTracker } from "./objectBuilder";
+import { allProjects } from "../index"
+import { project, toDo } from "./objectBuilder";
 import { elementBuilder, getPosition, body, projectDiv } from "./elements";
 import { taskBuilder, projectHeader, projectBuilder } from "./taskElements";
 import { addTransparent, taskButtons, removeTransparent } from "./buttons";
 import { notif } from "./sidebar";
 import { validation, validateProj } from "./validation";
-import { store } from "./storage";
-
-let allProjects = projectTracker();
 
 function newInput(
   parent,
@@ -146,7 +144,6 @@ const addTask = (set) => {
         );
 
         set.project.taskArray.unshift(newTask);
-        store(newTask);
         notif(newTask);
         taskBuilder(newTask, projectElement);
 
@@ -170,6 +167,8 @@ const addTask = (set) => {
     createButton.addEventListener("click", createTask);
   })();
 };
+
+
 
 const addProject = () => {
   const projectPrompt = (() => {
@@ -230,6 +229,7 @@ const addProject = () => {
 
       if (isValid) {
         let newProject = project(title, description, []);
+        allProjects.projectList.unshift(newProject);
         let projectSet = projectBuilder(newProject);
         taskButtons(projectSet);
         allProjects.masterList.push(projectSet);
