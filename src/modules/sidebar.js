@@ -71,15 +71,31 @@ const sidebar = (() => {
   const themesButton = elementBuilder("button", "themes-button", themesDiv);
   themesButton.textContent = "Themes";
   const themesBar = elementBuilder("div", "themes-bar", themesDiv);
-  let themes = ["Dark", "Light", "Emerald", "Artic"]
+  themesBar.classList.add("hidden");
+  let themesList = elementBuilder("ul", "themes-list", themesBar)
 
+  let themes = {
+    "Dark": "#343434", 
+    "Light": "#ECECEC", 
+    "Emerald": "#50C878", 
+    "Artic": "#C6DAE9"
+    };
 
-  function showThemes() {
-    themesBar.classList.remove("hidden");
-
+  
+  for (let key in themes) {
+    let theme = elementBuilder("li", "theme-option", themesList);
+    let themeText = elementBuilder("div", "theme-text", theme);
+    themeText.textContent = `${key}`;
+    let color = elementBuilder("div", "color", theme);
+    
+    console.log(`${key}: ${themes[key]}`)
   }
 
-  //themesButton.addEventListener("click", showThemes)
+  function showThemes() {
+    toggleHide(themesBar)
+  }
+
+  themesButton.addEventListener("click", showThemes)
 
   const tipsContainer = elementBuilder("div", "tips-container", element);
   const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
