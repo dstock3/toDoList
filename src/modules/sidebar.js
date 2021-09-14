@@ -78,7 +78,7 @@ const sidebar = (() => {
     "Dark": "#343434", 
     "Light": "#ECECEC", 
     "Emerald": "#50C878", 
-    "Artic": "#C6DAE9"
+    "Artic": "#C6DAE9",
     };
 
   
@@ -87,8 +87,7 @@ const sidebar = (() => {
     let themeText = elementBuilder("div", "theme-text", theme);
     themeText.textContent = `${key}`;
     let color = elementBuilder("div", "color", theme);
-    
-    console.log(`${key}: ${themes[key]}`)
+    color.setAttribute("style", `background-color: ${themes[key]};`)
   }
 
   function showThemes() {
