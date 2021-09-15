@@ -431,6 +431,10 @@ li {
   color: #50C878;
 }
 
+#emeraldComp .theme-option:hover {
+  background-color: #163320;
+}
+
 #dark {
   background-color: #343434;
   color: rgb(246, 246, 246);
@@ -441,14 +445,22 @@ li {
   color: rgb(246, 246, 246);
 }
 
+#darkComp .theme-option:hover {
+  background-color: rgb(27, 27, 27);
+}
+
 #light {
   background-color: #ECECEC;
   color: rgb(19, 19, 19);
 }
 
 #lightComp {
-  background-color: rgb(19, 19, 19);
+  background-color: rgb(110, 110, 110);
   color: #ECECEC;
+}
+
+#lightComp .theme-option:hover {
+  background-color: rgb(75, 75, 75);
 }
 
 #artic {
@@ -461,6 +473,10 @@ li {
   color: #C6DAE9;
 }
 
+#articComp .theme-option:hover {
+  background-color: rgb(84, 118, 139);
+}
+
 #ruby {
   background-color: #E0115F;
   color: rgb(19, 19, 19);
@@ -471,6 +487,10 @@ li {
   background-color: rgb(24, 28, 32);
 }
 
+#rubyComp .theme-option:hover {
+  background-color: #35101e;
+}
+
 #purple {
   background-color: #800080;
   color: rgb(24, 28, 32); 
@@ -479,6 +499,10 @@ li {
 #purpleComp {
   background-color: rgb(24, 28, 32); 
   color: #be00be;
+}
+
+#purpleComp .theme-option:hover {
+  background-color: #310131;
 }
 
 @media only screen and (max-width: 600px) {
