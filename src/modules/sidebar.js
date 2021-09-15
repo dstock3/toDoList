@@ -82,30 +82,37 @@ const sidebar = (() => {
     "Ruby": "#E0115F",
     };
 
-  
+  let classArray = [];
+
   for (let key in themes) {
     let theme = elementBuilder("li", "theme-option", themesList);
     let themeText = elementBuilder("div", "theme-text", theme);
-    themeText.textContent = `${key}`;
+    let colorString = `${key}`;
+    themeText.textContent = colorString
     let color = elementBuilder("div", "color", theme);
     color.setAttribute("style", `background-color: ${themes[key]};`)
+    let newString = colorString.charAt(0).toLowerCase() + colorString.slice(1);
+    classArray.push(newString);
   }
+  console.log(classArray)
+
+  
+
   let themeElements = document.getElementsByClassName("theme-option")
   for (let i = 0; i < themeElements.length; i++) {
     themeElements[i].addEventListener("click", themeElements[i].remove)
-
-  }
+    };
 
   function setTheme(color) {
-    let elementArray = document.getElementsByClassName('class1 class2')
+    let elementArray = document.getElementsByClassName('project sidebar')
     for (let i = 0; i < elementArray.length; i++) {
       elementArray[i].classList.add(color)
-    }
-  }
+    };
+  };
 
   function showThemes() {
     toggleHide(themesBar)
-  }
+  };
 
   themesButton.addEventListener("click", showThemes)
 
