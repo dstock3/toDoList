@@ -81,7 +81,7 @@ const sidebar = (() => {
     "Artic": "#C6DAE9",
     "Ruby": "#E0115F",
     "Classic": "#82c1f8",
-    };
+  };
   let themeMap = new Map();
   let themeArray = []
   let colorArray = []
@@ -105,8 +105,12 @@ const sidebar = (() => {
   function setTheme(color) {
     let projectElement = document.getElementsByClassName('project')[0]
     let sidebarElement = document.getElementsByClassName('sidebar')[0]
+    let buttonElements = document.getElementsByTagName("button");
     let themeElementArray = [projectElement, sidebarElement];
-  
+    for (let y = 0; y < buttonElements.length; y++) {
+      themeElementArray.push(buttonElements[y]);
+    }
+    
     for (let i = 0; i < themeElementArray.length; i++) {
       themeElementArray[i].id = color;
     };
