@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-inner-declarations */
 import { elementBuilder, body, toggleHide } from "./elements";
 import { today, deadline } from "./date";

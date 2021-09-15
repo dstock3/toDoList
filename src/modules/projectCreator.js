@@ -4,7 +4,7 @@ import { project, toDo } from "./objectBuilder";
 import { elementBuilder, getPosition, body, projectDiv } from "./elements";
 import { taskBuilder, projectHeader, projectBuilder } from "./taskElements";
 import { addTransparent, taskButtons, removeTransparent } from "./buttons";
-import { notif } from "./sidebar";
+import { sidebar, notif } from "./sidebar";
 import { validation, validateProj } from "./validation";
 import { store } from "./store";
 
@@ -216,6 +216,13 @@ const addProject = () => {
     }
 
     cancelButton.addEventListener("click", exit);
+
+    let theme = sidebar.element.id;
+    if (theme !== undefined) {
+      prompt.id = theme;
+      createButton.id = theme;
+      cancelButton.id = theme;
+    }
 
     function createProject() {
       let title = document.getElementById("project-title").value;
