@@ -415,9 +415,24 @@ li {
   border-radius: 5px;
 }
 
-.emerald {
+#emerald {
   background-color: #50C878;
-  color: black;
+}
+
+#dark {
+  background-color: #343434;
+}
+
+#light {
+  background-color: #ECECEC;
+}
+
+#artic {
+  background-color: #C6DAE9;
+}
+
+#ruby {
+  background-color: #E0115F;
 }
 
 @media only screen and (max-width: 600px) {

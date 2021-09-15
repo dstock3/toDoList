@@ -81,40 +81,43 @@ const sidebar = (() => {
     "Artic": "#C6DAE9",
     "Ruby": "#E0115F",
     };
-
-  let classArray = [];
+  let themeMap = new Map();
+  let themeArray = []
+  let colorArray = []
 
   for (let key in themes) {
     let theme = elementBuilder("li", "theme-option", themesList);
     let themeText = elementBuilder("div", "theme-text", theme);
+    themeArray.push(theme)
     let colorString = `${key}`;
     themeText.textContent = colorString
     let color = elementBuilder("div", "color", theme);
     color.setAttribute("style", `background-color: ${themes[key]};`)
     let newString = colorString.charAt(0).toLowerCase() + colorString.slice(1);
-    classArray.push(newString);
-
-    function setTheme(color) {
-      let projectElement = document.getElementsByClassName('project')[0]
-      let sidebarElement = document.getElementsByClassName('sidebar')[0]
-      let themeElementArray = [projectElement, sidebarElement];
-
-      for (let i = 0; i < themeElementArray.length; i++) {
-        themeElementArray[i].classList.add(color)
-      };
-    };
-
-    for (let i = 0; i < classArray.length; i++) {
-      function newTheme() {
-        console.log("hello")
-        setTheme(classArray[i])
-      }
-      theme.addEventListener("click", newTheme);
-    }
+    colorArray.push(newString)
   }
 
+  for(let i = 0; i < themeArray.length; i++){ 
+    themeMap.set(themeArray[i], colorArray[i]); 
+  }
 
+  function setTheme(color) {
+    let projectElement = document.getElementsByClassName('project')[0]
+    let sidebarElement = document.getElementsByClassName('sidebar')[0]
+    let themeElementArray = [projectElement, sidebarElement];
+  
+    for (let i = 0; i < themeElementArray.length; i++) {
+      themeElementArray[i].id = color;
+    };
+  };
 
+  for (let [themeElement, color] of themeMap.entries()) {
+    function newTheme() {
+      setTheme(color);
+    }      
+    themeElement.addEventListener("click", newTheme);
+  }
+  
   function showThemes() {
     toggleHide(themesBar)
   };
