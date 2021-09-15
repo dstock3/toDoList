@@ -82,6 +82,7 @@ const sidebar = (() => {
     "Ruby": "#E0115F",
     "Classic": "#82C1F8",
   };
+
   let themeMap = new Map();
   let themeArray = []
   let colorArray = []
@@ -107,6 +108,8 @@ const sidebar = (() => {
   function setTheme(color, comp) {
     let projectElement = document.getElementsByClassName('project')[0];
     let sidebarElement = document.getElementsByClassName('sidebar')[0];
+    let sideButtonContainer = document.getElementsByClassName('side-button-container')[0];
+    let themesBar = document.getElementsByClassName('themes-bar')[0];
     let notifButtons = document.getElementsByClassName('notif-button');
     let notifBar = document.getElementsByClassName('notif-bar')[0];
     let notifContainer = document.getElementsByClassName('notif-container')[0];
@@ -130,10 +133,11 @@ const sidebar = (() => {
     for (let i = 0; i < themeElementArray.length; i++) {
       themeElementArray[i].id = color;
     };
-
+    sideButtonContainer.id = comp;
     tipsContainer.id = comp;
     notifBar.id = comp;
     notifContainer.id = comp;
+    themesBar.id = comp;
   };
 
   for (let [themeElement, colorPair] of themeMap.entries()) {
