@@ -75,10 +75,11 @@ const sidebar = (() => {
   let themesList = elementBuilder("ul", "themes-list", themesBar)
 
   let themes = {
-    "Dark": "#343434", 
-    "Light": "#ECECEC", 
+    "Light": "#ECECEC",
+    "Dark": "#343434",  
     "Emerald": "#50C878", 
     "Artic": "#C6DAE9",
+    "Ruby": "#E0115F",
     };
 
   
@@ -88,6 +89,11 @@ const sidebar = (() => {
     themeText.textContent = `${key}`;
     let color = elementBuilder("div", "color", theme);
     color.setAttribute("style", `background-color: ${themes[key]};`)
+  }
+  let themeElements = document.getElementsByClassName("theme-option")
+  for (let i = 0; i < themeElements.length; i++) {
+    themeElements[i].addEventListener("click", themeElements[i].remove)
+
   }
 
   function setTheme(color) {
