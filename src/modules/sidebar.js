@@ -80,7 +80,7 @@ const sidebar = (() => {
     "Emerald": "#50C878", 
     "Artic": "#C6DAE9",
     "Ruby": "#E0115F",
-    "Classic": "#82c1f8",
+    "Classic": "#82C1F8",
   };
   let themeMap = new Map();
   let themeArray = []
@@ -105,11 +105,24 @@ const sidebar = (() => {
   }
 
   function setTheme(color, comp) {
-    let projectElement = document.getElementsByClassName('project')[0]
-    let sidebarElement = document.getElementsByClassName('sidebar')[0]
+    let projectElement = document.getElementsByClassName('project')[0];
+    let sidebarElement = document.getElementsByClassName('sidebar')[0];
+    let notifButtons = document.getElementsByClassName('notif-button');
+    let notifBar = document.getElementsByClassName('notif-bar')[0];
+    let notifContainer = document.getElementsByClassName('notif-container')[0];
+    let removeNotifs = document.getElementsByClassName('remove-notif');
     let tipsContainer = sidebarElement.lastChild;
     let buttonElements = document.getElementsByTagName("button");
     let themeElementArray = [projectElement, sidebarElement];
+
+    for (let i = 0; i < notifButtons.length; i++) {
+      notifButtons[i].id = comp;
+    }
+
+    for (let i = 0; i < removeNotifs.length; i++) {
+      removeNotifs[i].id = color;
+    }
+
     for (let y = 0; y < buttonElements.length; y++) {
       themeElementArray.push(buttonElements[y]);
     }
@@ -118,7 +131,9 @@ const sidebar = (() => {
       themeElementArray[i].id = color;
     };
 
-    tipsContainer.id = comp
+    tipsContainer.id = comp;
+    notifBar.id = comp;
+    notifContainer.id = comp;
   };
 
   for (let [themeElement, colorPair] of themeMap.entries()) {
