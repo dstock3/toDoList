@@ -519,17 +519,18 @@ li {
 }
 
 #purple {
-  background-color: #800080;
+  background-color: #bb54ce;
   color: rgb(24, 28, 32); 
 }
 
 #purpleComp {
   background-color: rgb(24, 28, 32); 
-  color: #be00be;
+  color: #bb54ce;
 }
 
 #purpleComp .theme-option:hover {
   background-color: #310131;
+  
 }
 
 #purpleComp .notif-container:hover {

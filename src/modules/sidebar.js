@@ -80,7 +80,7 @@ const sidebar = (() => {
     "Emerald": "#50C878", 
     "Artic": "#C6DAE9",
     "Ruby": "#E0115F",
-    "Purple": "#800080",
+    "Purple": "#BB54CE;",
     "Classic": "#82C1F8",
   };
 
