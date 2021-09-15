@@ -93,22 +93,27 @@ const sidebar = (() => {
     color.setAttribute("style", `background-color: ${themes[key]};`)
     let newString = colorString.charAt(0).toLowerCase() + colorString.slice(1);
     classArray.push(newString);
+
+    function setTheme(color) {
+      let projectElement = document.getElementsByClassName('project')[0]
+      let sidebarElement = document.getElementsByClassName('sidebar')[0]
+      let themeElementArray = [projectElement, sidebarElement];
+
+      for (let i = 0; i < themeElementArray.length; i++) {
+        themeElementArray[i].classList.add(color)
+      };
+    };
+
+    for (let i = 0; i < classArray.length; i++) {
+      function newTheme() {
+        console.log("hello")
+        setTheme(classArray[i])
+      }
+      theme.addEventListener("click", newTheme);
+    }
   }
-  console.log(classArray)
 
-  
 
-  let themeElements = document.getElementsByClassName("theme-option")
-  for (let i = 0; i < themeElements.length; i++) {
-    themeElements[i].addEventListener("click", themeElements[i].remove)
-    };
-
-  function setTheme(color) {
-    let elementArray = document.getElementsByClassName('project sidebar')
-    for (let i = 0; i < elementArray.length; i++) {
-      elementArray[i].classList.add(color)
-    };
-  };
 
   function showThemes() {
     toggleHide(themesBar)
