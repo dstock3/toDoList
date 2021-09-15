@@ -471,6 +471,16 @@ li {
   background-color: rgb(24, 28, 32);
 }
 
+#purple {
+  background-color: #800080;
+  color: rgb(24, 28, 32); 
+}
+
+#purpleComp {
+  background-color: rgb(24, 28, 32); 
+  color: #be00be;
+}
+
 @media only screen and (max-width: 600px) {
   body {
     flex-direction: column;

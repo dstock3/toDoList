@@ -80,6 +80,7 @@ const sidebar = (() => {
     "Emerald": "#50C878", 
     "Artic": "#C6DAE9",
     "Ruby": "#E0115F",
+    "Purple": "#800080",
     "Classic": "#82C1F8",
   };
 
@@ -154,6 +155,9 @@ const sidebar = (() => {
     } else if (color === "ruby") {
       sidebarElement.setAttribute("style", "border-right: solid #E0115F 3px;");
       tipsContainer.setAttribute("style", "border: solid #E0115F 3px;");
+    } else if (color === "purple") { 
+      sidebarElement.setAttribute("style", "border-right: solid #800080 3px;");
+      tipsContainer.setAttribute("style", "border: solid #800080 3px;");
     } else if (color === "classic") {
       sidebarElement.setAttribute("style", "border-right: solid #82C1F8 3px;");
       tipsContainer.setAttribute("style", "border: solid #82C1F8 3px;");
