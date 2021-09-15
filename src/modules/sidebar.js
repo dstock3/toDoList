@@ -18,7 +18,7 @@ const sidebar = (() => {
   );
 
   const newProject = elementBuilder("button", "side-buttons", sideButtons);
-  newProject.textContent = "Start New Project";
+  newProject.textContent = "New Project";
   newProject.id = "new-project";
 
   const changeView = elementBuilder("button", "side-buttons", sideButtons);
@@ -68,10 +68,9 @@ const sidebar = (() => {
   currentDate.textContent = today();
   notifButton();
 
-  const themesDiv = elementBuilder("div", "themes", barContainer);
-  const themesButton = elementBuilder("button", "themes-button", themesDiv);
+  const themesButton = elementBuilder("button", "themes-button", sideButtons);
   themesButton.textContent = "Themes";
-  const themesBar = elementBuilder("div", "themes-bar", themesDiv);
+  const themesBar = elementBuilder("div", "themes-bar", barContainer);
   themesBar.classList.add("hidden");
   let themesList = elementBuilder("ul", "themes-list", themesBar)
 
