@@ -80,6 +80,7 @@ const sidebar = (() => {
     "Emerald": "#50C878", 
     "Artic": "#C6DAE9",
     "Ruby": "#E0115F",
+    "Classic": "#82c1f8",
     };
   let themeMap = new Map();
   let themeArray = []

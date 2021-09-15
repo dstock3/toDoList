@@ -403,10 +403,6 @@ li {
   background-color: rgb(38, 44, 51);
 }
 
-.theme-text {
-
-}
-
 .color {
   position: relative;
   right: 15%;
@@ -415,20 +411,29 @@ li {
   border-radius: 5px;
 }
 
+#classic {
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32); 
+}
+
 #emerald {
   background-color: #50C878;
+  color: rgb(59, 13, 13);
 }
 
 #dark {
   background-color: #343434;
+  color: rgb(246, 246, 246);
 }
 
 #light {
   background-color: #ECECEC;
+  color: rgb(19, 19, 19);
 }
 
 #artic {
   background-color: #C6DAE9;
+  color: rgb(29, 83, 119);
 }
 
 #ruby {
