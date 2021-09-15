@@ -92,19 +92,22 @@ const sidebar = (() => {
     themeArray.push(theme)
     let colorString = `${key}`;
     themeText.textContent = colorString
-    let color = elementBuilder("div", "color", theme);
-    color.setAttribute("style", `background-color: ${themes[key]};`)
-    let newString = colorString.charAt(0).toLowerCase() + colorString.slice(1);
-    colorArray.push(newString)
+    let colorElement = elementBuilder("div", "color", theme);
+    colorElement.setAttribute("style", `background-color: ${themes[key]};`)
+    let color = colorString.charAt(0).toLowerCase() + colorString.slice(1);
+    let comp = color + "Comp"
+    let colorPair = { color, comp }
+    colorArray.push(colorPair)
   }
 
   for(let i = 0; i < themeArray.length; i++){ 
     themeMap.set(themeArray[i], colorArray[i]); 
   }
 
-  function setTheme(color) {
+  function setTheme(color, comp) {
     let projectElement = document.getElementsByClassName('project')[0]
     let sidebarElement = document.getElementsByClassName('sidebar')[0]
+    let tipsContainer = sidebarElement.lastChild;
     let buttonElements = document.getElementsByTagName("button");
     let themeElementArray = [projectElement, sidebarElement];
     for (let y = 0; y < buttonElements.length; y++) {
@@ -114,11 +117,15 @@ const sidebar = (() => {
     for (let i = 0; i < themeElementArray.length; i++) {
       themeElementArray[i].id = color;
     };
+
+    tipsContainer.id = comp
   };
 
-  for (let [themeElement, color] of themeMap.entries()) {
+  for (let [themeElement, colorPair] of themeMap.entries()) {
+    let color = colorPair[Object.keys(colorPair)[0]];
+    let comp = colorPair[Object.keys(colorPair)[1]];
     function newTheme() {
-      setTheme(color);
+      setTheme(color, comp);
     }      
     themeElement.addEventListener("click", newTheme);
   }

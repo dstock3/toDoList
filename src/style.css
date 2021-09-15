@@ -416,9 +416,19 @@ li {
   color: rgb(24, 28, 32); 
 }
 
+#classicComp {
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248); 
+}
+
 #emerald {
   background-color: #50C878;
   color: rgb(59, 13, 13);
+}
+
+#emeraldComp {
+  background-color: rgb(59, 13, 13);
+  color: #50C878;
 }
 
 #dark {
@@ -426,9 +436,19 @@ li {
   color: rgb(246, 246, 246);
 }
 
+#darkComp {
+  background-color: rgb(246, 246, 246);
+  color: #343434;
+}
+
 #light {
   background-color: #ECECEC;
   color: rgb(19, 19, 19);
+}
+
+#lightComp {
+  background-color: rgb(19, 19, 19);
+  color: #ECECEC;
 }
 
 #artic {
@@ -436,8 +456,18 @@ li {
   color: rgb(29, 83, 119);
 }
 
+#articComp {
+  background-color: rgb(29, 83, 119);
+  color: #C6DAE9;
+}
+
 #ruby {
   background-color: #E0115F;
+}
+
+#rubyComp {
+  color: #E0115F;
+  background-color: rgb(24, 28, 32);
 }
 
 @media only screen and (max-width: 600px) {
