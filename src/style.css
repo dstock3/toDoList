@@ -379,7 +379,7 @@ li {
 .themes-bar {
   background-color: rgb(24, 28, 32);
   color: rgb(130, 193, 248);
-  padding: 1%;
+  padding: 8%;
   border-radius: 10px;
 }
 
@@ -397,6 +397,7 @@ li {
   justify-content: space-between;
   align-items: center;
   padding-left: 1%;
+  cursor: pointer;
 }
 
 .theme-option:hover {
