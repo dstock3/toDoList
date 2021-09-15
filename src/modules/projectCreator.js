@@ -107,6 +107,13 @@ const addTask = (set) => {
     let cancelButton = elementBuilder("button", "cancel", buttonDiv);
     cancelButton.textContent = "Cancel";
 
+    let theme = sidebar.element.id;
+    if (theme !== undefined) {
+      prompt.id = theme;
+      createButton.id = theme;
+      cancelButton.id = theme;
+    }
+
     function exit() {
       removeTransparent(children);
       prompt.remove();
