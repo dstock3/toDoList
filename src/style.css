@@ -124,6 +124,7 @@ body {
 .notif-container {
   display: flex;
   margin: 7px 7px;
+  cursor: pointer;
 }
 
 .notif-container:hover {
@@ -396,8 +397,9 @@ li {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding-left: 1%;
+  padding-left: 5%;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .theme-option:hover {
@@ -436,6 +438,10 @@ li {
   background-color: #163320;
 }
 
+#emeraldComp .notif-container:hover {
+  background-color: #163320;
+}
+
 #dark {
   background-color: #343434;
   color: rgb(246, 246, 246);
@@ -447,6 +453,10 @@ li {
 }
 
 #darkComp .theme-option:hover {
+  background-color: rgb(27, 27, 27);
+}
+
+#darkComp .notif-container:hover {
   background-color: rgb(27, 27, 27);
 }
 
@@ -464,6 +474,10 @@ li {
   background-color: rgb(75, 75, 75);
 }
 
+#lightComp .notif-container:hover {
+  background-color: rgb(75, 75, 75);
+}
+
 #artic {
   background-color: #C6DAE9;
   color: rgb(29, 83, 119);
@@ -475,6 +489,10 @@ li {
 }
 
 #articComp .theme-option:hover {
+  background-color: rgb(84, 118, 139);
+}
+
+#articComp .notif-container:hover {
   background-color: rgb(84, 118, 139);
 }
 
@@ -492,6 +510,10 @@ li {
   background-color: #35101e;
 }
 
+#rubyComp .notif-container:hover {
+  background-color: #35101e;
+}
+
 #purple {
   background-color: #800080;
   color: rgb(24, 28, 32); 
@@ -503,6 +525,10 @@ li {
 }
 
 #purpleComp .theme-option:hover {
+  background-color: #310131;
+}
+
+#purpleComp .notif-container:hover {
   background-color: #310131;
 }
 

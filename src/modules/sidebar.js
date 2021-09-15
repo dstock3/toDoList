@@ -125,8 +125,8 @@ const sidebar = (() => {
     }
 
     for (let i = 0; i < removeNotifs.length; i++) {
-      removeNotifs[i].id = color;
-    }
+      removeNotifs[i].id = comp;
+    } 
 
     for (let y = 0; y < buttonElements.length; y++) {
       themeElementArray.push(buttonElements[y]);
