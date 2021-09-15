@@ -377,6 +377,12 @@ li {
   width: 60%;
 }
 
+.themes-button {
+  position: relative;
+  bottom: 26%;
+  left: 20%;
+}
+
 .themes-bar {
   background-color: rgb(24, 28, 32);
   color: rgb(130, 193, 248);
