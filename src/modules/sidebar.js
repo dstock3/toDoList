@@ -138,6 +138,26 @@ const sidebar = (() => {
     notifBar.id = comp;
     notifContainer.id = comp;
     themesBar.id = comp;
+
+    if (color === "light") {
+      sidebarElement.setAttribute("style", "border-right: solid #ECECEC 3px;");
+      tipsContainer.setAttribute("style", "border: solid #ECECEC 3px;");
+    } else if (color === "dark") {
+      sidebarElement.setAttribute("style", "border-right: solid #343434 3px;");
+      tipsContainer.setAttribute("style", "border: solid #343434 3px;");
+    } else if (color === "emerald") {
+      sidebarElement.setAttribute("style", "border-right: solid #50C878 3px;");
+      tipsContainer.setAttribute("style", "border: solid #50C878 3px;");
+    } else if (color === "artic") {
+      sidebarElement.setAttribute("style", "border-right: solid #C6DAE9 3px;");
+      tipsContainer.setAttribute("style", "border: solid #C6DAE9 3px;");
+    } else if (color === "ruby") {
+      sidebarElement.setAttribute("style", "border-right: solid #E0115F 3px;");
+      tipsContainer.setAttribute("style", "border: solid #E0115F 3px;");
+    } else if (color === "classic") {
+      sidebarElement.setAttribute("style", "border-right: solid #82C1F8 3px;");
+      tipsContainer.setAttribute("style", "border: solid #82C1F8 3px;");
+    }
   };
 
   for (let [themeElement, colorPair] of themeMap.entries()) {
