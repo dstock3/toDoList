@@ -108,6 +108,7 @@ const sidebar = (() => {
 
   function setTheme(color, comp) {
     let projectElement = document.getElementsByClassName('project')[0];
+    let taskElements = document.getElementsByClassName("task");
     let sidebarElement = document.getElementsByClassName('sidebar')[0];
     let sideButtonContainer = document.getElementsByClassName('side-button-container')[0];
     let themesBar = document.getElementsByClassName('themes-bar')[0];
@@ -118,6 +119,10 @@ const sidebar = (() => {
     let tipsContainer = sidebarElement.lastChild;
     let buttonElements = document.getElementsByTagName("button");
     let themeElementArray = [projectElement, sidebarElement];
+
+    for (let i = 0; i < taskElements.length; i++) {
+      taskElements[i].id = comp;
+    }
 
     for (let i = 0; i < notifButtons.length; i++) {
       notifButtons[i].id = comp;
@@ -143,25 +148,60 @@ const sidebar = (() => {
     if (color === "light") {
       sidebarElement.setAttribute("style", "border-right: solid #ECECEC 3px;");
       tipsContainer.setAttribute("style", "border: solid #ECECEC 3px;");
+      if (taskElements !== undefined) {
+        for (let i = 0; i < taskElements.length; i++) { 
+          taskElements[i].setAttribute("style", "border: solid #ECECEC 3px;");
+        };
+      };
     } else if (color === "dark") {
-      sidebarElement.setAttribute("style", "border-right: solid #343434 3px;");
+      sidebarElement.setAttribute("style", "border-right: solid #343434 5px;");
       tipsContainer.setAttribute("style", "border: solid #343434 3px;");
+      if (taskElements !== undefined) {
+        for (let i = 0; i < taskElements.length; i++) { 
+          taskElements[i].setAttribute("style", "border: solid #343434 5px;");
+        };
+      };
     } else if (color === "emerald") {
       sidebarElement.setAttribute("style", "border-right: solid #50C878 3px;");
       tipsContainer.setAttribute("style", "border: solid #50C878 3px;");
+      if (taskElements !== undefined) {
+        for (let i = 0; i < taskElements.length; i++) { 
+          taskElements[i].setAttribute("style", "border: solid #50C878 5px;");
+        };
+      };
     } else if (color === "artic") {
       sidebarElement.setAttribute("style", "border-right: solid #C6DAE9 3px;");
       tipsContainer.setAttribute("style", "border: solid #C6DAE9 3px;");
+      if (taskElements !== undefined) {
+        for (let i = 0; i < taskElements.length; i++) { 
+          taskElements[i].setAttribute("style", "border: solid #C6DAE9 5px;");
+        };
+      };
     } else if (color === "ruby") {
       sidebarElement.setAttribute("style", "border-right: solid #E0115F 3px;");
       tipsContainer.setAttribute("style", "border: solid #E0115F 3px;");
+      if (taskElements !== undefined) {
+        for (let i = 0; i < taskElements.length; i++) { 
+          taskElements[i].setAttribute("style", "border: solid #E0115F 5px;");
+        };
+      };
     } else if (color === "purple") { 
       sidebarElement.setAttribute("style", "border-right: solid #800080 3px;");
       tipsContainer.setAttribute("style", "border: solid #800080 3px;");
+      if (taskElements !== undefined) {
+        for (let i = 0; i < taskElements.length; i++) { 
+          taskElements[i].setAttribute("style", "border: solid #800080 5px;");
+        };
+      };
     } else if (color === "classic") {
       sidebarElement.setAttribute("style", "border-right: solid #82C1F8 3px;");
       tipsContainer.setAttribute("style", "border: solid #82C1F8 3px;");
-    }
+      if (taskElements !== undefined) {
+        for (let i = 0; i < taskElements.length; i++) { 
+          taskElements[i].setAttribute("style", "border: solid #82C1F8 5px;");
+        };
+      };
+    };
   };
 
   for (let [themeElement, colorPair] of themeMap.entries()) {
