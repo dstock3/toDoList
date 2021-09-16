@@ -4,7 +4,7 @@ import { project, toDo } from "./objectBuilder";
 import { elementBuilder, getPosition, body, projectDiv } from "./elements";
 import { taskBuilder, projectHeader, projectBuilder } from "./taskElements";
 import { addTransparent, taskButtons, removeTransparent } from "./buttons";
-import { sidebar, notif } from "./sidebar";
+import { sidebar, notif, themeCheck } from "./sidebar";
 import { validation, validateProj } from "./validation";
 import { store } from "./store";
 
@@ -107,13 +107,6 @@ const addTask = (set) => {
     let cancelButton = elementBuilder("button", "cancel", buttonDiv);
     cancelButton.textContent = "Cancel";
 
-    let theme = sidebar.element.id;
-    if (theme !== undefined) {
-      prompt.id = theme;
-      createButton.id = theme;
-      cancelButton.id = theme;
-    }
-
     function exit() {
       removeTransparent(children);
       prompt.remove();
@@ -153,7 +146,7 @@ const addTask = (set) => {
 
         set.project.taskArray.unshift(newTask);
         notif(newTask);
-        taskBuilder(newTask, projectElement);
+        let taskElements = taskBuilder(newTask, projectElement);
 
         let projectIndex = getPosition(projectElement);
         projectElement.remove();
@@ -165,6 +158,7 @@ const addTask = (set) => {
           projectDiv.children[projectIndex]
         );
         taskButtons(updatedProject);
+        themeCheck()
 
         exit();
       } else {
@@ -224,13 +218,6 @@ const addProject = () => {
 
     cancelButton.addEventListener("click", exit);
 
-    let theme = sidebar.element.id;
-    if (theme !== undefined) {
-      prompt.id = theme;
-      createButton.id = theme;
-      cancelButton.id = theme;
-    }
-
     function createProject() {
       let title = document.getElementById("project-title").value;
       let titlePair = [title, titleDiv];
@@ -248,6 +235,7 @@ const addProject = () => {
         let projectSet = projectBuilder(newProject);
         taskButtons(projectSet);
         allProjects.masterList.push(projectSet);
+        themeCheck();
 
         exit();
       } else {

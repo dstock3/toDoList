@@ -4,7 +4,7 @@ import { elementBuilder, getPosition, projectDiv, body } from "./elements";
 import { sortByDueDate } from "./date";
 import { projectBuilder } from "./taskElements";
 import { addTask, addProject, allProjects } from "./projectCreator";
-import { sidebar } from "./sidebar";
+import { sidebar, themeCheck } from "./sidebar";
 
 function addTransparent(childElements) {
   for (let i = 0; i < childElements.length - 1; i++) {
@@ -156,6 +156,7 @@ const taskButtons = (set) => {
     confirm.textContent = "Remove Project";
     let cancel = elementBuilder("button", "warning-buttons", container);
     cancel.textContent = "Cancel"
+    themeCheck()
 
     function cancelProj() {
       removeTransparent(body.children)
