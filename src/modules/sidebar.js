@@ -144,7 +144,7 @@ const sidebar = (() => {
 })();
 
 function setTheme(color, comp) {
-  let projectElement = document.getElementsByClassName('project')[0];
+  let projects = document.getElementsByClassName('project');
   let taskElements = document.getElementsByClassName("task");
   let sidebarElement = document.getElementsByClassName('sidebar')[0];
   let sideButtonContainer = document.getElementsByClassName('side-button-container')[0];
@@ -156,9 +156,18 @@ function setTheme(color, comp) {
   let tipsContainer = sidebarElement.lastChild;
   let buttonElements = document.getElementsByTagName("button");
   let tasks = document.getElementsByClassName("task");
-  let taskPrompt = document.getElementsByTagName("task-prompt")[0];
+  let projectPrompt = document.getElementsByClassName("project-prompt")[0];
+  let taskPrompt = document.getElementsByClassName("task-prompt")[0];
   let warning = document.getElementsByClassName("warning")[0];
-  let themeElementArray = [projectElement, sidebarElement];
+  let themeElementArray = [sidebarElement];
+
+  if (taskPrompt !== undefined) {
+    taskPrompt.id = color;
+  }
+
+  if (projectPrompt !== undefined) {
+    projectPrompt.id = color;
+  }
 
   for (let i = 0; i < taskElements.length; i++) {
     taskElements[i].id = comp;
@@ -175,7 +184,11 @@ function setTheme(color, comp) {
   for (let y = 0; y < buttonElements.length; y++) {
     themeElementArray.push(buttonElements[y]);
   }
-  
+
+  for (let y = 0; y < projects.length; y++) {
+    themeElementArray.push(projects[y]);
+  }
+
   for (let i = 0; i < themeElementArray.length; i++) {
     if (themeElementArray[i] !== undefined) {
       themeElementArray[i].id = color;
@@ -183,13 +196,14 @@ function setTheme(color, comp) {
   };
 
   if (tasks !== undefined) {
+    console.log(tasks)
     for (let i = 0; i < tasks.length; i++) {
       tasks[i].id = comp;
     }
   }
 
   if (warning !== undefined) {
-    warning.id = comp;
+    warning.id = color;
   }
 
   sideButtonContainer.id = comp;
@@ -197,10 +211,6 @@ function setTheme(color, comp) {
   notifBar.id = comp;
   notifContainer.id = comp;
   themesBar.id = comp;
-
-  if (taskPrompt !== undefined) {
-    taskPrompt.id = comp;
-  }
 
   function themeComponents(hexValue) {
     sidebarElement.setAttribute("style", `border-right: solid ${hexValue} 3px;`);

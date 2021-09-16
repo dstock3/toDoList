@@ -106,6 +106,7 @@ const addTask = (set) => {
 
     let cancelButton = elementBuilder("button", "cancel", buttonDiv);
     cancelButton.textContent = "Cancel";
+    themeCheck();
 
     function exit() {
       removeTransparent(children);
@@ -210,6 +211,7 @@ const addProject = () => {
 
     let cancelButton = elementBuilder("button", "cancel", buttonDiv);
     cancelButton.textContent = "Cancel";
+    themeCheck();
 
     function exit() {
       removeTransparent(children);
