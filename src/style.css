@@ -428,6 +428,14 @@ li {
   color: rgb(130, 193, 248); 
 }
 
+#classicComp .theme-option:hover {
+  background-color: rgb(38, 44, 51);;
+}
+
+#classicComp .notif-container:hover {
+  background-color: rgb(38, 44, 51);;
+}
+
 #emerald {
   background-color: #50C878;
   color: rgb(15, 1, 1);
