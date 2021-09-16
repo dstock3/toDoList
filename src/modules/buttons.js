@@ -85,6 +85,7 @@ const taskButtons = (set) => {
           projectDiv.children[projectIndex]
         );
         taskButtons(sortedProject);
+        themeCheck()
       }
 
       sort.addEventListener("click", newSortedList);
@@ -107,6 +108,7 @@ const taskButtons = (set) => {
           projectDiv.children[projectIndex]
         );
         taskButtons(sortedProject);
+        themeCheck()
       }
       sort.addEventListener("click", newProjectSet);
     }
@@ -134,6 +136,7 @@ const taskButtons = (set) => {
                 projectDiv.children[projectIndex]
               );
               taskButtons(sortedProject);
+              themeCheck()
             }
             removeTaskElement.addEventListener("click", taskRemover);
           }
