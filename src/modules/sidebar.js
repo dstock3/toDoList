@@ -222,6 +222,7 @@ function setTheme(color, comp) {
     };
   };
 
+  // eslint-disable-next-line no-unused-vars
   const applyAccents = (() => {
     if (color === "light") {
       themeComponents('#CECECE');

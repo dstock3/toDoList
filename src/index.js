@@ -9,7 +9,7 @@ import { store, checkList } from "./modules/store";
 
 const allProjects = projectTracker();
 
-const start = () => {
+const start = (() => {
   let fetchedList = checkList()
   if (fetchedList.length === 0) {
     const defaultProject = project(
@@ -36,7 +36,7 @@ const start = () => {
       applyButtons(allProjects.masterList);
     }
   }
-}
+})();
 
 export { allProjects } 
 

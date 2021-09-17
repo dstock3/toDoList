@@ -4,9 +4,11 @@ import { project, toDo } from "./objectBuilder";
 import { elementBuilder, getPosition, body, projectDiv } from "./elements";
 import { taskBuilder, projectHeader, projectBuilder } from "./taskElements";
 import { addTransparent, taskButtons, removeTransparent } from "./buttons";
-import { sidebar, notif, themeCheck } from "./sidebar";
+import { notif, themeCheck } from "./sidebar";
 import { validation, validateProj } from "./validation";
-import { store } from "./store";
+import { store, checkList } from "./store";
+
+let fetchedList = checkList()
 
 function newInput(
   parent,
@@ -231,8 +233,8 @@ const addProject = () => {
 
       if (isValid) {
         let newProject = project(title, description, []);
-        allProjects.projectList.unshift(newProject);
-        store(allProjects.projectList)
+        fetchedList.unshift(newProject);
+        store(fetchedList)
 
         let projectSet = projectBuilder(newProject);
         taskButtons(projectSet);
