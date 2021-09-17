@@ -5,11 +5,12 @@ import { project, projectTracker } from "./modules/objectBuilder";
 import { projectBuilder } from "./modules/projectCreator";
 import { applyButtons } from "./modules/buttons";
 import { notif } from "./modules/sidebar";
-import { store, checkList } from "./modules/store";
+import { store, checkList, getTheme } from "./modules/store";
 
 const allProjects = projectTracker();
 
 const start = (() => {
+  getTheme()
   let fetchedList = checkList()
   if (fetchedList.length === 0) {
     const defaultProject = project(

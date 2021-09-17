@@ -240,6 +240,9 @@ function setTheme(color, comp) {
       themeComponents('#82C1F8'); 
     }
   })();
+
+  let themePair = JSON.stringify([color, comp]);
+  localStorage.setItem("theme", themePair);
 };
 
 function themeCheck() {
@@ -363,4 +366,4 @@ function notif(newTask) {
   notifNum();
 }
 
-export { sidebar, notif, themeCheck };
+export { sidebar, notif, setTheme, themeCheck };
