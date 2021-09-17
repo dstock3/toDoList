@@ -148,6 +148,13 @@ const addTask = (set) => {
         );
 
         set.project.taskArray.unshift(newTask);
+        for (let i = 0; i < fetchedList.length; i++) {
+          if (fetchedList[i].title === set.project.title) {
+            fetchedList[i].taskArray = set.project.taskArray;
+            console.log(fetchedList)
+            store(fetchedList)
+          }
+        }
         notif(newTask);
         let taskElements = taskBuilder(newTask, projectElement);
 
