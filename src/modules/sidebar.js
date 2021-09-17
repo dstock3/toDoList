@@ -226,11 +226,11 @@ function setTheme(color, comp) {
     if (color === "light") {
       themeComponents('#CECECE');
     } else if (color === "dark") {
-      themeComponents('#343434');
+      themeComponents('#0F0F0F');
     } else if (color === "emerald") {
       themeComponents('#196B35');
     } else if (color === "artic") {
-      themeComponents('#C6DAE9');
+      themeComponents('#9aaab6');
     } else if (color === "ruby") {
       themeComponents('#E0115F');
     } else if (color === "purple") {
