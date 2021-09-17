@@ -79,7 +79,7 @@ const sidebar = (() => {
     "Dark": "#343434",  
     "Emerald": "#50C878", 
     "Artic": "#C6DAE9",
-    "Ruby": "#E0115F",
+    "Ruby": "#E4417F",
     "Purple": "#BB54CE;",
     "Classic": "#82C1F8",
   };
