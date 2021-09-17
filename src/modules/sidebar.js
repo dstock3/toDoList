@@ -221,13 +221,14 @@ function setTheme(color, comp) {
       };
     };
   };
+
   const applyAccents = (() => {
     if (color === "light") {
       themeComponents('#CECECE');
     } else if (color === "dark") {
       themeComponents('#343434');
     } else if (color === "emerald") {
-      themeComponents('#50C878');
+      themeComponents('#196B35');
     } else if (color === "artic") {
       themeComponents('#C6DAE9');
     } else if (color === "ruby") {
