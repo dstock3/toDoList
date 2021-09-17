@@ -10,7 +10,6 @@ import { store, checkList, getTheme } from "./modules/store";
 const allProjects = projectTracker();
 
 const start = (() => {
-  getTheme()
   let fetchedList = checkList()
   if (fetchedList.length === 0) {
     const defaultProject = project(
@@ -18,11 +17,13 @@ const start = (() => {
       "Add a task below and start tracking your project!",
       []
     );
+    getTheme()
     allProjects.projectList.unshift(defaultProject);
     store(allProjects.projectList)
     const defaultProjectSet = projectBuilder(defaultProject);
     allProjects.masterList.push(defaultProjectSet);
     applyButtons(allProjects.masterList);
+    
   } else {
     for (let i = 0; i < fetchedList.length; i++) {
       let project = fetchedList[i];
@@ -32,11 +33,13 @@ const start = (() => {
         let newTask = tasks[i];
         notif(newTask);
         taskBuilder(newTask, newProjSet.projectElement);
+        getTheme()
       }
       allProjects.masterList.push(newProjSet);
       applyButtons(allProjects.masterList);
     }
   }
+  
 })();
 
 export { allProjects } 
