@@ -5,6 +5,9 @@ import { sortByDueDate } from "./date";
 import { projectBuilder } from "./taskElements";
 import { addTask, addProject, allProjects } from "./projectCreator";
 import { sidebar, themeCheck } from "./sidebar";
+import { store, checkList } from "./store";
+
+let fetchedList = checkList()
 
 function addTransparent(childElements) {
   for (let i = 0; i < childElements.length - 1; i++) {
@@ -169,6 +172,12 @@ const taskButtons = (set) => {
 
     function removeProj() {
       removeTransparent(body.children)
+      for (let i = 0; i < fetchedList.length; i++) {
+        if (fetchedList[i].title === set.project.title) {
+          fetchedList.splice(i, 1);
+          store(fetchedList)
+        }
+      }
       set.deleteList()
       warningElement.remove();
     }
