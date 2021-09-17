@@ -221,22 +221,23 @@ function setTheme(color, comp) {
       };
     };
   };
-
-  if (color === "light") {
-    themeComponents('#ECECEC');
-  } else if (color === "dark") {
-    themeComponents('#343434');
-  } else if (color === "emerald") {
-    themeComponents('#50C878');
-  } else if (color === "artic") {
-    themeComponents('#C6DAE9');
-  } else if (color === "ruby") {
-    themeComponents('#E0115F');
-  } else if (color === "purple") {
-    themeComponents('#800080'); 
-  } else if (color === "classic") {
-    themeComponents('#82C1F8'); 
-  };
+  const applyAccents = (() => {
+    if (color === "light") {
+      themeComponents('#CECECE');
+    } else if (color === "dark") {
+      themeComponents('#343434');
+    } else if (color === "emerald") {
+      themeComponents('#50C878');
+    } else if (color === "artic") {
+      themeComponents('#C6DAE9');
+    } else if (color === "ruby") {
+      themeComponents('#E0115F');
+    } else if (color === "purple") {
+      themeComponents('#800080'); 
+    } else if (color === "classic") {
+      themeComponents('#82C1F8'); 
+    }
+  })();
 };
 
 function themeCheck() {
