@@ -480,22 +480,22 @@ li {
   background-color: rgb(27, 27, 27);
 }
 
-#light {
-  background-color: #ECECEC;
+#autumn {
+  background-color: #ff7a51;
   color: rgb(19, 19, 19);
 }
 
-#lightComp {
-  background-color: rgb(110, 110, 110);
-  color: #ECECEC;
+#autumnComp {
+  background-color: #fcb26e; 
+  color: #000000;
 }
 
-#lightComp .theme-option:hover {
-  background-color: rgb(75, 75, 75);
+#autumnComp .theme-option:hover {
+  background-color: #fda048;
 }
 
-#lightComp .notif-container:hover {
-  background-color: rgb(75, 75, 75);
+#autumnComp .notif-container:hover {
+  background-color: #fda048;
 }
 
 #artic {
