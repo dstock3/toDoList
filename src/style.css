@@ -154,6 +154,8 @@ body {
 }
 
 .tips-container {
+  position: absolute;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -375,6 +377,7 @@ li {
 
 .themes {
   width: 60%;
+  
 }
 
 .themes-bar {
@@ -382,9 +385,11 @@ li {
   top: 5%;
   background-color: rgb(24, 28, 32);
   color: rgb(130, 193, 248);
+  border: solid 3px rgb(130, 193, 248);
   width: 50%;
   padding: 2%;
   border-radius: 10px;
+  z-index: 1;
 }
 
 .themes-list {

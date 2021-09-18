@@ -214,6 +214,7 @@ function setTheme(color, comp) {
   function themeComponents(hexValue) {
     sidebarElement.setAttribute("style", `border-right: solid ${hexValue} 3px;`);
     tipsContainer.setAttribute("style", `border: solid ${hexValue} 3px;`);
+    themesBar.setAttribute("style", `border: solid ${hexValue} 3px;`);
     if (taskElements !== undefined) {
       for (let i = 0; i < taskElements.length; i++) { 
         taskElements[i].setAttribute("style", `border: solid ${hexValue} 5px;`);
