@@ -151,13 +151,13 @@ const addTask = (set) => {
         for (let i = 0; i < fetchedList.length; i++) {
           if (fetchedList[i].title === set.project.title) {
             fetchedList[i].taskArray.unshift(newTask);
-            console.log(fetchedList)
+            console.log(fetchedList[i].taskArray)
             store(fetchedList)
+            break
           }
         }
         notif(newTask);
         let taskElements = taskBuilder(newTask, projectElement);
-
         let projectIndex = getPosition(projectElement);
         projectElement.remove();
         let updatedProject = projectBuilder(set.project);

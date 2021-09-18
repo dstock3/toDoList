@@ -196,7 +196,6 @@ function setTheme(color, comp) {
   };
 
   if (tasks !== undefined) {
-    console.log(tasks)
     for (let i = 0; i < tasks.length; i++) {
       tasks[i].id = comp;
     }
