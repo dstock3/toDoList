@@ -105,13 +105,15 @@ const taskButtons = (set) => {
       function newProjectSet() {
         set.deleteList();
         let sortedProject = projectBuilder(set.project);
+        taskButtons(sortedProject);
+        themeCheck()
         allProjects.masterList.push(sortedProject);
         projectDiv.insertBefore(
           sortedProject.projectElement,
           projectDiv.children[projectIndex]
         );
-        taskButtons(sortedProject);
-        themeCheck()
+        
+        
       }
       sort.addEventListener("click", newProjectSet);
     }

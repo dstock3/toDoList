@@ -89,6 +89,7 @@ body {
   right: 50%;
   top: 20px;
   z-index: 4;
+  color:rgb(0, 0, 0);
   background: rgb(247, 149, 0);
   background: linear-gradient(
     180deg,
