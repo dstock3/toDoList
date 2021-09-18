@@ -35,8 +35,8 @@ const start = (() => {
       }
       allProjects.masterList.push(newProjSet);
       applyButtons(allProjects.masterList);
-    }
-  }
+    };
+  };
   
 })();
 

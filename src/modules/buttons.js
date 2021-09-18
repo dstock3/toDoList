@@ -128,7 +128,20 @@ const taskButtons = (set) => {
           if (
             topDiv.children[1].textContent === set.project.taskArray[y].title
           ) {
+            let taskTitle = set.project.taskArray[y].title
+            
             function taskRemover() {
+              for (let i = 0; i < fetchedList.length; i++) {
+                if (fetchedList[i].title === set.project.title) {
+                  for (let z = 0; z < fetchedList[i].taskArray.length; z++) {
+                    if (fetchedList[i].taskArray[z].title === taskTitle) {
+                      fetchedList[i].taskArray.splice(z, 1);
+                      store(fetchedList)
+                    };
+                  };
+                };
+              };
+
               let projectIndex = getPosition(set.projectElement);
               set.removeTask(set.project.taskArray[y]);
               set.deleteList();
@@ -141,6 +154,7 @@ const taskButtons = (set) => {
               taskButtons(sortedProject);
               themeCheck()
             }
+
             removeTaskElement.addEventListener("click", taskRemover);
           }
         }
