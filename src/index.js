@@ -17,12 +17,12 @@ const start = (() => {
       "Add a task below and start tracking your project!",
       []
     );
-    getTheme()
     allProjects.projectList.unshift(defaultProject);
     store(allProjects.projectList)
     const defaultProjectSet = projectBuilder(defaultProject);
     allProjects.masterList.push(defaultProjectSet);
     applyButtons(allProjects.masterList);
+    getTheme()
   } else {
     for (let i = 0; i < fetchedList.length; i++) {
       let project = fetchedList[i];

@@ -5,7 +5,7 @@ import { sortByDueDate } from "./date";
 import { projectBuilder } from "./taskElements";
 import { addTask, addProject, allProjects } from "./projectCreator";
 import { sidebar, themeCheck } from "./sidebar";
-import { store, checkList } from "./store";
+import { store, checkList, getTheme } from "./store";
 
 let fetchedList = checkList()
 
@@ -142,20 +142,19 @@ const taskButtons = (set) => {
                   };
                 };
               };
-
               let projectIndex = getPosition(set.projectElement);
               set.removeTask(set.project.taskArray[y]);
               set.deleteList();
               let sortedProject = projectBuilder(set.project);
+              themeCheck()
               allProjects.masterList.push(sortedProject);
               projectDiv.insertBefore(
                 sortedProject.projectElement,
                 projectDiv.children[projectIndex]
               );
               taskButtons(sortedProject);
-              themeCheck()
+              
             }
-
             removeTaskElement.addEventListener("click", taskRemover);
           }
         }
