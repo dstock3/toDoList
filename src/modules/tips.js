@@ -15,7 +15,7 @@ let tips = [
     "If you find yourself in a productivity rut, a change of setting might help. Try working in a coffee shop for a few hours.",
     "The practice known as mindfulness meditation has been show to reduce stress by conditioning you to focus on the present moment.",
     "Cultivate good sleep habits to ensure you are ready to face the day head-on. Make sure you are scheduling enough time to get a full eight hours of restful sleep.",
-    "Walking is associated with a plethora of physical and psychological benefits. It's been shown to promote cardiac health, alleviate depression and fatigue, and improve your mood.",
+    "Walking is associated with a plethora of physical and psychological benefits. It's been shown to promote cardiac health, alleviate depression and fatigue, and improve your general mood.",
 ];
 
 export {

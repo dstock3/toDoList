@@ -28,12 +28,10 @@ const start = (() => {
     for (let i = 0; i < fetchedList.length; i++) {
       let project = fetchedList[i];
       let newProjSet = projectBuilder(project);
+      getTheme()
       let tasks = project.taskArray;
-      for (let y = 0; y < tasks.length; i++) {
-        let newTask = tasks[i];
-        notif(newTask);
-        taskBuilder(newTask, newProjSet.projectElement);
-        getTheme()
+      for (let y = 0; y < tasks.length; y++) {
+        notif(tasks[i]);
       }
       allProjects.masterList.push(newProjSet);
       applyButtons(allProjects.masterList);
