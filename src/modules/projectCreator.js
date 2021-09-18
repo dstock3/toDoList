@@ -147,30 +147,32 @@ const addTask = (set) => {
           status
         );
 
-        set.project.taskArray.unshift(newTask);
+        //set.project.taskArray.unshift(newTask);
+        
         for (let i = 0; i < fetchedList.length; i++) {
           if (fetchedList[i].title === set.project.title) {
-            fetchedList[i].taskArray.unshift(newTask);
-            console.log(fetchedList[i].taskArray)
+            let fetchedproject = fetchedList[i];
+            fetchedproject.taskArray.unshift(newTask);
             store(fetchedList)
-            break
-          }
-        }
-        notif(newTask);
-        let taskElements = taskBuilder(newTask, projectElement);
-        let projectIndex = getPosition(projectElement);
-        projectElement.remove();
-        let updatedProject = projectBuilder(set.project);
 
-        allProjects.masterList.push(updatedProject);
-        projectDiv.insertBefore(
-          updatedProject.projectElement,
-          projectDiv.children[projectIndex]
-        );
-        taskButtons(updatedProject);
-        themeCheck()
+            notif(newTask);
 
-        exit();
+            let taskElements = taskBuilder(newTask, projectElement);
+            let projectIndex = getPosition(projectElement);
+            projectElement.remove();
+            let updatedProject = projectBuilder(fetchedproject);
+
+            allProjects.masterList.push(updatedProject);
+            projectDiv.insertBefore(
+              updatedProject.projectElement,
+              projectDiv.children[projectIndex]
+            );
+            taskButtons(updatedProject);
+            themeCheck()
+    
+            exit();
+          };
+        };
       } else {
         createButton.addEventListener("click", createTask);
       }
