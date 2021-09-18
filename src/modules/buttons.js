@@ -137,6 +137,7 @@ const taskButtons = (set) => {
                     if (fetchedList[i].taskArray[z].title === taskTitle) {
                       fetchedList[i].taskArray.splice(z, 1);
                       store(fetchedList)
+                      break
                     };
                   };
                 };
@@ -190,6 +191,7 @@ const taskButtons = (set) => {
         if (fetchedList[i].title === set.project.title) {
           fetchedList.splice(i, 1);
           store(fetchedList)
+          break
         }
       }
       set.deleteList()
