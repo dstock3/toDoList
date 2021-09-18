@@ -23,22 +23,19 @@ const start = (() => {
     const defaultProjectSet = projectBuilder(defaultProject);
     allProjects.masterList.push(defaultProjectSet);
     applyButtons(allProjects.masterList);
-    
   } else {
     for (let i = 0; i < fetchedList.length; i++) {
       let project = fetchedList[i];
       let newProjSet = projectBuilder(project);
-      
       let tasks = project.taskArray;
       for (let y = 0; y < tasks.length; y++) {
-        notif(tasks[i]);
+        notif(tasks[y]);
       }
       allProjects.masterList.push(newProjSet);
     };
     applyButtons(allProjects.masterList);
     getTheme()
   };
-  
 })();
 
 export { allProjects } 
