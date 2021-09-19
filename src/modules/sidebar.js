@@ -75,7 +75,7 @@ const sidebar = (() => {
   let themesList = elementBuilder("ul", "themes-list", themesBar)
 
   let themes = {
-    "Autumn": "#ff7a51",
+    "Autumn": "#EEB758",
     "Dark": "#343434",  
     "Emerald": "#50C878", 
     "Artic": "#C6DAE9",
@@ -228,7 +228,7 @@ function setTheme(color, comp) {
   // eslint-disable-next-line no-unused-vars
   const applyAccents = (() => {
     if (color === "autumn") {
-      themeComponents('#FF7300');
+      themeComponents('#EB9B10');
     } else if (color === "dark") {
       themeComponents('#0F0F0F');
     } else if (color === "emerald") {

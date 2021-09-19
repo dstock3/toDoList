@@ -481,21 +481,22 @@ li {
 }
 
 #autumn {
-  background-color: #ff7a51;
-  color: rgb(19, 19, 19);
+  background-color: #EEB758;
+  color: #6B5228;
+  
 }
 
 #autumnComp {
-  background-color: #fcb26e; 
-  color: #000000;
+  background-color: #6B5228; 
+  color: #ffc400; 
 }
 
 #autumnComp .theme-option:hover {
-  background-color: #fda048;
+  background-color: #924816;
 }
 
 #autumnComp .notif-container:hover {
-  background-color: #fda048;
+  background-color: #924816;
 }
 
 #artic {
