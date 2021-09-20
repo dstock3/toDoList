@@ -228,7 +228,7 @@ function setTheme(color, comp) {
   // eslint-disable-next-line no-unused-vars
   const applyAccents = (() => {
     if (color === "autumn") {
-      themeComponents('#EB9B10');
+      themeComponents('#f59f0b');
     } else if (color === "dark") {
       themeComponents('#0F0F0F');
     } else if (color === "emerald") {

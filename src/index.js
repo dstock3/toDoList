@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import "./style.css";
-import { taskBuilder } from "./modules/taskElements";
 import { project, projectTracker } from "./modules/objectBuilder";
 import { projectBuilder } from "./modules/projectCreator";
 import { applyButtons } from "./modules/buttons";
@@ -22,7 +21,9 @@ const start = (() => {
     const defaultProjectSet = projectBuilder(defaultProject);
     allProjects.masterList.push(defaultProjectSet);
     applyButtons(allProjects.masterList);
-    getTheme()
+    if (localStorage.getItem("theme")) {
+      getTheme()
+    };
   } else {
     for (let i = 0; i < fetchedList.length; i++) {
       let project = fetchedList[i];
