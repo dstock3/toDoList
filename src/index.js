@@ -8,6 +8,20 @@ import { store, checkList, getTheme } from "./modules/store";
 
 const allProjects = projectTracker();
 
+function buildProjects(projList) {
+  for (let i = 0; i < projList.length; i++) {
+    let project = projList[i];
+    let newProjSet = projectBuilder(project);
+    let tasks = project.taskArray;
+    for (let y = 0; y < tasks.length; y++) {
+      notif(tasks[y]);
+    }
+    allProjects.masterList.push(newProjSet);
+  };
+  applyButtons(allProjects.masterList);
+  getTheme()
+}
+
 const start = (() => {
   let fetchedList = checkList()
   if (fetchedList.length === 0) {
@@ -19,17 +33,7 @@ const start = (() => {
     applyButtons(allProjects.masterList);
     getTheme();
   } else {
-    for (let i = 0; i < fetchedList.length; i++) {
-      let project = fetchedList[i];
-      let newProjSet = projectBuilder(project);
-      let tasks = project.taskArray;
-      for (let y = 0; y < tasks.length; y++) {
-        notif(tasks[y]);
-      }
-      allProjects.masterList.push(newProjSet);
-    };
-    applyButtons(allProjects.masterList);
-    getTheme()
+    buildProjects(fetchedList)
   };
 })();
 
