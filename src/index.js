@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import "./style.css";
-import { project, projectTracker } from "./modules/objectBuilder";
+import { projectTracker, createDefaultProj } from "./modules/objectBuilder";
 import { projectBuilder } from "./modules/projectCreator";
 import { applyButtons } from "./modules/buttons";
 import { notif } from "./modules/sidebar";
@@ -11,19 +11,13 @@ const allProjects = projectTracker();
 const start = (() => {
   let fetchedList = checkList()
   if (fetchedList.length === 0) {
-    const defaultProject = project(
-      "New Project",
-      "Add a task below and start tracking your project!",
-      []
-    );
-    allProjects.projectList.unshift(defaultProject);
-    store(allProjects.projectList)
-    const defaultProjectSet = projectBuilder(defaultProject);
+    let defaultProj = createDefaultProj();
+    allProjects.projectList.unshift(defaultProj);
+    store(allProjects.projectList);
+    const defaultProjectSet = projectBuilder(defaultProj);
     allProjects.masterList.push(defaultProjectSet);
     applyButtons(allProjects.masterList);
-    if (localStorage.getItem("theme")) {
-      getTheme()
-    };
+    getTheme();
   } else {
     for (let i = 0; i < fetchedList.length; i++) {
       let project = fetchedList[i];

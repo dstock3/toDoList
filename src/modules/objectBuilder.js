@@ -30,4 +30,13 @@ const projectTracker = () => {
   return { masterList, projectList };
 };
 
-export { project, toDo, projectTracker };
+function createDefaultProj() {
+  const defaultProject = project(
+    "New Project",
+    "Add a task below and start tracking your project!",
+    []
+  );
+  return defaultProject
+}
+
+export { project, toDo, projectTracker, createDefaultProj };
