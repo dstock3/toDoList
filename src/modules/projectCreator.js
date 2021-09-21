@@ -169,7 +169,7 @@ const addTask = (set) => {
             );
             taskButtons(updatedProject);
             themeCheck()
-    
+
             exit();
           };
         };

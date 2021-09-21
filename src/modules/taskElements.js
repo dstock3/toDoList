@@ -10,7 +10,7 @@ const taskBuilder = (task, parent) => {
   let desc = elementBuilder("p", "task-desc", taskDiv);
   desc.textContent = task.description;
   let dueDate = elementBuilder("p", "due-date", taskDiv);
-  dueDate.textContent = task.dueDate;
+  dueDate.textContent = `Due Date: ${task.dueDate}`;
   let priorityNum = elementBuilder("p", "priority", taskDiv);
   priorityNum.textContent = `Priority: ${task.priority}`;
   let notes = elementBuilder("p", "notes", taskDiv);
@@ -21,6 +21,17 @@ const taskBuilder = (task, parent) => {
   status.textContent = `Status: ${task.status}`;
   let statusBox = elementBuilder("input", "status-box", statusContainer);
   statusBox.setAttribute("type", "checkbox");
+  
+  statusBox.addEventListener('change', function() {
+    if (statusBox.checked) {
+      task.status = 'Complete'
+      status.textContent = `Status: ${task.status}`;
+      
+    } else {
+      task.status = 'In Progress'
+      status.textContent = `Status: ${task.status}`;
+    }
+  });
 
   return {
     taskDiv,
