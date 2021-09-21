@@ -12,12 +12,13 @@ function taskBuilder(task, parent) {
   desc.textContent = task.description;
   let dueDate = elementBuilder("p", "due-date", taskDiv);
   dueDate.textContent = task.dueDate;
-  let priority = elementBuilder("p", "priority", taskDiv);
-  priority.textContent = task.priority;
+  let priorityNum = elementBuilder("p", "priority", taskDiv);
+  priorityNum.textContent = `Priority: ${task.priority}`;
   let notes = elementBuilder("p", "notes", taskDiv);
   notes.textContent = task.notes;
   let statusContainer = elementBuilder("div", "status-container", taskDiv);
-  let status = elementBuilder("div", "status", statusContainer)
+  let status = elementBuilder("label", "status", statusContainer);
+  status.setAttribute("for", "task status");
   status.textContent = `Status: ${task.status}`;
   let statusBox = elementBuilder("input", "status-box", statusContainer);
   statusBox.setAttribute("type", "checkbox");
@@ -29,7 +30,7 @@ function taskBuilder(task, parent) {
     head,
     desc,
     dueDate,
-    priority,
+    priorityNum,
     notes,
     status
   );
