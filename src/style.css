@@ -270,6 +270,15 @@ button {
   justify-content: space-around;
 }
 
+.status-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-box {
+  width: 5%;
+}
+
 .task-prompt {
   display: flex;
   flex-flow: column;
