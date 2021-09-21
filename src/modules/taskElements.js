@@ -1,4 +1,5 @@
 import { elementBuilder, projectDiv } from "./elements";
+import { updateTask } from "./store"
 
 const taskBuilder = (task, parent) => {
   let taskDiv = elementBuilder("div", "task", parent);
@@ -24,11 +25,12 @@ const taskBuilder = (task, parent) => {
   
   statusBox.addEventListener('change', function() {
     if (statusBox.checked) {
-      task.status = 'Complete'
+      task.status = 'Complete';
+      updateTask(task)
       status.textContent = `Status: ${task.status}`;
-      
     } else {
       task.status = 'In Progress'
+      updateTask(task)
       status.textContent = `Status: ${task.status}`;
     }
   });

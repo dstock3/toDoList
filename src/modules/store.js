@@ -19,4 +19,19 @@ const getTheme = () => {
     };
 };
 
-export { store, checkList, getTheme}
+const updateTask = (thisTask) => {
+    let projList = checkList()
+    for (let i = 0; i < projList.length; i++) {
+        let project = projList[i];
+        let tasks = project.taskArray;
+        for (let y = 0; y < tasks.length; y++) {
+            console.log(tasks[y].title)
+            if (tasks[y].title === thisTask.title) {
+                tasks[y].status = thisTask.status
+                store(projList);
+            };
+        };
+    };
+};
+
+export { store, checkList, getTheme, updateTask }
