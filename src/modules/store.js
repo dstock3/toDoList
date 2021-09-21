@@ -29,6 +29,7 @@ const updateTask = (thisTask) => {
             if (tasks[y].title === thisTask.title) {
                 tasks[y].status = thisTask.status
                 store(projList);
+                break
             };
         };
     };
