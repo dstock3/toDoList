@@ -1,7 +1,6 @@
 import { elementBuilder, projectDiv } from "./elements";
 
-function taskBuilder(task, parent) {
-  let elementArray = [];
+const taskBuilder = (task, parent) => {
   let taskDiv = elementBuilder("div", "task", parent);
   let topDiv = elementBuilder("div", "top-div", taskDiv);
   let removeTask = elementBuilder("button", "remove-task", topDiv);
@@ -23,7 +22,7 @@ function taskBuilder(task, parent) {
   let statusBox = elementBuilder("input", "status-box", statusContainer);
   statusBox.setAttribute("type", "checkbox");
 
-  elementArray.push(
+  return {
     taskDiv,
     topDiv,
     removeTask,
@@ -32,11 +31,10 @@ function taskBuilder(task, parent) {
     dueDate,
     priorityNum,
     notes,
-    status
-  );
-
-  return elementArray;
-}
+    status,
+    statusBox,
+  };
+};
 
 const projectHeader = (project, parent) => {
   let projectElement = elementBuilder("div", "project", parent);
