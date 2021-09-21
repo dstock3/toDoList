@@ -16,8 +16,12 @@ function taskBuilder(task, parent) {
   priority.textContent = task.priority;
   let notes = elementBuilder("p", "notes", taskDiv);
   notes.textContent = task.notes;
-  let status = elementBuilder("p", "status", taskDiv);
-  status.textContent = task.status;
+  let statusContainer = elementBuilder("div", "status-container", taskDiv);
+  let status = elementBuilder("div", "status", statusContainer)
+  status.textContent = `Status: ${task.status}`;
+  let statusBox = elementBuilder("input", "status-box", statusContainer);
+  statusBox.setAttribute("type", "checkbox");
+
   elementArray.push(
     taskDiv,
     topDiv,
