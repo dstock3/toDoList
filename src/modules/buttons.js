@@ -50,14 +50,13 @@ const taskButtons = (set) => {
 
       function newSortedList() {
         let projectIndex = getPosition(set.projectElement);
-        console.log(projectIndex)
         let sortedTasks = sortByDueDate(set.project.taskArray);
         set.project.taskArray = sortedTasks;
         set.deleteList();
         let sortedProject = projectBuilder(set.project);
         projectDiv.insertBefore(
           sortedProject.projectElement,
-          projectDiv.children[projectIndex]
+          projectDiv.children[projectIndex + 1]
         );
         taskButtons(sortedProject);
         themeCheck()
@@ -71,19 +70,20 @@ const taskButtons = (set) => {
     if (set.project.taskArray.length > 1) {
       let sort = elementBuilder("button", "sort-by-priority", buttonDiv);
       sort.textContent = "Sort by Priority";
-      let projectIndex = getPosition(set.projectElement);
-      set.sortByPriority();
-
+      
       function newProjectSet() {
+        let projectIndex = getPosition(set.projectElement);
+        let sortedTasks = set.sortByPriority();
+        set.taskArray = sortedTasks;
         set.deleteList();
         let sortedProject = projectBuilder(set.project);
-        taskButtons(sortedProject);
-        themeCheck()
-        allProjects.masterList.push(sortedProject);
+
         projectDiv.insertBefore(
           sortedProject.projectElement,
-          projectDiv.children[projectIndex]
+          projectDiv.children[projectIndex + 1]
         );
+        taskButtons(sortedProject);
+        themeCheck();
       };
       sort.addEventListener("click", newProjectSet);
     };
