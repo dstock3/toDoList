@@ -48,9 +48,9 @@ const taskButtons = (set) => {
       let sort = elementBuilder("button", "sort-button", buttonDiv);
       sort.textContent = "Sort by Due Date";
 
-      let projectIndex = getPosition(set.projectElement);
-
       function newSortedList() {
+        let projectIndex = getPosition(set.projectElement);
+        console.log(projectIndex)
         let sortedTasks = sortByDueDate(set.project.taskArray);
         set.project.taskArray = sortedTasks;
         set.deleteList();
