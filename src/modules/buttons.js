@@ -108,23 +108,22 @@ const taskButtons = (set) => {
                   for (let z = 0; z < fetchedList[i].taskArray.length; z++) {
                     if (fetchedList[i].taskArray[z].title === taskTitle) {
                       fetchedList[i].taskArray.splice(z, 1);
-                      store(fetchedList)
+                      store(fetchedList);
                       break
                     };
                   };
                 };
-              };
+              }
               let projectIndex = getPosition(set.projectElement);
               set.removeTask(set.project.taskArray[y]);
               set.deleteList();
               let sortedProject = projectBuilder(set.project);
+              taskButtons(sortedProject);
               themeCheck()
-              allProjects.masterList.push(sortedProject);
               projectDiv.insertBefore(
                 sortedProject.projectElement,
                 projectDiv.children[projectIndex]
               );
-              taskButtons(sortedProject);
             };
             removeTaskElement.addEventListener("click", taskRemover);
           };
