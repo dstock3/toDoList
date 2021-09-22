@@ -5,7 +5,7 @@ import { sortByDueDate } from "./date";
 import { projectBuilder } from "./taskElements";
 import { addTask, addProject, allProjects } from "./projectCreator";
 import { sidebar, themeCheck } from "./sidebar";
-import { store, checkList, getTheme } from "./store";
+import { store, checkList } from "./store";
 
 let fetchedList = checkList()
 
@@ -39,34 +39,6 @@ const taskButtons = (set) => {
     }
 
     addButton.addEventListener("click", addNewTask);
-  })();
-
-  const minimize = (() => {
-    if (set.project.taskArray.length > 0) {
-      let minButton = elementBuilder("button", "top-buttons", topButtonDiv);
-      minButton.classList.add("min-button");
-      minButton.textContent = "-";
-
-      function minProject() {
-        minButton.textContent = "□";
-        set.minTasks();
-
-        minButton.addEventListener("click", function () {
-          let projectIndex = getPosition(set.projectElement);
-          set.deleteList();
-          let originalIndex = allProjects.masterList.indexOf(set);
-          let maxProject = projectBuilder(set.project);
-          allProjects.masterList.push(maxProject);
-          projectDiv.insertBefore(
-            maxProject.projectElement,
-            projectDiv.children[projectIndex]
-          );
-          taskButtons(maxProject);
-        });
-      }
-
-      minButton.addEventListener("click", minProject);
-    }
   })();
 
   const buttonDiv = elementBuilder("div", "button-div", set.projectElement);
@@ -112,11 +84,9 @@ const taskButtons = (set) => {
           sortedProject.projectElement,
           projectDiv.children[projectIndex]
         );
-        
-        
-      }
+      };
       sort.addEventListener("click", newProjectSet);
-    }
+    };
   })();
 
   const removeTaskButton = (() => {
@@ -155,13 +125,12 @@ const taskButtons = (set) => {
                 projectDiv.children[projectIndex]
               );
               taskButtons(sortedProject);
-              
-            }
+            };
             removeTaskElement.addEventListener("click", taskRemover);
-          }
-        }
-      }
-    }
+          };
+        };
+      };
+    };
   })();
 
   const warningMessage = () => {

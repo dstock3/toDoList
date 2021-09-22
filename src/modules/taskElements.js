@@ -22,6 +22,7 @@ const taskBuilder = (task, parent) => {
   status.textContent = `Status: ${task.status}`;
   let statusBox = elementBuilder("input", "status-box", statusContainer);
   statusBox.setAttribute("type", "checkbox");
+  
   if (task.status === "Complete") {
     statusBox.checked = true;
   }
