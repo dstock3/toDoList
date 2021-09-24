@@ -113,7 +113,10 @@ const addTask = (set) => {
     function exit() {
       removeTransparent(children);
       prompt.remove();
-    }
+      let buttonDiv = (Array.from(set.projectElement.children))[0];
+      let addButton = buttonDiv.firstChild;
+      addButton.addEventListener("click", addTask);
+    };
 
     cancelButton.addEventListener("click", exit);
 

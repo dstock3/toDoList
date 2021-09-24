@@ -36,6 +36,7 @@ const taskButtons = (set) => {
 
     function addNewTask() {
       addTask(set);
+      addButton.removeEventListener("click", addNewTask);
     };
 
     addButton.addEventListener("click", addNewTask);
