@@ -6,6 +6,7 @@ import { projectBuilder } from "./taskElements";
 import { addTask, addProject, allProjects } from "./projectCreator";
 import { sidebar, themeCheck } from "./sidebar";
 import { store, checkList } from "./store";
+import { forEach } from "lodash";
 
 let fetchedList = checkList()
 
@@ -196,6 +197,7 @@ const changeView = (() => {
   function minAll() {
     let projContainer = document.getElementsByClassName("project-container")[0];
     let projects = Array.from(projContainer.children);
+
     for (let i = 0; i < projects.length; i++) {
       let project = projects[i];
       let projComponents = Array.from(project.children);
@@ -203,16 +205,25 @@ const changeView = (() => {
         if ((y > 2) && (y !== projComponents.length - 1)) {
           let task = projComponents[y];
           let taskElements = Array.from(task.children);
+          console.log(taskElements)
           for (let x = 0; x <  taskElements.length; x++) {
             if ((x !== 0) && (x !== 2)) {
-              taskElements[x].classList.add("hidden");
+              taskElements[x].classList.add("minimize");
             };
           };
         };
       };
     };
 
-  }
+    function maxAll() {
+      let hiddenElements = Array.from(document.getElementsByClassName("minimize"));
+      for (let i = 0; i < hiddenElements.length; i++) {
+        hiddenElements[i].classList.remove("minimize");
+      };
+      viewElement.addEventListener("click", minAll); 
+    };
+    viewElement.addEventListener("click", maxAll); 
+  };
   viewElement.addEventListener("click", minAll); 
 })();
 

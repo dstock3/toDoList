@@ -109,6 +109,12 @@ body {
   visibility: collapse;
 }
 
+.minimize {
+  visibility: collapse;
+  width: 0;
+  height: 0;
+}
+
 .notif-bar {
   display: flex;
   flex-direction: column;
