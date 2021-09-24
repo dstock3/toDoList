@@ -205,6 +205,7 @@ const changeView = (() => {
       for (let y = 0; y < projComponents.length; y++) {
         if ((y > 2) && (y !== projComponents.length - 1)) {
           let task = projComponents[y];
+          task.classList.add("compact");
           let taskElements = Array.from(task.children);
           for (let x = 0; x <  taskElements.length; x++) {
             if ((x !== 0) && (x !== 2)) {
