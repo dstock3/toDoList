@@ -233,8 +233,7 @@ const addProject = () => {
       let title = document.getElementById("project-title").value;
       let titlePair = [title, titleDiv];
       let description = document.getElementById("project-description").value;
-      let descPair = [description, descDiv];
-      let obj = { titlePair, descPair };
+      let obj = { titlePair };
 
       let isValid = validateProj(obj);
 
