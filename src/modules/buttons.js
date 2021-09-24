@@ -193,11 +193,12 @@ const projectButton = (() => {
 
 const changeView = (() => {
   let viewElement = sidebar.changeView;
+  let min = false;
 
   function minAll() {
+    min = true;
     let projContainer = document.getElementsByClassName("project-container")[0];
     let projects = Array.from(projContainer.children);
-
     for (let i = 0; i < projects.length; i++) {
       let project = projects[i];
       let projComponents = Array.from(project.children);
@@ -205,26 +206,32 @@ const changeView = (() => {
         if ((y > 2) && (y !== projComponents.length - 1)) {
           let task = projComponents[y];
           let taskElements = Array.from(task.children);
-          console.log(taskElements)
           for (let x = 0; x <  taskElements.length; x++) {
             if ((x !== 0) && (x !== 2)) {
               taskElements[x].classList.add("minimize");
             };
           };
+          stateCheck()
         };
       };
     };
-
-    function maxAll() {
-      let hiddenElements = Array.from(document.getElementsByClassName("minimize"));
-      for (let i = 0; i < hiddenElements.length; i++) {
-        hiddenElements[i].classList.remove("minimize");
-      };
-      viewElement.addEventListener("click", minAll); 
-    };
-    viewElement.addEventListener("click", maxAll); 
   };
-  viewElement.addEventListener("click", minAll); 
+
+  function maxAll() {
+    min = false;
+    let hiddenElements = Array.from(document.getElementsByClassName("minimize"));
+    for (let i = 0; i < hiddenElements.length; i++) {
+      hiddenElements[i].classList.remove("minimize");
+    };
+    stateCheck()
+  };
+
+  function stateCheck() {
+    if (min) {
+      viewElement.addEventListener("click", maxAll); 
+    } else { viewElement.addEventListener("click", minAll); }
+  };
+  stateCheck();
 })();
 
 export { taskButtons, applyButtons, addTransparent, removeTransparent };
