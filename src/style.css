@@ -219,6 +219,10 @@ body {
   border-radius: 10px;
 }
 
+.compact {
+  padding-bottom: 2%;
+}
+
 .min {
   padding-bottom: 0;
 }
