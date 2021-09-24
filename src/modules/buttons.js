@@ -193,10 +193,8 @@ const projectButton = (() => {
 
 const changeView = (() => {
   let viewElement = sidebar.changeView;
-  let min = false;
 
   function minAll() {
-    min = true;
     let projContainer = document.getElementsByClassName("project-container")[0];
     let projects = Array.from(projContainer.children);
     for (let i = 0; i < projects.length; i++) {
@@ -209,34 +207,31 @@ const changeView = (() => {
           let taskElements = Array.from(task.children);
           for (let x = 0; x <  taskElements.length; x++) {
             if ((x !== 0) && (x !== 2)) {
+              console.log(taskElements[x])
               taskElements[x].classList.add("minimize");
             };
           };
-          stateCheck(min)
+          function maxAll() {
+            let compactTasks = Array.from(document.getElementsByClassName("compact"));
+            let hiddenElements = Array.from(document.getElementsByClassName("minimize"));
+            for (let i = 0; i < compactTasks.length; i++) {
+              compactTasks[i].classList.remove("compact");
+            };
+            for (let i = 0; i < hiddenElements.length; i++) {
+              hiddenElements[i].classList.remove("minimize");
+            };
+            viewElement.removeEventListener("click", maxAll);
+            viewElement.addEventListener("click", minAll); 
+          };
+
+        viewElement.removeEventListener("click", minAll);
+        viewElement.addEventListener("click", maxAll); 
         };
       };
     };
   };
 
-  function maxAll() {
-    min = false;
-    let compactTasks = Array.from(document.getElementsByClassName("compact"));
-    let hiddenElements = Array.from(document.getElementsByClassName("minimize"));
-    for (let i = 0; i < compactTasks.length; i++) {
-      compactTasks[i].classList.remove("compact");
-    };
-    for (let i = 0; i < hiddenElements.length; i++) {
-      hiddenElements[i].classList.remove("minimize");
-    };
-    stateCheck(min)
-  };
-
-  function stateCheck(minView) {
-    if (minView) {
-      viewElement.addEventListener("click", maxAll); 
-    } else { viewElement.addEventListener("click", minAll); }
-  };
-  stateCheck(min);
+  viewElement.addEventListener("click", minAll); 
 })();
 
 export { taskButtons, applyButtons, addTransparent, removeTransparent };
