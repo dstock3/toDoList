@@ -223,6 +223,11 @@ body {
   padding-bottom: 2%;
 }
 
+.compact p {
+  margin-block-start: 0;
+  margin-block-end: .25em;
+}
+
 .min {
   padding-bottom: 0;
 }
