@@ -192,7 +192,7 @@ const addProject = () => {
       "new-task",
       "title-div",
       "name-label",
-      "Task: ",
+      "Project: ",
       "title-input",
       "Enter a title for your new project.",
       "project-title",
