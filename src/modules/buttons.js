@@ -211,7 +211,7 @@ const changeView = (() => {
               taskElements[x].classList.add("minimize");
             };
           };
-          stateCheck()
+          stateCheck(min)
         };
       };
     };
@@ -223,15 +223,15 @@ const changeView = (() => {
     for (let i = 0; i < hiddenElements.length; i++) {
       hiddenElements[i].classList.remove("minimize");
     };
-    stateCheck()
+    stateCheck(min)
   };
 
-  function stateCheck() {
-    if (min) {
+  function stateCheck(minView) {
+    if (minView) {
       viewElement.addEventListener("click", maxAll); 
     } else { viewElement.addEventListener("click", minAll); }
   };
-  stateCheck();
+  stateCheck(min);
 })();
 
 export { taskButtons, applyButtons, addTransparent, removeTransparent };
