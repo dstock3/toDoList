@@ -3,12 +3,11 @@
 import { elementBuilder, getPosition, projectDiv, body } from "./elements";
 import { sortByDueDate } from "./date";
 import { projectBuilder } from "./taskElements";
-import { addTask, addProject, allProjects } from "./projectCreator";
+import { addTask, addProject } from "./projectCreator";
 import { sidebar, themeCheck } from "./sidebar";
 import { store, checkList } from "./store";
-import { forEach } from "lodash";
 
-let fetchedList = checkList()
+let fetchedList = checkList();
 
 function addTransparent(childElements) {
   for (let i = 0; i < childElements.length - 1; i++) {
@@ -187,6 +186,7 @@ function applyButtons(taskArray) {
 const projectButton = (() => {
   function addNewProject() {
     addProject();
+    sidebar.newProject.removeEventListener("click", addNewProject);
   }
   sidebar.newProject.addEventListener("click", addNewProject);
 })();

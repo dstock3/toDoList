@@ -4,7 +4,7 @@ import { project, toDo } from "./objectBuilder";
 import { elementBuilder, getPosition, body, projectDiv } from "./elements";
 import { taskBuilder, projectHeader, projectBuilder } from "./taskElements";
 import { addTransparent, taskButtons, removeTransparent } from "./buttons";
-import { notif, themeCheck } from "./sidebar";
+import { sidebar, notif, themeCheck } from "./sidebar";
 import { validation, validateProj } from "./validation";
 import { store, checkList } from "./store";
 
@@ -225,6 +225,7 @@ const addProject = () => {
     function exit() {
       removeTransparent(children);
       prompt.remove();
+      sidebar.newProject.addEventListener("click", addProject);
     }
 
     cancelButton.addEventListener("click", exit);
