@@ -220,7 +220,11 @@ const changeView = (() => {
 
   function maxAll() {
     min = false;
+    let compactTasks = Array.from(document.getElementsByClassName("compact"));
     let hiddenElements = Array.from(document.getElementsByClassName("minimize"));
+    for (let i = 0; i < compactTasks.length; i++) {
+      compactTasks[i].classList.remove("compact");
+    };
     for (let i = 0; i < hiddenElements.length; i++) {
       hiddenElements[i].classList.remove("minimize");
     };
