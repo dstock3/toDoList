@@ -36,7 +36,7 @@ const taskButtons = (set) => {
 
     function addNewTask() {
       addTask(set);
-    }
+    };
 
     addButton.addEventListener("click", addNewTask);
   })();
@@ -194,28 +194,26 @@ const changeView = (() => {
   let viewElement = sidebar.changeView;
 
   function minAll() {
-    for (let i = 0; i < allProjects.masterList.length; i++) {
-      let set = allProjects.masterList[i];
-      if (set.project.taskArray.length > 0) {
-        set.minTasks();
+    let projContainer = document.getElementsByClassName("project-container")[0];
+    let projects = Array.from(projContainer.children);
+    for (let i = 0; i < projects.length; i++) {
+      let project = projects[i];
+      let projComponents = Array.from(project.children);
+      for (let y = 0; y < projComponents.length; y++) {
+        if ((y > 2) && (y !== projComponents.length - 1)) {
+          let task = projComponents[y];
+          let taskElements = Array.from(task.children);
+          for (let x = 0; x <  taskElements.length; x++) {
+            if ((x !== 0) && (x !== 2)) {
+              taskElements[x].classList.add("hidden");
+            };
+          };
+        };
+      };
+    };
 
-        viewElement.addEventListener("click", function () {
-          let projectIndex = getPosition(set.projectElement);
-          let originalIndex = allProjects.masterList.indexOf(set);
-          let maxProject = projectBuilder(set.project);
-          set.deleteList();
-          allProjects.masterList.splice(originalIndex, 1);
-          allProjects.masterList.push(maxProject);
-          projectDiv.insertBefore(
-            maxProject.projectElement,
-            projectDiv.children[projectIndex]
-          );
-          taskButtons(maxProject);
-        });
-      }
-    }
   }
-  viewElement.addEventListener("click", minAll);
+  viewElement.addEventListener("click", minAll); 
 })();
 
 export { taskButtons, applyButtons, addTransparent, removeTransparent };
