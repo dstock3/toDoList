@@ -121,15 +121,13 @@ const addTask = (set) => {
       let title = document.getElementById("title").value;
       let titlePair = [title, titleDiv];
       let description = document.getElementById("description").value;
-      let descPair = [description, descDiv];
       let enteredDate = document.getElementById("due").value;
       let datePair = [enteredDate, dueDiv];
       let priority = document.getElementById("priority").value;
       let priorityPair = [priority, priorityDiv];
       let notes = document.getElementById("notes").value;
-      let notePair = [notes, notesDiv];
       let status = "In Progress";
-      let obj = { titlePair, descPair, datePair, priorityPair, notePair };
+      let obj = { titlePair, datePair, priorityPair };
 
       let validArray = validation(obj);
       let isValid = validArray[0];

@@ -28,8 +28,8 @@ const validation = (obj) => {
       errorMessage.classList.add("blank");
       errorMessage.textContent = "Please enter a value for this field.";
       check.push(false);
-    }
-  }
+    };
+  };
   let dateElement = obj.datePair[1];
   let dueDate = formatDate(obj.datePair[0]);
   if (!dueDate) {
