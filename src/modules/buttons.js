@@ -206,8 +206,7 @@ const changeView = (() => {
           task.classList.add("compact");
           let taskElements = Array.from(task.children);
           for (let x = 0; x <  taskElements.length; x++) {
-            if ((x !== 0) && (x !== 2)) {
-              console.log(taskElements[x])
+            if ((x !== 0) && (x !== 5)) {
               taskElements[x].classList.add("minimize");
             };
           };

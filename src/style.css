@@ -379,6 +379,7 @@ button {
 .create-task-buttons {
   display: flex;
   justify-content: space-between;
+  margin: 5% 0% 0% 0%;
 
   width: 100%;
 }
@@ -404,8 +405,7 @@ li {
 }
 
 .themes {
-  width: 60%;
-  
+  width: 60%;  
 }
 
 .themes-bar {
