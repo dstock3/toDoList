@@ -487,43 +487,6 @@ li {
   background-color: #163320;
 }
 
-#dark {
-  background-color: #343434;
-  color: rgb(246, 246, 246);
-}
-
-#darkComp {
-  background-color: rgb(0, 0, 0);
-  color: rgb(246, 246, 246);
-}
-
-#darkComp .theme-option:hover {
-  background-color: rgb(27, 27, 27);
-}
-
-#darkComp .notif-container:hover {
-  background-color: rgb(27, 27, 27);
-}
-
-#autumn {
-  background-color: #EEB758;
-  color: #6B5228;
-  
-}
-
-#autumnComp {
-  background-color: #6B5228; 
-  color: #ffc400; 
-}
-
-#autumnComp .theme-option:hover {
-  background-color: #924816;
-}
-
-#autumnComp .notif-container:hover {
-  background-color: #924816;
-}
-
 #artic {
   background-color: #C6DAE9;
   color: rgb(29, 83, 119);

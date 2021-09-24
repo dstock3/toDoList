@@ -75,8 +75,6 @@ const sidebar = (() => {
   let themesList = elementBuilder("ul", "themes-list", themesBar)
 
   let themes = {
-    "Autumn": "#EEB758",
-    "Dark": "#343434",  
     "Emerald": "#50C878", 
     "Artic": "#C6DAE9",
     "Ruby": "#E4417F",
