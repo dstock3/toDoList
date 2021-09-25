@@ -3,7 +3,7 @@
 import { elementBuilder, getPosition, projectDiv, body } from "./elements";
 import { sortByDueDate } from "./date";
 import { projectBuilder } from "./taskElements";
-import { addTask, addProject } from "./projectCreator";
+import { addTask, addProject, addEnterEvent } from "./projectCreator";
 import { sidebar, themeCheck } from "./sidebar";
 import { store, checkList } from "./store";
 
@@ -154,7 +154,7 @@ const taskButtons = (set) => {
       warningElement.remove();
     }
     cancel.addEventListener("click", cancelProj);
-
+    
     function removeProj() {
       removeTransparent(body.children)
       for (let i = 0; i < fetchedList.length; i++) {
@@ -167,7 +167,9 @@ const taskButtons = (set) => {
       set.deleteList()
       warningElement.remove();
     }
+    
     confirm.addEventListener("click", removeProj);
+    addEnterEvent(warningElement, removeProj, cancelProj);
   };
 
   const deleteButton = (() => {

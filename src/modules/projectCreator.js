@@ -32,6 +32,21 @@ function newInput(
   return newDiv;
 }
 
+function addEnterEvent(prompt, create, closePrompt) {
+  prompt.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      create();
+      closePrompt();
+    };
+  }, false);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === "Escape") {
+      closePrompt();
+    };
+  }, false);
+};
+
 const addTask = (set) => {
   let project = JSON.stringify(set.project);
   let projectElement = set.projectElement;
@@ -148,8 +163,6 @@ const addTask = (set) => {
           status
         );
 
-        //set.project.taskArray.unshift(newTask);
-        
         for (let i = 0; i < fetchedList.length; i++) {
           if (fetchedList[i].title === set.project.title) {
             let fetchedproject = fetchedList[i];
@@ -178,8 +191,8 @@ const addTask = (set) => {
         createButton.addEventListener("click", createTask);
       }
     }
-
     createButton.addEventListener("click", createTask);
+    addEnterEvent(prompt, createTask, exit);
   })();
 };
 
@@ -254,10 +267,11 @@ const addProject = () => {
         exit();
       } else {
         createButton.addEventListener("click", createProject);
-      }
-    }
+      };
+    };
     createButton.addEventListener("click", createProject);
+    addEnterEvent(prompt, createProject, exit);
   })();
 };
 
-export { projectHeader, projectBuilder, addTask, addProject };
+export { projectHeader, projectBuilder, addTask, addProject, addEnterEvent };

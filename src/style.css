@@ -324,7 +324,7 @@ button {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   top: 25%;
   padding: 2%;
   width: 20%;
@@ -340,7 +340,7 @@ button {
   display: flex;
   flex-flow: column;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 25%;
   background-color: rgb(130, 193, 248);
   color: rgb(24, 28, 32);
