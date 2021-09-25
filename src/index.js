@@ -19,7 +19,7 @@ function buildProjects(projList) {
     allProjects.masterList.push(newProjSet);
   };
   applyButtons(allProjects.masterList);
-  getTheme()
+  getTheme();
 }
 
 const start = (() => {
@@ -33,7 +33,7 @@ const start = (() => {
     applyButtons(allProjects.masterList);
     getTheme();
   } else {
-    buildProjects(fetchedList)
+    buildProjects(fetchedList);
   };
 })();
 
