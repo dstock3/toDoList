@@ -68,6 +68,7 @@ const addTask = (set) => {
       "title",
       "title"
     );
+
     let descDiv = newInput(
       prompt,
       "new-task",
@@ -79,6 +80,7 @@ const addTask = (set) => {
       "description",
       "desc"
     );
+
     let dueDiv = newInput(
       prompt,
       "new-task",
@@ -90,6 +92,7 @@ const addTask = (set) => {
       "due",
       "due"
     );
+
     let priorityDiv = newInput(
       prompt,
       "new-task",
@@ -101,6 +104,7 @@ const addTask = (set) => {
       "priority",
       "priority"
     );
+
     let notesDiv = newInput(
       prompt,
       "new-task",
@@ -163,10 +167,13 @@ const addTask = (set) => {
           status
         );
 
-        for (let i = 0; i < fetchedList.length; i++) {
+        let fetchedList = checkList()
+        for (let i = 0; i <= fetchedList.length; i++) {
           if (fetchedList[i].title === set.project.title) {
             let fetchedproject = fetchedList[i];
             fetchedproject.taskArray.unshift(newTask);
+            fetchedList.splice(i, 1);
+            fetchedList.unshift(fetchedproject);
             store(fetchedList)
 
             notif(newTask);

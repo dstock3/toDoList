@@ -2,7 +2,7 @@
 import "./style.css";
 import { projectTracker, createDefaultProj } from "./modules/objectBuilder";
 import { projectBuilder } from "./modules/projectCreator";
-import { applyButtons } from "./modules/buttons";
+import { applyButtons, taskButtons } from "./modules/buttons";
 import { notif } from "./modules/sidebar";
 import { store, checkList, getTheme } from "./modules/store";
 
@@ -23,14 +23,13 @@ function buildProjects(projList) {
 }
 
 const start = (() => {
-  let fetchedList = checkList()
+  let fetchedList = checkList();
   if (fetchedList.length === 0) {
     let defaultProj = createDefaultProj();
     allProjects.projectList.unshift(defaultProj);
     store(allProjects.projectList);
     const defaultProjectSet = projectBuilder(defaultProj);
-    allProjects.masterList.push(defaultProjectSet);
-    applyButtons(allProjects.masterList);
+    taskButtons(defaultProjectSet);
     getTheme();
   } else {
     buildProjects(fetchedList);
