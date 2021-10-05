@@ -588,4 +588,8 @@ li {
   input {
     width: 95%;
   }
+
+  .warning {
+    width: 88%;
+  }
 }
