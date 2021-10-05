@@ -59,7 +59,7 @@ body {
 .notif-head-container {
   display: flex;
   align-self: flex-start;
-  margin: 0 5%;
+  margin: 0 3%;
 }
 
 .notif-button {
@@ -127,6 +127,7 @@ body {
   background-color: rgb(24, 28, 32);
   color: rgb(130, 193, 248);
   padding-top: 5px;
+  padding: 2%;
 }
 
 .notif-container {
@@ -144,7 +145,7 @@ body {
 }
 
 .remove-notif {
-  margin: auto;
+  margin: 2% 2% 7% 2%;
   background-color: rgb(24, 28, 32);
   color: rgb(130, 193, 248);
   border: none;
@@ -158,7 +159,7 @@ body {
   margin-block-end: 0.25em;
   font-size: 0.9em;
   width: 90%;
-  margin: a;
+  padding: 2%;
 }
 
 .tips-container {
