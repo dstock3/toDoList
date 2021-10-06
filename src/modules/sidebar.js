@@ -4,7 +4,7 @@
 import { elementBuilder, body, toggleHide } from "./elements";
 import { today, deadline } from "./date";
 import { tips, randomGenerator } from "./tips"
-import { themes, showThemes } from "./themes"
+import { themes, setTheme } from "./themes"
 
 const sidebar = (() => {
   const element = elementBuilder("div", "sidebar", body);
@@ -215,4 +215,10 @@ function notif(newTask) {
   notifNum();
 }
 
-export { sidebar, notif };
+function themeCheck() {
+  let color = sidebar.element.id;
+  let comp = sidebar.tipsContainer.id;
+  setTheme(color, comp)
+}
+
+export { sidebar, notif, themeCheck };

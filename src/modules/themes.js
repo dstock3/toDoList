@@ -4,7 +4,6 @@
 import { elementBuilder, toggleHide } from './elements';
 
 const themes = () => {
-    let sidebar = document.getElementsByClassName("sidebar")[0];
 
     let themes = {
         "Emerald": "#50C878", 
@@ -164,10 +163,4 @@ function setTheme(color, comp) {
     localStorage.setItem("theme", themePair);
 };
   
-function themeCheck() {
-    let color = sidebar.element.id;
-    let comp = sidebar.tipsContainer.id;
-    setTheme(color, comp)
-}
-
-export { themes, setTheme, themeCheck }
+export { themes, setTheme }
