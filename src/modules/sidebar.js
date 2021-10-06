@@ -5,6 +5,7 @@ import { elementBuilder, body, toggleHide } from "./elements";
 import { today, deadline } from "./date";
 import { tips, randomGenerator } from "./tips"
 import { themes, setTheme } from "./themes"
+import { checkList } from './store'
 
 const sidebar = (() => {
   const element = elementBuilder("div", "sidebar", body);
@@ -45,12 +46,25 @@ const sidebar = (() => {
   showProjects.id = "show-projects";
   showProjects.textContent = "P";
 
-  function hideProjects() {
-    //toggleHide(notifBar)
-    notifLogic(showProjects);
+  function populateProjects() {
+    let barElements = Array.from(notifBar.children)
+    for (let i = 0; i < barElements.length; i++) {
+      let element = barElements[i]
+      element.remove()
+    }
+    let fetchedList = checkList();
+
+    for (let i = 0; i < fetchedList.length; i++) {
+      let project = fetchedList[i];
+      let projContainer = elementBuilder("div", "proj-container", notifBar);
+      let projTitle = elementBuilder("div", "proj-title", projContainer);
+      projTitle.textContent = project.title;
+      let projTasks = elementBuilder("div", "proj-tasks", projContainer);
+      projTasks.textContent = `Tasks: ${project.taskArray.length}`
+    };
   }
 
-  showProjects.addEventListener("click", hideProjects);
+  showProjects.addEventListener("click", populateProjects);
 
   const notifBar = elementBuilder("div", "notif-bar", barContainer);
   const notifContainer = elementBuilder("div", "notif-container", notifBar);
