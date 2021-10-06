@@ -4,7 +4,8 @@ import { project, toDo } from "./objectBuilder";
 import { elementBuilder, getPosition, body, projectDiv } from "./elements";
 import { taskBuilder, projectHeader, projectBuilder } from "./taskElements";
 import { addTransparent, taskButtons, removeTransparent } from "./buttons";
-import { sidebar, notif, themeCheck } from "./sidebar";
+import { sidebar, notif } from "./sidebar";
+import { themeCheck } from "./themes";
 import { validation, validateProj } from "./validation";
 import { store, checkList } from "./store";
 

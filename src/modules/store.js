@@ -1,4 +1,4 @@
-import { setTheme } from './sidebar'
+import { setTheme } from './themes'
 
 const store = (projList) => {
     const newArray = JSON.stringify(projList);
