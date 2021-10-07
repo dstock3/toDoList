@@ -64,14 +64,16 @@ const sidebar = (() => {
     "notif-button",
     notifHeadContainer
   );
+
   showProjects.id = "show-projects";
   showProjects.textContent = "P";
 
   function populateProjects() {
     removeListElements(notifBar);
     addProjects(notifBar);
-
-  }
+    const seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
+    seeAllProj.textContent = "See All Projects";
+  };
 
   showProjects.addEventListener("click", populateProjects);
 
