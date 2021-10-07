@@ -7,6 +7,14 @@ import { tips, randomGenerator } from "./tips"
 import { themes, setTheme } from "./themes"
 import { checkList } from './store'
 
+function removeListElements(notifBar) {
+  let barElements = Array.from(notifBar.children)
+  for (let i = 0; i < barElements.length; i++) {
+    let element = barElements[i]
+    element.remove()
+  };
+};
+
 const sidebar = (() => {
   const element = elementBuilder("div", "sidebar", body);
 
@@ -47,11 +55,8 @@ const sidebar = (() => {
   showProjects.textContent = "P";
 
   function populateProjects() {
-    let barElements = Array.from(notifBar.children)
-    for (let i = 0; i < barElements.length; i++) {
-      let element = barElements[i]
-      element.remove()
-    }
+    removeListElements(notifBar);
+
     let fetchedList = checkList();
 
     for (let i = 0; i < fetchedList.length; i++) {
