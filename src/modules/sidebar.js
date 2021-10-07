@@ -15,6 +15,19 @@ function removeListElements(notifBar) {
   };
 };
 
+function addProjects(notifBar){
+  let fetchedList = checkList();
+
+  for (let i = 0; i < fetchedList.length; i++) {
+    let project = fetchedList[i];
+    let projContainer = elementBuilder("div", "proj-container", notifBar);
+    let projTitle = elementBuilder("div", "proj-title", projContainer);
+    projTitle.textContent = project.title;
+    let projTasks = elementBuilder("div", "proj-tasks", projContainer);
+    projTasks.textContent = `Tasks: ${project.taskArray.length}`
+  };
+};
+
 const sidebar = (() => {
   const element = elementBuilder("div", "sidebar", body);
 
@@ -56,17 +69,8 @@ const sidebar = (() => {
 
   function populateProjects() {
     removeListElements(notifBar);
+    addProjects(notifBar);
 
-    let fetchedList = checkList();
-
-    for (let i = 0; i < fetchedList.length; i++) {
-      let project = fetchedList[i];
-      let projContainer = elementBuilder("div", "proj-container", notifBar);
-      let projTitle = elementBuilder("div", "proj-title", projContainer);
-      projTitle.textContent = project.title;
-      let projTasks = elementBuilder("div", "proj-tasks", projContainer);
-      projTasks.textContent = `Tasks: ${project.taskArray.length}`
-    };
   }
 
   showProjects.addEventListener("click", populateProjects);
