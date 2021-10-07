@@ -7,6 +7,27 @@ import { tips, randomGenerator } from "./tips"
 import { themes, setTheme } from "./themes"
 import { checkList } from './store'
 
+function removeListElements(notifBar) {
+  let barElements = Array.from(notifBar.children)
+  for (let i = 0; i < barElements.length; i++) {
+    let element = barElements[i]
+    element.remove()
+  };
+};
+
+function addProjects(notifBar){
+  let fetchedList = checkList();
+
+  for (let i = 0; i < fetchedList.length; i++) {
+    let project = fetchedList[i];
+    let projContainer = elementBuilder("div", "proj-container", notifBar);
+    let projTitle = elementBuilder("div", "proj-title", projContainer);
+    projTitle.textContent = project.title;
+    let projTasks = elementBuilder("div", "proj-tasks", projContainer);
+    projTasks.textContent = `Tasks: ${project.taskArray.length}`
+  };
+};
+
 const sidebar = (() => {
   const element = elementBuilder("div", "sidebar", body);
 
@@ -43,26 +64,16 @@ const sidebar = (() => {
     "notif-button",
     notifHeadContainer
   );
+
   showProjects.id = "show-projects";
   showProjects.textContent = "P";
 
   function populateProjects() {
-    let barElements = Array.from(notifBar.children)
-    for (let i = 0; i < barElements.length; i++) {
-      let element = barElements[i]
-      element.remove()
-    }
-    let fetchedList = checkList();
-
-    for (let i = 0; i < fetchedList.length; i++) {
-      let project = fetchedList[i];
-      let projContainer = elementBuilder("div", "proj-container", notifBar);
-      let projTitle = elementBuilder("div", "proj-title", projContainer);
-      projTitle.textContent = project.title;
-      let projTasks = elementBuilder("div", "proj-tasks", projContainer);
-      projTasks.textContent = `Tasks: ${project.taskArray.length}`
-    };
-  }
+    removeListElements(notifBar);
+    addProjects(notifBar);
+    const seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
+    seeAllProj.textContent = "See All Projects";
+  };
 
   showProjects.addEventListener("click", populateProjects);
 
