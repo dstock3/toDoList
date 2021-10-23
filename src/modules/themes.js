@@ -142,7 +142,9 @@ function setTheme(color, comp) {
     };
   
     const applyAccents = (() => {
-      if (color === "autumn") {
+      if (color === "classic") {
+        themeComponents('#82C1F8'); 
+      } else if (color === "autumn") {
         themeComponents('#f59f0b');
       } else if (color === "dark") {
         themeComponents('#0F0F0F');
@@ -154,8 +156,6 @@ function setTheme(color, comp) {
         themeComponents('#E0115F');
       } else if (color === "purple") {
         themeComponents('#800080'); 
-      } else if (color === "classic") {
-        themeComponents('#82C1F8'); 
       }
     })();
   
