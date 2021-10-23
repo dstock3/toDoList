@@ -1,11 +1,11 @@
 body {
-    background-color: rgb(24, 28, 32);
-    color: rgb(187, 220, 248);
-    font-family: 'Ubuntu', sans-serif;
-    display: flex;
-    justify-content: space-around;
-    font-size: 1.15;
-    margin: auto;
+  background-color: rgb(24, 28, 32);
+  color: rgb(187, 220, 248);
+  font-family: "Ubuntu", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.15;
+  margin: auto;
 }
 
 .sidebar {
@@ -22,35 +22,90 @@ body {
 }
 
 .head-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar-head {
-    font-style: italic;
+  font-style: italic;
 }
 
 .side-button-container {
-    display: flex;
-    justify-content: space-around;
-    width: 85%;
-    background-color: rgb(24, 28, 32);
-    padding: 5%;
-    border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  width: 85%;
+  background-color: rgb(24, 28, 32);
+  padding: 5%;
+  border-radius: 5px;
 }
 
 .side-buttons {
-    width: 45%;
+  width: 45%;
 }
 
 .bar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    height: 45%;
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 95%;
+  border-radius: 5px;
+}
+
+.notif-head-container {
+  display: flex;
+  align-self: flex-start;
+  margin: 0 3%;
+}
+
+.notif-button {
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  cursor: pointer;
+  padding: 7px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  font-size: 1.5em;
+  z-index: 3;
+}
+
+#show-projects {
+  position: relative;
+  left: 4%;
+}
+
+.notif-num {
+  display: inline-block;
+  position: relative;
+  right: 50%;
+  top: 20px;
+  z-index: 4;
+  color:rgb(0, 0, 0);
+  background: rgb(247, 149, 0);
+  background: linear-gradient(
+    180deg,
+    rgb(245, 202, 59) 0%,
+    rgba(247, 149, 0, 1) 100%
+  );
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  font-size: 0.85em;
+  padding: 1px 2px 2px 0px;
+  text-align: center;
+  box-shadow: 1px 1px 1px black;
+}
+
+.hidden {
+  visibility: collapse;
+}
+
+.minimize {
+  display: none;
+  visibility: collapse;
+  height: 0;
 }
 
 .notif-head-container {
@@ -87,17 +142,17 @@ body {
 }
 
 .notif-container:hover {
-    background-color: rgb(38, 44, 51);
+  background-color: rgb(38, 44, 51);
 }
 
 .remove-notif {
-    margin: auto;
-    background-color: rgb(24, 28, 32);
-    color: rgb(130, 193, 248);
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 5px;
+  margin: 2% 2% 7% 2%;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .notif {
@@ -108,216 +163,425 @@ body {
     margin: auto;
 }
 
-#today {
-    margin-block-start: 1em;
+.tip {
+  padding-inline: 5%;
 }
 
 .project-container {
-    position: relative;
-    left: 7.5%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    width: 85%;
-    height: 100%;
+  position: relative;
+  left: 7.5%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 85%;
+  height: 100%;
 }
 
 .project {
-    display: flex;
-    flex-flow: column wrap;
-    background-color: rgb(130, 193, 248);
-    color: rgb(24, 28, 32);
-    width: 20%;
-    height: 100%;
-    padding: .75%;
-    border-radius: 5px;
-    margin: 20px 0;
+  display: flex;
+  flex-flow: column wrap;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  border: solid rgb(130, 193, 248) 3px;
+  width: 20%;
+  height: 100%;
+  padding: 0.75%;
+  border-radius: 5px;
+  margin: 20px 0;
+  box-shadow: 10px 5px 5px rgb(0, 48, 87);
 }
 
 .project-head {
-    margin: auto;
+  margin: auto;
 }
 
 .project-desc {
-    padding-left: 2.5%;
+  padding-left: 2.5%;
 }
 
 .task {
-    border: solid 5px rgb(130, 193, 248);
-    background-color: rgb(24, 28, 32);
-    color: rgb(130, 193, 248);
-    width: 87%;
-    padding: 5%;
-    padding-bottom: 7%;
-    border-radius: 10px;
+  border: solid 5px rgb(130, 193, 248);
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  width: 87%;
+  padding: 5%;
+  padding-bottom: 7%;
+  border-radius: 10px;
+}
+
+.compact {
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
+
+.compact p {
+  margin-block-start: 0;
+  margin-block-end: .25em;
 }
 
 .min {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 .min p {
-    margin-block-start: 0;
+  margin-block-start: 0;
 }
 
 .top-div {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
-    border-radius: 10px;
-    background-color: rgb(130, 193, 248);
-    color: rgb(24, 28, 32);
-    padding: 5px;
-    font-weight: bold;
-    font-size: 1.1rem;
+  border-radius: 10px;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
 .top-button-div {
-    display: flex;
-    justify-content: space-around;
-    position: relative;
-    left: 78%;
-    width: 22%;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  left: 78%;
+  width: 22%;
 }
 
 .top-buttons {
-    width: 30px;
-    background-color: rgb(24, 28, 32);
-    color: rgb(130, 193, 248);
-    font-size: 1.2em;
+  width: 30px;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  font-size: 1.2em;
 }
 
 .min-button {
-    min-width: 25px;
+  min-width: 25px;
 }
 
 .remove-task {
-    order: 1;
-    position: relative;
-    top: 14px;
-    width: 35px;
-    height: 30px;
-    border-radius: 15px;
+  order: 1;
+  position: relative;
+  top: 14px;
+  width: 35px;
+  height: 35px;
+  border-radius: 15px;
+}
+
+.button-div {
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.status-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.status-box {
+  width: 5%;
 }
 
 .task-prompt {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    position: absolute;
-    top: 25%;
-    padding: 2%;
-    width: 20%;
-    background-color: rgb(130, 193, 248);
-    color: rgb(24, 28, 32);
-    border-radius: 10px;
-    z-index: 1;
-    font-size: 1.25em;
-    font-weight: bold;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 25%;
+  padding: 2%;
+  width: 20%;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  border-radius: 10px;
+  z-index: 1;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 
 .invalid {
-    font-size: .85em;
-    font-weight: lighter;
-    margin-block-start: .25em;
-    margin-block-end: .25em;
-    color: rgb(251, 0, 0);
+  font-size: 0.85em;
+  font-weight: lighter;
+  margin-block-start: 0.25em;
+  margin-block-end: 0.25em;
+  color: rgb(251, 0, 0);
+  font-style: italic;
 }
 
 .project-prompt {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    position: absolute;
-    top: 25%;
-    padding: 2%;
-    width: 20%;
-    background-color: rgb(130, 193, 248);
-    color: rgb(24, 28, 32);
-    border-radius: 10px;
-    z-index: 1;
-    font-size: 1.25em;
-    font-weight: bold;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  position: fixed;
+  top: 25%;
+  padding: 2%;
+  width: 20%;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  border-radius: 10px;
+  z-index: 1;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.warning {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  position: fixed;
+  top: 25%;
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32);
+  z-index: 1;
+  border-radius: 10px;
+  padding: 2%;
+  width: 20%;
+}
+
+.warning-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.warning-buttons {
+  width: 45%;
 }
 
 .prompt-head {
-    margin: auto;
+  margin: auto;
 }
 
 .new-task {
-    padding-bottom: 2%;
+  padding-bottom: 2%;
 }
 
 .notes-div {
-    padding-bottom: 5%;
+  padding-bottom: 5%;
 }
 
 .transparent {
-    opacity: 0.25;
+  opacity: 0.25;
 }
 
 .create-task-buttons {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  margin: 5% 0% 0% 0%;
 
-    width: 100%;
+  width: 100%;
 }
 
 .create-task {
-    width: 45%;
+  width: 45%;
 }
 
 .cancel {
-    width: 45%;
+  width: 45%;
 }
 
 input {
-    border-radius: 5px;
-    padding: 1%;
-    width: 100%;
+  border-radius: 5px;
+  padding: 1%;
+  width: 100%;
+}
+
+/* Themes */
+li {
+  list-style-type: none;
+  padding-bottom: 2%;;
+}
+
+.themes {
+  width: 60%;  
+}
+
+.themes-bar {
+  position: relative;
+  top: 5%;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  border: solid 3px rgb(130, 193, 248);
+  width: 50%;
+  padding: 2%;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.themes-list {
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 3%;
+  padding-inline-end: 3%;
+  margin-block-start: 5%;
+  margin-block-end: 5%;
+}
+
+.theme-option {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  padding-inline-start: 2.5%;
+}
+
+.theme-option:hover {
+  background-color: rgb(38, 44, 51);
+}
+
+.color {
+  position: relative;
+  right: 15%;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+}
+
+#classic {
+  background-color: rgb(130, 193, 248);
+  color: rgb(24, 28, 32); 
+}
+
+#classicComp {
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248); 
+}
+
+#classicComp .theme-option:hover {
+  background-color: rgb(38, 44, 51);;
+}
+
+#classicComp .notif-container:hover {
+  background-color: rgb(38, 44, 51);;
+}
+
+#emerald {
+  background-color: #50C878;
+  color: rgb(15, 1, 1);
+  box-shadow: 10px 5px 5px #003110d3;
+}
+
+#emeraldComp {
+  background-color: rgb(15, 1, 1);
+  color: #50C878;
+}
+
+#emeraldComp .theme-option:hover {
+  background-color: #163320;
+}
+
+#emeraldComp .notif-container:hover {
+  background-color: #163320;
+}
+
+#artic {
+  background-color: #C6DAE9;
+  color: rgb(29, 83, 119);
+  box-shadow: 10px 5px 5px #6f7a83a1;
+}
+
+#articComp {
+  background-color: rgb(29, 83, 119);
+  color: #C6DAE9;
+}
+
+#articComp .theme-option:hover {
+  background-color: rgb(84, 118, 139);
+}
+
+#articComp .notif-container:hover {
+  background-color: rgb(84, 118, 139);
+}
+
+#ruby {
+  background-color: #e4417f;
+  color: rgb(19, 19, 19);
+  box-shadow: 10px 5px 5px #70012cb0;
+}
+
+#rubyComp {
+  color: #E0115F;
+  background-color: rgb(24, 28, 32);
+}
+
+#rubyComp .theme-option:hover {
+  background-color: #35101e;
+}
+
+#rubyComp .notif-container:hover {
+  background-color: #35101e;
+}
+
+#purple {
+  background-color: #bb54ce;
+  color: rgb(24, 28, 32);
+  box-shadow: 10px 5px 5px #4b0058d7;
+}
+
+#purpleComp {
+  background-color: rgb(24, 28, 32); 
+  color: #bb54ce;
+}
+
+#purpleComp .theme-option:hover {
+  background-color: #310131;
+  
+}
+
+#purpleComp .notif-container:hover {
+  background-color: #310131;
 }
 
 @media only screen and (max-width: 600px) {
-    body {
-        flex-direction: column;
-        align-items: center;
-    }
+  body {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .sidebar {
-        position: relative;
-        top: 0;
-        width: 100%;
-        height: 10%;
-        border-bottom: rgb(24, 28, 32) solid 10px;
-    }
+  .sidebar {
+    position: relative;
+    order: 0;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    border-bottom: rgb(24, 28, 32) solid 10px;
+    box-shadow: none;
+  }
 
-    .project-container {
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        left: 0;
-        
-        width: 98%;
-    }
-    
-    .project-prompt {
-        padding-top: 5%;
-        width: 90%;
-    }
+  .project-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 0;
+    order: 1;
+    width: 98%;
+  }
 
-    .project {
-        width: 100%;
-        border-bottom: rgb(24, 28, 32) solid 10px;
-    }
+  .project-prompt {
+    padding-top: 5%;
+    width: 90%;
+  }
 
-    .task-prompt {
-        padding-top: 5%;
-        width: 90%;
-    }
+  .project {
+    width: 100%;
+    border-bottom: rgb(24, 28, 32) solid 10px;
+    box-shadow: none;
+  }
 
-    input {
-        width: 95%;
-    }
+  .task-prompt {
+    padding-top: 5%;
+    width: 90%;
+  }
+
+  input {
+    width: 95%;
+  }
+
+  .warning {
+    width: 88%;
+  }
 }
