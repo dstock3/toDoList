@@ -9,25 +9,16 @@ body {
 }
 
 .sidebar {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  left: 0;
-  width: 15%;
-  height: 100%;
-  background-color: rgb(130, 193, 248);
-  color: rgb(24, 28, 32);
-  border-right: solid rgb(130, 193, 248) 3px;
-  box-shadow: 10px 5px 5px rgb(0, 48, 87);
-}
-
-.proj-container {
-  display: flex;
-  justify-content: space-around;
-  width: 95%;
-  padding: 5%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    background-color: rgb(130, 193, 248);
+    color: rgb(24, 28, 32);
 }
 
 .head-container {
@@ -117,24 +108,37 @@ body {
   height: 0;
 }
 
+.notif-head-container {
+    align-self: flex-start;
+    margin: 2% 4.5%;
+}
+
+.notif-button {
+    background-color: rgb(24, 28, 32);
+    color: rgb(130, 193, 248);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.hidden {
+    visibility: collapse;
+}
+
 .notif-bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background-color: rgb(24, 28, 32);
-  color: rgb(130, 193, 248);
-  padding-top: 5px;
-  padding: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    border-radius: 5px;
+    background-color: rgb(24, 28, 32);
+    color: rgb(130, 193, 248);
+    padding-top: 5px;
 }
 
 .notif-container {
-  display: flex;
-  margin: 7px 7px;
-  cursor: pointer;
+    display: flex;
+    margin: 7px 7px;
 }
 
 .notif-container:hover {
@@ -152,29 +156,11 @@ body {
 }
 
 .notif {
-  margin-block-start: 0.25em;
-  margin-block-end: 0.25em;
-  font-size: 0.9em;
-  width: 90%;
-  padding: 2%;
-}
-
-#none {
-  width: 90%;
-}
-
-.tips-container {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: auto;
-  height: 20%;
-  width: 100%;
-  border: solid rgb(130, 193, 248) 3px;
-  background-color: rgb(24, 28, 32);
-  color: rgb(130, 193, 248);
+    margin-block-start: .25em;
+    margin-block-end: .25em;
+    font-size: .90em;
+    width: 90%;
+    margin: auto;
 }
 
 .tip {

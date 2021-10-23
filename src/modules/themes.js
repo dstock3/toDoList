@@ -156,7 +156,7 @@ function setTheme(color, comp) {
         themeComponents('#E0115F');
       } else if (color === "purple") {
         themeComponents('#800080'); 
-      }
+      };
     })();
   
     let themePair = JSON.stringify([color, comp]);
