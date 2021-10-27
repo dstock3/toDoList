@@ -54,6 +54,21 @@ body {
   border-radius: 5px;
 }
 
+.notif {
+  display: flex;
+  justify-content: space-around;
+}
+
+.notif-title {
+  margin: 0 10% 0 0;
+  width: 33%;
+}
+
+.notif-date {
+  width: 60%;
+
+}
+
 .notif-head-container {
   display: flex;
   align-self: flex-start;
@@ -593,5 +608,10 @@ li {
 
   .warning {
     width: 88%;
+  }
+
+  .tips-container {
+    position: absolute;
+    bottom: 0;
   }
 }

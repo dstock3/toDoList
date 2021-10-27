@@ -182,9 +182,14 @@ function deadlineNotif(task) {
         "notif-container",
         sidebar.notifBar
       );
-      let newNotif = elementBuilder("p", "notif", newContainer);
+      let newNotif = elementBuilder("div", "notif", newContainer);
       newNotif.id = "deadline";
-      newNotif.textContent = `${task.title}: ${deadlineMessage}`;
+      let notifTitle = elementBuilder("div", "notif-title", newNotif);
+      notifTitle.style.fontWeight = "bold";
+      notifTitle.textContent = `${task.title}: `
+      let notifDate = elementBuilder("div", "notif-date", newNotif);
+      notifDate.textContent =  `${deadlineMessage}`;
+      
       noNotifChecker();
       return deadlineMessage;
     }
