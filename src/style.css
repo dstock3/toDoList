@@ -57,6 +57,7 @@ body {
 .notif {
   display: flex;
   justify-content: space-around;
+  padding-left: 5%;
 }
 
 .notif-title {
@@ -67,6 +68,10 @@ body {
 .notif-date {
   width: 60%;
 
+}
+
+#today {
+  padding-left: 5%;
 }
 
 .notif-head-container {
