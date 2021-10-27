@@ -6,6 +6,8 @@ import { applyButtons, taskButtons } from "./modules/buttons";
 import { notif } from "./modules/sidebar";
 import { store, checkList, getTheme } from "./modules/store";
 
+window.document.title = "OnTask"
+
 const allProjects = projectTracker();
 
 function buildProjects(projList) {
