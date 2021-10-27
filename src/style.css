@@ -168,8 +168,13 @@ body {
   bottom: 0;
 }
 
+.tip-head {
+  text-align: center;
+}
+
 .tip {
   padding-inline: 5%;
+  padding-bottom: 5%;
 }
 
 .project-container {
