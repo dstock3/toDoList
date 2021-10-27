@@ -163,6 +163,11 @@ body {
     margin: auto;
 }
 
+.tips-container {
+  position: fixed;
+  bottom: 0;
+}
+
 .tip {
   padding-inline: 5%;
 }
