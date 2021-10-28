@@ -17,9 +17,16 @@ function removeListElements(notifBar) {
   };
 };
 
+function removeAllProjects() {
+  let projects = document.getElementsByClassName("project-container")[0]
+  let projChildren = Array.from(projects.children);
+  for (let y = 0; y < projChildren.length; y++) {
+    projChildren[y].remove()
+  };
+};
+
 function addProjects(notifBar){
   let fetchedList = checkList();
-  let projList = []
   let projBarTitle = elementBuilder("h3", "proj-bar-title", notifBar);
   projBarTitle.textContent = "Projects";
 
@@ -30,11 +37,7 @@ function addProjects(notifBar){
     projTitle.textContent = project.title;
 
     function showThisProj() {
-      let projects = document.getElementsByClassName("project-container")[0]
-      let projChildren = Array.from(projects.children);
-      for (let y = 0; y < projChildren.length; y++) {
-        projChildren[y].remove()
-      };
+      removeAllProjects()
       let newProjSet = projectBuilder(project);
       let tasks = project.taskArray;
       for (let x = 0; x < tasks.length; x++) {
@@ -45,12 +48,7 @@ function addProjects(notifBar){
     }
 
     projContainer.addEventListener("click", showThisProj)
-    projList.push(projContainer);
   };
-
-  for (let i = 0; i < projList.length; i++) {
-
-  }
 };
 
 const sidebar = (() => {
@@ -96,8 +94,27 @@ const sidebar = (() => {
   function populateProjects() {
     removeListElements(notifBar);
     addProjects(notifBar);
-    const seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
+    let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
     seeAllProj.textContent = "See All Projects";
+
+    function showAllProjects() {
+      removeAllProjects();
+      let fetchedList = checkList();
+      for (let i = 0; i < fetchedList.length; i++) {
+        let project = fetchedList[i];
+        let newProjSet = projectBuilder(project);
+        let tasks = project.taskArray;
+        for (let y = 0; y < tasks.length; y++) {
+          notif(tasks[y]);
+        }
+        applyButtons([newProjSet]);
+      };
+      
+      getTheme();
+
+    };
+
+    seeAllProj.addEventListener("click", showAllProjects);
   };
 
   showProjects.addEventListener("click", populateProjects);

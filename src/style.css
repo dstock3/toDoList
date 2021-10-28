@@ -113,6 +113,7 @@ body {
 .see-all-proj {
   font-weight: bold;
   padding-bottom: 5%;
+  cursor: pointer;
 }
 
 .notif-num {
