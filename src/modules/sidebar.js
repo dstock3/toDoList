@@ -5,7 +5,9 @@ import { elementBuilder, body, toggleHide } from "./elements";
 import { today, deadline } from "./date";
 import { tips, randomGenerator } from "./tips"
 import { themes, setTheme } from "./themes"
-import { checkList } from './store'
+import { checkList, getTheme } from './store'
+import { projectBuilder } from './projectCreator'
+import { applyButtons } from "./buttons";
 
 function removeListElements(notifBar) {
   let barElements = Array.from(notifBar.children)
@@ -28,7 +30,18 @@ function addProjects(notifBar){
     projTitle.textContent = project.title;
 
     function showThisProj() {
-      console.log(project)
+      let projects = document.getElementsByClassName("project-container")[0]
+      let projChildren = Array.from(projects.children);
+      for (let y = 0; y < projChildren.length; y++) {
+        projChildren[y].remove()
+      };
+      let newProjSet = projectBuilder(project);
+      let tasks = project.taskArray;
+      for (let x = 0; x < tasks.length; x++) {
+        notif(tasks[x]);
+      }
+      applyButtons([newProjSet]);
+      getTheme();
     }
 
     projContainer.addEventListener("click", showThisProj)
