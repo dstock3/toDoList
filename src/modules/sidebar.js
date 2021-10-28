@@ -17,15 +17,27 @@ function removeListElements(notifBar) {
 
 function addProjects(notifBar){
   let fetchedList = checkList();
+  let projList = []
+  let projBarTitle = elementBuilder("h3", "proj-bar-title", notifBar);
+  projBarTitle.textContent = "Projects";
 
   for (let i = 0; i < fetchedList.length; i++) {
     let project = fetchedList[i];
     let projContainer = elementBuilder("div", "proj-container", notifBar);
     let projTitle = elementBuilder("div", "proj-title", projContainer);
     projTitle.textContent = project.title;
-    let projTasks = elementBuilder("div", "proj-tasks", projContainer);
-    projTasks.textContent = `Tasks: ${project.taskArray.length}`
+
+    function showThisProj() {
+      console.log(project)
+    }
+
+    projContainer.addEventListener("click", showThisProj)
+    projList.push(projContainer);
   };
+
+  for (let i = 0; i < projList.length; i++) {
+
+  }
 };
 
 const sidebar = (() => {

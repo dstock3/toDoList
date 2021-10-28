@@ -100,14 +100,19 @@ body {
 .proj-container {
   display: flex;
   width: 95%;
-  justify-content: space-around;
+  justify-content: space-between;
   border-radius: 5px;
   padding-bottom: 5%;
   cursor: pointer;
 }
 
 .proj-title {
+  padding-left: 2%;
+}
+
+.see-all-proj {
   font-weight: bold;
+  padding-bottom: 5%;
 }
 
 .notif-num {
