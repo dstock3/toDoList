@@ -40,8 +40,9 @@ body {
   border-radius: 5px;
 }
 
-.side-buttons {
-  width: 45%;
+.side-button-container button {
+  font-size: 1em;
+  width: 30%;
 }
 
 .bar-container {
@@ -94,6 +95,16 @@ body {
 #show-projects {
   position: relative;
   left: 4%;
+}
+
+.proj-container {
+  display: flex;
+  width: 95%;
+  justify-content: space-around;
+}
+
+.proj-title {
+  font-weight: bold;
 }
 
 .notif-num {
@@ -162,6 +173,10 @@ body {
 }
 
 .notif-container:hover {
+  background-color: rgb(38, 44, 51);
+}
+
+.proj-container:hover {
   background-color: rgb(38, 44, 51);
 }
 
@@ -463,6 +478,10 @@ li {
   background-color: rgb(38, 44, 51);
 }
 
+.proj-container:hover{ 
+  background-color: rgb(38, 44, 51);
+}
+
 .color {
   position: relative;
   right: 15%;
@@ -482,11 +501,15 @@ li {
 }
 
 #classicComp .theme-option:hover {
-  background-color: rgb(38, 44, 51);;
+  background-color: rgb(38, 44, 51);
 }
 
 #classicComp .notif-container:hover {
-  background-color: rgb(38, 44, 51);;
+  background-color: rgb(38, 44, 51);
+}
+
+#classicComp .proj-container:hover {
+  background-color: rgb(38, 44, 51);
 }
 
 #emerald {
@@ -505,6 +528,10 @@ li {
 }
 
 #emeraldComp .notif-container:hover {
+  background-color: #163320;
+}
+
+#emeraldComp .proj-container:hover {
   background-color: #163320;
 }
 
@@ -527,6 +554,10 @@ li {
   background-color: rgb(84, 118, 139);
 }
 
+#articComp .proj-container:hover {
+  background-color: rgb(84, 118, 139);
+}
+
 #ruby {
   background-color: #e4417f;
   color: rgb(19, 19, 19);
@@ -543,6 +574,10 @@ li {
 }
 
 #rubyComp .notif-container:hover {
+  background-color: #35101e;
+}
+
+#rubyComp .proj-container:hover {
   background-color: #35101e;
 }
 
@@ -563,6 +598,10 @@ li {
 }
 
 #purpleComp .notif-container:hover {
+  background-color: #310131;
+}
+
+#purpleComp .proj-container:hover {
   background-color: #310131;
 }
 
