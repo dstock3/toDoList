@@ -40,8 +40,9 @@ body {
   border-radius: 5px;
 }
 
-.side-buttons {
-  width: 45%;
+.side-button-container button {
+  font-size: 1em;
+  width: 30%;
 }
 
 .bar-container {
