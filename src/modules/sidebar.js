@@ -5,7 +5,9 @@ import { elementBuilder, body, toggleHide } from "./elements";
 import { today, deadline } from "./date";
 import { tips, randomGenerator } from "./tips"
 import { themes, setTheme } from "./themes"
-import { checkList } from './store'
+import { checkList, getTheme } from './store'
+import { projectBuilder } from './projectCreator'
+import { applyButtons } from "./buttons";
 
 function removeListElements(notifBar) {
   let barElements = Array.from(notifBar.children)
@@ -15,16 +17,34 @@ function removeListElements(notifBar) {
   };
 };
 
+function removeAllProjects() {
+  let projects = document.getElementsByClassName("project-container")[0]
+  let projChildren = Array.from(projects.children);
+  for (let y = 0; y < projChildren.length; y++) {
+    projChildren[y].remove()
+  };
+};
+
 function addProjects(notifBar){
   let fetchedList = checkList();
+  let projBarTitle = elementBuilder("h3", "proj-bar-title", notifBar);
+  projBarTitle.textContent = "Projects";
 
   for (let i = 0; i < fetchedList.length; i++) {
     let project = fetchedList[i];
     let projContainer = elementBuilder("div", "proj-container", notifBar);
     let projTitle = elementBuilder("div", "proj-title", projContainer);
     projTitle.textContent = project.title;
-    let projTasks = elementBuilder("div", "proj-tasks", projContainer);
-    projTasks.textContent = `Tasks: ${project.taskArray.length}`
+
+    function showThisProj() {
+      removeAllProjects()
+      let newProjSet = projectBuilder(project);
+      let tasks = project.taskArray;
+      applyButtons([newProjSet]);
+      getTheme();
+    }
+
+    projContainer.addEventListener("click", showThisProj)
   };
 };
 
@@ -71,8 +91,22 @@ const sidebar = (() => {
   function populateProjects() {
     removeListElements(notifBar);
     addProjects(notifBar);
-    const seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
+    let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
     seeAllProj.textContent = "See All Projects";
+
+    function showAllProjects() {
+      removeAllProjects();
+      let fetchedList = checkList();
+      for (let i = 0; i < fetchedList.length; i++) {
+        let project = fetchedList[i];
+        let newProjSet = projectBuilder(project);
+        let tasks = project.taskArray;
+        applyButtons([newProjSet]);
+      };
+      getTheme();
+    };
+
+    seeAllProj.addEventListener("click", showAllProjects);
   };
 
   showProjects.addEventListener("click", populateProjects);
