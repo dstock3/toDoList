@@ -104,7 +104,6 @@ const sidebar = (() => {
         applyButtons([newProjSet]);
       };
       getTheme();
-
     };
 
     seeAllProj.addEventListener("click", showAllProjects);

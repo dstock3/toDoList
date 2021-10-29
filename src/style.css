@@ -15,7 +15,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     left: 0;
-    width: 15%;
+    width: 16.5%;
     height: 100%;
     background-color: rgb(130, 193, 248);
     color: rgb(24, 28, 32);
@@ -95,7 +95,6 @@ body {
 .proj-bar-title {
   margin-block-start: 5%;
   margin-block-end: 5%;
-
 }
 
 #show-projects {
@@ -184,7 +183,12 @@ body {
 
 .notif-container {
     display: flex;
-    margin: 7px 7px;
+    justify-content: space-around;
+    margin: 4px 4px;
+    border-radius: 5px;
+    cursor: default;
+    max-height: 45px;
+    overflow: hidden;
 }
 
 .notif-container:hover {
@@ -203,6 +207,7 @@ body {
   cursor: pointer;
   padding: 5px;
   border-radius: 5px;
+  height: 18px;
 }
 
 .notif {
