@@ -92,6 +92,12 @@ body {
   z-index: 3;
 }
 
+.proj-bar-title {
+  margin-block-start: 5%;
+  margin-block-end: 5%;
+
+}
+
 #show-projects {
   position: relative;
   left: 4%;
