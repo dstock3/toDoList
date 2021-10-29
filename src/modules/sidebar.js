@@ -40,9 +40,6 @@ function addProjects(notifBar){
       removeAllProjects()
       let newProjSet = projectBuilder(project);
       let tasks = project.taskArray;
-      for (let x = 0; x < tasks.length; x++) {
-        notif(tasks[x]);
-      }
       applyButtons([newProjSet]);
       getTheme();
     }
@@ -104,12 +101,8 @@ const sidebar = (() => {
         let project = fetchedList[i];
         let newProjSet = projectBuilder(project);
         let tasks = project.taskArray;
-        for (let y = 0; y < tasks.length; y++) {
-          notif(tasks[y]);
-        }
         applyButtons([newProjSet]);
       };
-      
       getTheme();
 
     };

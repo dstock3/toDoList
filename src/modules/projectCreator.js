@@ -176,7 +176,7 @@ const addTask = (set) => {
             fetchedList.unshift(fetchedproject);
             store(fetchedList)
 
-            notif(newTask);
+            //notif(newTask);
 
             let taskElements = taskBuilder(newTask, projectElement);
             let projectIndex = getPosition(projectElement);

@@ -124,7 +124,9 @@ function setTheme(color, comp) {
     sideButtonContainer.id = comp;
     tipsContainer.id = comp;
     notifBar.id = comp;
-    notifContainer.id = comp;
+    if (notifContainer) {
+      notifContainer.id = comp;
+    }
     themesBar.id = comp;
   
     function themeComponents(hexValue) {
