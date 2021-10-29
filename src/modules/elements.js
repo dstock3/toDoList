@@ -17,12 +17,4 @@ let body = document.getElementsByTagName("body")[0];
 
 let projectDiv = elementBuilder("div", "project-container", body);
 
-function toggleHide(element) {
-  if (element.classList.contains("hidden")) {
-    element.classList.remove("hidden");
-  } else {
-    element.classList.add("hidden");
-  }
-}
-
-export { elementBuilder, getPosition, body, projectDiv, toggleHide };
+export { elementBuilder, getPosition, body, projectDiv };

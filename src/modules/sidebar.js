@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable no-inner-declarations */
-import { elementBuilder, body, toggleHide } from "./elements";
+import { elementBuilder, body } from "./elements";
 import { today, deadline } from "./date";
 import { tips, randomGenerator } from "./tips"
 import { themes, setTheme } from "./themes"
@@ -27,8 +27,6 @@ function removeAllProjects() {
 
 function addProjects(notifBar){
   let fetchedList = checkList();
-  let projBarTitle = elementBuilder("h3", "proj-bar-title", notifBar);
-  projBarTitle.textContent = "Projects";
 
   for (let i = 0; i < fetchedList.length; i++) {
     let project = fetchedList[i];
@@ -42,7 +40,26 @@ function addProjects(notifBar){
       let tasks = project.taskArray;
       applyButtons([newProjSet]);
       getTheme();
-    }
+
+      if (!(document.getElementsByClassName("see-all-proj")[0])) {
+        let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
+        seeAllProj.textContent = "See All Projects";
+    
+        function showAllProjects() {
+          removeAllProjects();
+          let fetchedList = checkList();
+          for (let i = 0; i < fetchedList.length; i++) {
+            let project = fetchedList[i];
+            let newProjSet = projectBuilder(project);
+            let tasks = project.taskArray;
+            applyButtons([newProjSet]);
+          };
+          getTheme();
+          seeAllProj.remove();
+        };
+        seeAllProj.addEventListener("click", showAllProjects);
+      };
+    };
 
     projContainer.addEventListener("click", showThisProj)
   };
@@ -91,22 +108,6 @@ const sidebar = (() => {
   function populateProjects() {
     removeListElements(notifBar);
     addProjects(notifBar);
-    let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
-    seeAllProj.textContent = "See All Projects";
-
-    function showAllProjects() {
-      removeAllProjects();
-      let fetchedList = checkList();
-      for (let i = 0; i < fetchedList.length; i++) {
-        let project = fetchedList[i];
-        let newProjSet = projectBuilder(project);
-        let tasks = project.taskArray;
-        applyButtons([newProjSet]);
-      };
-      getTheme();
-    };
-
-    seeAllProj.addEventListener("click", showAllProjects);
   };
 
   showProjects.addEventListener("click", populateProjects);
@@ -116,11 +117,15 @@ const sidebar = (() => {
 
   function hideNotif() {
     let notifNum = document.getElementsByClassName("notif-num")[0];
-    if (notifNum !== undefined) {
+    if (notifNum) {
       notifNum.remove();
     }
-    toggleHide(notifBar);
-    notifLogic(showNotifs);
+
+    function newNotifs() {
+      checkNotifs();
+      showNotifs.addEventListener("click", hideNotif);
+    };
+    showNotifs.addEventListener("click", newNotifs);
   }
 
   showNotifs.addEventListener("click", hideNotif);
@@ -158,22 +163,6 @@ const sidebar = (() => {
     tipsContainer,
   };
 })();
-
-function notifLogic(barButton) {
-  if (sidebar.notifBar.classList.contains("hidden")) {
-    barButton.setAttribute(
-      "style",
-      `border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;`
-    );
-  } else {
-    barButton.setAttribute(
-      "style",
-      `border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;`
-    );
-  }
-}
 
 function notifNum() {
   let notifs = document.getElementsByClassName("notif");
@@ -223,7 +212,6 @@ function deadlineNotif(task) {
       notifTitle.textContent = `${task.title}: `
       let notifDate = elementBuilder("div", "notif-date", newNotif);
       notifDate.textContent =  `${deadlineMessage}`;
-      
       noNotifChecker();
       return deadlineMessage;
     }
