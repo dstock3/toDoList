@@ -76,6 +76,7 @@ function setTheme(color, comp) {
     let taskPrompt = document.getElementsByClassName("task-prompt")[0];
     let warning = document.getElementsByClassName("warning")[0];
     let themeElementArray = [sidebarElement];
+    let sidebarMinButton = document.getElementsByClassName("min-sidebar-button")[0];
   
     if (taskPrompt !== undefined) {
       taskPrompt.id = color;
@@ -122,6 +123,7 @@ function setTheme(color, comp) {
     }
   
     sideButtonContainer.id = comp;
+    sidebarMinButton.id = comp;
     tipsContainer.id = comp;
     notifBar.id = comp;
     if (notifContainer) {
