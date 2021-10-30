@@ -77,24 +77,23 @@ const sidebar = (() => {
   
   function maximizeSidebar() {
     element.classList.remove("min-sidebar");
-
     minSideBarButton.textContent = "-";
-
-    projectContainer.style.left = "7%";
+    projectContainer.style.left = "7.5%";
     projectContainer.style.width = "85%";
-
-
+    minSideBarButton.style.alignSelf = null;
+    minSideBarButton.style.margin = null;
+    minSideBarButton.style.paddingBottom = "0";
     minSideBarButton.addEventListener("click", minimizeSideBar)
   };
 
   function minimizeSideBar() {
-    
     element.classList.add("min-sidebar");
-    
     projectContainer.style.left = "0";
     projectContainer.style.width = "98%";
-
     minSideBarButton.textContent = "□";
+    minSideBarButton.style.alignSelf = "center";
+    minSideBarButton.style.margin = "15% 0";
+    minSideBarButton.style.paddingBottom = "5px";
     minSideBarButton.removeEventListener("click", minimizeSideBar);
     minSideBarButton.addEventListener("click", maximizeSidebar);
   }
@@ -125,7 +124,6 @@ const sidebar = (() => {
     barContainer
   );
   const showNotifs = elementBuilder("div", "notif-button", notifHeadContainer);
-  showNotifs.id = "show-notifs";
   showNotifs.textContent = "N";
 
   const showProjects = elementBuilder(
@@ -134,8 +132,9 @@ const sidebar = (() => {
     notifHeadContainer
   );
 
-  showProjects.id = "show-projects";
+
   showProjects.textContent = "P";
+  showProjects.classList.add("show-projects")
 
   function populateProjects() {
     removeListElements(notifBar);

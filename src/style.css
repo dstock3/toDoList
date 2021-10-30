@@ -30,7 +30,17 @@ body {
 }
 
 .min-sidebar-button {
+  text-align: center;
+  font-size: 1.25em;
+  align-self: flex-end;
+  margin: 2% 2%;
+  height: 22px;
+  width: 22px;
   cursor: pointer;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  border-radius: 7px;
+  z-index: 2;
 }
 
 .min-sidebar .min-sidebar-button {
@@ -38,13 +48,18 @@ body {
 }
 
 .head-container {
+  position: relative;
+  bottom: 3.5%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
 }
 
 .sidebar-head {
   font-style: italic;
+  margin-block-start: 0.33em;
+  margin-block-end: 0.33em;
 }
 
 .side-button-container {
@@ -62,13 +77,13 @@ body {
 }
 
 .bar-container {
-  margin: 0%;
+  position: relative;
+  bottom: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   width: 95%;
-  border-radius: 5px;
 }
 
 .notif {
@@ -84,11 +99,6 @@ body {
 
 .notif-date {
   width: 60%;
-
-}
-
-#today {
-  padding-left: 5%;
 }
 
 .notif-head-container {
@@ -108,9 +118,8 @@ body {
   z-index: 3;
 }
 
-#show-projects {
-  position: relative;
-  left: 4%;
+.show-projects {
+  margin: 0 2%;
 }
 
 .proj-container {
@@ -140,8 +149,8 @@ body {
 .notif-num {
   display: inline-block;
   position: relative;
-  right: 50%;
-  top: 20px;
+  right: 55%;
+  top: 25px;
   z-index: 4;
   color:rgb(0, 0, 0);
   background: rgb(247, 149, 0);
@@ -171,15 +180,15 @@ body {
 
 .notif-head-container {
     align-self: flex-start;
-    margin: 2% 4.5%;
+    margin: 0 2.5%;
 }
 
 .notif-button {
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
     cursor: pointer;
-    padding: 8px;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .hidden {
@@ -191,7 +200,9 @@ body {
     flex-direction: column;
     align-items: center;
     width: 95%;
-    border-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-left-radius: 7px;
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
     padding-top: 5px;
@@ -201,7 +212,7 @@ body {
 .notif-container {
     display: flex;
     justify-content: space-around;
-    margin: 4px 4px;
+    margin: 0 4px;
     border-radius: 5px;
     cursor: default;
     max-height: 50px;
