@@ -40,6 +40,7 @@ function addProjects(notifBar){
       let tasks = project.taskArray;
       applyButtons([newProjSet]);
       getTheme();
+      newProjSet.projectElement.style.width = "30%";
 
       if (!(document.getElementsByClassName("see-all-proj")[0])) {
         let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
