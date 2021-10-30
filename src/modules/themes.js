@@ -141,17 +141,17 @@ function setTheme(color, comp) {
           taskElements[i].setAttribute("style", `border: solid ${hexValue} 5px;`);
         };
       };
-    };
+    }; 
   
     const applyAccents = (() => {
       if (color === "classic") {
-        themeComponents('#82C1F8'); 
+        themeComponents('#1E67A7'); 
       } else if (color === "emerald") {
         themeComponents('#196B35');
       } else if (color === "artic") {
         themeComponents('#9aaab6');
       } else if (color === "ruby") {
-        themeComponents('#E0115F');
+        themeComponents('#910C3F');
       } else if (color === "purple") {
         themeComponents('#800080'); 
       };
