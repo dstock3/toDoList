@@ -245,6 +245,7 @@ body {
 }
 
 .min-tips-button {
+  font-size: 1.25em;
   width: 20px;
   text-align: center;
   position: relative;

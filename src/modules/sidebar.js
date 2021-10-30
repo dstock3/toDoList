@@ -114,7 +114,7 @@ const sidebar = (() => {
   showProjects.addEventListener("click", populateProjects);
 
   const notifBar = elementBuilder("div", "notif-bar", barContainer);
-  const notifContainer = elementBuilder("div", "notif-container", notifBar);
+  //const notifContainer = elementBuilder("div", "notif-container", notifBar);
 
   function hideNotif() {
     let notifNum = document.getElementsByClassName("notif-num")[0];
@@ -156,7 +156,7 @@ const sidebar = (() => {
 
   function minimize() {
     tipsContainer.classList.add("min-tips");
-    minTipsButton.textContent = "+";
+    minTipsButton.textContent = "□";
     minTipsButton.addEventListener("click", maximize);
   };
 
@@ -175,7 +175,6 @@ const sidebar = (() => {
     notifBar,
     showNotifs,
     notifHeadContainer,
-    notifContainer,
     tipsContainer,
   };
 })();
