@@ -21,6 +21,22 @@ body {
     color: rgb(24, 28, 32);
 }
 
+.min-sidebar {
+  width: 2%;
+}
+
+.min-sidebar > * {
+  visibility: collapse;
+}
+
+.min-sidebar-button {
+  cursor: pointer;
+}
+
+.min-sidebar .min-sidebar-button {
+  visibility: visible;
+}
+
 .head-container {
   display: flex;
   flex-direction: column;
@@ -188,7 +204,7 @@ body {
     margin: 4px 4px;
     border-radius: 5px;
     cursor: default;
-    max-height: 45px;
+    max-height: 50px;
     overflow: hidden;
 }
 
@@ -245,6 +261,7 @@ body {
 }
 
 .min-tips-button {
+  font-size: 1.25em;
   width: 20px;
   text-align: center;
   position: relative;
@@ -259,6 +276,8 @@ body {
 }
 
 .tip {
+  position: relative;
+  bottom: 15px;
   padding-inline: 3%;
   padding-bottom: 3%;
 }

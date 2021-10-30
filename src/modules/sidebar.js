@@ -8,6 +8,7 @@ import { themes, setTheme } from "./themes"
 import { checkList, getTheme } from './store'
 import { projectBuilder } from './projectCreator'
 import { applyButtons } from "./buttons";
+import { project } from "./objectBuilder";
 
 function removeListElements(notifBar) {
   let barElements = Array.from(notifBar.children)
@@ -69,6 +70,36 @@ function addProjects(notifBar){
 const sidebar = (() => {
   const element = elementBuilder("div", "sidebar", body);
 
+  const minSideBarButton = elementBuilder("div", "min-sidebar-button", element);
+  minSideBarButton.textContent = "-"
+
+  let projectContainer = document.getElementsByClassName("project-container")[0];
+  
+  function maximizeSidebar() {
+    element.classList.remove("min-sidebar");
+
+    minSideBarButton.textContent = "-";
+
+    projectContainer.style.left = "7%";
+    projectContainer.style.width = "85%";
+
+
+    minSideBarButton.addEventListener("click", minimizeSideBar)
+  };
+
+  function minimizeSideBar() {
+    
+    element.classList.add("min-sidebar");
+    
+    projectContainer.style.left = "0";
+    projectContainer.style.width = "98%";
+
+    minSideBarButton.textContent = "□";
+    minSideBarButton.removeEventListener("click", minimizeSideBar);
+    minSideBarButton.addEventListener("click", maximizeSidebar);
+  }
+  minSideBarButton.addEventListener("click", minimizeSideBar)
+
   const headContainer = elementBuilder("div", "head-container", element);
   const head = elementBuilder("h1", "sidebar-head", headContainer);
   head.textContent = "OnTask";
@@ -114,7 +145,6 @@ const sidebar = (() => {
   showProjects.addEventListener("click", populateProjects);
 
   const notifBar = elementBuilder("div", "notif-bar", barContainer);
-  const notifContainer = elementBuilder("div", "notif-container", notifBar);
 
   function hideNotif() {
     let notifNum = document.getElementsByClassName("notif-num")[0];
@@ -138,14 +168,13 @@ const sidebar = (() => {
   themesBar.classList.add("hidden");
   let themesList = elementBuilder("ul", "themes-list", themesBar)
 
-  themes()
-
   const tipsContainer = elementBuilder("div", "tips-container", element);
+  tipsContainer.classList.add("min-tips");
   const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
   tipHead.textContent = "Productivity Tips"
 
   const minTipsButton = elementBuilder("div", "min-tips-button", tipsContainer);
-  minTipsButton.textContent = "-"
+  minTipsButton.textContent = "□"
 
   function maximize() {
     tipsContainer.classList.remove("min-tips");
@@ -156,17 +185,19 @@ const sidebar = (() => {
 
   function minimize() {
     tipsContainer.classList.add("min-tips");
-    minTipsButton.textContent = "+";
+    minTipsButton.textContent = "□";
     minTipsButton.addEventListener("click", maximize);
   };
 
-  minTipsButton.addEventListener("click", minimize);
+  minTipsButton.addEventListener("click", maximize);
 
   const tipContent = document.createElement("div");
   tipContent.classList.add("tip");
   const tip = randomGenerator(tips);
   tipContent.textContent = tip;
   tipsContainer.appendChild(tipContent);
+
+  themes()
 
   return {
     element,
@@ -175,7 +206,6 @@ const sidebar = (() => {
     notifBar,
     showNotifs,
     notifHeadContainer,
-    notifContainer,
     tipsContainer,
   };
 })();
