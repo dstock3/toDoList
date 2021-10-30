@@ -124,7 +124,6 @@ const sidebar = (() => {
     barContainer
   );
   const showNotifs = elementBuilder("div", "notif-button", notifHeadContainer);
-  showNotifs.id = "show-notifs";
   showNotifs.textContent = "N";
 
   const showProjects = elementBuilder(
@@ -133,8 +132,9 @@ const sidebar = (() => {
     notifHeadContainer
   );
 
-  showProjects.id = "show-projects";
+
   showProjects.textContent = "P";
+  showProjects.classList.add("show-projects")
 
   function populateProjects() {
     removeListElements(notifBar);

@@ -118,9 +118,8 @@ body {
   z-index: 3;
 }
 
-#show-projects {
-  position: relative;
-  left: 4%;
+.show-projects {
+  margin: 0 2%;
 }
 
 .proj-container {
@@ -150,8 +149,8 @@ body {
 .notif-num {
   display: inline-block;
   position: relative;
-  right: 50%;
-  top: 20px;
+  right: 55%;
+  top: 25px;
   z-index: 4;
   color:rgb(0, 0, 0);
   background: rgb(247, 149, 0);
@@ -181,15 +180,15 @@ body {
 
 .notif-head-container {
     align-self: flex-start;
-    margin: 2% 4.5%;
+    margin: 0 2.5%;
 }
 
 .notif-button {
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
     cursor: pointer;
-    padding: 8px;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .hidden {
@@ -201,7 +200,9 @@ body {
     flex-direction: column;
     align-items: center;
     width: 95%;
-    border-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-left-radius: 7px;
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
     padding-top: 5px;
