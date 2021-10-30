@@ -146,11 +146,22 @@ const sidebar = (() => {
 
   const minTipsButton = elementBuilder("div", "min-tips-button", tipsContainer);
   minTipsButton.textContent = "-"
-  function minimize() {
-    tipsContainer.classList.add("min-tips")
-  }
 
-  minTipsButton.addEventListener("click", minimize)
+  function maximize() {
+    tipsContainer.classList.remove("min-tips");
+    minTipsButton.textContent = "-";
+    minTipsButton.removeEventListener("click", maximize);
+    minTipsButton.addEventListener("click", minimize);
+  };
+
+  function minimize() {
+    tipsContainer.classList.add("min-tips");
+    minTipsButton.textContent = "+";
+    minTipsButton.addEventListener("click", maximize);
+  };
+
+  minTipsButton.addEventListener("click", minimize);
+
   const tipContent = document.createElement("div");
   tipContent.classList.add("tip");
   const tip = randomGenerator(tips);
