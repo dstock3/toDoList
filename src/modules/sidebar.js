@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable no-inner-declarations */
-import { elementBuilder, body } from "./elements";
+import { elementBuilder, body, toggleHide } from "./elements";
 import { today, deadline } from "./date";
 import { tips, randomGenerator } from "./tips"
 import { themes, setTheme } from "./themes"
