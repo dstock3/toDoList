@@ -230,6 +230,19 @@ body {
   text-align: center;
 }
 
+.min-tips {
+  width: 20px;
+  text-align: center;
+  position: relative;
+  bottom: 25px;
+  left: 90%;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.min-tips:hover {
+  background-color: rgb(38, 44, 51);
+}
 
 .tip {
   padding-inline: 3%;
@@ -533,6 +546,10 @@ li {
   background-color: rgb(38, 44, 51);
 }
 
+#classicComp .min-tips:hover {
+  background-color: rgb(38, 44, 51);
+}
+
 #classicComp .notif-container:hover {
   background-color: rgb(38, 44, 51);
 }
@@ -564,6 +581,10 @@ li {
   background-color: #163320;
 }
 
+#emeraldComp .min-tips:hover {
+  background-color: #163320;
+}
+
 #artic {
   background-color: #C6DAE9;
   color: rgb(29, 83, 119);
@@ -584,6 +605,10 @@ li {
 }
 
 #articComp .proj-container:hover {
+  background-color: rgb(84, 118, 139);
+}
+
+#articComp .min-tips:hover {
   background-color: rgb(84, 118, 139);
 }
 
@@ -610,6 +635,10 @@ li {
   background-color: #35101e;
 }
 
+#rubyComp .min-tips:hover {
+  background-color: #35101e;
+}
+
 #purple {
   background-color: #bb54ce;
   color: rgb(24, 28, 32);
@@ -631,6 +660,10 @@ li {
 }
 
 #purpleComp .proj-container:hover {
+  background-color: #310131;
+}
+
+#purpleComp .min-tips:hover {
   background-color: #310131;
 }
 
