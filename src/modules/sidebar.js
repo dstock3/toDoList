@@ -141,11 +141,12 @@ const sidebar = (() => {
   themes()
 
   const tipsContainer = elementBuilder("div", "tips-container", element);
+  tipsContainer.classList.add("min-tips");
   const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
   tipHead.textContent = "Productivity Tips"
 
   const minTipsButton = elementBuilder("div", "min-tips-button", tipsContainer);
-  minTipsButton.textContent = "-"
+  minTipsButton.textContent = "□"
 
   function maximize() {
     tipsContainer.classList.remove("min-tips");
@@ -160,7 +161,7 @@ const sidebar = (() => {
     minTipsButton.addEventListener("click", maximize);
   };
 
-  minTipsButton.addEventListener("click", minimize);
+  minTipsButton.addEventListener("click", maximize);
 
   const tipContent = document.createElement("div");
   tipContent.classList.add("tip");
