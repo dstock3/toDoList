@@ -174,8 +174,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
-    border-radius: 5px;
+    width: 95%;
+    border-radius: 7px;
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
     padding-top: 5px;
@@ -247,13 +247,13 @@ body {
   flex-flow: column wrap;
   background-color: rgb(130, 193, 248);
   color: rgb(24, 28, 32);
-  border: solid rgb(130, 193, 248) 3px;
-  width: 22%;
+  border: solid #1E67A7 3px;
+  width: 20%;
   height: 100%;
   padding: 0.75%;
   border-radius: 5px;
   margin: 20px 0;
-  box-shadow: 10px 5px 5px rgb(0, 48, 87);
+  box-shadow: 5px 2px 2px rgb(0, 48, 87);
 }
 
 .project-head {
@@ -265,7 +265,7 @@ body {
 }
 
 .task {
-  border: solid 5px rgb(130, 193, 248);
+  border: solid 5px #1E67A7;
   background-color: rgb(24, 28, 32);
   color: rgb(130, 193, 248);
   width: 87%;
@@ -468,7 +468,7 @@ li {
   top: 5%;
   background-color: rgb(24, 28, 32);
   color: rgb(130, 193, 248);
-  border: solid 3px rgb(130, 193, 248);
+  border: solid 3px #1E67A7;
   width: 50%;
   padding: 2%;
   border-radius: 10px;
@@ -540,7 +540,7 @@ li {
 #emerald {
   background-color: #50C878;
   color: rgb(15, 1, 1);
-  box-shadow: 10px 5px 5px #003110d3;
+  box-shadow: 5px 2px 2px #003110d3;
 }
 
 #emeraldComp {
@@ -563,7 +563,7 @@ li {
 #artic {
   background-color: #C6DAE9;
   color: rgb(29, 83, 119);
-  box-shadow: 10px 5px 5px #6f7a83a1;
+  box-shadow: 5px 2px 2px #6f7a83a1;
 }
 
 #articComp {
@@ -586,7 +586,7 @@ li {
 #ruby {
   background-color: #e4417f;
   color: rgb(19, 19, 19);
-  box-shadow: 10px 5px 5px #70012cb0;
+  box-shadow: 5px 2px 2px #70012cb0;
 }
 
 #rubyComp {
@@ -609,7 +609,7 @@ li {
 #purple {
   background-color: #bb54ce;
   color: rgb(24, 28, 32);
-  box-shadow: 10px 5px 5px #4b0058d7;
+  box-shadow: 5px 2px 2px #4b0058d7;
 }
 
 #purpleComp {
