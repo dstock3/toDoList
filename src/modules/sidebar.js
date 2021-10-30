@@ -78,8 +78,11 @@ const sidebar = (() => {
   function maximizeSidebar() {
     element.classList.remove("min-sidebar");
     minSideBarButton.textContent = "-";
-    projectContainer.style.left = "7%";
+    projectContainer.style.left = "7.5%";
     projectContainer.style.width = "85%";
+    minSideBarButton.style.alignSelf = null;
+    minSideBarButton.style.margin = null;
+    minSideBarButton.style.paddingBottom = "0";
     minSideBarButton.addEventListener("click", minimizeSideBar)
   };
 
@@ -88,6 +91,9 @@ const sidebar = (() => {
     projectContainer.style.left = "0";
     projectContainer.style.width = "98%";
     minSideBarButton.textContent = "□";
+    minSideBarButton.style.alignSelf = "center";
+    minSideBarButton.style.margin = "15% 0";
+    minSideBarButton.style.paddingBottom = "5px";
     minSideBarButton.removeEventListener("click", minimizeSideBar);
     minSideBarButton.addEventListener("click", maximizeSidebar);
   }
