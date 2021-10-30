@@ -40,6 +40,7 @@ function addProjects(notifBar){
       let tasks = project.taskArray;
       applyButtons([newProjSet]);
       getTheme();
+      newProjSet.projectElement.style.width = "30%";
 
       if (!(document.getElementsByClassName("see-all-proj")[0])) {
         let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
@@ -142,6 +143,25 @@ const sidebar = (() => {
   const tipsContainer = elementBuilder("div", "tips-container", element);
   const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
   tipHead.textContent = "Productivity Tips"
+
+  const minTipsButton = elementBuilder("div", "min-tips-button", tipsContainer);
+  minTipsButton.textContent = "-"
+
+  function maximize() {
+    tipsContainer.classList.remove("min-tips");
+    minTipsButton.textContent = "-";
+    minTipsButton.removeEventListener("click", maximize);
+    minTipsButton.addEventListener("click", minimize);
+  };
+
+  function minimize() {
+    tipsContainer.classList.add("min-tips");
+    minTipsButton.textContent = "+";
+    minTipsButton.addEventListener("click", maximize);
+  };
+
+  minTipsButton.addEventListener("click", minimize);
+
   const tipContent = document.createElement("div");
   tipContent.classList.add("tip");
   const tip = randomGenerator(tips);

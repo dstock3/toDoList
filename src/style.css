@@ -46,7 +46,7 @@ body {
 }
 
 .bar-container {
-  margin: 2%;
+  margin: 0%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,6 +179,7 @@ body {
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
     padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .notif-container {
@@ -223,13 +224,43 @@ body {
   bottom: 0;
 }
 
+.min-tips {
+  height: 5%;
+}
+
+.min-tips .tip-head  {
+  font-size: 1em;
+  margin-block-start: .5em;
+  margin-block-end: .10em;
+}
+
+.min-tips .tip {
+  visibility: hidden;
+}
+
 .tip-head {
+  margin-block-start: .5em;
+  margin-block-end: .25em;
   text-align: center;
 }
 
+.min-tips-button {
+  width: 20px;
+  text-align: center;
+  position: relative;
+  bottom: 25px;
+  left: 90%;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.min-tips-button:hover {
+  background-color: rgb(38, 44, 51);
+}
+
 .tip {
-  padding-inline: 5%;
-  padding-bottom: 5%;
+  padding-inline: 3%;
+  padding-bottom: 3%;
 }
 
 .project-container {
@@ -529,6 +560,10 @@ li {
   background-color: rgb(38, 44, 51);
 }
 
+#classicComp .min-tips-button:hover {
+  background-color: rgb(38, 44, 51);
+}
+
 #classicComp .notif-container:hover {
   background-color: rgb(38, 44, 51);
 }
@@ -560,6 +595,10 @@ li {
   background-color: #163320;
 }
 
+#emeraldComp .min-tips-button:hover {
+  background-color: #163320;
+}
+
 #artic {
   background-color: #C6DAE9;
   color: rgb(29, 83, 119);
@@ -580,6 +619,10 @@ li {
 }
 
 #articComp .proj-container:hover {
+  background-color: rgb(84, 118, 139);
+}
+
+#articComp .min-tips-button:hover {
   background-color: rgb(84, 118, 139);
 }
 
@@ -606,6 +649,10 @@ li {
   background-color: #35101e;
 }
 
+#rubyComp .min-tips-button:hover {
+  background-color: #35101e;
+}
+
 #purple {
   background-color: #bb54ce;
   color: rgb(24, 28, 32);
@@ -627,6 +674,10 @@ li {
 }
 
 #purpleComp .proj-container:hover {
+  background-color: #310131;
+}
+
+#purpleComp .min-tips-button:hover {
   background-color: #310131;
 }
 

@@ -22,8 +22,3 @@ export {
     randomGenerator,
     tips,
 }
-
-//posture
-//sleep
-//mindfulness
-//productivity methods
