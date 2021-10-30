@@ -30,7 +30,16 @@ body {
 }
 
 .min-sidebar-button {
+  text-align: center;
+  font-size: 1.25em;
+  align-self: flex-end;
+  margin: 2% 2%;
+  height: 22px;
+  width: 22px;
   cursor: pointer;
+  background-color: rgb(24, 28, 32);
+  color: rgb(130, 193, 248);
+  border-radius: 7px;
 }
 
 .min-sidebar .min-sidebar-button {
@@ -45,6 +54,7 @@ body {
 
 .sidebar-head {
   font-style: italic;
+  margin-block-start: 0.33em;
 }
 
 .side-button-container {

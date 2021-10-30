@@ -77,23 +77,16 @@ const sidebar = (() => {
   
   function maximizeSidebar() {
     element.classList.remove("min-sidebar");
-
     minSideBarButton.textContent = "-";
-
     projectContainer.style.left = "7%";
     projectContainer.style.width = "85%";
-
-
     minSideBarButton.addEventListener("click", minimizeSideBar)
   };
 
   function minimizeSideBar() {
-    
     element.classList.add("min-sidebar");
-    
     projectContainer.style.left = "0";
     projectContainer.style.width = "98%";
-
     minSideBarButton.textContent = "□";
     minSideBarButton.removeEventListener("click", minimizeSideBar);
     minSideBarButton.addEventListener("click", maximizeSidebar);
