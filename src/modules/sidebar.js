@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-inner-declarations */
 import { elementBuilder, body, toggleHide } from "./elements";
-import { today, deadline } from "./date";
+import { deadline } from "./date";
 import { tips, randomGenerator } from "./tips"
 import { themes, setTheme } from "./themes"
 import { checkList, getTheme } from './store'
@@ -129,9 +129,6 @@ const sidebar = (() => {
   }
 
   showNotifs.addEventListener("click", hideNotif);
-  const currentDate = elementBuilder("p", "notif", notifContainer);
-  currentDate.id = "today";
-  currentDate.textContent = today();
   notifButton();
 
   const themesButton = elementBuilder("button", "themes-button", sideButtons);
@@ -159,7 +156,6 @@ const sidebar = (() => {
     showNotifs,
     notifHeadContainer,
     notifContainer,
-    today,
     tipsContainer,
   };
 })();
