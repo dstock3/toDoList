@@ -77,13 +77,13 @@ body {
 }
 
 .bar-container {
-  margin: 0%;
+  position: relative;
+  bottom: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   width: 95%;
-  border-radius: 5px;
 }
 
 .notif {
@@ -99,11 +99,6 @@ body {
 
 .notif-date {
   width: 60%;
-
-}
-
-#today {
-  padding-left: 5%;
 }
 
 .notif-head-container {
@@ -216,7 +211,7 @@ body {
 .notif-container {
     display: flex;
     justify-content: space-around;
-    margin: 4px 4px;
+    margin: 0 4px;
     border-radius: 5px;
     cursor: default;
     max-height: 50px;
