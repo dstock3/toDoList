@@ -224,13 +224,27 @@ body {
   bottom: 0;
 }
 
+.min-tips {
+  height: 5%;
+}
+
+.min-tips .tip-head  {
+  font-size: 1em;
+  margin-block-start: .5em;
+  margin-block-end: .10em;
+}
+
+.min-tips .tip {
+  visibility: hidden;
+}
+
 .tip-head {
   margin-block-start: .5em;
   margin-block-end: .25em;
   text-align: center;
 }
 
-.min-tips {
+.min-tips-button {
   width: 20px;
   text-align: center;
   position: relative;
@@ -240,7 +254,7 @@ body {
   border-radius: 7px;
 }
 
-.min-tips:hover {
+.min-tips-button:hover {
   background-color: rgb(38, 44, 51);
 }
 
@@ -546,7 +560,7 @@ li {
   background-color: rgb(38, 44, 51);
 }
 
-#classicComp .min-tips:hover {
+#classicComp .min-tips-button:hover {
   background-color: rgb(38, 44, 51);
 }
 
@@ -581,7 +595,7 @@ li {
   background-color: #163320;
 }
 
-#emeraldComp .min-tips:hover {
+#emeraldComp .min-tips-button:hover {
   background-color: #163320;
 }
 
@@ -608,7 +622,7 @@ li {
   background-color: rgb(84, 118, 139);
 }
 
-#articComp .min-tips:hover {
+#articComp .min-tips-button:hover {
   background-color: rgb(84, 118, 139);
 }
 
@@ -635,7 +649,7 @@ li {
   background-color: #35101e;
 }
 
-#rubyComp .min-tips:hover {
+#rubyComp .min-tips-button:hover {
   background-color: #35101e;
 }
 
@@ -663,7 +677,7 @@ li {
   background-color: #310131;
 }
 
-#purpleComp .min-tips:hover {
+#purpleComp .min-tips-button:hover {
   background-color: #310131;
 }
 
