@@ -8,13 +8,12 @@ import { themes, setTheme } from "./themes"
 import { checkList, getTheme } from './store'
 import { projectBuilder } from './projectCreator'
 import { applyButtons } from "./buttons";
-import { project } from "./objectBuilder";
 
 function removeListElements(notifBar) {
   let barElements = Array.from(notifBar.children)
   for (let i = 0; i < barElements.length; i++) {
-    let element = barElements[i]
-    element.remove()
+    let element = barElements[i];
+    element.remove();
   };
 };
 
@@ -26,7 +25,7 @@ function removeAllProjects() {
   };
 };
 
-function addProjects(notifBar){
+function addProjects(notifBar) {
   let fetchedList = checkList();
 
   for (let i = 0; i < fetchedList.length; i++) {
@@ -132,40 +131,62 @@ const sidebar = (() => {
     notifHeadContainer
   );
 
+  const showThemes = elementBuilder("div", "notif-button", notifHeadContainer);
+  showThemes.textContent = "T"
 
   showProjects.textContent = "P";
   showProjects.classList.add("show-projects")
 
-  function populateProjects() {
-    removeListElements(notifBar);
-    addProjects(notifBar);
-  };
-
-  showProjects.addEventListener("click", populateProjects);
-
   const notifBar = elementBuilder("div", "notif-bar", barContainer);
 
-  function hideNotif() {
+  function generateNotifs() {
+
+    let prevElements = Array.from(notifBar.children);
+    for (let i = 0; i < prevElements.length; i ++) {
+      prevElements[i].remove();
+    };
+
+    let fetchedList = checkList();
+
+    for (let i = 0; i < fetchedList.length; i++) {
+      let project = fetchedList[i];
+      let tasks = project.taskArray;
+      for (let y = 0; y < tasks.length; y++) {
+        notif(tasks[y]);
+      };
+    };
     let notifNum = document.getElementsByClassName("notif-num")[0];
     if (notifNum) {
       notifNum.remove();
     }
+    getTheme();
+  };
 
+  showNotifs.addEventListener("click", generateNotifs);
+
+  function populateProjects() {
+    removeListElements(notifBar);
+    addProjects(notifBar);
     function newNotifs() {
       checkNotifs();
-      showNotifs.addEventListener("click", hideNotif);
     };
     showNotifs.addEventListener("click", newNotifs);
+  };
+
+  showProjects.addEventListener("click", populateProjects);
+
+  function themeOptions() {
+    let prevElements = Array.from(notifBar.children);
+    for (let i = 0; i < prevElements.length; i ++) {
+      prevElements[i].remove();
+    };
+
+    elementBuilder("ul", "themes-list", notifBar);
+    themes()
   }
-
-  showNotifs.addEventListener("click", hideNotif);
+  
+  showThemes.addEventListener("click", themeOptions);
   notifButton();
-
-  const themesButton = elementBuilder("button", "themes-button", sideButtons);
-  themesButton.textContent = "Themes";
-  const themesBar = elementBuilder("div", "themes-bar", barContainer);
-  themesBar.classList.add("hidden");
-  let themesList = elementBuilder("ul", "themes-list", themesBar)
 
   const tipsContainer = elementBuilder("div", "tips-container", element);
   tipsContainer.classList.add("min-tips");
@@ -195,8 +216,6 @@ const sidebar = (() => {
   const tip = randomGenerator(tips);
   tipContent.textContent = tip;
   tipsContainer.appendChild(tipContent);
-
-  themes()
 
   return {
     element,
@@ -259,10 +278,10 @@ function deadlineNotif(task) {
       notifDate.textContent =  `${deadlineMessage}`;
       noNotifChecker();
       return deadlineMessage;
-    }
+    };
   } else {
     return "No New Notifications";
-  }
+  };
 }
 
 function notifButton() {

@@ -44,19 +44,7 @@ const themes = () => {
           setTheme(color, comp);
         }      
         themeElement.addEventListener("click", newTheme);
-      }
-
-      const themesBar = document.getElementsByClassName("themes-bar")[0]
-      
-      function showThemes() {
-        toggleHide(themesBar)
       };
-
-      const themesButton = document.getElementsByClassName("themes-button")[0];
-
-      themesButton.addEventListener("click", showThemes)
-    
-    
 }
 
 function setTheme(color, comp) {
@@ -64,7 +52,6 @@ function setTheme(color, comp) {
     let taskElements = document.getElementsByClassName("task");
     let sidebarElement = document.getElementsByClassName('sidebar')[0];
     let sideButtonContainer = document.getElementsByClassName('side-button-container')[0];
-    let themesBar = document.getElementsByClassName('themes-bar')[0];
     let notifButtons = document.getElementsByClassName('notif-button');
     let notifBar = document.getElementsByClassName('notif-bar')[0];
     let notifContainer = document.getElementsByClassName('notif-container')[0];
@@ -128,8 +115,7 @@ function setTheme(color, comp) {
     notifBar.id = comp;
     if (notifContainer) {
       notifContainer.id = comp;
-    }
-    themesBar.id = comp;
+    };
   
     function themeComponents(hexValue) {
       for (let i = 0; i < projects.length; i++) {
@@ -137,7 +123,6 @@ function setTheme(color, comp) {
       };
       sidebarElement.setAttribute("style", `border-right: solid ${hexValue} 3px;`);
       tipsContainer.setAttribute("style", `border: solid ${hexValue} 3px;`);
-      themesBar.setAttribute("style", `border: solid ${hexValue} 3px;`);
       if (taskElements !== undefined) {
         for (let i = 0; i < taskElements.length; i++) { 
           taskElements[i].setAttribute("style", `border: solid ${hexValue} 5px;`);
