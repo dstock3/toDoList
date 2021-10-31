@@ -27,6 +27,8 @@ body {
 
 .min-sidebar > * {
   visibility: collapse;
+  height: 0;
+  width: 0;
 }
 
 .min-sidebar-button {
@@ -90,6 +92,7 @@ body {
 .notif-title {
   margin: 0 10% 0 0;
   width: 33%;
+  align-self: center;
 }
 
 .notif-date {
@@ -195,15 +198,14 @@ body {
     bottom: 1%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 95%;
     border-bottom-right-radius: 7px;
     border-top-right-radius: 7px;
     border-bottom-left-radius: 7px;
     background-color: rgb(24, 28, 32);
     color: rgb(130, 193, 248);
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 .notif-container {
@@ -246,6 +248,7 @@ body {
 .tips-container {
   position: fixed;
   bottom: 0;
+  z-index: 4;
 }
 
 .min-tips {
@@ -530,6 +533,7 @@ li {
   padding-inline-end: 3%;
   margin-block-start: 5%;
   margin-block-end: 5%;
+  align-self: center;
 }
 
 .theme-option {
@@ -704,22 +708,31 @@ li {
     order: 0;
     top: 0;
     width: 100%;
-    height: 10%;
+    height: fit-content;
     border-bottom: rgb(24, 28, 32) solid 10px;
     box-shadow: none;
   }
 
+  .bar-container {
+    margin: 5% 0 15% 0;
+  }
+
+  .notif-head-container {
+    margin: -2% 7.5%;
+}
+
+  .notif-bar {
+    width: 85%;
+  }
+
   .project-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
     left: 0;
     order: 1;
-    width: 98%;
+    width: 100%;
   }
 
   .project-prompt {
+    position: fixed;
     padding-top: 5%;
     width: 90%;
   }
@@ -728,9 +741,11 @@ li {
     width: 100%;
     border-bottom: rgb(24, 28, 32) solid 10px;
     box-shadow: none;
+    padding: 1.5%;
   }
 
   .task-prompt {
+    position: fixed;
     padding-top: 5%;
     width: 90%;
   }
@@ -743,8 +758,18 @@ li {
     width: 88%;
   }
 
+  .themes-list {
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-size: 1.15em;
+    width: 65%;
+  }
+
   .tips-container {
     position: absolute;
     bottom: 0;
+    min-height: 35px;
   }
 }

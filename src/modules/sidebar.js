@@ -9,6 +9,8 @@ import { checkList, getTheme } from './store'
 import { projectBuilder } from './projectCreator'
 import { applyButtons } from "./buttons";
 
+const mobileView = window.matchMedia("(max-width: 600px)");
+
 function removeListElements(notifBar) {
   let barElements = Array.from(notifBar.children)
   for (let i = 0; i < barElements.length; i++) {
@@ -40,8 +42,13 @@ function addProjects(notifBar) {
       let tasks = project.taskArray;
       applyButtons([newProjSet]);
       getTheme();
-      newProjSet.projectElement.style.width = "30%";
 
+      if (mobileView.matches) {
+        newProjSet.projectElement.style.width = "100%";
+      } else {
+        newProjSet.projectElement.style.width = "30%";
+      };
+      
       if (!(document.getElementsByClassName("see-all-proj")[0])) {
         let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
         seeAllProj.textContent = "See All Projects";
@@ -77,8 +84,16 @@ const sidebar = (() => {
   function maximizeSidebar() {
     element.classList.remove("min-sidebar");
     minSideBarButton.textContent = "-";
-    projectContainer.style.left = "7.5%";
-    projectContainer.style.width = "85%";
+
+    if (mobileView.matches) {
+      projectContainer.style.left = "0";
+      projectContainer.style.width = "98%";
+      barContainer.style.margin = "5% 0 15% 0"
+    } else {
+      projectContainer.style.left = "7.5%";
+      projectContainer.style.width = "85%";
+    }
+
     minSideBarButton.style.alignSelf = null;
     minSideBarButton.style.margin = null;
     minSideBarButton.style.paddingBottom = "0";
@@ -90,8 +105,15 @@ const sidebar = (() => {
     projectContainer.style.left = "0";
     projectContainer.style.width = "98%";
     minSideBarButton.textContent = "□";
-    minSideBarButton.style.alignSelf = "center";
-    minSideBarButton.style.margin = "15% 0";
+
+    if (mobileView.matches) {
+      minSideBarButton.style.alignSelf = "flex-end";
+      minSideBarButton.style.margin = null;
+      barContainer.style.margin = "0";
+    } else {
+      minSideBarButton.style.alignSelf = "center";
+      minSideBarButton.style.margin = "15% 0";
+    }
     minSideBarButton.style.paddingBottom = "5px";
     minSideBarButton.removeEventListener("click", minimizeSideBar);
     minSideBarButton.addEventListener("click", maximizeSidebar);
@@ -140,12 +162,7 @@ const sidebar = (() => {
   const notifBar = elementBuilder("div", "notif-bar", barContainer);
 
   function generateNotifs() {
-
-    let prevElements = Array.from(notifBar.children);
-    for (let i = 0; i < prevElements.length; i ++) {
-      prevElements[i].remove();
-    };
-
+    removeListElements(notifBar)
     let fetchedList = checkList();
 
     for (let i = 0; i < fetchedList.length; i++) {
@@ -176,15 +193,11 @@ const sidebar = (() => {
   showProjects.addEventListener("click", populateProjects);
 
   function themeOptions() {
-    let prevElements = Array.from(notifBar.children);
-    for (let i = 0; i < prevElements.length; i ++) {
-      prevElements[i].remove();
-    };
-
+    removeListElements(notifBar)
     elementBuilder("ul", "themes-list", notifBar);
     themes()
   }
-  
+
   showThemes.addEventListener("click", themeOptions);
   notifButton();
 
