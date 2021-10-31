@@ -712,16 +712,13 @@ li {
   }
 
   .project-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
     left: 0;
     order: 1;
     width: 100%;
   }
 
   .project-prompt {
+    position: fixed;
     padding-top: 5%;
     width: 90%;
   }
@@ -730,9 +727,11 @@ li {
     width: 100%;
     border-bottom: rgb(24, 28, 32) solid 10px;
     box-shadow: none;
+    padding: 1.5%;
   }
 
   .task-prompt {
+    position: fixed;
     padding-top: 5%;
     width: 90%;
   }
