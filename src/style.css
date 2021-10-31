@@ -248,6 +248,7 @@ body {
 .tips-container {
   position: fixed;
   bottom: 0;
+  z-index: 4;
 }
 
 .min-tips {
@@ -711,6 +712,10 @@ li {
     box-shadow: none;
   }
 
+  .bar-container {
+    margin: 5% 0 15% 0;
+  }
+
   .project-container {
     left: 0;
     order: 1;
@@ -747,5 +752,6 @@ li {
   .tips-container {
     position: absolute;
     bottom: 0;
+    min-height: 35px;
   }
 }
