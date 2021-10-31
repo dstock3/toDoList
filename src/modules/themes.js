@@ -1,10 +1,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import { elementBuilder, toggleHide } from './elements';
+import { elementBuilder } from './elements';
 
 const themes = () => {
-
     let themes = {
         "Emerald": "#50C878", 
         "Artic": "#C6DAE9",

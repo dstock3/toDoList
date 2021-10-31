@@ -5,6 +5,7 @@ import { projectBuilder } from "./modules/projectCreator";
 import { applyButtons, taskButtons } from "./modules/buttons";
 import { notif } from "./modules/sidebar";
 import { store, checkList, getTheme } from "./modules/store";
+import { setTheme } from "./modules/themes";
 
 window.document.title = "OnTask"
 
@@ -32,7 +33,7 @@ const start = (() => {
     store(allProjects.projectList);
     const defaultProjectSet = projectBuilder(defaultProj);
     taskButtons(defaultProjectSet);
-    getTheme();
+    setTheme("classic", "classicComp");
   } else {
     buildProjects(fetchedList);
   };
