@@ -190,12 +190,6 @@ const sidebar = (() => {
 
   notifButton();
 
-  /*
-  const themesButton = elementBuilder("button", "themes-button", sideButtons);
-  themesButton.textContent = "Themes";
-  const themesBar = elementBuilder("div", "themes-bar", barContainer);
-  themesBar.classList.add("hidden");
-  */
   
   const tipsContainer = elementBuilder("div", "tips-container", element);
   tipsContainer.classList.add("min-tips");
