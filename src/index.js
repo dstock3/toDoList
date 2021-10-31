@@ -17,7 +17,7 @@ function buildProjects(projList) {
     let tasks = project.taskArray;
     for (let y = 0; y < tasks.length; y++) {
       notif(tasks[y]);
-    }
+    };
     allProjects.masterList.push(newProjSet);
   };
   applyButtons(allProjects.masterList);
