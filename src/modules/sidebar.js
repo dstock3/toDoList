@@ -174,14 +174,29 @@ const sidebar = (() => {
   };
 
   showProjects.addEventListener("click", populateProjects);
+
+  function themeOptions() {
+    let prevElements = Array.from(notifBar.children);
+    for (let i = 0; i < prevElements.length; i ++) {
+      prevElements[i].remove();
+    };
+
+    let themesList = elementBuilder("ul", "themes-list", notifBar);
+    themes()
+
+  }
+  showThemes.addEventListener("click", themeOptions);
+
+
   notifButton();
 
+  /*
   const themesButton = elementBuilder("button", "themes-button", sideButtons);
   themesButton.textContent = "Themes";
   const themesBar = elementBuilder("div", "themes-bar", barContainer);
   themesBar.classList.add("hidden");
-  let themesList = elementBuilder("ul", "themes-list", themesBar)
-
+  */
+  
   const tipsContainer = elementBuilder("div", "tips-container", element);
   tipsContainer.classList.add("min-tips");
   const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
@@ -210,8 +225,6 @@ const sidebar = (() => {
   const tip = randomGenerator(tips);
   tipContent.textContent = tip;
   tipsContainer.appendChild(tipContent);
-
-  themes()
 
   return {
     element,
