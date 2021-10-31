@@ -66,6 +66,8 @@ function addProjects(notifBar) {
   };
 };
 
+const mobileView = window.matchMedia("(max-width: 600px)");
+
 const sidebar = (() => {
   const element = elementBuilder("div", "sidebar", body);
 
@@ -77,8 +79,15 @@ const sidebar = (() => {
   function maximizeSidebar() {
     element.classList.remove("min-sidebar");
     minSideBarButton.textContent = "-";
-    projectContainer.style.left = "7.5%";
-    projectContainer.style.width = "85%";
+    
+    if (mobileView.matches) {
+      projectContainer.style.left = "0";
+      projectContainer.style.width = "98%";
+    } else {
+      projectContainer.style.left = "7.5%";
+      projectContainer.style.width = "85%";
+    }
+
     minSideBarButton.style.alignSelf = null;
     minSideBarButton.style.margin = null;
     minSideBarButton.style.paddingBottom = "0";
@@ -140,12 +149,7 @@ const sidebar = (() => {
   const notifBar = elementBuilder("div", "notif-bar", barContainer);
 
   function generateNotifs() {
-
-    let prevElements = Array.from(notifBar.children);
-    for (let i = 0; i < prevElements.length; i ++) {
-      prevElements[i].remove();
-    };
-
+    removeListElements(notifBar)
     let fetchedList = checkList();
 
     for (let i = 0; i < fetchedList.length; i++) {
@@ -176,15 +180,11 @@ const sidebar = (() => {
   showProjects.addEventListener("click", populateProjects);
 
   function themeOptions() {
-    let prevElements = Array.from(notifBar.children);
-    for (let i = 0; i < prevElements.length; i ++) {
-      prevElements[i].remove();
-    };
-
+    removeListElements(notifBar)
     elementBuilder("ul", "themes-list", notifBar);
     themes()
   }
-  
+
   showThemes.addEventListener("click", themeOptions);
   notifButton();
 
