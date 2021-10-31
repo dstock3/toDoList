@@ -131,6 +131,9 @@ const sidebar = (() => {
     notifHeadContainer
   );
 
+  const showThemes = elementBuilder("div", "notif-button", notifHeadContainer);
+  showThemes.textContent = "T"
+
   showProjects.textContent = "P";
   showProjects.classList.add("show-projects")
 
@@ -168,7 +171,6 @@ const sidebar = (() => {
       checkNotifs();
     };
     showNotifs.addEventListener("click", newNotifs);
-
   };
 
   showProjects.addEventListener("click", populateProjects);
