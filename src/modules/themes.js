@@ -45,10 +45,6 @@ const themes = () => {
         }      
         themeElement.addEventListener("click", newTheme);
       };
-
-      const themesButton = document.getElementsByClassName("themes-button")[0];
-
-      themesButton.addEventListener("click", showThemes);
 }
 
 function setTheme(color, comp) {

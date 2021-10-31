@@ -71,11 +71,6 @@ body {
   border-radius: 5px;
 }
 
-.side-button-container button {
-  font-size: 1em;
-  width: 30%;
-}
-
 .bar-container {
   position: relative;
   bottom: 2%;
@@ -149,7 +144,7 @@ body {
 .notif-num {
   display: inline-block;
   position: relative;
-  right: 55%;
+  right: 67%;
   top: 25px;
   z-index: 4;
   color:rgb(0, 0, 0);
