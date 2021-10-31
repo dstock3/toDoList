@@ -181,16 +181,13 @@ const sidebar = (() => {
       prevElements[i].remove();
     };
 
-    let themesList = elementBuilder("ul", "themes-list", notifBar);
+    elementBuilder("ul", "themes-list", notifBar);
     themes()
-
   }
+  
   showThemes.addEventListener("click", themeOptions);
-
-
   notifButton();
 
-  
   const tipsContainer = elementBuilder("div", "tips-container", element);
   tipsContainer.classList.add("min-tips");
   const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
