@@ -27,6 +27,8 @@ body {
 
 .min-sidebar > * {
   visibility: collapse;
+  height: 0;
+  width: 0;
 }
 
 .min-sidebar-button {

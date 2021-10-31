@@ -79,7 +79,7 @@ const sidebar = (() => {
   function maximizeSidebar() {
     element.classList.remove("min-sidebar");
     minSideBarButton.textContent = "-";
-    
+
     if (mobileView.matches) {
       projectContainer.style.left = "0";
       projectContainer.style.width = "98%";
@@ -99,8 +99,14 @@ const sidebar = (() => {
     projectContainer.style.left = "0";
     projectContainer.style.width = "98%";
     minSideBarButton.textContent = "□";
-    minSideBarButton.style.alignSelf = "center";
-    minSideBarButton.style.margin = "15% 0";
+
+    if (mobileView.matches) {
+      minSideBarButton.style.alignSelf = "flex-end";
+      minSideBarButton.style.margin = null;
+    } else {
+      minSideBarButton.style.alignSelf = "center";
+      minSideBarButton.style.margin = "15% 0";
+    }
     minSideBarButton.style.paddingBottom = "5px";
     minSideBarButton.removeEventListener("click", minimizeSideBar);
     minSideBarButton.addEventListener("click", maximizeSidebar);
