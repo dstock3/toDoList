@@ -3,6 +3,8 @@
 /* eslint-disable no-unused-vars */
 import { elementBuilder } from './elements';
 
+const mobileView = window.matchMedia("(max-width: 1100px)");
+
 const themes = () => {
     let themes = {
         "Emerald": "#50C878", 
@@ -132,7 +134,9 @@ function setTheme(color, comp) {
       for (let i = 0; i < projects.length; i++) {
         projects[i].setAttribute("style", `border: solid ${hexValue} 3px;`);
       };
-      sidebarElement.setAttribute("style", `border-right: solid ${hexValue} 3px;`);
+      if (!(mobileView.matches)) {
+        sidebarElement.setAttribute("style", `border-right: solid ${hexValue} 3px;`);
+      };
       tipsContainer.setAttribute("style", `border: solid ${hexValue} 3px;`);
       if (taskElements !== undefined) {
         for (let i = 0; i < taskElements.length; i++) { 

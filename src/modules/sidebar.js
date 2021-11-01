@@ -9,7 +9,7 @@ import { checkList, getTheme } from './store'
 import { projectBuilder } from './projectCreator'
 import { applyButtons } from "./buttons";
 
-const mobileView = window.matchMedia("(max-width: 600px)");
+const mobileView = window.matchMedia("(max-width: 1100px)");
 
 function removeListElements(notifBar) {
   let barElements = Array.from(notifBar.children)
@@ -47,25 +47,6 @@ function addProjects(notifBar) {
         newProjSet.projectElement.style.width = "100%";
       } else {
         newProjSet.projectElement.style.width = "30%";
-      };
-      
-      if (!(document.getElementsByClassName("see-all-proj")[0])) {
-        let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
-        seeAllProj.textContent = "See All Projects";
-    
-        function showAllProjects() {
-          removeAllProjects();
-          let fetchedList = checkList();
-          for (let i = 0; i < fetchedList.length; i++) {
-            let project = fetchedList[i];
-            let newProjSet = projectBuilder(project);
-            let tasks = project.taskArray;
-            applyButtons([newProjSet]);
-          };
-          getTheme();
-          seeAllProj.remove();
-        };
-        seeAllProj.addEventListener("click", showAllProjects);
       };
     };
 
@@ -199,6 +180,25 @@ const sidebar = (() => {
     notifBar.classList.add("projects");
     removeListElements(notifBar);
     addProjects(notifBar);
+
+    if (!(document.getElementsByClassName("see-all-proj")[0])) {
+      let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
+      seeAllProj.textContent = "See All Projects";
+  
+      function showAllProjects() {
+        removeAllProjects();
+        let fetchedList = checkList();
+        for (let i = 0; i < fetchedList.length; i++) {
+          let project = fetchedList[i];
+          let newProjSet = projectBuilder(project);
+          let tasks = project.taskArray;
+          applyButtons([newProjSet]);
+        };
+        getTheme();
+      };
+      seeAllProj.addEventListener("click", showAllProjects);
+    };
+    
     function newNotifs() {
       checkNotifs();
     };
