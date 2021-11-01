@@ -160,8 +160,17 @@ const sidebar = (() => {
   showProjects.classList.add("show-projects")
 
   const notifBar = elementBuilder("div", "notif-bar", barContainer);
+  notifBar.classList.add("new-notifications");
 
   function generateNotifs() {
+    if (notifBar.classList.contains("themes")) {
+      notifBar.classList.remove("themes");
+    } else if (notifBar.classList.contains("projects")) {
+      notifBar.classList.remove("projects");
+    };
+
+    notifBar.classList.add("new-notifications");
+
     removeListElements(notifBar)
     let fetchedList = checkList();
 
@@ -182,6 +191,12 @@ const sidebar = (() => {
   showNotifs.addEventListener("click", generateNotifs);
 
   function populateProjects() {
+    if (notifBar.classList.contains("themes")) {
+      notifBar.classList.remove("themes");
+    } else if (notifBar.classList.contains("new-notifications")) {
+      notifBar.classList.remove("new-notifications");
+    };
+    notifBar.classList.add("projects");
     removeListElements(notifBar);
     addProjects(notifBar);
     function newNotifs() {
@@ -193,9 +208,15 @@ const sidebar = (() => {
   showProjects.addEventListener("click", populateProjects);
 
   function themeOptions() {
+    if (notifBar.classList.contains("projects")) {
+      notifBar.classList.remove("projects");
+    } else if (notifBar.classList.contains("new-notifications")) {
+      notifBar.classList.remove("new-notifications");
+    };
+    notifBar.classList.add("themes");
     removeListElements(notifBar)
     elementBuilder("ul", "themes-list", notifBar);
-    themes()
+    themes();
   }
 
   showThemes.addEventListener("click", themeOptions);
@@ -338,11 +359,14 @@ function checkNotifs() {
 }
 
 function notif(newTask) {
-  deadlineNotif(newTask);
-  notifButton();
-  checkNotifs();
-  notifNum();
-}
+  let notifBar = document.getElementsByClassName("notif-bar")[0];
+  if (notifBar.classList.contains("new-notifications")) {
+    deadlineNotif(newTask);
+    notifButton();
+    checkNotifs();
+    notifNum();
+  };
+};
 
 function themeCheck() {
   let color = sidebar.element.id;
