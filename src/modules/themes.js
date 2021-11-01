@@ -64,6 +64,7 @@ function setTheme(color, comp) {
     let themeElementArray = [sidebarElement];
     let sidebarMinButton = document.getElementsByClassName("min-sidebar-button")[0];
     let removeTaskElements = document.getElementsByClassName("remove-task");
+    let topButtons = document.getElementsByClassName("top-buttons");
   
     if (taskPrompt !== undefined) {
       taskPrompt.id = color;
@@ -71,27 +72,27 @@ function setTheme(color, comp) {
   
     if (projectPrompt !== undefined) {
       projectPrompt.id = color;
-    }
+    };
   
     for (let i = 0; i < taskElements.length; i++) {
       taskElements[i].id = comp;
-    }
+    };
   
     for (let i = 0; i < notifButtons.length; i++) {
       notifButtons[i].id = comp;
-    }
+    };
   
     for (let i = 0; i < removeNotifs.length; i++) {
       removeNotifs[i].id = comp;
-    } 
+    };
   
     for (let y = 0; y < buttonElements.length; y++) {
       buttonElements[y].id = comp;
-    }
+    };
   
     for (let y = 0; y < projects.length; y++) {
       themeElementArray.push(projects[y]);
-    }
+    };
   
     for (let i = 0; i < themeElementArray.length; i++) {
       if (themeElementArray[i] !== undefined) {
@@ -102,12 +103,12 @@ function setTheme(color, comp) {
     if (tasks !== undefined) {
       for (let i = 0; i < tasks.length; i++) {
         tasks[i].id = comp;
-      }
-    }
+      };
+    };
   
     if (warning !== undefined) {
       warning.id = color;
-    }
+    };
   
     sideButtonContainer.id = comp;
     sidebarMinButton.id = comp;
@@ -116,8 +117,15 @@ function setTheme(color, comp) {
     if (notifContainer) {
       notifContainer.id = comp;
     };
+    for (let i = 0; i < topButtons.length; i++) {
+      topButtons[i].id = comp;
+    };
   
     function themeComponents(hexValue) {
+      for (let i = 0; i < topButtons.length; i++) {
+        topButtons[i].setAttribute("style", `border: solid ${hexValue} 1px;`);
+      };
+      
       for (let i = 0; i < removeTaskElements.length; i++) {
         removeTaskElements[i].setAttribute("style", `border: solid ${hexValue} 1px;`);
       };

@@ -30,7 +30,7 @@ const taskButtons = (set) => {
   set.projectElement.prepend(topButtonDiv);
 
   const addTaskButton = (() => {
-    let addButton = elementBuilder("button", "top-buttons", topButtonDiv);
+    let addButton = elementBuilder("div", "top-buttons", topButtonDiv);
     addButton.classList.add("add-task");
     addButton.textContent = "+";
 
@@ -173,7 +173,7 @@ const taskButtons = (set) => {
   };
 
   const deleteButton = (() => {
-    let del = elementBuilder("button", "top-buttons", topButtonDiv);
+    let del = elementBuilder("div", "top-buttons", topButtonDiv);
     del.classList.add("delete-button");
     del.textContent = "x";
     del.addEventListener("click", warningMessage);
