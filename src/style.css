@@ -377,7 +377,7 @@ button {
 
 .top-button-div {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   position: relative;
   left: 78%;
   width: 22%;
