@@ -398,12 +398,17 @@ button {
 }
 
 .remove-task {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   order: 1;
   position: relative;
-  top: 14px;
-  width: 35px;
-  height: 35px;
-  border-radius: 15px;
+  top: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 7px;
+  border: 1px solid rgb(130, 193, 248);
+  cursor: pointer;
 }
 
 .button-div {

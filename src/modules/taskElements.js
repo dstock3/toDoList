@@ -4,7 +4,7 @@ import { updateTask } from "./store"
 const taskBuilder = (task, parent) => {
   let taskDiv = elementBuilder("div", "task", parent);
   let topDiv = elementBuilder("div", "top-div", taskDiv);
-  let removeTask = elementBuilder("button", "remove-task", topDiv);
+  let removeTask = elementBuilder("div", "remove-task", topDiv);
   removeTask.textContent = "X";
   let head = elementBuilder("h3", "task-head", topDiv);
   head.textContent = task.title;

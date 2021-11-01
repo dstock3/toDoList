@@ -63,6 +63,7 @@ function setTheme(color, comp) {
     let warning = document.getElementsByClassName("warning")[0];
     let themeElementArray = [sidebarElement];
     let sidebarMinButton = document.getElementsByClassName("min-sidebar-button")[0];
+    let removeTaskElements = document.getElementsByClassName("remove-task");
   
     if (taskPrompt !== undefined) {
       taskPrompt.id = color;
@@ -117,6 +118,9 @@ function setTheme(color, comp) {
     };
   
     function themeComponents(hexValue) {
+      for (let i = 0; i < removeTaskElements.length; i++) {
+        removeTaskElements[i].setAttribute("style", `border: solid ${hexValue} 1px;`);
+      };
       for (let i = 0; i < projects.length; i++) {
         projects[i].setAttribute("style", `border: solid ${hexValue} 3px;`);
       };
