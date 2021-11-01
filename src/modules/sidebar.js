@@ -350,4 +350,4 @@ function themeCheck() {
   setTheme(color, comp)
 }
 
-export { sidebar, notif, themeCheck };
+export { sidebar, notif, themeCheck, notifButton };

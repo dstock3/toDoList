@@ -331,7 +331,7 @@ body {
   color: rgb(130, 193, 248);
   width: 87%;
   padding: 5%;
-  padding-bottom: 7%;
+  padding-bottom: %;
   border-radius: 10px;
 }
 
@@ -383,8 +383,18 @@ button {
   font-size: 1.2em;
 }
 
+.task-head {
+  margin-block-start: .25em;
+  margin-block-end: .25em;
+}
+
 .min-button {
   min-width: 25px;
+}
+
+.task p {
+  margin-block-start: .25em;
+  margin-block-end: .5em;
 }
 
 .remove-task {

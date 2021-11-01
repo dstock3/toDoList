@@ -3,8 +3,10 @@ import "./style.css";
 import { projectTracker, createDefaultProj } from "./modules/objectBuilder";
 import { projectBuilder } from "./modules/projectCreator";
 import { applyButtons, taskButtons } from "./modules/buttons";
-import { notif } from "./modules/sidebar";
+import { notif, notifButton } from "./modules/sidebar";
 import { store, checkList, getTheme } from "./modules/store";
+import { setTheme } from "./modules/themes";
+import { elementBuilder } from "./modules/elements";
 
 window.document.title = "OnTask"
 
@@ -32,7 +34,11 @@ const start = (() => {
     store(allProjects.projectList);
     const defaultProjectSet = projectBuilder(defaultProj);
     taskButtons(defaultProjectSet);
-    getTheme();
+    setTheme("classic", "classicComp");
+    let notifBar = document.getElementsByClassName("notif-bar")[0];
+    let noNotif = elementBuilder("div", "notif", notifBar);
+    noNotif.textContent = "No New Notifications"
+    noNotif.id = "no-notif"
   } else {
     buildProjects(fetchedList);
   };

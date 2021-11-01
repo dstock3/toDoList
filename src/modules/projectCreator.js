@@ -174,7 +174,7 @@ const addTask = (set) => {
             fetchedproject.taskArray.unshift(newTask);
             fetchedList.splice(i, 1);
             fetchedList.unshift(fetchedproject);
-            store(fetchedList)
+            store(fetchedList) 
 
             notif(newTask);
 
