@@ -60,7 +60,7 @@ const projectHeader = (project, parent) => {
   let projectHead = elementBuilder("h2", "project-head", projectElement);
   projectHead.textContent = project.title;
 
-  let projectDesc = elementBuilder("p", "project-desc", projectElement);
+  let projectDesc = elementBuilder("div", "project-desc", projectElement);
   projectDesc.textContent = project.description;
 
   return projectElement;
