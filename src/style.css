@@ -775,6 +775,7 @@ li {
 
   .task-prompt {
     position: fixed;
+    top: 10%;
     padding-top: 5%;
     width: 90%;
   }
