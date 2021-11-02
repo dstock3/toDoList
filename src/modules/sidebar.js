@@ -259,6 +259,7 @@ const sidebar = (() => {
     showNotifs,
     notifHeadContainer,
     tipsContainer,
+    populateProjects,
   };
 })();
 
@@ -374,4 +375,4 @@ function themeCheck() {
   setTheme(color, comp)
 }
 
-export { sidebar, notif, themeCheck, notifButton };
+export { sidebar, notif, themeCheck, notifButton, addProjects };
