@@ -9,7 +9,7 @@ import { checkList, getTheme } from './store'
 import { projectBuilder } from './projectCreator'
 import { applyButtons } from "./buttons";
 
-const mobileView = window.matchMedia("(max-width: 600px)");
+const mobileView = window.matchMedia("(max-width: 1100px)");
 
 function removeListElements(notifBar) {
   let barElements = Array.from(notifBar.children)
@@ -24,6 +24,16 @@ function removeAllProjects() {
   let projChildren = Array.from(projects.children);
   for (let y = 0; y < projChildren.length; y++) {
     projChildren[y].remove()
+  };
+};
+
+function addNoNotifMessage() {
+  let notifBar = document.getElementsByClassName("notif-bar")[0];
+  let notifs = Array.from(notifBar.children);
+  if (notifs.length === 0) {
+    let noNotif = elementBuilder("div", "notif", notifBar);
+    noNotif.textContent = "No New Notifications"
+    noNotif.id = "no-notif"
   };
 };
 
@@ -47,25 +57,6 @@ function addProjects(notifBar) {
         newProjSet.projectElement.style.width = "100%";
       } else {
         newProjSet.projectElement.style.width = "30%";
-      };
-      
-      if (!(document.getElementsByClassName("see-all-proj")[0])) {
-        let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
-        seeAllProj.textContent = "See All Projects";
-    
-        function showAllProjects() {
-          removeAllProjects();
-          let fetchedList = checkList();
-          for (let i = 0; i < fetchedList.length; i++) {
-            let project = fetchedList[i];
-            let newProjSet = projectBuilder(project);
-            let tasks = project.taskArray;
-            applyButtons([newProjSet]);
-          };
-          getTheme();
-          seeAllProj.remove();
-        };
-        seeAllProj.addEventListener("click", showAllProjects);
       };
     };
 
@@ -155,13 +146,21 @@ const sidebar = (() => {
 
   const showThemes = elementBuilder("div", "notif-button", notifHeadContainer);
   showThemes.textContent = "T"
-
   showProjects.textContent = "P";
   showProjects.classList.add("show-projects")
 
   const notifBar = elementBuilder("div", "notif-bar", barContainer);
+  notifBar.classList.add("new-notifications");
 
   function generateNotifs() {
+    if (notifBar.classList.contains("themes")) {
+      notifBar.classList.remove("themes");
+    } else if (notifBar.classList.contains("projects")) {
+      notifBar.classList.remove("projects");
+    };
+
+    notifBar.classList.add("new-notifications");
+
     removeListElements(notifBar)
     let fetchedList = checkList();
 
@@ -176,14 +175,40 @@ const sidebar = (() => {
     if (notifNum) {
       notifNum.remove();
     }
+    addNoNotifMessage()
     getTheme();
   };
 
   showNotifs.addEventListener("click", generateNotifs);
 
   function populateProjects() {
+    if (notifBar.classList.contains("themes")) {
+      notifBar.classList.remove("themes");
+    } else if (notifBar.classList.contains("new-notifications")) {
+      notifBar.classList.remove("new-notifications");
+    };
+    notifBar.classList.add("projects");
     removeListElements(notifBar);
     addProjects(notifBar);
+
+    if (!(document.getElementsByClassName("see-all-proj")[0])) {
+      let seeAllProj = elementBuilder("div", "see-all-proj", notifBar);
+      seeAllProj.textContent = "See All Projects";
+  
+      function showAllProjects() {
+        removeAllProjects();
+        let fetchedList = checkList();
+        for (let i = 0; i < fetchedList.length; i++) {
+          let project = fetchedList[i];
+          let newProjSet = projectBuilder(project);
+          let tasks = project.taskArray;
+          applyButtons([newProjSet]);
+        };
+        getTheme();
+      };
+      seeAllProj.addEventListener("click", showAllProjects);
+    };
+    
     function newNotifs() {
       checkNotifs();
     };
@@ -193,9 +218,15 @@ const sidebar = (() => {
   showProjects.addEventListener("click", populateProjects);
 
   function themeOptions() {
+    if (notifBar.classList.contains("projects")) {
+      notifBar.classList.remove("projects");
+    } else if (notifBar.classList.contains("new-notifications")) {
+      notifBar.classList.remove("new-notifications");
+    };
+    notifBar.classList.add("themes");
     removeListElements(notifBar)
     elementBuilder("ul", "themes-list", notifBar);
-    themes()
+    themes();
   }
 
   showThemes.addEventListener("click", themeOptions);
@@ -238,6 +269,7 @@ const sidebar = (() => {
     showNotifs,
     notifHeadContainer,
     tipsContainer,
+    populateProjects,
   };
 })();
 
@@ -338,11 +370,14 @@ function checkNotifs() {
 }
 
 function notif(newTask) {
-  deadlineNotif(newTask);
-  notifButton();
-  checkNotifs();
-  notifNum();
-}
+  let notifBar = document.getElementsByClassName("notif-bar")[0];
+  if (notifBar.classList.contains("new-notifications")) {
+    deadlineNotif(newTask);
+    notifButton();
+    checkNotifs();
+    notifNum();
+  };
+};
 
 function themeCheck() {
   let color = sidebar.element.id;
@@ -350,4 +385,4 @@ function themeCheck() {
   setTheme(color, comp)
 }
 
-export { sidebar, notif, themeCheck, notifButton };
+export { sidebar, notif, themeCheck, notifButton, addProjects, addNoNotifMessage };

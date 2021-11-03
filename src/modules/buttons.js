@@ -30,7 +30,7 @@ const taskButtons = (set) => {
   set.projectElement.prepend(topButtonDiv);
 
   const addTaskButton = (() => {
-    let addButton = elementBuilder("button", "top-buttons", topButtonDiv);
+    let addButton = elementBuilder("div", "top-buttons", topButtonDiv);
     addButton.classList.add("add-task");
     addButton.textContent = "+";
 
@@ -50,6 +50,7 @@ const taskButtons = (set) => {
       sort.textContent = "Sort by Due Date";
 
       function newSortedList() {
+        let priorWidth = set.projectElement.style.width
         let projectIndex = getPosition(set.projectElement);
         let sortedTasks = sortByDueDate(set.project.taskArray);
         set.project.taskArray = sortedTasks;
@@ -60,7 +61,8 @@ const taskButtons = (set) => {
           projectDiv.children[projectIndex + 1]
         );
         taskButtons(sortedProject);
-        themeCheck()
+        themeCheck();
+        sortedProject.projectElement.style.width = priorWidth;
       }
 
       sort.addEventListener("click", newSortedList);
@@ -73,11 +75,14 @@ const taskButtons = (set) => {
       sort.textContent = "Sort by Priority";
       
       function newProjectSet() {
+        let priorWidth = set.projectElement.style.width
+        console.log(priorWidth)
         let projectIndex = getPosition(set.projectElement);
         let sortedTasks = set.sortByPriority();
         set.taskArray = sortedTasks;
         set.deleteList();
         let sortedProject = projectBuilder(set.project);
+        
 
         projectDiv.insertBefore(
           sortedProject.projectElement,
@@ -85,6 +90,7 @@ const taskButtons = (set) => {
         );
         taskButtons(sortedProject);
         themeCheck();
+        sortedProject.projectElement.style.width = priorWidth;
       };
       sort.addEventListener("click", newProjectSet);
     };
@@ -161,19 +167,33 @@ const taskButtons = (set) => {
         if (fetchedList[i].title === set.project.title) {
           fetchedList.splice(i, 1);
           store(fetchedList)
+          sidebar.populateProjects();
           break
-        }
-      }
+        };
+      };
       set.deleteList()
       warningElement.remove();
     }
     
     confirm.addEventListener("click", removeProj);
-    addEnterEvent(warningElement, removeProj, cancelProj);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        removeProj();
+        warningElement.remove();
+      };
+    }, false);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        let body = document.querySelector("body");
+        removeTransparent(body.children);
+        warningElement.remove();
+      };
+    }, false);
   };
 
   const deleteButton = (() => {
-    let del = elementBuilder("button", "top-buttons", topButtonDiv);
+    let del = elementBuilder("div", "top-buttons", topButtonDiv);
     del.classList.add("delete-button");
     del.textContent = "x";
     del.addEventListener("click", warningMessage);
