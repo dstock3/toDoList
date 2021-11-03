@@ -245,6 +245,10 @@ body {
     margin: auto;
 }
 
+#no-notif {
+  padding-left: 0;
+}
+
 .tips-container {
   position: fixed;
   bottom: 0;

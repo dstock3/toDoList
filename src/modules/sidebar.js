@@ -27,6 +27,16 @@ function removeAllProjects() {
   };
 };
 
+function addNoNotifMessage() {
+  let notifBar = document.getElementsByClassName("notif-bar")[0];
+  let notifs = Array.from(notifBar.children);
+  if (notifs.length === 0) {
+    let noNotif = elementBuilder("div", "notif", notifBar);
+    noNotif.textContent = "No New Notifications"
+    noNotif.id = "no-notif"
+  };
+};
+
 function addProjects(notifBar) {
   let fetchedList = checkList();
 
@@ -136,7 +146,6 @@ const sidebar = (() => {
 
   const showThemes = elementBuilder("div", "notif-button", notifHeadContainer);
   showThemes.textContent = "T"
-
   showProjects.textContent = "P";
   showProjects.classList.add("show-projects")
 
@@ -166,6 +175,7 @@ const sidebar = (() => {
     if (notifNum) {
       notifNum.remove();
     }
+    addNoNotifMessage()
     getTheme();
   };
 
@@ -375,4 +385,4 @@ function themeCheck() {
   setTheme(color, comp)
 }
 
-export { sidebar, notif, themeCheck, notifButton, addProjects };
+export { sidebar, notif, themeCheck, notifButton, addProjects, addNoNotifMessage };
