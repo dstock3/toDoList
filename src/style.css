@@ -453,7 +453,7 @@ button {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  position: absolute;
+  position: fixed;
   top: 25%;
   padding: 2%;
   width: 20%;
