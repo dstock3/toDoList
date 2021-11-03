@@ -50,6 +50,7 @@ const taskButtons = (set) => {
       sort.textContent = "Sort by Due Date";
 
       function newSortedList() {
+        let priorWidth = set.projectElement.style.width
         let projectIndex = getPosition(set.projectElement);
         let sortedTasks = sortByDueDate(set.project.taskArray);
         set.project.taskArray = sortedTasks;
@@ -60,7 +61,8 @@ const taskButtons = (set) => {
           projectDiv.children[projectIndex + 1]
         );
         taskButtons(sortedProject);
-        themeCheck()
+        themeCheck();
+        sortedProject.projectElement.style.width = priorWidth;
       }
 
       sort.addEventListener("click", newSortedList);
@@ -73,11 +75,14 @@ const taskButtons = (set) => {
       sort.textContent = "Sort by Priority";
       
       function newProjectSet() {
+        let priorWidth = set.projectElement.style.width
+        console.log(priorWidth)
         let projectIndex = getPosition(set.projectElement);
         let sortedTasks = set.sortByPriority();
         set.taskArray = sortedTasks;
         set.deleteList();
         let sortedProject = projectBuilder(set.project);
+        
 
         projectDiv.insertBefore(
           sortedProject.projectElement,
@@ -85,6 +90,7 @@ const taskButtons = (set) => {
         );
         taskButtons(sortedProject);
         themeCheck();
+        sortedProject.projectElement.style.width = priorWidth;
       };
       sort.addEventListener("click", newProjectSet);
     };
