@@ -4,7 +4,7 @@ import { elementBuilder, getPosition, projectDiv, body } from "./elements";
 import { sortByDueDate } from "./date";
 import { projectBuilder } from "./taskElements";
 import { addTask, addProject, addEnterEvent } from "./projectCreator";
-import { sidebar, themeCheck, addProjects } from "./sidebar";
+import { sidebar, themeCheck } from "./sidebar";
 import { store, checkList } from "./store";
 
 let fetchedList = checkList();
@@ -170,7 +170,20 @@ const taskButtons = (set) => {
     }
     
     confirm.addEventListener("click", removeProj);
-    addEnterEvent(warningElement, removeProj, cancelProj);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        removeProj();
+        warningElement.remove();
+      };
+    }, false);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        let body = document.querySelector("body");
+        removeTransparent(body.children);
+        warningElement.remove();
+      };
+    }, false);
   };
 
   const deleteButton = (() => {
