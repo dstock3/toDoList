@@ -115,9 +115,7 @@ function setTheme(color, comp) {
     sideButtonContainer.id = comp;
     sidebarMinButton.id = comp;
     tipsContainer.id = comp;
-    if (notifBar) {
-      notifBar.id = comp;
-    };
+    notifBar.id = comp;
     if (notifContainer) {
       notifContainer.id = comp;
     };

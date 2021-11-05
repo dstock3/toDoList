@@ -297,14 +297,15 @@ function notifNum() {
 
 function noNotifChecker() {
   let notif = document.getElementById("no-notif");
-  if (notif !== null) {
-    let notifContainer = notif.parentNode;
+  if (notif) {
+    let notifContainer = Array.from(sidebar.notifBar.children)[0];
     notifContainer.remove();
   }
 }
 
 function deadlineNotif(task) {
   let deadlineMessage = deadline(task.enteredDate);
+
   if (
     deadlineMessage.indexOf("day") > 0 ||
     deadlineMessage.indexOf("hours") > 0
@@ -326,7 +327,7 @@ function deadlineNotif(task) {
       return deadlineMessage;
     };
   } else {
-    return "No New Notifications";
+    "No New Notifications";
   };
 }
 
@@ -371,9 +372,7 @@ function checkNotifs() {
 }
 
 function notif(newTask) {
-  let notifBar = document.getElementsByClassName("notif-bar")[0];
-
-  if (notifBar.classList.contains("new-notifications")) {
+  if (sidebar.notifBar.classList.contains("new-notifications")) {
     deadlineNotif(newTask);
     notifButton();
     checkNotifs();

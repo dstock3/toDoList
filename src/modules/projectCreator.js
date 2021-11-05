@@ -178,14 +178,10 @@ const addTask = (set) => {
             store(fetchedList);
             notif(newTask);
 
-            let notifBar = document.getElementsByClassName("notif-bar")[0];
-            console.log(notifBar)
-
             let taskElements = taskBuilder(newTask, projectElement);
             let projectIndex = getPosition(projectElement);
             projectElement.remove();
             let updatedProject = projectBuilder(fetchedproject);
-
 
             allProjects.masterList.push(updatedProject);
             projectDiv.insertBefore(
