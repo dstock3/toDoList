@@ -8,6 +8,7 @@ import { themes, setTheme } from "./themes"
 import { checkList, getTheme } from './store'
 import { projectBuilder } from './projectCreator'
 import { applyButtons } from "./buttons";
+import { el } from "date-fns/locale";
 
 const mobileView = window.matchMedia("(max-width: 1100px)");
 
@@ -371,6 +372,7 @@ function checkNotifs() {
 
 function notif(newTask) {
   let notifBar = document.getElementsByClassName("notif-bar")[0];
+
   if (notifBar.classList.contains("new-notifications")) {
     deadlineNotif(newTask);
     notifButton();

@@ -167,21 +167,25 @@ const addTask = (set) => {
           status
         );
 
-        let fetchedList = checkList()
-        for (let i = 0; i <= fetchedList.length; i++) {
+        let fetchedList = checkList();
+        
+        for (let i = 0; i < fetchedList.length; i++) {
           if (fetchedList[i].title === set.project.title) {
             let fetchedproject = fetchedList[i];
             fetchedproject.taskArray.unshift(newTask);
             fetchedList.splice(i, 1);
             fetchedList.unshift(fetchedproject);
-            store(fetchedList) 
-
+            store(fetchedList);
             notif(newTask);
+
+            let notifBar = document.getElementsByClassName("notif-bar")[0];
+            console.log(notifBar)
 
             let taskElements = taskBuilder(newTask, projectElement);
             let projectIndex = getPosition(projectElement);
             projectElement.remove();
             let updatedProject = projectBuilder(fetchedproject);
+
 
             allProjects.masterList.push(updatedProject);
             projectDiv.insertBefore(
@@ -189,8 +193,8 @@ const addTask = (set) => {
               projectDiv.children[projectIndex]
             );
             taskButtons(updatedProject);
-            themeCheck()
 
+            themeCheck();
             exit();
           };
         };
@@ -264,8 +268,7 @@ const addProject = () => {
       if (isValid) {
         let newProject = project(title, description, []);
         fetchedList.unshift(newProject);
-        store(fetchedList)
-
+        store(fetchedList);
         let projectSet = projectBuilder(newProject);
         taskButtons(projectSet);
         allProjects.masterList.push(projectSet);

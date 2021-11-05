@@ -3,7 +3,7 @@
 import { elementBuilder, getPosition, projectDiv, body } from "./elements";
 import { sortByDueDate } from "./date";
 import { projectBuilder } from "./taskElements";
-import { addTask, addProject, addEnterEvent } from "./projectCreator";
+import { addTask, addProject } from "./projectCreator";
 import { sidebar, themeCheck } from "./sidebar";
 import { store, checkList } from "./store";
 
@@ -166,14 +166,14 @@ const taskButtons = (set) => {
       for (let i = 0; i < fetchedList.length; i++) {
         if (fetchedList[i].title === set.project.title) {
           fetchedList.splice(i, 1);
-          store(fetchedList)
+          store(fetchedList);
           sidebar.populateProjects();
           break
         };
       };
       set.deleteList()
       warningElement.remove();
-    }
+    };
     
     confirm.addEventListener("click", removeProj);
     document.addEventListener('keydown', (event) => {
