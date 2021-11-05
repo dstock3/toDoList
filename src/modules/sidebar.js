@@ -106,7 +106,6 @@ const sidebar = (() => {
       minSideBarButton.style.alignSelf = "center";
       minSideBarButton.style.margin = "15% 0";
     }
-    minSideBarButton.style.paddingBottom = "5px";
     minSideBarButton.removeEventListener("click", minimizeSideBar);
     minSideBarButton.addEventListener("click", maximizeSidebar);
   }
