@@ -233,34 +233,50 @@ const sidebar = (() => {
   showThemes.addEventListener("click", themeOptions);
   notifButton();
 
-  const tipsContainer = elementBuilder("div", "tips-container", element);
-  tipsContainer.classList.add("min-tips");
-  const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
-  tipHead.textContent = "Productivity Tips"
+  const tipsContainer = document.createElement("div")
+  tipsContainer.classList.add("tips-container");
 
-  const minTipsButton = elementBuilder("div", "min-tips-button", tipsContainer);
-  minTipsButton.textContent = "□"
+  if (mobileView.matches) {
+    body.appendChild(tipsContainer);
+    const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
+    tipHead.textContent = "Productivity Tips"
 
-  function maximize() {
-    tipsContainer.classList.remove("min-tips");
-    minTipsButton.textContent = "-";
-    minTipsButton.removeEventListener("click", maximize);
-    minTipsButton.addEventListener("click", minimize);
-  };
+    const tipContent = document.createElement("div");
+    tipContent.classList.add("tip");
+    const tip = randomGenerator(tips);
+    tipContent.textContent = tip;
+    tipsContainer.appendChild(tipContent);
+  } else {
+    element.appendChild(tipsContainer);
 
-  function minimize() {
     tipsContainer.classList.add("min-tips");
-    minTipsButton.textContent = "□";
+    const tipHead = elementBuilder("h3", "tip-head", tipsContainer);
+    tipHead.textContent = "Productivity Tips"
+  
+    const minTipsButton = elementBuilder("div", "min-tips-button", tipsContainer);
+    minTipsButton.textContent = "□"
+  
+    function maximize() {
+      tipsContainer.classList.remove("min-tips");
+      minTipsButton.textContent = "-";
+      minTipsButton.removeEventListener("click", maximize);
+      minTipsButton.addEventListener("click", minimize);
+    };
+  
+    function minimize() {
+      tipsContainer.classList.add("min-tips");
+      minTipsButton.textContent = "□";
+      minTipsButton.addEventListener("click", maximize);
+    };
+  
     minTipsButton.addEventListener("click", maximize);
+  
+    const tipContent = document.createElement("div");
+    tipContent.classList.add("tip");
+    const tip = randomGenerator(tips);
+    tipContent.textContent = tip;
+    tipsContainer.appendChild(tipContent);
   };
-
-  minTipsButton.addEventListener("click", maximize);
-
-  const tipContent = document.createElement("div");
-  tipContent.classList.add("tip");
-  const tip = randomGenerator(tips);
-  tipContent.textContent = tip;
-  tipsContainer.appendChild(tipContent);
 
   return {
     element,
