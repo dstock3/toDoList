@@ -749,7 +749,6 @@ li {
   .bar-container {
     margin: 5% 0 15% 0;
     border: none;
-    background-color: null;
   }
 
   .notif-head-container {
@@ -804,12 +803,11 @@ li {
   .tips-container {
     position: relative;
     order: 2;
-    width: 100%;
     align-self: flex-end;
   }
 
   .tip-head {
-    margin-block-start: 0;
+    margin-block-start: .75em;
     margin-block-end: 1.25em;
 
   }   

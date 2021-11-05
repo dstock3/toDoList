@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-inner-declarations */
 /* eslint-disable no-unused-vars */
-import { elementBuilder } from './elements';
+import { elementBuilder, body } from './elements';
 
 const mobileView = window.matchMedia("(max-width: 1100px)");
 
@@ -57,7 +57,7 @@ function setTheme(color, comp) {
     let notifBar = document.getElementsByClassName('notif-bar')[0];
     let notifContainer = document.getElementsByClassName('notif-container')[0];
     let removeNotifs = document.getElementsByClassName('remove-notif');
-    let tipsContainer = sidebarElement.lastChild;
+    let tipsContainer
     let buttonElements = document.getElementsByTagName("button");
     let tasks = document.getElementsByClassName("task");
     let projectPrompt = document.getElementsByClassName("project-prompt")[0];
@@ -67,7 +67,7 @@ function setTheme(color, comp) {
     let sidebarMinButton = document.getElementsByClassName("min-sidebar-button")[0];
     let removeTaskElements = document.getElementsByClassName("remove-task");
     let topButtons = document.getElementsByClassName("top-buttons");
-  
+
     if (taskPrompt !== undefined) {
       taskPrompt.id = color;
     }
@@ -111,9 +111,17 @@ function setTheme(color, comp) {
     if (warning !== undefined) {
       warning.id = color;
     };
-  
+
     sideButtonContainer.id = comp;
     sidebarMinButton.id = comp;
+
+    if (mobileView.matches) {
+      sidebarElement.setAttribute("style", "box-shadow: none");
+      tipsContainer = body.lastChild;
+     } else {
+      tipsContainer = sidebarElement.lastChild;
+    };
+
     tipsContainer.id = comp;
     notifBar.id = comp;
     if (notifContainer) {
@@ -144,7 +152,7 @@ function setTheme(color, comp) {
         };
       };
     }; 
-  
+
     const applyAccents = (() => {
       if (color === "classic") {
         themeComponents('#1E67A7'); 
