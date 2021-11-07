@@ -806,6 +806,7 @@ li {
     position: relative;
     order: 2;
     align-self: flex-end;
+    bottom: 0;
   }
 
   .tip-head {

@@ -57,7 +57,7 @@ function setTheme(color, comp) {
     let notifBar = document.getElementsByClassName('notif-bar')[0];
     let notifContainer = document.getElementsByClassName('notif-container')[0];
     let removeNotifs = document.getElementsByClassName('remove-notif');
-    let tipsContainer
+    let tipsContainer = document.getElementsByClassName("tips-container")[0];
     let buttonElements = document.getElementsByTagName("button");
     let tasks = document.getElementsByClassName("task");
     let projectPrompt = document.getElementsByClassName("project-prompt")[0];
@@ -68,11 +68,11 @@ function setTheme(color, comp) {
     let removeTaskElements = document.getElementsByClassName("remove-task");
     let topButtons = document.getElementsByClassName("top-buttons");
 
-    if (taskPrompt !== undefined) {
+    if (taskPrompt) {
       taskPrompt.id = color;
-    }
+    };
   
-    if (projectPrompt !== undefined) {
+    if (projectPrompt) {
       projectPrompt.id = color;
     };
   
@@ -102,13 +102,13 @@ function setTheme(color, comp) {
       };
     };
   
-    if (tasks !== undefined) {
+    if (tasks) {
       for (let i = 0; i < tasks.length; i++) {
         tasks[i].id = comp;
       };
     };
   
-    if (warning !== undefined) {
+    if (warning) {
       warning.id = color;
     };
 
@@ -117,9 +117,6 @@ function setTheme(color, comp) {
 
     if (mobileView.matches) {
       sidebarElement.setAttribute("style", "box-shadow: none");
-      tipsContainer = body.lastChild;
-     } else {
-      tipsContainer = sidebarElement.lastChild;
     };
 
     tipsContainer.id = comp;
