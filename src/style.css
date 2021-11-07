@@ -32,7 +32,9 @@ body {
 }
 
 .min-sidebar-button {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.25em;
   align-self: flex-end;
   margin: 2% 2%;
@@ -810,5 +812,8 @@ li {
     margin-block-start: .75em;
     margin-block-end: 1.25em;
 
+  }
+  .min-sidebar-button {
+    font-size: .85em;
   }   
 }
