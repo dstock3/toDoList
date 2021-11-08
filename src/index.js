@@ -7,7 +7,6 @@ import { notif, addNoNotifMessage } from "./modules/sidebar";
 import { store, checkList, getTheme } from "./modules/store";
 import { setTheme } from "./modules/themes";
 
-
 window.document.title = "OnTask"
 
 const allProjects = projectTracker();
