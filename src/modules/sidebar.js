@@ -8,7 +8,6 @@ import { themes, setTheme } from "./themes"
 import { checkList, getTheme } from './store'
 import { projectBuilder } from './projectCreator'
 import { applyButtons } from "./buttons";
-import { el } from "date-fns/locale";
 
 const mobileView = window.matchMedia("(max-width: 1100px)");
 

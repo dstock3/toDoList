@@ -6,6 +6,7 @@ body {
   justify-content: space-around;
   font-size: 1.15;
   margin: auto;
+  transition: transform 0.5s ease-out;
 }
 
 .sidebar {
@@ -535,6 +536,7 @@ button {
 .transparent {
   opacity: 0.25;
   transition: all 0.5s ease-out;
+  filter: blur(4px);
 }
 
 .create-task-buttons {
