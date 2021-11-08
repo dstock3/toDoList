@@ -327,7 +327,6 @@ body {
   border-radius: 5px;
   margin: 20px 0;
   box-shadow: 5px 2px 2px rgb(0, 48, 87);
-  transition: transform 1s;
   
 }
 
@@ -585,6 +584,7 @@ li {
   cursor: pointer;
   border-radius: 5px;
   padding-inline-start: 2.5%;
+  transition: all 0.75s ease-out;
 }
 
 .theme-option:hover {
